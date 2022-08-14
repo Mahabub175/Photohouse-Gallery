@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import img from "../Images/landscape02.jpg";
 import img2 from "../Images/landscape03.jpg";
+import img3 from "../Images/landscape04.jpg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -25,17 +26,38 @@ const Home: NextPage = () => (
       className="mySwiper"
     >
       <SwiperSlide>
-        <div className="h-[100vh] w-full bg-emerald-300"></div>
+        <div className="h-[100vh] w-full">
+          <Image
+            src={img}
+            layout="fill"
+            objectFit="cover"
+            alt=""
+            quality={100}
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="h-[100vh] w-full bg-emerald-600"></div>
+        <div className="h-[100vh] w-full ">
+          <Image
+            src={img2}
+            layout="fill"
+            objectFit="cover"
+            alt=""
+            quality={100}
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="h-[100vh] w-full bg-emerald-900"></div>
+        <div className="h-[100vh] w-full ">
+          <Image
+            src={img3}
+            layout="fill"
+            objectFit="cover"
+            alt=""
+            quality={100}
+          />
+        </div>
       </SwiperSlide>
-      {/* <SwiperSlide>
-        <Image src={img2} alt="landscape-image" />
-      </SwiperSlide> */}
     </Swiper>
   </div>
 );
