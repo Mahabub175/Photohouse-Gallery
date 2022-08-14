@@ -1,0 +1,12 @@
+.brand-logo-corner {
+  background: linear-gradient(to right, whitesmoke 1px, transparent 1px) 0 0,
+    linear-gradient(to right, whitesmoke 1px, transparent 1px) 0 100%,
+    linear-gradient(to left, whitesmoke 1px, transparent 1px) 100% 0,
+    linear-gradient(to left, whitesmoke 1px, transparent 1px) 100% 100%,
+    linear-gradient(to bottom, whitesmoke 1px, transparent 1px) 0 0,
+    linear-gradient(to bottom, whitesmoke 1px, transparent 1px) 100% 0,
+    linear-gradient(to top, whitesmoke 1px, transparent 1px) 0 100%,
+    linear-gradient(to top, whitesmoke 1px, transparent 1px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+}

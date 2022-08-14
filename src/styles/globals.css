@@ -6,16 +6,39 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+@layer components {
+  .btn-blue {
+    @apply text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-sky-300
+     font-medium rounded-full text-sm px-5 py-2 text-center mx-1;
+  }
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
 
-/* // @media (prefers-color-scheme: dark) {
-//   html {
-//     color-scheme: dark;
-//   }
-//   body {
-//     color: white;
-//     background: black;
-//   }
-// } */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
