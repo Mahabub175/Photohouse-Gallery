@@ -40,4 +40,14 @@
   -webkit-align-items: center;
   align-items: center;
 }
+.heroWrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.imageWrapper {
+  z-index: -1;
+}
+
+
 
