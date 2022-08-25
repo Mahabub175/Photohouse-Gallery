@@ -2,13 +2,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./styles/Navbar.module.css";
 
+
 const NavBar = () => {
   const router = useRouter();
 
   return (
     <nav className="flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10 bg-[#00000040] text-white absolute z-10 w-full">
       <div className="">
-        <span className={`${styles["brand-logo-corner"]} py-2 px-4`}>
+        <span className={`${styles["brand-logo-corner"]} py-2 px-4 font-bold`}>
           Photo-House
         </span>
       </div>
