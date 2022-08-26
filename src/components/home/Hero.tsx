@@ -4,9 +4,7 @@ import { EffectFade, Autoplay } from "swiper";
 import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import img from "../../Images/landscape02.jpg";
-import img2 from "../../Images/landscape03.jpg";
-import img3 from "../../Images/landscape04.jpg";
+import img from "../../Images/land01.jpg";
 
 // Import Swiper styles
 import "swiper/css";

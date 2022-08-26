@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import img from "../../Images/Magazines/mega01.jpg";
+import img from "../../Images/Magazines/M1.png";
 import { EffectCoverflow, Autoplay, Navigation, Pagination } from "swiper";
 
 // Import Swiper styles
