@@ -4,7 +4,7 @@ import { EffectFade, Autoplay } from "swiper";
 import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import img from "../../Images/land01.jpg";
+import img from "../../Images/Landscape/land01.jpg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -36,11 +36,11 @@ const Hero: FC = () => {
               />
             </div>
 
-            <div className="bg-[#00000030] text-white relative flex flex-col justify-center self-center h-[100vh] w-full">
+            <div className="bg-[#00000040] text-white relative flex flex-col justify-center self-center h-[100vh] w-full">
               <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
                 Find your inspiration
               </h1>
-              <p className="mb-2">
+              <p className="mb-2 text-emerald-100">
                 Join the Photo-House community, home to tens of billions of{" "}
                 <br /> photos and 2 million groups.
               </p>

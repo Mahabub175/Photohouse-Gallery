@@ -14,8 +14,10 @@ import "swiper/css/effect-coverflow";
 
 const Magazines: FC = () => {
   return (
-    <div className="w-full min-h-[80vh] text-white bg-gray-900 flex flex-col items-center border-b-2">
-      <h1 className="my-4 text-5xl font-bold border-b-4 pb-3">Magazines</h1>
+    <div className="w-full min-h-[80vh] text-white bg-gray-900 flex flex-col items-center py-2">
+      <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+       Magazines
+      </h1>
       <Swiper
         breakpoints={{
           280: {
@@ -38,7 +40,7 @@ const Magazines: FC = () => {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
-        className=""
+        className="my-4"
         // navigation
         pagination={{ clickable: true }}
         // onSlideChange={() => console.log("slide change")}
