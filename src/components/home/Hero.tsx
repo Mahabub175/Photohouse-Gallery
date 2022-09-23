@@ -46,7 +46,7 @@ const Hero: FC = () => {
               </p>
               <div>
                 <button type="button" className="btn-blue">
-                  Join Our Community
+                  Submit Your Photo
                 </button>
               </div>
             </div>
