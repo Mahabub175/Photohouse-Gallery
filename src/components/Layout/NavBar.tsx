@@ -6,7 +6,7 @@ const NavBar = () => {
   const router = useRouter();
   // 00000055
   return (
-    <nav className="flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10 bg-[#272727] text-white relative z-10 w-full">
+    <nav className="flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10 bg-[#00000055] text-white absolute z-10 w-full">
       <div className="">
         <span className={`${styles["brand-logo-corner"]} py-2 px-4 font-bold tracking-widest`}>
           PHOTOHOUSE

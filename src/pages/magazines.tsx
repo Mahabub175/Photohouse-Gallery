@@ -4,7 +4,7 @@ import img from "../Images/Magazines/M1.png";
 
 const Magazines: NextPage = () => {
   return (
-    <main className="bg-slate-900 text-white py-4">
+    <main className="bg-slate-900 text-white py-[80px]">
       <div className="flex justify-between container m-auto items-center border-b-2 pb-2">
         <p className="text-3xl font-bold">Magazines</p>
         <p>
