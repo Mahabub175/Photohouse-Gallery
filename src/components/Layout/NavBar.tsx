@@ -6,18 +6,25 @@ const NavBar = () => {
   const router = useRouter();
   // 00000055
   return (
-    <nav className="flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10 bg-[#00000055] text-white absolute z-10 w-full">
+    <nav
+      className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10  text-white ${
+        router.pathname === "/" ? "absolute bg-[#00000055]" : "relative bg-[#000000]"
+      } z-10 w-full`}
+    >
       <div className="">
-        <span className={`${styles["brand-logo-corner"]} py-2 px-4 font-bold tracking-widest`}>
+        <span
+          className={`${styles["brand-logo-corner"]} py-2 px-4 font-bold tracking-widest`}
+        >
           PHOTOHOUSE
         </span>
       </div>
       <div className="hidden md:block">
         {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
-          <Link href={`/${x.toLowerCase()}`} key={i}>
+          <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
             <a
               className={`cursor-pointer mx-2 ${
-                router.pathname == `/${x.toLowerCase()}`
+                router.pathname == `/${x.toLowerCase()}` ||
+                (i === 0 && router.pathname == `/`)
                   ? " text-cyan-300 "
                   : " text-white"
               }`}
@@ -29,7 +36,7 @@ const NavBar = () => {
         <button
           type="button"
           className="btn-blue"
-          onClick={() => console.log(router.pathname)}
+          onClick={() => router.push("/register")}
         >
           Be a Member
         </button>
