@@ -14,9 +14,9 @@ import "swiper/css/effect-coverflow";
 
 const Magazines: FC = () => {
   return (
-    <div className="w-full min-h-[80vh] text-white bg-gray-900 flex flex-col items-center py-2">
+    <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">
       <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
-       Magazines
+        Magazines
       </h1>
       <Swiper
         breakpoints={{

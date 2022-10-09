@@ -4,7 +4,7 @@ import img from "../Images/Magazines/M1.png";
 
 const Magazines: NextPage = () => {
   return (
-    <main className="bg-slate-900 text-white py-4">
+    <main className="  py-4">
       <div className="flex justify-between container m-auto items-center border-b-2 pb-2">
         <p className="text-3xl font-bold">Magazines</p>
         <p>
@@ -15,7 +15,7 @@ const Magazines: NextPage = () => {
         </p>
       </div>
       <div className="container m-auto grid grid-cols-5 gap-6">
-        {[1, 2, 3, 4, 5, 6, 9, 7, 8, 9, 7, 8, 9, 9,8].map((x, i) => (
+        {[1, 2, 3, 4, 5, 6, 9, 7, 8, 9, 7, 8, 9, 9, 8].map((x, i) => (
           <div className="w-[200px] my-3" key={i}>
             <Image
               priority

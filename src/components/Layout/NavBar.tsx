@@ -7,8 +7,10 @@ const NavBar = () => {
   // 00000055
   return (
     <nav
-      className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10  text-white ${
-        router.pathname === "/" ? "absolute bg-[#00000055]" : "relative bg-[#000000]"
+      className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10   ${
+        router.pathname === "/"
+          ? "absolute bg-[#00000055]"
+          : "relative bg-[#000000]"
       } z-10 w-full`}
     >
       <div className="">
@@ -26,7 +28,7 @@ const NavBar = () => {
                 router.pathname == `/${x.toLowerCase()}` ||
                 (i === 0 && router.pathname == `/`)
                   ? " text-cyan-300 "
-                  : " text-white"
+                  : " "
               }`}
             >
               {x}

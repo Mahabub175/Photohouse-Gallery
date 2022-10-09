@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="p-4 bg-slate-900 text-gray-400 hover:text-white sm:p-6">
+      <footer className="p-4  text-gray-400 hover:text-white sm:p-6">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
@@ -49,9 +49,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">
-                Legal
-              </h2>
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
               <ul className=" ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">

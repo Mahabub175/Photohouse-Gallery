@@ -15,7 +15,7 @@ const About: NextPage = () => {
           objectPosition="center"
           alt="hero image"
         />
-        <div className="bg-[#0000008a] text-white absolute flex flex-col justify-center self-center min-h-[100vh] w-full">
+        <div className="bg-[#0000008a]  absolute flex flex-col justify-center self-center min-h-[100vh] w-full">
           <p className="text-center text-4xl font-bold mb-4">Privacy Policy</p>
           <p className="px-[10%] text-xl">
             Your privacy is important to us. We provide this notice to explain

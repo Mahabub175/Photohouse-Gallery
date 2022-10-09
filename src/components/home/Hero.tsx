@@ -24,8 +24,8 @@ const Hero: FC = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className={"heroWrapper"}>
-            <div className={"imageWrapper"}>
+          <div className={"relative w-full h-100vh"}>
+            <div className="z-[-1]">
               <Image
                 priority
                 src={img}
@@ -36,7 +36,7 @@ const Hero: FC = () => {
               />
             </div>
 
-            <div className="bg-[#00000040] text-white relative flex flex-col justify-center self-center h-[100vh] w-full">
+            <div className="bg-[#00000040]  relative flex flex-col justify-center self-center h-[100vh] w-full">
               <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
                 Find your inspiration
               </h1>

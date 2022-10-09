@@ -10,21 +10,14 @@
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+@layer base {
+  body {
+    @apply bg-[#06202A] text-white;
+  }
+}
 @layer components {
   .btn-blue {
-    @apply text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-sky-300
+    @apply  bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-sky-300
      font-medium rounded-full text-sm px-5 py-2 text-center mx-1;
   }
 }
-
-.heroWrapper {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-.imageWrapper {
-  z-index: -1;
-}
-
-
-

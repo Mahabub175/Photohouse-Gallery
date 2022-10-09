@@ -2,7 +2,7 @@ import { NextPage } from "next";
 
 const Register: NextPage = () => {
   return (
-    <main className="bg-slate-900 text-white py-4 min-h-[100vh] px-[10%] text-xl">
+    <main className=" py-4 min-h-[100vh] px-[10%] text-xl">
       <form>
         <div className="relative z-0 mb-6 w-full group"></div>
         <div className="relative z-0 mb-6 w-full group"></div>

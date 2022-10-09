@@ -12,7 +12,7 @@ import img6 from "../Images/Gallery/5.png";
 
 const Gallery: NextPage = () => {
   return (
-    <div className="gap-1 columns-4 bg-gray-900">
+    <div className="gap-1 columns-4 ">
       {[
         img1,
         img3,
