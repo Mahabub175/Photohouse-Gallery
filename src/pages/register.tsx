@@ -1,7 +1,10 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Register = (props: { countries: [] }) => {
+  const router = useRouter();
+
   const data = [
     {
       field: "firstname",
@@ -23,11 +26,11 @@ const Register = (props: { countries: [] }) => {
       type: "text",
       label: "Profession",
     },
-    {
-      field: "Country",
-      type: "text",
-      label: "Country",
-    },
+    // {
+    //   field: "Country",
+    //   type: "text",
+    //   label: "Country",
+    // },
     {
       field: "Facebook",
       type: "text",
@@ -52,9 +55,14 @@ const Register = (props: { countries: [] }) => {
   // useEffect(() => {
   //   console.log(props.countries);
   // }, [])
-
+  const [file, setFile]: any = useState(null);
+  const [loading, setLoading]: any = useState(false);
+  const handleFile = (e: any) => {
+    const newfile = e.target.files[0];
+    setFile(newfile);
+  }
   const [userData, setUserData]: any = useState({
-    Country: '',
+    Country: 'Barbados',
     Facebook: '',
     Instagram: '',
     Website: '',
@@ -66,7 +74,34 @@ const Register = (props: { countries: [] }) => {
   })
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(userData)
+    // console.log(userData)
+    const formData = new FormData()
+    formData.append('file', file);
+    formData.append('Country', userData.Country);
+    formData.append('Facebook', userData.Facebook);
+    formData.append('Instagram', userData.Instagram);
+    formData.append('Website', userData.Website);
+    formData.append('Youtube', userData.Youtube);
+    formData.append('email', userData.email);
+    formData.append('profession', userData.profession);
+    formData.append('name', userData.firstname + " " + userData.lastname);
+    console.log(formData);
+    setLoading(true)
+    fetch('http://localhost:5000/regn_memeber', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        router.push("/members")
+      })
+      .catch(error => {
+        console.error(error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   };
   const handleChange = (e: any) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -75,30 +110,9 @@ const Register = (props: { countries: [] }) => {
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
-        <div className="grid md:grid-cols-3 md:gap-6">
-          {data.slice(0, 3).map((item, index) => (
-            <div className="relative z-0 mb-6 w-full group" key={index}>
-              <input
-                required
-                onChange={handleChange}
-                value={userData[item.field]}
-                type={item.type}
-                name={item.field}
-                id={item.field}
-                className="block py-2.5 px-0 w-full text-md  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-400 peer"
-                placeholder=" "
-              />
-              <label
-                htmlFor={item.field}
-                className="peer-focus:font-medium absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-400  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                {item.label}
-              </label>
-            </div>
-          ))}
-        </div>
-        <div className="grid md:grid-cols-2 md:gap-6">
-          {data.slice(3, 5).map((item, index) => (
+
+        <div className="grid md:grid-cols-2 md:gap-6 gap-2">
+          {data.slice(0, 4).map((item, index) => (
             <div className="relative z-0 mb-6 w-full group" key={index}>
               <input
                 required
@@ -120,7 +134,7 @@ const Register = (props: { countries: [] }) => {
           ))}
         </div>
         <div className="grid md:grid-cols-4 grid-cols-2 md:gap-6 gap-2">
-          {data.slice(5).map((item, index) => (
+          {data.slice(4).map((item, index) => (
             <div className="relative z-0 mb-6 w-full group" key={index}>
               <input
                 required
@@ -141,9 +155,31 @@ const Register = (props: { countries: [] }) => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-2">
-          <button type="submit" className="btn-blue px-12 rounded-md">
-            Submit
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-2">
+          <div >
+            <label htmlFor="photo" className="block mb-2 text-sm font-mediumtext-gray-400">Photo</label>
+            <input onChange={handleFile} type="file" className="" id="photo" name="photo" required />
+          </div>
+          <div>
+            <label htmlFor="Country" className="block mb-2 text-sm font-mediumtext-gray-400">Select your country</label>
+            <select
+              id="Country"
+              name="Country"
+              onChange={handleChange}
+              className=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            >
+              {props.countries.map((country: any) => <option
+                value={country.name.common}
+                key={country.name.common}>
+                {country.name.common}
+              </option>)}
+
+            </select>
+          </div>
+        </div>
+        <div className="flex justify-center mt-10">
+          <button type="submit" className="btn-blue px-12 rounded-md" disabled={loading}>
+            {loading ? "Loading..." : "Submit"}
           </button>
         </div>
       </form>

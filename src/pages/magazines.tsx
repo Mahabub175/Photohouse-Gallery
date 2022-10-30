@@ -14,7 +14,7 @@ const Magazines: NextPage = () => {
           <span className="mx-1">Upcoming</span>
         </p>
       </div>
-      <div className="container m-auto grid grid-cols-5 gap-6">
+      <div className="container m-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {[1, 2, 3, 4, 5, 6, 9, 7, 8, 9, 7, 8, 9, 9, 8].map((x, i) => (
           <div className="w-[200px] my-3" key={i}>
             <Image

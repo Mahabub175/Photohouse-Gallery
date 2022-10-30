@@ -7,11 +7,10 @@ const NavBar = () => {
   // 00000055
   return (
     <nav
-      className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10   ${
-        router.pathname === "/"
-          ? "absolute bg-[#00000055]"
-          : "relative bg-[#000000]"
-      } z-10 w-full`}
+      className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10   ${router.pathname === "/"
+        ? "absolute bg-[#00000055]"
+        : "relative bg-[#182f38]"
+        } z-10 w-full`}
     >
       <div className="">
         <span
@@ -24,12 +23,11 @@ const NavBar = () => {
         {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
           <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
             <a
-              className={`cursor-pointer mx-2 ${
-                router.pathname == `/${x.toLowerCase()}` ||
+              className={`cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                 (i === 0 && router.pathname == `/`)
-                  ? " text-cyan-300 "
-                  : " "
-              }`}
+                ? " text-cyan-300 "
+                : " "
+                }`}
             >
               {x}
             </a>
@@ -38,9 +36,9 @@ const NavBar = () => {
         <button
           type="button"
           className="btn-blue"
-          onClick={() => router.push("/register")}
+          onClick={() => router.push("/members")}
         >
-          Be a Member
+          Members
         </button>
       </div>
       <div className="md:hidden h-full pt-6 cursor-pointer">
