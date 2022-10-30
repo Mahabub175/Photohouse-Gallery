@@ -9,7 +9,7 @@ const Members = (props: any) => {
 
     const [membersList, setmembersList] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/members').then((response) => {
+        axios.get('https://api.photohousemagazine.com/members').then((response) => {
             console.log(response.data)
             setmembersList(response.data)
         })

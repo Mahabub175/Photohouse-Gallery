@@ -87,7 +87,7 @@ const Register = (props: { countries: [] }) => {
     formData.append('name', userData.firstname + " " + userData.lastname);
     console.log(formData);
     setLoading(true)
-    fetch('http://localhost:5000/regn_memeber', {
+    fetch('https://api.photohousemagazine.com/regn_memeber', {
       method: 'POST',
       body: formData
     })
