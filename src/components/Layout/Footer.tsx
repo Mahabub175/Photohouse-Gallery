@@ -21,12 +21,12 @@ const Footer = () => {
               <ul className=" ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
-                    Flowbite
+                    Home
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    Tailwind CSS
+                    About
                   </a>
                 </li>
               </ul>
@@ -38,12 +38,12 @@ const Footer = () => {
               <ul className=" ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline ">
-                    Github
+                    Facebook
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    Discord
+                    Youtube
                   </a>
                 </li>
               </ul>

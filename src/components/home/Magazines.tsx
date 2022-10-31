@@ -1,18 +1,25 @@
-import { FC } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { FC, useEffect, useState } from "react";
 
+import { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import img from "../../Images/Magazines/M1.png";
-import { EffectCoverflow, Autoplay, Navigation, Pagination } from "swiper";
 
 // Import Swiper styles
+import axios from "axios";
 import "swiper/css";
+import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
 
 const Magazines: FC = () => {
+  const [magazinesList, setmagazinesList] = useState([])
+  useEffect(() => {
+    axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
+      console.log(response.data)
+      setmagazinesList(response.data)
+    })
+  }, [])
   return (
     <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">
       <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
@@ -43,15 +50,15 @@ const Magazines: FC = () => {
         className="my-4"
         // navigation
         pagination={{ clickable: true }}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((x) => (
-          <SwiperSlide key={x} className="">
+        {magazinesList.map((x: any) => (
+          <SwiperSlide key={x._id} className="">
             <Link href="/magazines" className="">
               <Image
                 priority
-                src={img}
+                src={x.image}
                 width={400}
                 height={550}
                 alt="Magazines image"

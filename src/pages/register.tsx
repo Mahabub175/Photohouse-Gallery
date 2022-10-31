@@ -1,6 +1,8 @@
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Camera } from "react-feather";
 
 const Register = (props: { countries: [] }) => {
   const router = useRouter();
@@ -56,13 +58,17 @@ const Register = (props: { countries: [] }) => {
   //   console.log(props.countries);
   // }, [])
   const [file, setFile]: any = useState(null);
+  const [Preview, setPreview]: any = useState("");
   const [loading, setLoading]: any = useState(false);
   const handleFile = (e: any) => {
     const newfile = e.target.files[0];
-    setFile(newfile);
+    if (newfile) {
+      setPreview(URL.createObjectURL(newfile))
+      setFile(newfile);
+    }
   }
   const [userData, setUserData]: any = useState({
-    Country: 'Barbados',
+    Country: 'Afganistan',
     Facebook: '',
     Instagram: '',
     Website: '',
@@ -110,7 +116,22 @@ const Register = (props: { countries: [] }) => {
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
+        <div className="flex justify-center pb-4">
+          <div className="relative w-[100px]">
+            <input onChange={handleFile} type="file" className="cursor-pointer h-[100px] w-[100px] opacity-0 " id="photo" name="photo" required />
+            <div className="border-dashed border-2 border-blue-500 h-[100px] w-[100px] rounded-full mt-[-100px] ">
+              {!Preview ? <Camera color="dodgerblue" size={40} className='m-auto mt-[25%]' /> : <Image
+                priority
+                src={Preview}
+                width={100}
+                height={100}
+                alt="image"
+                className={`rounded-full shadow-lg `}
+              />}
+            </div>
+          </div>
 
+        </div>
         <div className="grid md:grid-cols-2 md:gap-6 gap-2">
           {data.slice(0, 4).map((item, index) => (
             <div className="relative z-0 mb-6 w-full group" key={index}>
@@ -156,10 +177,10 @@ const Register = (props: { countries: [] }) => {
           ))}
         </div>
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-2">
-          <div >
+          {/* <div >
             <label htmlFor="photo" className="block mb-2 text-sm font-mediumtext-gray-400">Photo</label>
-            <input onChange={handleFile} type="file" className="" id="photo" name="photo" required />
-          </div>
+           
+          </div> */}
           <div>
             <label htmlFor="Country" className="block mb-2 text-sm font-mediumtext-gray-400">Select your country</label>
             <select
@@ -168,10 +189,10 @@ const Register = (props: { countries: [] }) => {
               onChange={handleChange}
               className=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
             >
-              {props.countries.map((country: any) => <option
-                value={country.name.common}
-                key={country.name.common}>
-                {country.name.common}
+              {props.countries.map((country: any) => country.name.common).sort().map((name: string) => <option
+                value={name}
+                key={name}>
+                {name}
               </option>)}
 
             </select>
