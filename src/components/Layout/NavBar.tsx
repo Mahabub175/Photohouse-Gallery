@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./styles/Navbar.module.css";
+import logo_dark from "../../Images/logo_dark.png";
+import Image from "next/image";
 
 const NavBar = () => {
   const router = useRouter();
@@ -12,18 +14,21 @@ const NavBar = () => {
         : "relative bg-[#182f38]"
         } z-10 w-full`}
     >
-      <div className="">
-        <span
-          className={`${styles["brand-logo-corner"]} py-2 px-4 font-bold tracking-widest`}
-        >
-          PHOTOHOUSE
-        </span>
+      <div className="flex items-center">
+        <Image
+          priority
+          src={logo_dark}
+          width={120}
+          height={40}
+          alt="logo"
+          className={`cursor-pointer rounded-md`}
+        />
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block tracking-wider">
         {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
           <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
             <a
-              className={`cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
+              className={`hover:tracking-widest cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                 (i === 0 && router.pathname == `/`)
                 ? " text-cyan-300 "
                 : " "

@@ -119,8 +119,8 @@ const Register = (props: { countries: [] }) => {
         <div className="flex justify-center pb-4">
           <div className="relative w-[100px]">
             <input onChange={handleFile} type="file" className="cursor-pointer h-[100px] w-[100px] opacity-0 " id="photo" name="photo" required />
-            <div className="border-dashed border-2 border-blue-500 h-[100px] w-[100px] rounded-full mt-[-100px] ">
-              {!Preview ? <Camera color="dodgerblue" size={40} className='m-auto mt-[25%]' /> : <Image
+            <div className="border-dashed border-2 border-gray-300 h-[100px] w-[100px] rounded-full mt-[-100px] ">
+              {!Preview ? <Camera color="whitesmoke" size={40} className='m-auto mt-[25%]' /> : <Image
                 priority
                 src={Preview}
                 width={100}
@@ -177,10 +177,6 @@ const Register = (props: { countries: [] }) => {
           ))}
         </div>
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-2">
-          {/* <div >
-            <label htmlFor="photo" className="block mb-2 text-sm font-mediumtext-gray-400">Photo</label>
-           
-          </div> */}
           <div>
             <label htmlFor="Country" className="block mb-2 text-sm font-mediumtext-gray-400">Select your country</label>
             <select

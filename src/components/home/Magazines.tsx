@@ -40,8 +40,8 @@ const Magazines: FC = () => {
         // slidesPerView={5}
         // spaceBetween={0}
         loop={true}
-        speed={1000}
         effect={"coverflow"}
+        speed={1000}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
