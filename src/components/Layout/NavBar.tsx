@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./styles/Navbar.module.css";
-import logo_dark from "../../Images/logo_dark.png";
+import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
 
 const NavBar = () => {
@@ -18,14 +18,14 @@ const NavBar = () => {
         <Image
           priority
           src={logo_dark}
-          width={120}
-          height={40}
+          width={160}
+          height={54}
           alt="logo"
           className={`cursor-pointer rounded-md`}
         />
       </div>
       <div className="hidden md:block tracking-wider">
-        {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
+        {["Home", "Magazines", "Gallery", "Members", "About"].map((x, i) => (
           <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
             <a
               className={`hover:tracking-widest cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
@@ -38,13 +38,13 @@ const NavBar = () => {
             </a>
           </Link>
         ))}
-        <button
+        {/* <button
           type="button"
           className="btn-blue"
           onClick={() => router.push("/members")}
         >
           Members
-        </button>
+        </button> */}
       </div>
       <div className="md:hidden h-full pt-6 cursor-pointer">
         <div className="w-[20px] h-[2px] bg-white mb-2"></div>

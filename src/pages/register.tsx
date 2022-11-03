@@ -54,9 +54,9 @@ const Register = (props: { countries: [] }) => {
       label: "Website",
     },
   ];
-  // useEffect(() => {
-  //   console.log(props.countries);
-  // }, [])
+  useEffect(() => {
+    console.log(props.countries);
+  }, [])
   const [file, setFile]: any = useState(null);
   const [Preview, setPreview]: any = useState("");
   const [loading, setLoading]: any = useState(false);

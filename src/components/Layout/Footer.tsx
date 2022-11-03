@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import logo_dark from "../../Images/logo.png";
 
 const Footer = () => {
   return (
@@ -7,10 +9,17 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
-              {/* <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8" alt="FlowBite Logo"/> */}
-              <span className="self-center text-2xl font-semibold whitespace-nowrap ">
+              <Image
+                priority
+                src={logo_dark}
+                width={200}
+                height={67}
+                alt="logo"
+                className={`cursor-pointer rounded-md`}
+              />
+              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap ">
                 Photohouse
-              </span>
+              </span> */}
             </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
