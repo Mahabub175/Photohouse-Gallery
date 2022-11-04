@@ -15,10 +15,10 @@ const About: NextPage = () => {
           objectPosition="center"
           alt="hero image"
         />
-        <div className="bg-[#0000008a]  absolute flex flex-col justify-center self-center min-h-[100vh] w-full">
-          <p className="text-center text-4xl font-bold mb-4">Privacy Policy</p>
+        <div className="bg-[#0000008a]  absolute flex flex-col justify-center self-center min-h-[100vh] w-full ">
+          <p className="text-center text-4xl font-bold mb-4">About Us</p>
           <p className="px-[10%] text-xl">
-            Your privacy is important to us. We provide this notice to explain
+            {/* Your privacy is important to us. We provide this notice to explain
             our online information practices and the choices you can make about
             the way your information is collected and used. This notice applies
             to all information collected or submitted on the Photohousebd
@@ -45,7 +45,10 @@ const About: NextPage = () => {
             issues by contacting us directly at photohousebangladesh@gmail.com.
             Should you have questions or concerns about this Privacy Policy,
             please call us at +8801837240350 or send us an email at
-            photohousebangladesh@gmail.com
+            photohousebangladesh@gmail.com */}
+            Photohouse is an international photography organization founded in February 2016. During Photohouse's seven-year journey, it has worked to connect over 100 thousand photographers from more than 195 countries. We started our first successful magazine in March 2022 and have been continuing the legacy successfully ever since. <br /><br />
+            <p className="text-center text-4xl font-bold mb-4">Our Mission</p>
+            <p>Photohouse aims to give a photographer the best exposure by sharing remarkable works and photogenic thoughts.</p>
           </p>
         </div>
       </div>
