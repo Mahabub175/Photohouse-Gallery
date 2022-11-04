@@ -16,8 +16,10 @@ const Magazines: FC = () => {
   const [magazinesList, setmagazinesList] = useState([])
   useEffect(() => {
     axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
       setmagazinesList(response.data)
+    }).catch((err) => {
+      console.log(err)
     })
   }, [])
   return (

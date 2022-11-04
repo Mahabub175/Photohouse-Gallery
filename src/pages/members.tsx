@@ -79,7 +79,7 @@ const Members = (props: any) => {
 };
 
 export default Members;
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
         return response.data
     }).catch((err) => {
