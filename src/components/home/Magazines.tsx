@@ -15,12 +15,16 @@ import "swiper/css/pagination";
 const Magazines: FC = () => {
   const [magazinesList, setmagazinesList] = useState([])
   useEffect(() => {
-    axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-      // console.log(response.data)
-      setmagazinesList(response.data)
-    }).catch((err) => {
-      console.log(err)
-    })
+    const getData = async () => {
+      await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
+        // console.log(response.data)
+        setmagazinesList(response.data)
+      }).catch((err) => {
+        console.log(err)
+        getData()
+      })
+    }
+    getData()
   }, [])
   return (
     <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">

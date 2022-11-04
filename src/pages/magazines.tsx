@@ -2,15 +2,21 @@ import axios from "axios";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import img from "../Images/Magazines/M1.png";
 
 const Magazines: NextPage = () => {
   const [magazinesList, setmagazinesList] = useState([])
   useEffect(() => {
-    axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-      console.log(response.data)
-      setmagazinesList(response.data)
-    })
+    const getData = async () => {
+      await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
+        console.log(response.data)
+        setmagazinesList(response.data)
+      }).catch((err) => {
+        console.log(err)
+        getData()
+      })
+    }
+    getData()
+
   }, [])
   return (
     <main className="  py-4">

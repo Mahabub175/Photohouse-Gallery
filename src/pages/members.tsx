@@ -8,25 +8,29 @@ const Members = (props: any) => {
 
     const router = useRouter();
 
-    // const [membersList, setmembersList] = useState([])
-    // useEffect(() => {
-    //     axios.get('https://api.photohousemagazine.com/members').then((response) => {
-    //         console.log(response.data)
-    //         setmembersList(response.data)
-    //     }).catch((err) => {
-    //         console.log(err)
-    //     })
-    // }, [])
+    const [membersList, setmembersList] = useState([])
+    useEffect(() => {
+        const getData = async () => {
+            await axios.get('https://api.photohousemagazine.com/members').then((response) => {
+                console.log(response.data)
+                setmembersList(response.data)
+            }).catch((err) => {
+                console.log(err)
+                getData()
+            })
+        }
+        getData()
+    }, [])
     return (
         <>
-            <div className="w-full flex flex-col items-center py-10">
+            <div className="w-full flex flex-col items-center py-5">
                 <h1 className="font-bold text-transparent sm:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
                     Our Members
                 </h1>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10">
                 {
-                    props.membersList.map((member: any) =>
+                    membersList.map((member: any) =>
                         <div key={member._id} className="w-full">
                             .
                             <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700'>
@@ -79,15 +83,15 @@ const Members = (props: any) => {
 };
 
 export default Members;
-export async function getServerSideProps() {
-    const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
-        return response.data
-    }).catch((err) => {
-        console.log(err)
-    })
-    return {
-        props: {
-            membersList
-        }
-    }
-}
+// export async function getServerSideProps() {
+//     const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
+//         return response.data
+//     }).catch((err) => {
+//         console.log(err)
+//     })
+//     return {
+//         props: {
+//             membersList
+//         }
+//     }
+// }
