@@ -46,7 +46,7 @@ const About: NextPage = () => {
             Should you have questions or concerns about this Privacy Policy,
             please call us at +8801837240350 or send us an email at
             photohousebangladesh@gmail.com */}
-            Photohouse is an international photography organization founded in February 2016. During Photohouse's seven years journey, it has worked to connect over 100 thousand photographers from more than 195 countries. We started our first successful magazine in March 2022 and have been continuing the legacy successfully ever since. <br /><br />
+            Photohouse is an international photography organization founded in February 2016. During Photohouse seven years journey, it has worked to connect over 100 thousand photographers from more than 195 countries. We started our first successful magazine in March 2022 and have been continuing the legacy successfully ever since. <br /><br />
             <p className="text-center text-4xl font-bold mb-4">Our Mission</p>
             <p>Photohouse aims to give a photographer the best exposure by sharing remarkable works and photogenic thoughts.</p>
           </p>
