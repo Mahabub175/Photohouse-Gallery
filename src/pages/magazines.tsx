@@ -3,21 +3,21 @@ import { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const Magazines: NextPage = () => {
-  const [magazinesList, setmagazinesList] = useState([])
-  useEffect(() => {
-    const getData = async () => {
-      await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-        console.log(response.data)
-        setmagazinesList(response.data)
-      }).catch((err) => {
-        console.log(err)
-        getData()
-      })
-    }
-    getData()
+const Magazines: NextPage = ({ magazinesList }: any) => {
+  const [FilteredData, setFilteredData] = useState(magazinesList)
+  const [Category, setCategory] = useState("All")
 
-  }, [])
+  const handleFilter = (type: string) => {
+    setCategory(type)
+    switch (type) {
+      case "All":
+        setFilteredData(magazinesList)
+        break;
+      default:
+        setFilteredData(magazinesList.filter((mag: any) => mag.category === type))
+        break;
+    }
+  }
   return (
     <main className="  py-4">
       <div className="flex justify-between container m-auto items-center border-b-2 pb-2 flex-col">
@@ -27,14 +27,14 @@ const Magazines: NextPage = () => {
           </h1>
         </div>
         <p>
-          <span className="mx-1">All</span>
-          <span className="mx-1">Newest</span>
-          <span className="mx-1">Popular</span>
-          <span className="mx-1">Upcoming</span>
+          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("All")}>All</span>
+          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Newest")}>Newest</span>
+          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Popular")}>Popular</span>
+          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Upcoming")}>Upcoming</span>
         </p>
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {magazinesList.map((x: any, i) => (
+        {FilteredData.map((x: any) => (
           <div className="max-w-[200px] my-3 m-auto" key={x._id}>
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
               <Image
@@ -46,12 +46,17 @@ const Magazines: NextPage = () => {
                 className={`cursor-pointer rounded-md `}
               />
             </a>
-
-          </div>
-        ))}
+          </div>))}
       </div>
     </main>
   );
 };
 
 export default Magazines;
+
+export async function getStaticProps() {
+  const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
+    return response.data
+  }).catch((err) => console.log(err))
+  return { props: { magazinesList }, revalidate: 10 }
+}
