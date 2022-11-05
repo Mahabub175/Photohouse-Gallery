@@ -25,12 +25,17 @@ module.exports = {
     },
     extend: {
       animation: {
-        fade: 'fadeIn .5s ease-in-out'
+        fade: 'fadeIn .5s ease-in-out',
+        slideDown: 'slideDown .5s ease-out'
       },
       keyframes: () => ({
         fadeIn: {
           '0%': { opacity: 0, paddingTop: "20px" },
           '100%': { opacity: 1, paddingTop: "0" }
+        },
+        slideDown: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 }
         }
       })
     }

@@ -50,7 +50,7 @@ const NavBar = () => {
         <span className="hamburger__bottom-bun"></span>
       </button> */}
       </nav>
-      {showMenu && <div className="bg-[#06202A] h-[100vh] md:hidden select-none animate-fade">
+      {showMenu && <div className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
         <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-3xl">
           {["Home", "Magazines", "Gallery", "Members", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
