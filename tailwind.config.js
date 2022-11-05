@@ -24,9 +24,15 @@ module.exports = {
       slate: colors.slate,
     },
     extend: {
-      // backgroundImage: {
-      //   'hero1': "url('./src/Images/landscape02.jpg')"
-      // }
+      animation: {
+        fade: 'fadeIn .5s ease-in-out'
+      },
+      keyframes: () => ({
+        fadeIn: {
+          '0%': { opacity: 0, paddingTop: "20px" },
+          '100%': { opacity: 1, paddingTop: "0" }
+        }
+      })
     }
   },
   plugins: [],

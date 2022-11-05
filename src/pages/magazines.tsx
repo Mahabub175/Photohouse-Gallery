@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextPage } from "next";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Magazines: NextPage = ({ magazinesList }: any) => {
   const [FilteredData, setFilteredData] = useState(magazinesList)
@@ -19,7 +19,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
     }
   }
   return (
-    <main className="  py-4">
+    <main className="py-4">
       <div className="flex justify-between container m-auto items-center border-b-2 pb-2 flex-col">
         <div className="w-full flex flex-col items-center ">
           <h1 className="font-bold text-transparent sm:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
@@ -35,7 +35,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {FilteredData.map((x: any) => (
-          <div className="max-w-[200px] my-3 m-auto" key={x._id}>
+          <div className="max-w-[200px] my-3 m-auto animate-fade" key={x._id}>
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
               <Image
                 priority
