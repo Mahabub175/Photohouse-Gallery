@@ -32,9 +32,18 @@ const Members = (props: any) => {
                 {
                     membersList.map((member: any) =>
                         <div key={member._id} className="w-full">
-                            .
                             <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700'>
-                                <div className="flex flex-col items-center pt-5">
+                                <div className="relative max-w-[198px] h-[120px] m-auto">
+                                    <Image
+                                        src={member.Flag}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        quality={100}
+                                        alt='Flag'
+                                        className={`rounded`}
+                                    />
+                                </div>
+                                <div className="flex flex-col items-center pt-5 mt-[-90px]">
                                     <Image
                                         priority
                                         src={`data:image/png;base64,${member.image.img}`}
@@ -83,15 +92,15 @@ const Members = (props: any) => {
 };
 
 export default Members;
-export async function getServerSideProps() {
-    const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
-        return response.data
-    }).catch((err) => {
-        console.log(err)
-    })
-    return {
-        props: {
-            membersList
-        }
-    }
-}
+// export async function getServerSideProps() {
+//     const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
+//         return response.data
+//     }).catch((err) => {
+//         console.log(err)
+//     })
+//     return {
+//         props: {
+//             membersList
+//         }
+//     }
+// }

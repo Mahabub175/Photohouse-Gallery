@@ -80,10 +80,11 @@ const Register = (props: { countries: [] }) => {
   })
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // console.log(userData)
+    console.log(userData, JSON.parse(userData.Country)?.name.common, JSON.parse(userData.Country)?.flag.svg)
     const formData = new FormData()
     formData.append('file', file);
-    formData.append('Country', userData.Country);
+    formData.append('Country', JSON.parse(userData.Country)?.name.common);
+    formData.append('Flag', JSON.parse(userData.Country)?.flag.svg);
     formData.append('Facebook', userData.Facebook);
     formData.append('Instagram', userData.Instagram);
     formData.append('Website', userData.Website);
@@ -96,20 +97,17 @@ const Register = (props: { countries: [] }) => {
     fetch('https://api.photohousemagazine.com/regn_memeber', {
       method: 'POST',
       body: formData
-    })
-      .then(response => response.json())
+    }).then(response => response.json())
       .then(data => {
         console.log(data)
         router.push("/members")
       })
-      .catch(error => {
-        console.error(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+      .catch(error => console.error(error))
+      .finally(() => setLoading(false))
   };
   const handleChange = (e: any) => {
+    console.log(e.target.value)
+
     setUserData({ ...userData, [e.target.name]: e.target.value })
   };
   // const rnderDiv = (item: { field: string, type: string, label: string }, index: number): any => {  }
@@ -158,7 +156,7 @@ const Register = (props: { countries: [] }) => {
           {data.slice(4).map((item, index) => (
             <div className="relative z-0 mb-6 w-full group" key={index}>
               <input
-                required
+                // required
                 onChange={handleChange}
                 value={userData[item.field]}
                 type={item.type}
@@ -185,11 +183,18 @@ const Register = (props: { countries: [] }) => {
               onChange={handleChange}
               className=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
             >
-              {props.countries.map((country: any) => country.name.common).sort().map((name: string) => <option
-                value={name}
-                key={name}>
-                {name}
-              </option>)}
+              {props.countries.sort(function (a: any, b: any) {
+                if (a.name.common < b.name.common) { return -1; }
+                if (a.name.common > b.name.common) { return 1; }
+                return 0;
+              }).map((country: any) => {
+                // console.log(country)
+                return <option
+                  value={JSON.stringify(country)}
+                  key={country.name.common}>
+                  {country.name.common}
+                </option>
+              })}
 
             </select>
           </div>
