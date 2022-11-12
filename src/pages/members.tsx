@@ -12,7 +12,7 @@ const Members = (props: any) => {
     useEffect(() => {
         const getData = async () => {
             await axios.get('https://api.photohousemagazine.com/members').then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 setmembersList(response.data)
             }).catch((err) => {
                 console.log(err)
