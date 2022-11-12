@@ -30,9 +30,9 @@ const NavBar = () => {
           {["Home", "Magazines", "Gallery", "Members", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
               <a
-                className={`hover:tracking-widest cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
+                className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                   (i === 0 && router.pathname == `/`)
-                  ? " text-cyan-300 "
+                  ? " text-cyan-300 font-bold"
                   : " "
                   }`}
               >
@@ -56,9 +56,9 @@ const NavBar = () => {
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
               <a
                 onClick={() => setMenu(show => !show)}
-                className={`hover:tracking-widest cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
+                className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                   (i === 0 && router.pathname == `/`)
-                  ? " text-cyan-300 "
+                  ? " text-cyan-300 font-bold"
                   : " "
                   }`}
               >

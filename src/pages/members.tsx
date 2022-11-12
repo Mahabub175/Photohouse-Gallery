@@ -38,26 +38,29 @@ const Members = (props: any) => {
                     membersList.map((member: any) =>
                         <div key={member._id} className="w-full">
                             <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700'>
-                                <div className="relative max-w-[198px] h-[120px] m-auto">
-                                    <Image
-                                        src={member.Flag}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        quality={100}
-                                        alt='Flag'
-                                        className={`rounded`}
-                                    />
-                                </div>
-                                <div className="flex flex-col items-center pt-5 mt-[-90px]">
+                                {/* <div className="relative max-w-[198px] h-[120px] m-auto">
+                                   
+                                </div> */}
+                                <div className="flex flex-col items-center pt-5">
                                     <Image
                                         priority
                                         src={`data:image/png;base64,${member.image.img}`}
-                                        width={80}
-                                        height={80}
+                                        width={100}
+                                        height={100}
                                         alt="image"
                                         className={`rounded-full`}
                                     />
-                                    <h5 className="mb-1 text-xl font-medium text-white">{member.name}</h5>
+
+                                    <h5 className="mb-1 text-xl font-medium text-white">{member.name} <Image
+                                        src={member.Flag}
+                                        // layout="fill"
+                                        // objectFit="cover"
+                                        // quality={100}
+                                        width={20}
+                                        height={13}
+                                        alt='Flag'
+                                        className={`rounded`}
+                                    /></h5>
                                     <span className="text-sm text-gray-400">{member.profession}</span>
                                     {/* <span className="text-sm text-gray-200">{member.email}</span> */}
                                 </div>

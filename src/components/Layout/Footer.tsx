@@ -30,29 +30,12 @@ const Footer = () => {
               <ul className=" ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
-                    Home
+                    Become a sponsor
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    About
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">
-                Follow us
-              </h2>
-              <ul className=" ">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline ">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Youtube
+                    Become a member
                   </a>
                 </li>
               </ul>
@@ -72,12 +55,34 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">
+                Contact Us
+              </h2>
+              <ul className=" ">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline ">
+                    Email : photohousemagazine@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Whatsapp : +8801837240350
+                  </a>
+                </li>
+                {/* <li>
+                  <a href="#" className="hover:underline">
+                    Telegram : +8801837240350
+                  </a>
+                </li> */}
+              </ul>
+            </div>
           </div>
         </div>
         <hr className="my-6 border-gray-700 sm:mx-auto  lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm  sm:text-center ">
-            © 2022{" "}
+            © {new Date().getFullYear()}{" "}
             <a href="#" className="hover:underline">
               Photohouse™
             </a>
