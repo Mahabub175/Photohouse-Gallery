@@ -28,6 +28,11 @@ const Members = (props: any) => {
                     Our Members
                 </h1>
             </div>
+            <div className="flex justify-center mb-10">
+                <button type="button" className="btn-blue px-12 rounded-md" onClick={() => router.push("/register")}>
+                    Be a Member
+                </button>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10">
                 {
                     membersList.map((member: any) =>
@@ -79,13 +84,7 @@ const Members = (props: any) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>)
-                }
-            </div>
-            <div className="flex justify-center my-10">
-                <button type="button" className="btn-blue px-12 rounded-md" onClick={() => router.push("/register")}>
-                    Be a Member
-                </button>
+                        </div>)}
             </div>
         </>
     );

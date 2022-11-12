@@ -27,10 +27,12 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
           </h1>
         </div>
         <p>
-          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("All")}>All</span>
-          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Newest")}>Newest</span>
-          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Popular")}>Popular</span>
-          <span className="mx-1 cursor-pointer" onClick={() => handleFilter("Upcoming")}>Upcoming</span>
+          {["All", "Newest", "Popular", "Upcoming"].map((type: string, i: number) => <span
+            key={i + 1}
+            className={`mx-1 cursor-pointer ${Category === type && 'text-blue-400 font-bold'}`}
+            onClick={() => handleFilter(type)}>
+            {type}</span>
+          )}
         </p>
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -59,5 +61,5 @@ export async function getStaticProps() {
   const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
     return response.data.reverse()
   }).catch((err) => console.log(err))
-  return { props: { magazinesList }, revalidate: 10 }
+  return { props: { magazinesList }, revalidate: 60 }
 }
