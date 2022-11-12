@@ -34,7 +34,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
         </p>
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {FilteredData.reverse().map((x: any) => (
+        {FilteredData.map((x: any) => (
           <div className="max-w-[200px] my-3 m-auto animate-fade" key={x._id}>
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
               <Image
@@ -57,7 +57,7 @@ export default Magazines;
 
 export async function getStaticProps() {
   const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-    return response.data
+    return response.data.reverse()
   }).catch((err) => console.log(err))
   return { props: { magazinesList }, revalidate: 10 }
 }

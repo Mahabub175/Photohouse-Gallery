@@ -50,7 +50,7 @@ const Members = (props: any) => {
                                         width={80}
                                         height={80}
                                         alt="image"
-                                        className={`rounded-full shadow-lg`}
+                                        className={`rounded-full`}
                                     />
                                     <h5 className="mb-1 text-xl font-medium text-white">{member.name}</h5>
                                     <span className="text-sm text-gray-400">{member.profession}</span>
