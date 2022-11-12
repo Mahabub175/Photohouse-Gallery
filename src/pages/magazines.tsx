@@ -34,7 +34,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
         </p>
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {FilteredData.map((x: any) => (
+        {FilteredData.reverse().map((x: any) => (
           <div className="max-w-[200px] my-3 m-auto animate-fade" key={x._id}>
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
               <Image
@@ -46,6 +46,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
                 className={`cursor-pointer rounded-md `}
               />
             </a>
+            <p className="text-gray-300 text-sm">{x.name}</p>
           </div>))}
       </div>
     </main>
