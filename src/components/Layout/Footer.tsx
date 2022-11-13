@@ -88,7 +88,7 @@ const Footer = () => {
             </a>
             . All Rights Reserved.
           </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0 break-all">
             <a href="#" className="  ">
               <svg
                 className="w-5 h-5"
