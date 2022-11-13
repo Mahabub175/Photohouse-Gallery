@@ -59,7 +59,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold  uppercase ">
                 Contact Us
               </h2>
-              <ul className=" ">
+              <ul className="break-all ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline ">
                     Email : photohousemagazine@gmail.com
@@ -88,7 +88,7 @@ const Footer = () => {
             </a>
             . All Rights Reserved.
           </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0 break-all">
+          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a href="#" className="  ">
               <svg
                 className="w-5 h-5"
