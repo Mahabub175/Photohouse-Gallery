@@ -43,9 +43,9 @@ const Hero: FC = () => {
               <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
                 Find your inspiration
               </h1>
-              <p className="mb-2 text-emerald-100">
-                Join the Photohouse community, home to tens of billions of{" "}
-                <br /> photos and 2 million groups.
+              <p className="px-[5%] mb-2 text-emerald-100">
+                Join the Photohouse community, submit your photo to our next magazine,
+                <br /> become our lifetime memeber.
               </p>
               <div className="flex justify-center flex-col md:flex-row self-start md:self-auto mx-auto">
                 {/* <button type="button" className="btn-blue">
