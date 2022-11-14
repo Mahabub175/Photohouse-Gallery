@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import logo_dark from "../../Images/logo.png";
-
+import { FaEnvelope, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 const Footer = () => {
   return (
     <>
@@ -34,9 +35,11 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
-                    Become a member
-                  </a>
+                  <Link href="/register">
+                    <a className="hover:underline">
+                      Become a member
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -45,12 +48,12 @@ const Footer = () => {
               <ul className=" ">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
-                    Privacy Policy
+                    About
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    Terms &amp; Conditions
+                    Privacy Policy
                   </a>
                 </li>
               </ul>
@@ -61,18 +64,18 @@ const Footer = () => {
               </h2>
               <ul className="break-all ">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline ">
-                    Email : photohousemagazine@gmail.com
+                  <a href="#" className="hover:underline">
+                    <FaEnvelope className="inline" /> : photohousemagazine@gmail.com
                   </a>
                 </li>
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
-                    Whatsapp : +8801837240350
+                    <FaWhatsapp className="inline" /> : +8801837240350
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    Telegram : +8801837240350
+                    <FaTelegramPlane className="inline" /> : +8801837240350
                   </a>
                 </li>
               </ul>
