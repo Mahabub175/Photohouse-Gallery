@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Camera } from "react-feather";
+import AvatarUpload from "../components/UI/AvatarUpload";
 
 const Register = (props: { countries: [] }) => {
   const router = useRouter();
@@ -114,8 +115,9 @@ const Register = (props: { countries: [] }) => {
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
+        <AvatarUpload />
         <div className="flex justify-center pb-4">
-          <div className="relative w-[100px]">
+          {/* <div className="relative w-[100px]">
             <input onChange={handleFile} type="file" className="cursor-pointer h-[100px] w-[100px] opacity-0 relative z-10" id="photo" name="photo" required />
             <div className="border-dashed border-2 border-gray-300 h-[100px] w-[100px] rounded-full mt-[-100px] ">
               {!Preview ? <Camera color="whitesmoke" size={40} className='m-auto mt-[25%]' /> : <Image
@@ -127,7 +129,7 @@ const Register = (props: { countries: [] }) => {
                 className={`rounded-full shadow-lg `}
               />}
             </div>
-          </div>
+          </div> */}
 
         </div>
         <div className="grid md:grid-cols-2 md:gap-6 gap-2">
