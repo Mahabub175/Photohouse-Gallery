@@ -111,7 +111,6 @@ const Register = (props: { countries: [] }) => {
 
     setUserData({ ...userData, [e.target.name]: e.target.value })
   };
-  // const rnderDiv = (item: { field: string, type: string, label: string }, index: number): any => {  }
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
