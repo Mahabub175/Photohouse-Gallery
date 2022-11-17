@@ -201,8 +201,8 @@ const Register = (props: { countries: [] }) => {
           </div>
         </div>
         <div className="flex justify-center mt-10">
-          <button type="submit" className="btn-blue px-12 rounded-md" disabled={loading}>
-            {loading ? "Loading..." : "Submit"}
+          <button type="submit" className="btn-blue px-12 rounded-md " disabled={loading}>
+            {loading ? <span className="animate-pulse">Loading...</span> : "Submit"}
           </button>
         </div>
       </form>

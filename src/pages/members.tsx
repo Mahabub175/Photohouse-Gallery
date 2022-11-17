@@ -37,7 +37,7 @@ const Members = (props: any) => {
                 {
                     membersList.map((member: any) =>
                         <div key={member._id} className="w-full">
-                            <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700'>
+                            <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700 animate-slideDown'>
                                 {/* <div className="relative max-w-[198px] h-[120px] m-auto">
                                    
                                 </div> */}

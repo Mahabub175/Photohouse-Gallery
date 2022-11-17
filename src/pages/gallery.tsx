@@ -29,7 +29,7 @@ const Gallery: NextPage = () => {
         img5,
         imgL4,
       ].map((x, i) => (
-        <div className="mb-1" key={i}>
+        <div className="mb-1 animate-fadeIn" key={i}>
           <Image
             priority
             src={x}
