@@ -55,9 +55,9 @@ const Register = (props: { countries: [] }) => {
       label: "Website",
     },
   ];
-  useEffect(() => {
-    console.log(props.countries);
-  }, [])
+  // useEffect(() => {
+  //   console.log(props.countries);
+  // }, [])
   const [file, setFile]: any = useState(null);
   const [Preview, setPreview]: any = useState("");
   const [loading, setLoading]: any = useState(false);
@@ -114,7 +114,7 @@ const Register = (props: { countries: [] }) => {
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
-        <AvatarUpload />
+        <AvatarUpload setFile={setFile} />
         <div className="flex justify-center pb-4">
           {/* <div className="relative w-[100px]">
             <input onChange={handleFile} type="file" className="cursor-pointer h-[100px] w-[100px] opacity-0 relative z-10" id="photo" name="photo" required />

@@ -1,12 +1,14 @@
+import Image from "next/image";
 import { useState } from "react";
 import AvatarEditor from "react-avatar-editor";
+import { Camera } from "react-feather";
 import Modal from "./Modal";
 
-const AvatarUpload = () => {
+const AvatarUpload = ({ setFile }: any) => {
     const [showModal, setShowModal] = useState(false);
     let editor: any = "";
     const [picture, setPicture]: any = useState({
-        cropperOpen: false, img: null, zoom: 2, position: { x: 0.5, y: 0.5 }, croppedImg: "https://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png"
+        cropperOpen: false, img: null, zoom: 2, position: { x: 0.5, y: 0.5 }, croppedImg: null
     });
 
     const handleSlider = (event: any) => setPicture({ ...picture, zoom: +event.target.value });
@@ -29,7 +31,7 @@ const AvatarUpload = () => {
             const canvasScaled = editor.getImageScaledToCanvas();
             const croppedImg = canvasScaled.toDataURL();
             const file = dataURLtoFile(croppedImg, "profile");
-            console.log(file);
+            setFile(file)
             setPicture({ ...picture, img: null, cropperOpen: false, croppedImg: croppedImg });
             setShowModal(false)
         }
@@ -45,8 +47,21 @@ const AvatarUpload = () => {
     return (
         <div>
             <div className="w-full text-center">
-                <img className="mx-auto" src={picture.croppedImg} style={{ width: "200px", height: "200px", padding: "5", borderRadius: '50%' }} alt='Avatar' /> <br />
-                <input className="w-[120px]" type="file" accept="image/*" onChange={handleFileChange} required />
+                {/* <img className="mx-auto" src={picture.croppedImg} style={{ width: "200px", height: "200px", padding: "5", borderRadius: '50%' }} alt='Avatar' /> <br /> */}
+                {/* <input className="w-[200px] h-[200px]" type="file" accept="image/*" onChange={handleFileChange} required /> */}
+                <div className="relative w-[150px] mx-auto">
+                    <input onChange={handleFileChange} type="file" className="cursor-pointer h-[150px] w-[150px] opacity-0 relative z-10" id="photo" name="photo" required />
+                    <div className="border-dashed border-2 border-gray-300 h-[150px] w-[150px] rounded-full mt-[-150px] ">
+                        {!picture.croppedImg ? <Camera color="whitesmoke" size={50} className='m-auto mt-[35%]' /> : <Image
+                            priority
+                            src={picture.croppedImg}
+                            width={150}
+                            height={150}
+                            alt="image"
+                            className={`rounded-full shadow-lg `}
+                        />}
+                    </div>
+                </div>
             </div>
             <Modal Title="Adjust photo" showModal={showModal} setShowModal={setShowModal}>
                 {picture.cropperOpen && (

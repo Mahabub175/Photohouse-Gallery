@@ -51,16 +51,13 @@ const Members = (props: any) => {
                                         className={`rounded-full`}
                                     />
 
-                                    <h5 className="mb-1 text-xl font-medium text-white">{member.name} <Image
+                                    <h5 className="mb-1 text-xl font-medium text-white">{member.name} <span title={member.Country}><Image
                                         src={member.Flag}
-                                        // layout="fill"
-                                        // objectFit="cover"
-                                        // quality={100}
-                                        width={20}
-                                        height={13}
+                                        width={23}
+                                        height={14}
                                         alt='Flag'
                                         className={`rounded`}
-                                    /></h5>
+                                    /></span></h5>
                                     <span className="text-sm text-gray-400">{member.profession}</span>
                                     {/* <span className="text-sm text-gray-200">{member.email}</span> */}
                                 </div>
