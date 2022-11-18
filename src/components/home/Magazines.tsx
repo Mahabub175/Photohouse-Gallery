@@ -12,7 +12,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const Magazines: any = ({ magazinesList }: any) => {
+const Magazines = ({ magazinesList }: any) => {
 
   return (
     <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">

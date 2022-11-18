@@ -12,7 +12,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 
-const Hero: any = ({ RedirectLinks }: any) => {
+const Hero = ({ RedirectLinks }: any) => {
   return (
     <div className="w-full min-h-[100vh]">
       <Swiper

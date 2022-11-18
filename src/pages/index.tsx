@@ -12,6 +12,7 @@ const Home: NextPage = ({ redirect_links, magazinesList }: any) => (
 );
 
 export default Home;
+
 export async function getStaticProps() {
   const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
     return response.data.reverse()
