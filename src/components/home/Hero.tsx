@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 // import required modules
 import { EffectFade, Autoplay } from "swiper";
 import Image from "next/image";
@@ -11,8 +11,21 @@ import img2 from "../../Images/Landscape/land03.jpg";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import Link from "next/link";
+import axios from "axios";
 
-const Hero = ({ RedirectLinks }: any) => {
+const Hero = () => {
+  const [RedirectLinks, setredirect_links]: any = useState({})
+  useEffect(() => {
+    const getData = async () => {
+      await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
+        return response.data
+      }).catch((err) => {
+        console.log(err)
+        getData()
+      })
+    }
+    getData()
+  }, [])
   return (
     <div className="w-full min-h-[100vh]">
       <Swiper
