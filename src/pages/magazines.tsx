@@ -60,6 +60,6 @@ export default Magazines;
 export async function getStaticProps() {
   const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
     return response.data.reverse()
-  }).catch((err) => console.log(err))
+  }).catch((err) => "")
   return { props: { magazinesList }, revalidate: 60 }
 }

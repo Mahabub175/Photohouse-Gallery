@@ -16,7 +16,7 @@ export default Home;
 export async function getStaticProps() {
   const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
     return response.data.reverse()
-  }).catch((err) => console.log(err))
+  }).catch((err) => "")
   // const redirect_links = await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
   //   return response.data
   // }).catch((err) => console.log(err))
