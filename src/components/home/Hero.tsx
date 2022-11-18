@@ -18,7 +18,7 @@ const Hero = () => {
   useEffect(() => {
     const getData = async () => {
       await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
-        return response.data
+        setredirect_links(response.data)
       }).catch((err) => {
         console.log(err)
         getData()
