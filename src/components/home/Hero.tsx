@@ -83,12 +83,12 @@ const HeroMain: any = ({ RedirectLinks }: any) => <div className="bg-[#00000040]
     {/* <button type="button" className="btn-blue">
     Submit Your Photo
   </button> */}
-    <a href={RedirectLinks.facebook_group} target="_blank" rel="noreferrer" className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
+    <a href={RedirectLinks.facebook_group || "#"} target="_blank" rel="noreferrer" className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
       <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
       <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
       <span className="relative">Join Facebook Group</span>
     </a>
-    <a href={RedirectLinks.submit_photo} target="_blank" rel="noreferrer" className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
+    <a href={RedirectLinks.submit_photo || "#"} target="_blank" rel="noreferrer" className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
       <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
       <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
       <span className="relative">Submit Your Photo</span>

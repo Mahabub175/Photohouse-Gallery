@@ -6,14 +6,17 @@ import Link from "next/link";
 import axios from "axios";
 const Footer = () => {
   const [RedirectLinks, setredirect_links]: any = useState({})
-  useEffect(() => {
-    async function getData() {
-      await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
-        setredirect_links(response.data)
-      }).catch((err) => getData())
-    }
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
+  //       setredirect_links(response.data)
+  //     }).catch((err) => {
+  //       console.log(err)
+  //       getData()
+  //     })
+  //   }
+  //   getData()
+  // }, [])
   return (
     <>
       <footer className="p-4  sm:p-6 bg-[#182f38]">
