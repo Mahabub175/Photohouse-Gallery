@@ -119,8 +119,8 @@ const Footer: React.FC = () => {
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer" className="hover:underline">
-              <FaBattleNet className="inline" color="cyan" size={20} />&nbsp;Developed By : Hasanul Banna
+            <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-cyan-300">
+              <FaBattleNet className="inline animate-spin" color="cyan" size={20} />&nbsp;Developed By : Hasanul Banna
             </a>
           </div>
         </div>
