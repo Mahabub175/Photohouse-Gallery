@@ -39,19 +39,15 @@ const Footer: React.FC = () => {
                 className={`cursor-pointer rounded-md`}
               />
             </a>
-            <div className="flex flex-wrap leading-[40px]">
-              <span>Follow Us :</span>
+            <div className="flex flex-wrap leading-[25px]">
+              <span className="ml-3">Follow Us :</span>
               <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
                 {/* <FaFacebook className="inline" /> Facebook */}
-                <img src="https://img.icons8.com/arcade/40/null/facebook-new.png" />
+                <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" />
               </a>
               <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
                 {/* <FaInstagram className="inline" /> Instagram */}
-                <img src="https://img.icons8.com/arcade/40/null/instagram-new.png" />
-              </a>
-              <a href={redirect_links.linked_in} target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/3d-fluency/40/null/linkedin.png" />
-                {/* <FaLinkedin className="inline" /> Linked In */}
+                <img src="https://img.icons8.com/arcade/25/null/instagram-new.png" className="mx-2" />
               </a>
             </div>
           </div>
@@ -125,8 +121,9 @@ const Footer: React.FC = () => {
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-cyan-300">
-              <FaBattleNet className="inline animate-spin" color="cyan" size={20} />&nbsp;Developed By : Hasanul Banna
+            <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer">
+              <FaBattleNet className="inline animate-spin" color="cyan" size={20} />&nbsp;Developed by :
+              <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">Hasanul Banna</span>
             </a>
           </div>
         </div>
