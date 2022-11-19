@@ -100,8 +100,8 @@ const Register = (props: { countries: [] }) => {
       body: formData
     }).then(response => response.json())
       .then(data => {
-        console.log(data)
         router.push("/members")
+        console.log(data)
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false))

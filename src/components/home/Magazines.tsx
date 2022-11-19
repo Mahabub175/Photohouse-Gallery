@@ -12,20 +12,8 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const Magazines: FC = () => {
-  const [magazinesList, setmagazinesList] = useState([])
-  useEffect(() => {
-    const getData = async () => {
-      await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-        // console.log(response.data)
-        setmagazinesList(response.data)
-      }).catch((err) => {
-        console.log(err)
-        getData()
-      })
-    }
-    getData()
-  }, [])
+const Magazines = ({ magazinesList }: any) => {
+
   return (
     <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">
       <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
