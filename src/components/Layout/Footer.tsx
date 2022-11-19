@@ -1,22 +1,9 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import logo_dark from "../../Images/logo.png";
 import { FaEnvelope, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
-import axios from "axios";
 const Footer = () => {
-  const [RedirectLinks, setredirect_links]: any = useState({})
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     await axios.get('https://api.photohousemagazine.com/redirect_links').then((response) => {
-  //       setredirect_links(response.data)
-  //     }).catch((err) => {
-  //       console.log(err)
-  //       getData()
-  //     })
-  //   }
-  //   getData()
-  // }, [])
   return (
     <>
       <footer className="p-4  sm:p-6 bg-[#182f38]">
@@ -43,7 +30,7 @@ const Footer = () => {
               </h2>
               <ul className=" ">
                 <li className="mb-4">
-                  <a href={RedirectLinks.sponsor || "#"} target="_blank" rel="noreferrer" className="hover:underline">
+                  <a href="#" className="hover:underline">
                     Become a sponsor
                   </a>
                 </li>
@@ -60,11 +47,9 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
               <ul className=" ">
                 <li className="mb-4">
-                  <Link href="/about">
-                    <a href="#" className="hover:underline">
-                      About
-                    </a>
-                  </Link>
+                  <a href="#" className="hover:underline">
+                    About
+                  </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
@@ -107,7 +92,7 @@ const Footer = () => {
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a href={RedirectLinks.facebook_group || "#"} target="_blank" rel="noreferrer" className="  ">
+            <a href="#" className="  ">
               <svg
                 className="w-5 h-5"
                 fill="currentColor"
@@ -122,7 +107,7 @@ const Footer = () => {
               </svg>
               <span className="sr-only">Facebook page</span>
             </a>
-            <a href={RedirectLinks.instagram || "#"} target="_blank" rel="noreferrer" className="  ">
+            <a href="#" className="  ">
               <svg
                 className="w-5 h-5"
                 fill="currentColor"
