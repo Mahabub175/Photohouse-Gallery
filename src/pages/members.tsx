@@ -12,7 +12,7 @@ const Members = (props: any) => {
     useEffect(() => {
         const getData = async () => {
             await axios.get('https://api.photohousemagazine.com/members').then((response) => {
-                // console.log(response.data)
+                console.log(response.data)
                 setmembersList(response.data)
             }).catch((err) => {
                 console.log(err)
@@ -63,24 +63,34 @@ const Members = (props: any) => {
                                 </div>
                                 <div className="flex justify-evenly my-5">
                                     <div className='cursor-pointer'>
-                                        <a target={"_blank"} href={member.member} rel="noreferrer">
+                                        {!!member.Facebook ? <a target={"_blank"} href={member.Facebook} rel="noreferrer">
                                             <FaFacebookSquare color="cyan" size={20} />
-                                        </a>
+                                        </a> : <a href="#">
+                                            <FaFacebookSquare color="gray" size={20} />
+                                        </a>}
                                     </div>
                                     <div className='cursor-pointer'>
-                                        <a target={"_blank"} href={member.Instagram} rel="noreferrer">
+                                        {!!member.Instagram ? <a target={"_blank"} href={member.Instagram} rel="noreferrer">
                                             <FaInstagramSquare color="cyan" size={20} />
-                                        </a>
+                                        </a> : <a href="#">
+                                            <FaInstagramSquare color="gray" size={20} />
+                                        </a>}
+
                                     </div>
                                     <div className='cursor-pointer'>
-                                        <a target={"_blank"} href={member.Youtube} rel="noreferrer">
+                                        {!!member.LinkedIn ? <a target={"_blank"} href={member.LinkedIn} rel="noreferrer">
                                             <FaLinkedin color="cyan" size={20} />
-                                        </a>
+                                        </a> : <a href="#">
+                                            <FaLinkedin color="gray" size={20} />
+                                        </a>}
                                     </div>
                                     <div className='cursor-pointer'>
-                                        <a target={"_blank"} href={member.Website} rel="noreferrer">
+                                        {!!member.Website ? <a target={"_blank"} href={member.Website} rel="noreferrer">
+                                            <FaFirefoxBrowser color="cyan" size={20} />
+                                        </a> : <a href="#">
                                             <FaFirefoxBrowser color="gray" size={20} />
-                                        </a>
+                                        </a>}
+
                                     </div>
                                 </div>
                             </div>

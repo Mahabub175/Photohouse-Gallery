@@ -45,9 +45,9 @@ const Register = (props: { countries: [] }) => {
       label: "Instagram",
     },
     {
-      field: "Youtube",
+      field: "LinkedIn",
       type: "text",
-      label: "Youtube",
+      label: "LinkedIn",
     },
     {
       field: "Website",
@@ -73,7 +73,7 @@ const Register = (props: { countries: [] }) => {
     Facebook: '',
     Instagram: '',
     Website: '',
-    Youtube: '',
+    LinkedIn: '',
     email: '',
     firstname: '',
     lastname: '',
@@ -89,7 +89,7 @@ const Register = (props: { countries: [] }) => {
     formData.append('Facebook', userData.Facebook);
     formData.append('Instagram', userData.Instagram);
     formData.append('Website', userData.Website);
-    formData.append('Youtube', userData.Youtube);
+    formData.append('LinkedIn', userData.LinkedIn);
     formData.append('email', userData.email);
     formData.append('profession', userData.profession);
     formData.append('name', userData.firstname + " " + userData.lastname);
@@ -107,7 +107,7 @@ const Register = (props: { countries: [] }) => {
       .finally(() => setLoading(false))
   };
   const handleChange = (e: any) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
 
     setUserData({ ...userData, [e.target.name]: e.target.value })
   };

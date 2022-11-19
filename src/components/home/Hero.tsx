@@ -75,7 +75,7 @@ const HeroMain: FC = () => {
   }, [])
   return <div className="bg-[#00000040]  relative flex flex-col justify-center self-center h-[100vh] w-full">
     <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
-      Find your inspiration
+      Spread your creativity
     </h1>
     <p className="px-[5%] mb-2 text-emerald-100">
       Join the Photohouse community, submit your photo to our next magazine,

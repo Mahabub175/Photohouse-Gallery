@@ -1,13 +1,22 @@
 import Head from "next/head";
-import React, { ReactNode, FC } from "react";
+import React, { ReactNode, FC, useState, useEffect } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
-
+import logo_dark from "../../Images/logo.png";
+import Image from "next/image";
 interface LayoutProps {
   children?: ReactNode;
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+
+  const [preLoading, setPreloader]: any = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPreloader(false)
+    }, 1000);
+  }, [])
 
   return (
     <>
@@ -24,9 +33,18 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <main className="min-h-[100vh]">{children}</main>
       <Footer />
       {/* Pre-loader */}
-      {/* <div className="opacity-50 fixed inset-0 z-40 bg-[#06202A] flex items-center min-h-[100vh]">
-        <div className="w-[50px] h-[50px] rounded-full bg-white animate-ping mx-auto"></div>
-      </div> */}
+      {preLoading && <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
+        <div className="animate-bounce mx-auto">
+          <Image
+            priority
+            src={logo_dark}
+            width={160}
+            height={54}
+            alt="logo"
+            className={`cursor-pointer rounded-md`}
+          />
+        </div>
+      </div>}
     </>
   );
 };

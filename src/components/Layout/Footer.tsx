@@ -39,6 +39,21 @@ const Footer: React.FC = () => {
                 className={`cursor-pointer rounded-md`}
               />
             </a>
+            <div className="flex flex-wrap leading-[40px]">
+              <span>Follow Us :</span>
+              <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
+                {/* <FaFacebook className="inline" /> Facebook */}
+                <img src="https://img.icons8.com/arcade/40/null/facebook-new.png" />
+              </a>
+              <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
+                {/* <FaInstagram className="inline" /> Instagram */}
+                <img src="https://img.icons8.com/arcade/40/null/instagram-new.png" />
+              </a>
+              <a href={redirect_links.linked_in} target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/3d-fluency/40/null/linkedin.png" />
+                {/* <FaLinkedin className="inline" /> Linked In */}
+              </a>
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
@@ -51,36 +66,27 @@ const Footer: React.FC = () => {
                     Become a sponsor
                   </a>
                 </li>
-                <li className="mb-4">
+                <li >
                   <Link href="/register">
                     <a className="hover:underline">
                       Become a  member
                     </a>
                   </Link>
                 </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
+
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">Follow Us</h2>
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
               <ul className=" ">
                 <li className="mb-4">
-                  <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    <FaFacebook className="inline" /> Facebook
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href={redirect_links.linked_in} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    <FaLinkedin className="inline" /> Linked In
+                  <a href="#" className="hover:underline">
+                    Our Team
                   </a>
                 </li>
                 <li>
-                  <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    <FaInstagram className="inline" /> Instagram
+                  <a href="#" className="hover:underline">
+                    Privacy Policy
                   </a>
                 </li>
               </ul>
