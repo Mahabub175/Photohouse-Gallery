@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Magazines: FC = () => {
-  const [magazinesList, setmagazinesList] = useState([])
+  const [magazinesList, setmagazinesList] = useState([{ _id: 1, image: "" }, { _id: 1, image: "" }, { _id: 1, image: "" }])
   useEffect(() => {
     const getData = async () => {
       await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
@@ -52,10 +52,10 @@ const Magazines: FC = () => {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
+        modules={[Autoplay, EffectCoverflow, Navigation]}
         className="my-4"
-        // navigation
-        pagination={{ clickable: true }}
+      // navigation
+      // pagination={{ clickable: true }}
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
       >
@@ -67,7 +67,7 @@ const Magazines: FC = () => {
                 src={x.image}
                 width={400}
                 height={550}
-                alt="Magazines image"
+                alt="Loading..."
                 className={`cursor-pointer rounded-md `}
               />
               {/* <a >
