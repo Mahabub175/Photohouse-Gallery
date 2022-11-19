@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Magazines: FC = () => {
-  const [magazinesList, setmagazinesList] = useState([{ _id: 1, image: "" }, { _id: 1, image: "" }, { _id: 1, image: "" }])
+  const [magazinesList, setmagazinesList] = useState([{ _id: 1, image: "" }, { _id: 11, image: "" }, { _id: 1111, image: "" }])
   useEffect(() => {
     const getData = async () => {
       await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
@@ -33,27 +33,18 @@ const Magazines: FC = () => {
       </h1>
       <Swiper
         breakpoints={{
-          280: {
-            slidesPerView: 1,
-          },
-          640: {
-            slidesPerView: 3,
-          },
-          768: {
-            slidesPerView: 5,
-          },
+          280: { slidesPerView: 1, },
+          640: { slidesPerView: 3, },
+          768: { slidesPerView: 5, },
         }}
-        // slidesPerView={5}
-        // spaceBetween={0}
         loop={true}
         effect={"coverflow"}
         speed={1000}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
+        autoplay={{ delay: 4000, disableOnInteraction: false, }}
         modules={[Autoplay, EffectCoverflow, Navigation]}
         className="my-4"
+      // slidesPerView={5}
+      // spaceBetween={0}
       // navigation
       // pagination={{ clickable: true }}
       // onSlideChange={() => console.log("slide change")}
@@ -70,8 +61,6 @@ const Magazines: FC = () => {
                 alt="Loading..."
                 className={`cursor-pointer rounded-md `}
               />
-              {/* <a >
-              </a> */}
             </Link>
           </SwiperSlide>
         ))}

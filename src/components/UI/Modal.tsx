@@ -23,7 +23,7 @@ export default function Modal({ Title, showModal, setShowModal, children }: any)
             </div>
           </div>
         </div>
-        <div className="opacity-25 fixed inset-0 z-40 bg-white" onClick={() => setShowModal(false)}></div>
+        <div className="opacity-25 fixed inset-0 z-40 bg-white"></div>
       </>
     ) : null}
   </>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { Facebook, Youtube, Globe, Instagram, Mail } from 'react-feather';
+import { useEffect, useState } from 'react';
+import { FaFacebookSquare, FaFirefoxBrowser, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
 
 const Members = (props: any) => {
 
@@ -37,9 +37,9 @@ const Members = (props: any) => {
                 {
                     membersList.map((member: any) =>
                         <div key={member._id} className="w-full">
-                            <div className='max-w-[200px] m-auto rounded-lg shadow-md bg-gray-800 border  border-gray-700 animate-slideDown'>
+                            <div className='max-w-[200px] m-auto shadow-[cyan] shadow-sm rounded-lg bg-gray-800 border  border-gray-700 animate-slideDown'>
                                 {/* <div className="relative max-w-[198px] h-[120px] m-auto">
-                                   
+                                   shadow-[rgba(13, 38, 76, 0.19) 0px 9px 20px]
                                 </div> */}
                                 <div className="flex flex-col items-center pt-5">
                                     <Image
@@ -64,22 +64,22 @@ const Members = (props: any) => {
                                 <div className="flex justify-evenly my-5">
                                     <div className='cursor-pointer'>
                                         <a target={"_blank"} href={member.member} rel="noreferrer">
-                                            <Facebook color="white" size={20} />
+                                            <FaFacebookSquare color="cyan" size={20} />
                                         </a>
                                     </div>
                                     <div className='cursor-pointer'>
                                         <a target={"_blank"} href={member.Instagram} rel="noreferrer">
-                                            <Instagram color="white" size={20} />
+                                            <FaInstagramSquare color="cyan" size={20} />
                                         </a>
                                     </div>
                                     <div className='cursor-pointer'>
                                         <a target={"_blank"} href={member.Youtube} rel="noreferrer">
-                                            <Youtube color="white" size={20} />
+                                            <FaLinkedin color="cyan" size={20} />
                                         </a>
                                     </div>
                                     <div className='cursor-pointer'>
                                         <a target={"_blank"} href={member.Website} rel="noreferrer">
-                                            <Globe color="white" size={20} />
+                                            <FaFirefoxBrowser color="gray" size={20} />
                                         </a>
                                     </div>
                                 </div>

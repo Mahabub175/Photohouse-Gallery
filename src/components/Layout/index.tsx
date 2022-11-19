@@ -8,6 +8,7 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+
   return (
     <>
       <Head>
@@ -22,6 +23,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <NavBar />
       <main className="min-h-[100vh]">{children}</main>
       <Footer />
+      {/* Pre-loader */}
+      {/* <div className="opacity-50 fixed inset-0 z-40 bg-[#06202A] flex items-center min-h-[100vh]">
+        <div className="w-[50px] h-[50px] rounded-full bg-white animate-ping mx-auto"></div>
+      </div> */}
     </>
   );
 };
