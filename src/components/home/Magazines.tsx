@@ -39,8 +39,8 @@ const Magazines: FC = () => {
         }}
         loop={true}
         effect={"coverflow"}
-        speed={1000}
-        autoplay={{ delay: 4000, disableOnInteraction: false, }}
+        speed={500}
+        autoplay={{ delay: 1000, disableOnInteraction: false, }}
         modules={[Autoplay, EffectCoverflow, Navigation]}
         className="my-4"
       // slidesPerView={5}
@@ -55,6 +55,7 @@ const Magazines: FC = () => {
             <Link href="/magazines" className="">
               <Image
                 priority
+                // placeholder="blur"
                 src={x.image}
                 width={400}
                 height={550}
