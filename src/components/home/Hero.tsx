@@ -76,17 +76,17 @@ const HeroMain: FC = () => {
     }
     getLinks()
   }, [])
-  return <div className="bg-[#00000040]  relative flex flex-col justify-center self-center h-[100vh] w-full">
+  return <div className="bg-[#00000050]  relative flex flex-col justify-center self-center h-[100vh] w-full">
     <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
       Express talents Spread excellence
     </h1>
-    <p className="px-[5%] mb-2 text-emerald-100">
+    <p className="px-[5%] mb-2 text-emerald-100 text-bold text-xl">
       Join the Photohouse community, submit your photo to our next magazine,
-      <br /> become our lifetime memeber.
+      {/* <br /> become our lifetime memeber. */}
     </p>
     <div className="flex justify-center flex-col md:flex-row self-start md:self-auto mx-auto">
       <a href={redirect_links.facebook_group} className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
-        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-60 group-hover:h-60"></span>
+        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-80 group-hover:h-56"></span>
         <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
         <span className="relative">Join Our Photography Group</span>
       </a>
@@ -95,13 +95,13 @@ const HeroMain: FC = () => {
         <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
         <span className="relative">Submit Your Photo</span>
       </a>
-      <Link href="/register">
+      {/* <Link href="/register">
         <a className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
           <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
           <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
           <span className="relative">Become a Member</span>
         </a>
-      </Link>
+      </Link> */}
     </div>
   </div>
 }

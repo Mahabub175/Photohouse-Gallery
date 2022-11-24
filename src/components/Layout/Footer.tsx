@@ -42,12 +42,12 @@ const Footer: React.FC = () => {
             <div className="flex flex-wrap leading-[25px]">
               <span className="ml-3">Follow Us :</span>
               <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
-                {/* <FaFacebook className="inline" /> Facebook */}
-                <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" />
+                <FaFacebook className="inline mx-2" />
+                {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
               </a>
               <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
-                {/* <FaInstagram className="inline" /> Instagram */}
-                <img src="https://img.icons8.com/arcade/25/null/instagram-new.png" className="mx-2" />
+                <FaInstagram className="inline mx-2" />
+                {/* <img src="https://img.icons8.com/arcade/25/null/instagram-new.png" className="mx-2" /> */}
               </a>
             </div>
           </div>
@@ -62,14 +62,13 @@ const Footer: React.FC = () => {
                     Become a sponsor
                   </a>
                 </li>
-                <li >
+                {/* <li >
                   <Link href="/register">
                     <a className="hover:underline">
                       Become a  member
                     </a>
                   </Link>
-                </li>
-
+                </li> */}
               </ul>
             </div>
             <div>

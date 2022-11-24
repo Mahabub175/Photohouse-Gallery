@@ -27,7 +27,7 @@ const NavBar = () => {
           />
         </div>
         <div className="hidden md:block tracking-wider">
-          {["Home", "Magazines", "Gallery", "Members", "About"].map((x, i) => (
+          {["Home", "Magazines", "Gallery", "Submissions", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
               <a
                 className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
@@ -52,7 +52,7 @@ const NavBar = () => {
       </nav>
       {showMenu && <div className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
         <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-3xl">
-          {["Home", "Magazines", "Gallery", "Members", "About"].map((x, i) => (
+          {["Home", "Magazines", "Gallery", "Submissions", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
               <a
                 onClick={() => setMenu(show => !show)}

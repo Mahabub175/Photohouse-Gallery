@@ -18,7 +18,7 @@ const Magazines: FC = () => {
     const getData = async () => {
       await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
         // console.log(response.data)
-        setmagazinesList(response.data)
+        setmagazinesList(response.data.reverse())
       }).catch((err) => {
         console.log(err)
         getData()
@@ -39,7 +39,7 @@ const Magazines: FC = () => {
         }}
         loop={true}
         effect={"coverflow"}
-        speed={500}
+        speed={800}
         autoplay={{ delay: 1000, disableOnInteraction: false, }}
         modules={[Autoplay, EffectCoverflow, Navigation]}
         className="my-4"
