@@ -16,18 +16,22 @@ const NavBar = () => {
           : "relative bg-[#182f38]"
           } z-10 w-full`}
       >
-        <div className="flex items-center">
-          <Image
-            priority
-            src={logo_dark}
-            width={160}
-            height={54}
-            alt="logo"
-            className={`cursor-pointer rounded-md`}
-          />
-        </div>
+        <Link href="/">
+          <a>
+            <div className="flex items-center pt-1">
+              <Image
+                priority
+                src={logo_dark}
+                width={160}
+                height={54}
+                alt="logo"
+                className={`cursor-pointer rounded-md`}
+              />
+            </div>
+          </a>
+        </Link>
         <div className="hidden md:block tracking-wider">
-          {["Home", "Magazines", "Gallery", "Submissions", "About"].map((x, i) => (
+          {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
               <a
                 className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
@@ -40,6 +44,9 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
+          <a className={`hover:font-bold cursor-pointer mx-2`} href="#">
+            Submission
+          </a>
         </div>
         <div className="md:hidden h-full pt-6 cursor-pointer" onClick={() => setMenu(show => !show)}>
           <div className="w-[20px] h-[2px] bg-white mb-2"></div>
@@ -52,7 +59,7 @@ const NavBar = () => {
       </nav>
       {showMenu && <div className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
         <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-3xl">
-          {["Home", "Magazines", "Gallery", "Submissions", "About"].map((x, i) => (
+          {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
               <a
                 onClick={() => setMenu(show => !show)}
@@ -66,6 +73,9 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
+          <a className={`hover:font-bold cursor-pointer mx-2`} href="#">
+            Submission
+          </a>
         </div>
       </div>}
     </>

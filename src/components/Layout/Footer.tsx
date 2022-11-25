@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaEnvelope, FaTelegramPlane, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram, FaBattleNet } from "react-icons/fa";
+import { FaEnvelope, FaTelegramPlane, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram, FaBattleNet, FaFacebookF } from "react-icons/fa";
 import logo_dark from "../../Images/logo.png";
 import { FcGlobe } from "react-icons/fc";
 
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-wrap leading-[25px]">
               <span className="ml-3">Follow Us :</span>
               <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
-                <FaFacebook className="inline mx-2" />
+                <FaFacebookF className="inline mx-2" />
                 {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
               </a>
               <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
@@ -57,11 +57,11 @@ const Footer: React.FC = () => {
                 Resources
               </h2>
               <ul className=" ">
-                <li className="mb-4">
+                {/* <li className="mb-4">
                   <a href={redirect_links.sponsor} className="hover:underline">
                     Become a sponsor
                   </a>
-                </li>
+                </li> */}
                 {/* <li >
                   <Link href="/register">
                     <a className="hover:underline">
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
             <div>
               <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
               <ul className=" ">
-                <li className="mb-4">
+                {/* <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Our Team
                   </a>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                   <a href="#" className="hover:underline">
                     Privacy Policy
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div>
