@@ -3,11 +3,22 @@ import { useRouter } from "next/router";
 import styles from "./styles/Navbar.module.css";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false)
   const router = useRouter();
+  const [redirect_links, setredirect_links] = useState({
+    submission_link: "#"
+  })
+  useEffect(() => {
+    const getLinks = () => {
+      fetch('https://api.photohousemagazine.com/redirect_links')
+        .then((response) => response.json())
+        .then((data) => setredirect_links(data)).catch(() => getLinks())
+    }
+    getLinks()
+  }, [])
   return (
     <>
       <nav
@@ -44,7 +55,7 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
-          <a className={`hover:font-bold cursor-pointer mx-2`} href="#">
+          <a className={`hover:font-bold cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
             Submission
           </a>
         </div>
@@ -73,7 +84,7 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
-          <a className={`hover:font-bold cursor-pointer mx-2`} href="#">
+          <a className={`hover:font-bold cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
             Submission
           </a>
         </div>

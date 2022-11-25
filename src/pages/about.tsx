@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { FaEnvelope, FaFacebookF, FaGlobe, FaInstagram } from "react-icons/fa";
 import ceo from "../Images/CEO.jpg";
+import pagel from "../Images/pagel.jpg";
 
 const About: NextPage = () => {
   return (
@@ -46,13 +47,13 @@ const About: NextPage = () => {
           <div>
             <Image
               priority
-              src={ceo}
+              src={pagel}
               width={100}
               height={127}
               alt="ceo"
               className={`rounded-md animate-fade`}
             />
-            <p className="text-3xl font-bold">PAGE7</p>
+            <p className="text-3xl font-bold">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
             <FaFacebookF className="inline mx-2" />
             <FaInstagram className="inline mx-2" />
