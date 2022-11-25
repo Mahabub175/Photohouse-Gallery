@@ -30,14 +30,23 @@ const Gallery: NextPage = () => {
         imgL4,
       ].map((x, i) => (
         <div className="mb-1 animate-fadeIn" key={i}>
-          <Image
-            priority
-            src={x}
-            // height={500}
-            layout="responsive"
-            quality={100}
-            alt="Magazines image"
-          />
+          <div className="group relative block overflow-hidden rounded-md transition-all duration-500">
+            <a href="#" className="lightbox transition-all duration-500 group-hover:scale-105 tobii-zoom" title="">
+              <Image
+                priority
+                src={x}
+                // height={500}
+                layout="responsive"
+                quality={100}
+                alt="Magazines image"
+              />
+            </a>
+            <div className="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-black/60 p-4 rounded shadow shadow-gray-700">
+              <a href="#" className="hover:text-primary-600 text-lg transition duration-500 font-medium">Click : Thomas Pagel</a>
+              <h6 className="text-slate-300">For better resolution <span className="underline">visit website</span> </h6>
+            </div>
+          </div>
+
         </div>
       ))}
     </div>

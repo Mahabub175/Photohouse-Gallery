@@ -30,7 +30,7 @@ const About: NextPage = () => {
           </div>
           <div>
             <p className="text-4xl font-bold">Co-Founder</p>
-            <p>Thomas Pagel</p>
+            <p>PAGE7</p>
 
           </div>
         </div>
