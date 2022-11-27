@@ -62,10 +62,6 @@ const faq = () => {
                     </div> */}
                 </div>
             </div>
-            {/* <p>For any types of questions or queries Photohouse official mail and contacts are always open for you!!</p> */}
-            {/* git add . 
-            git commit -m "faq"
-            git push */}
         </div>
 
     );
