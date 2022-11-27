@@ -51,11 +51,9 @@ const Footer: React.FC = () => {
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:gap-6 md:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">
-                Resources
-              </h2>
+              {/* <h2 className="mb-6 text-sm font-semibold  uppercase ">Resources</h2> */}
               <ul className=" ">
                 {/* <li className="mb-4">
                   <a href={redirect_links.sponsor} className="hover:underline">
@@ -72,7 +70,7 @@ const Footer: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
+              {/* <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2> */}
               <ul className=" ">
                 {/* <li className="mb-4">
                   <a href="#" className="hover:underline">
