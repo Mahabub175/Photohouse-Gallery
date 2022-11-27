@@ -21,7 +21,7 @@ const faq = () => {
                         </div>
                         <div className="order-1 bg-gradient-to-r from-gray-800 to-gray-600 rounded-lg shadow-xl w-5/12 px-6 py-4">
                             <h3 className="mb-3 font-bold  text-xl text-emerald-300">Are submissions free here?</h3>
-                            <p className="text-sm leading-snug tracking-wide  text-opacity-100">There are two options available; free and paid options. You can submit photos for free here. On the other hand, the paid option will ensure our premium service to get you the highest exposure as a photographer.</p>
+                            <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">There are two options available; free and paid options. You can submit photos for free here. On the other hand, the paid option will ensure our premium service to get you the highest exposure as a photographer.</p>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@ const faq = () => {
                         </div>
                         <div className="order-1 bg-gradient-to-r from-gray-800 to-gray-600 rounded-lg shadow-xl w-5/12 px-6 py-4">
                             <h3 className="mb-3 font-bold  text-xl text-emerald-300">What genres of photographs can I submit for the magazine?</h3>
-                            <p className="text-sm leading-snug tracking-wide  text-opacity-100">#Beauty #Fashion #Men #Fine Art #Glamour #Nature #Travel #Wedding #Portrait #Fantasy #Photojournalism #Fitness #Hair #Kids.</p>
+                            <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">#Beauty #Fashion #Men #Fine Art #Glamour #Nature #Travel #Wedding #Portrait #Fantasy #Photojournalism #Fitness #Hair #Kids.</p>
                         </div>
                     </div>
 
@@ -63,6 +63,9 @@ const faq = () => {
                 </div>
             </div>
             {/* <p>For any types of questions or queries Photohouse official mail and contacts are always open for you!!</p> */}
+            {/* git add . 
+            git commit -m "faq"
+            git push */}
         </div>
 
     );
