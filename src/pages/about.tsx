@@ -1,11 +1,29 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaEnvelope, FaFacebookF, FaGlobe, FaInstagram } from "react-icons/fa";
 import ceo from "../Images/CEO.jpg";
 import pagel from "../Images/pagel.jpg";
 
 const About: NextPage = () => {
+  const [redirect_links, setredirect_links] = useState({
+    pagel_email: "#",
+    pagel_facebook: "#",
+    pagel_instagram: "#",
+    pagel_web: "#",
+    sabbir_email: "#",
+    sabbir_facebook: "#",
+    sabbir_instagram: "#",
+    sabbir_web: "#"
+  })
+  useEffect(() => {
+    const getLinks = () => {
+      fetch('https://api.photohousemagazine.com/redirect_links')
+        .then((response) => response.json())
+        .then((data) => { setredirect_links(data); console.log(data) }).catch(() => getLinks())
+    }
+    getLinks()
+  }, [])
   return (
     <>
       <div className="flex justify-between container m-auto items-center border-b-2 pb-2 flex-col pt-4">
@@ -46,10 +64,10 @@ const About: NextPage = () => {
             />
             <p className="text-3xl font-bold">Sabbir Ashraf</p>
             <p className="text-slate-400">Founder</p>
-            <FaFacebookF className="inline mx-2" />
-            <FaInstagram className="inline mx-2" />
-            <FaEnvelope className="inline mx-2" />
-            <FaGlobe className="inline mx-2" />
+            <a href={redirect_links.sabbir_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" /></a>
+            <a href={redirect_links.sabbir_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" /></a>
+            <a href={redirect_links.sabbir_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" /></a>
+            <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" /></a>
           </div>
           <div>
             <Image
@@ -62,10 +80,10 @@ const About: NextPage = () => {
             />
             <p className="text-3xl font-bold">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
-            <FaFacebookF className="inline mx-2" />
-            <FaInstagram className="inline mx-2" />
-            <FaEnvelope className="inline mx-2" />
-            <FaGlobe className="inline mx-2" />
+            <a href={redirect_links.pagel_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" /></a>
+            <a href={redirect_links.pagel_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" /></a>
+            <a href={redirect_links.pagel_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" /></a>
+            <a href={redirect_links.pagel_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" /></a>
           </div>
         </div>
         {/* <div className="px-[5%] flex flex-col justify-center self-center w-full">
