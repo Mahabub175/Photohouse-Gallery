@@ -8,6 +8,13 @@ import pagel from "../Images/pagel.jpg";
 const About: NextPage = () => {
   return (
     <>
+      <div className="flex justify-between container m-auto items-center border-b-2 pb-2 flex-col pt-4">
+        <div className="w-full flex flex-col items-center ">
+          <h1 className="font-bold text-transparent sm:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+            About Us
+          </h1>
+        </div>
+      </div>
       <div className="relative min-h-[100vh] w-full container m-auto pt-10 ">
         {/* <Image
           priority
@@ -19,7 +26,7 @@ const About: NextPage = () => {
           bg-[#0000008a] 
         /> */}
         <div className="px-[5%] flex flex-col justify-center self-center w-full text-justify">
-          <p className="text-center text-4xl font-bold mb-4">About Us</p>
+          {/* <p className="text-center text-4xl font-bold mb-4">About Us</p> */}
           <p className="text-xl">
             Photohouse is an international photography organization founded in February 2016. During Photohouse&apos;s seven-year journey, it has worked to connect thousands of photographers around the world. We started our successful Photohouse Magazine in March 2022 and have been continuing the legacy successfully ever since.<br /><br />
           </p>

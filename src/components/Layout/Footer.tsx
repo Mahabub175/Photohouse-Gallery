@@ -70,18 +70,20 @@ const Footer: React.FC = () => {
               </ul>
             </div>
             <div>
-              {/* <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2> */}
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
               <ul className=" ">
-                {/* <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Our Team
-                  </a>
+                <li className="mb-4">
+                  <Link href="/faq">
+                    <a className="hover:underline">
+                      FAQ
+                    </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
                     Privacy Policy
                   </a>
-                </li> */}
+                </li>
               </ul>
             </div>
             <div>
