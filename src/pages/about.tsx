@@ -64,10 +64,10 @@ const About: NextPage = () => {
             />
             <p className="text-3xl font-bold">Sabbir Ashraf</p>
             <p className="text-slate-400">Founder</p>
-            <a href={redirect_links.sabbir_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" /></a>
-            <a href={redirect_links.sabbir_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" /></a>
-            <a href={redirect_links.sabbir_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" /></a>
-            <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" /></a>
+            <a href={redirect_links.sabbir_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.sabbir_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.sabbir_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="cyan" size={20} /></a>
           </div>
           <div>
             <Image
@@ -80,10 +80,10 @@ const About: NextPage = () => {
             />
             <p className="text-3xl font-bold">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
-            <a href={redirect_links.pagel_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" /></a>
-            <a href={redirect_links.pagel_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" /></a>
-            <a href={redirect_links.pagel_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" /></a>
-            <a href={redirect_links.pagel_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" /></a>
+            <a href={redirect_links.pagel_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.pagel_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.pagel_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={redirect_links.pagel_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="cyan" size={20} /></a>
           </div>
         </div>
         {/* <div className="px-[5%] flex flex-col justify-center self-center w-full">
