@@ -8,28 +8,30 @@ import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin } from 'react-icons/fa';
 const details = () => {
     return (
         <div className='grid grid-cols-10'>
-            <div className="col-span-7  h-[90vh] relative backdrop-blur-xl bg-white/30">
+            <div className="col-span-7  relative">
                 <Image
                     priority
                     src={img1}
                     quality={100}
-                    className=""
-                    layout="fill"
-                    objectFit="contain"
-                    alt="gallary image"
-                />
-                <Image
-                    priority
-                    src={img1}
-                    quality={100}
-                    className="z-[-10]"
+                    // className="z-[-100]"
                     layout="fill"
                     objectFit="cover"
                     alt="gallary image"
                 />
-                <div className="flex justify-between absolute top-[45%] w-full px-2">
-                    <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
-                    <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
+                <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10">
+                    <Image
+                        priority
+                        src={img1}
+                        quality={100}
+                        className=""
+                        layout="fill"
+                        objectFit="contain"
+                        alt="gallary image"
+                    />
+                    <div className="flex justify-between absolute top-[45%] w-full px-2">
+                        <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
+                        <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
+                    </div>
                 </div>
             </div>
             <div className="col-span-3 ">
