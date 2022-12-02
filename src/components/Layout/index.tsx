@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
 
-  const [preLoading, setPreloader]: any = useState(true)
+  const [preLoading, setPreloader]: any = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
