@@ -44,42 +44,36 @@ const details = () => {
                 </div>
                 <div className="grid grid-cols-1 px-2">
                     <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[80px] h-[80px] rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
+                        <img className="w-[65px] h-[65px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
                         <div className="px-5">
-                            <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="#">Thomas Pagel PAGE7</a>
-                            </h3>
-                            <span className="text-gray-400">From : Bangladesh </span> <br />
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
+                            <h3 className="text-lg font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
+                            <small className="text-gray-400 text-sm">From : Bangladesh </small> <br />
+                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
                         </div>
                     </div>
                     <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[80px] h-[80px] rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
+                        <img className="w-[65px] h-[65px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
                         <div className="px-5">
-                            <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="#">Thomas Pagel PAGE7</a>
-                            </h3>
-                            <span className="text-gray-400">From : Bangladesh </span> <br />
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
+                            <h3 className="text-lg font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
+                            <small className="text-gray-400 text-sm">From : Bangladesh </small> <br />
+                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
                         </div>
                     </div>
                     <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[80px] h-[80px] rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
+                        <img className="w-[65px] h-[65px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
                         <div className="px-5">
-                            <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="#">Thomas Pagel PAGE7</a>
-                            </h3>
-                            <span className="text-gray-400">From : Bangladesh </span> <br />
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={18} />
+                            <h3 className="text-lg font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
+                            <small className="text-gray-400 text-sm">From : Bangladesh </small> <br />
+                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
+                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-white cursor-pointer" size={15} />
                         </div>
                     </div>
                 </div>
