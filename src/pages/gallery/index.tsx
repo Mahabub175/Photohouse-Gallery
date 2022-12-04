@@ -10,6 +10,7 @@ import img4 from "../../Images/Gallery/3.png";
 import img5 from "../../Images/Gallery/4.png";
 import img6 from "../../Images/Gallery/5.png";
 import Link from "next/link";
+import { Camera } from "react-feather";
 
 const Gallery: NextPage = () => {
   return (
@@ -45,8 +46,8 @@ const Gallery: NextPage = () => {
               </Link>
             </a>
             <div className="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-black/60 p-4 rounded shadow shadow-gray-700">
-              <a className="hover:text-primary-600 text-lg transition duration-500 font-medium">Click : Thomas Pagel</a>
-              <h6 className="text-slate-300">For better resolution <span className="underline">visit website</span> </h6>
+              <a className="hover:text-primary-600 text-lg transition duration-500 font-medium flex"><Camera size={18} className="mt-[5px] mr-2" /> : Thomas Pagel</a>
+              {/* <h6 className="text-slate-300">For better resolution <span className="underline">visit website</span> </h6> */}
             </div>
           </div>
 
