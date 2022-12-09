@@ -51,9 +51,9 @@ const Details = () => {
                         objectFit="contain"
                         alt="gallary image"
                     />
-                    <div className="flex justify-between absolute top-[45%] w-full px-2">
-                        <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} />
-                        <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />
+                    <div className="flex justify-between absolute top-[48%] w-full px-2">
+                        {imageIndex > 0 ? <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} /> : <span className='opacity-0'>.</span>}
+                        {imageIndex < (galleryData.length - 1) && <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />}
                     </div>
                 </div>
             </div>
