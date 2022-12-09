@@ -1,42 +1,40 @@
 import Image from 'next/image';
-import React from 'react';
-import imgL from "../../Images/Landscape/land02.png";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { FaFacebook, FaGlobe, FaInstagram } from 'react-icons/fa';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import img1 from "../../Images/Gallery/1.png";
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
-import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { setGalleryDetails } from '../../store/slices/gallerySlice';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/reduxHooks';
 
-const details = () => {
-    const Gallery = [
-        {
-            image: "",
-            click: "Thomas Pagel",
-            likes: 99,
-            comments: [
-                {
-                    commentor: "",
-                    comment: "",
-                    photo: ""
-                }
-            ],
-            artists: [
-                {
-                    name: "",
-                    photo: "",
-                    profession: "",
-                    facebook: "",
-                    instagram: "",
-                    linkedin: "",
-                    website: ""
-                }
-            ]
+const Details = () => {
+    const dispatch = useAppDispatch()
+
+    const router = useRouter()
+    const { g_index } = router.query
+
+    const [imageIndex, setImageIndex] = useState(Number(g_index))
+
+    // The `state` arg is correctly typed as `RootState` already
+    const { galleryDetails, galleryData } = useAppSelector((state) => state.gallery)
+
+    const handlePrevNext = (index: number) => {
+        if (index >= 0 && index < galleryData.length) {
+            setImageIndex(index)
+            dispatch(setGalleryDetails(index))
         }
-    ]
+    }
+
     return (
         <div className='grid grid-cols-10'>
+            {/* <p className='text-emerald-300'>{count}</p>
+            <p className='text-emerald-300' onClick={() => dispatch(increment())}>Inc</p>
+            <p className='text-emerald-300' onClick={() => dispatch(incrementByAmount(15))}>add15</p>
+            <p className='text-emerald-300' onClick={() => dispatch(decrement())}>Dec</p> */}
             <div className="lg:col-span-7 col-span-10  relative">
                 <Image
                     priority
-                    src={img1}
+                    src={galleryDetails.image}
                     quality={100}
                     // className="z-[-100]"
                     layout="fill"
@@ -46,7 +44,7 @@ const details = () => {
                 <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10">
                     <Image
                         priority
-                        src={img1}
+                        src={galleryDetails.image}
                         quality={100}
                         className=""
                         layout="fill"
@@ -54,8 +52,8 @@ const details = () => {
                         alt="gallary image"
                     />
                     <div className="flex justify-between absolute top-[45%] w-full px-2">
-                        <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
-                        <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' />
+                        <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} />
+                        <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />
                     </div>
                 </div>
             </div>
@@ -68,43 +66,22 @@ const details = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 px-2">
-                    <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
-                        <div className="px-5">
-                            <h3 className="text-sm font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
-                            <small className="text-gray-400 text-xs block">Photographer</small>
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                        </div>
-                    </div>
-                    <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
-                        <div className="px-5">
-                            <h3 className="text-sm font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
-                            <small className="text-gray-400 text-xs block">Photographer</small>
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                        </div>
-                    </div>
-                    <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1">
-                        <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Bonnie Avatar" />
-                        <div className="px-5">
-                            <h3 className="text-sm font-bold tracking-tight text-white">Thomas Pagel Page7</h3>
-                            <small className="text-gray-400 text-xs block">Photographer</small>
-                            <FaFacebook className="inline mr-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaLinkedin className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                            <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                        </div>
-                    </div>
+                    {
+                        galleryDetails.artists.map((artist: any, i: number) => <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1" key={i + 1212}>
+                            <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={artist.photo} alt="Bonnie Avatar" />
+                            <div className="px-5">
+                                <h3 className="text-sm font-bold tracking-tight text-white">{artist.name}</h3>
+                                <small className="text-gray-400 text-xs block">{artist.profession}</small>
+                                <FaFacebook className="inline mr-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                                <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                                <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                            </div>
+                        </div>)
+                    }
                 </div>
             </div>
         </div>
     );
 };
 
-export default details;
+export default Details;
