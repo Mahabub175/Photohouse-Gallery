@@ -66,7 +66,7 @@ const About: NextPage = () => {
             <p className="text-slate-400">Founder</p>
             <a href={redirect_links.sabbir_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" color="cyan" size={20} /></a>
             <a href={redirect_links.sabbir_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" color="cyan" size={20} /></a>
-            <a href={redirect_links.sabbir_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={`mailto:${redirect_links.sabbir_email}`} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
             <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="cyan" size={20} /></a>
           </div>
           <div>
@@ -82,7 +82,7 @@ const About: NextPage = () => {
             <p className="text-slate-400">Co-Founder</p>
             <a href={redirect_links.pagel_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" color="cyan" size={20} /></a>
             <a href={redirect_links.pagel_instagram} target="_blank" rel="noopener noreferrer"><FaInstagram className="inline mx-2" color="cyan" size={20} /></a>
-            <a href={redirect_links.pagel_email} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
+            <a href={`mailto:${redirect_links.pagel_email}`} target="_blank" rel="noopener noreferrer"><FaEnvelope className="inline mx-2" color="cyan" size={20} /></a>
             <a href={redirect_links.pagel_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="cyan" size={20} /></a>
           </div>
         </div>

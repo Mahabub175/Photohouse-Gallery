@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaEnvelope, FaTelegramPlane, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram, FaBattleNet, FaFacebookF } from "react-icons/fa";
+import { FaEnvelope, FaTelegramPlane, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram, FaBattleNet, FaFacebookF, FaTwitter } from "react-icons/fa";
 import logo_dark from "../../Images/logo.png";
 import { FcGlobe } from "react-icons/fc";
 
@@ -10,6 +10,7 @@ const Footer: React.FC = () => {
     facebook_group: "#",
     instagram: "#",
     linked_in: "#",
+    twitter: "#",
     facebook_page: "#",
     sponsor: "#",
     submit_photo: "#"
@@ -43,6 +44,10 @@ const Footer: React.FC = () => {
               <span className="ml-3">Follow Us :</span>
               <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
                 <FaFacebookF className="inline mx-2" />
+                {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
+              </a>
+              <a href={redirect_links.twitter} target="_blank" rel="noopener noreferrer">
+                <FaTwitter className="inline mx-2" />
                 {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
               </a>
               <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
@@ -92,7 +97,7 @@ const Footer: React.FC = () => {
               </h2>
               <ul className="break-all ">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="mailto:photohousemagazine@gmail.com" className="hover:underline">
                     <FaEnvelope className="inline" /> : photohousemagazine@gmail.com
                   </a>
                 </li>
