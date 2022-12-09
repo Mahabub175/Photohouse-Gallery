@@ -67,7 +67,7 @@ const Details = () => {
                 </div>
                 <div className="grid grid-cols-1 px-2">
                     {
-                        galleryDetails.artists.map((artist: any, i: number) => <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1" key={i + 1212}>
+                        galleryDetails.artists?.map((artist: any, i: number) => <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1" key={i + 1212}>
                             <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={artist.photo} alt="Bonnie Avatar" />
                             <div className="px-5">
                                 <h3 className="text-sm font-bold tracking-tight text-white">{artist.name}</h3>
