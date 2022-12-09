@@ -1,11 +1,9 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { Camera } from "react-feather";
 import { getGalleryData, setGalleryDetails } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
-import { useRouter } from "next/router";
 
 const Gallery: NextPage = () => {
   const router = useRouter()
