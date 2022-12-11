@@ -53,7 +53,8 @@ const Details = () => {
                         priority
                         src={galleryDetails.image}
                         quality={100}
-                        className={`scale-[${zoom}]`}
+                        style={{ transform: `scale(${zoom})` }}
+                        // className={`scale-[${zoom}]`}
                         layout="fill"
                         objectFit="contain"
                         alt="gallary image"
