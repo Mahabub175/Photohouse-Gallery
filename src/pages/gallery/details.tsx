@@ -2,8 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FaFacebook, FaGlobe, FaInstagram } from 'react-icons/fa';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import img1 from "../../Images/Gallery/1.png";
+import { FiChevronLeft, FiChevronRight, FiMinusSquare, FiPlusSquare } from 'react-icons/fi';
 import { setGalleryDetails } from '../../store/slices/gallerySlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/reduxHooks';
 
@@ -14,6 +13,8 @@ const Details = () => {
     const { g_index } = router.query
 
     const [imageIndex, setImageIndex] = useState(Number(g_index))
+    const zoomScale = [.5, 1, 1.5, 2.5, 3.5]
+    const [zoom, setZoom] = useState(zoomScale[1])
 
     // The `state` arg is correctly typed as `RootState` already
     const { galleryDetails, galleryData } = useAppSelector((state) => state.gallery)
@@ -24,7 +25,13 @@ const Details = () => {
             dispatch(setGalleryDetails(index))
         }
     }
-
+    const handleZoom = (xoom: number) => {
+        if (xoom) {
+            setZoom(z => !!zoomScale[zoomScale.indexOf(z) + 1] ? zoomScale[zoomScale.indexOf(z) + 1] : 1)
+        } else {
+            setZoom(z => !!zoomScale[zoomScale.indexOf(z) - 1] ? zoomScale[zoomScale.indexOf(z) - 1] : 1)
+        }
+    }
     return (
         <div className='grid grid-cols-10'>
             {/* <p className='text-emerald-300'>{count}</p>
@@ -46,7 +53,7 @@ const Details = () => {
                         priority
                         src={galleryDetails.image}
                         quality={100}
-                        className=""
+                        className={`scale-[${zoom}]`}
                         layout="fill"
                         objectFit="contain"
                         alt="gallary image"
@@ -54,6 +61,10 @@ const Details = () => {
                     <div className="flex justify-between absolute top-[48%] w-full px-2">
                         {imageIndex > 0 ? <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} /> : <span className='opacity-0'>.</span>}
                         {imageIndex < (galleryData.length - 1) && <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />}
+                    </div>
+                    <div className="flex justify-center absolute bottom-[5px] w-full px-2">
+                        <FiPlusSquare size={30} color="white" className='cursor-zoom-in bg-black/50 rounded-lg mr-3' onClick={() => handleZoom(1)} />
+                        <FiMinusSquare size={30} color="white" className='cursor-zoom-out bg-black/50 rounded-lg' onClick={() => handleZoom(0)} />
                     </div>
                 </div>
             </div>
