@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">Legal</h2>
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">Information</h2>
               <ul className=" ">
                 <li className="mb-4">
                   <Link href="/faq">
