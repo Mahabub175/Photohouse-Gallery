@@ -86,11 +86,16 @@ const Details = () => {
                                     {!!artist.flag && <img src={artist.flag} alt="flag" className="rounded-sm" style={{ height: "10px", marginTop: "6px" }} />}
                                 </h3>
                                 <small className="text-gray-400 text-xs block">{artist.profession}</small>
-                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                {!!artist.facebook && <a href={artist.facebook} target="_blank" rel="noopener noreferrer">
                                     <FaFacebook className="inline mr-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                                </a>
-                                <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
-                                <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                                </a>}
+                                {!!artist.instagram && <a href={artist.instagram} target="_blank" rel="noopener noreferrer">
+                                    <FaInstagram className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                                </a>}
+                                {!!artist.website && <a href={artist.website} target="_blank" rel="noopener noreferrer">
+                                    <FaGlobe className="inline mx-2 text-gray-200  hover:text-emerald-300 cursor-pointer" size={13} />
+                                </a>}
+
                             </div>
                         </div>)
                     }
