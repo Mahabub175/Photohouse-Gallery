@@ -85,9 +85,12 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
+                  <Link href="/privacy_policy">
+                    <a className="hover:underline">
+                      Privacy Policy
+                    </a>
+                  </Link>
+
                 </li>
               </ul>
             </div>
