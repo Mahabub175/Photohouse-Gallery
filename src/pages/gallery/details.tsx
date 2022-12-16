@@ -5,6 +5,7 @@ import { FaFacebook, FaGlobe, FaInstagram } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight, FiMinusSquare, FiPlusSquare } from 'react-icons/fi';
 import { setGalleryDetails } from '../../store/slices/gallerySlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/reduxHooks';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Details = () => {
     const dispatch = useAppDispatch()
@@ -48,25 +49,31 @@ const Details = () => {
                     objectFit="cover"
                     alt="gallary image"
                 />
-                <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10">
-                    <Image
-                        priority
-                        src={galleryDetails.image}
-                        quality={100}
-                        style={{ transform: `scale(${zoom})` }}
-                        // className={`scale-[${zoom}]`}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="gallary image"
-                    />
+                <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center">
+                    <TransformWrapper>
+                        <TransformComponent>
+                            <img src={galleryDetails.image} alt="" className="h-[90vh]" />
+
+                            {/* <Image
+                                priority
+                                src={galleryDetails.image}
+                                quality={100}
+                                style={{ transform: `scale(${zoom})` }}
+                                // className={`scale-[${zoom}]`}
+                                layout="fill"
+                                objectFit="contain"
+                                alt="gallary image"
+                            /> */}
+                        </TransformComponent>
+                    </TransformWrapper>
                     <div className="flex justify-between absolute top-[48%] w-full px-2">
                         {imageIndex > 0 ? <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} /> : <span className='opacity-0'>.</span>}
                         {imageIndex < (galleryData.length - 1) && <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />}
                     </div>
-                    <div className="flex justify-center absolute bottom-[5px] w-full px-2">
+                    {/* <div className="flex justify-center absolute bottom-[5px] w-full px-2">
                         <FiPlusSquare size={30} color="white" className='cursor-zoom-in bg-black/50 rounded-lg mr-3' onClick={() => handleZoom(1)} />
                         <FiMinusSquare size={30} color="white" className='cursor-zoom-out bg-black/50 rounded-lg' onClick={() => handleZoom(0)} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="lg:col-span-3 col-span-10 ">
