@@ -1,3 +1,4 @@
+import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -5,7 +6,8 @@ import { Camera } from "react-feather";
 import { getGalleryData, setGalleryDetails } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
 
-const Gallery: NextPage = () => {
+const Gallery: NextPage = (props: any) => {
+  const gallryImages: any[] = props.gallryImages
   const router = useRouter()
   const dispatch = useAppDispatch()
   useEffect(() => {
@@ -16,8 +18,9 @@ const Gallery: NextPage = () => {
     <div className="gap-1 md:columns-4 columns-2">
       {galleryData?.map((x, i) => (
         <div className="mb-1 animate-fadeIn" key={x._id}>
-          <div className="group relative block overflow-hidden transition-all duration-500">
-            <a className="relative transition-all duration-500 group-hover:scale-105 cursor-pointer">
+          <div className="group relative block overflow-hidden transition-all duration-500 ">
+            {/* <div className="w-full h-full absolute backdrop-blur-sm bg-white/10 z-10"></div> */}
+            <a className="relative transition-all duration-500 group-hover:scale-105 cursor-pointer ">
               <img
                 src={x.image}
                 alt="gallery image"
@@ -40,8 +43,29 @@ const Gallery: NextPage = () => {
 
         </div>
       ))}
+      {!galleryData.length && gallryImages?.map((x, i) => (
+        <div className="mb-1 animate-fadeIn" key={x._id}>
+          <div className="group relative block overflow-hidden transition-all duration-500 ">
+            <div className="w-full h-full absolute backdrop-blur-sm bg-white/10 z-10"></div>
+            <a className="relative transition-all duration-500 group-hover:scale-105 cursor-pointer ">
+              <img
+                src={x.image}
+                alt="gallery image"
+                className="animate-slideDown"
+              />
+            </a>
+          </div>
+
+        </div>
+      ))}
     </div>
   );
 };
 
 export default Gallery;
+export async function getStaticProps() {
+  const gallryImages = await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
+    return response.data
+  }).catch((err) => [])
+  return { props: { gallryImages }, revalidate: 60 }
+}

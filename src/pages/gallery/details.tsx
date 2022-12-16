@@ -49,7 +49,7 @@ const Details = () => {
                     objectFit="cover"
                     alt="gallary image"
                 />
-                <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center">
+                <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
                     <TransformWrapper>
                         <TransformComponent>
                             <img src={galleryDetails.image} alt="" className="h-[90vh]" />
