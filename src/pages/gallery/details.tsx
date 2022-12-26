@@ -52,7 +52,7 @@ const Details = () => {
                 <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
                     <TransformWrapper>
                         <TransformComponent>
-                            <img src={galleryDetails.image} alt="" className="h-[90vh]" />
+                            <img src={galleryDetails.image} alt="" className="h-[90vh]" style={{ transform: `scale(${zoom})` }} />
 
                             {/* <Image
                                 priority
@@ -70,10 +70,10 @@ const Details = () => {
                         {imageIndex > 0 ? <FiChevronLeft size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) - 1)} /> : <span className='opacity-0'>.</span>}
                         {imageIndex < (galleryData.length - 1) && <FiChevronRight size={30} color="white" className=' bg-gray-500 rounded-full cursor-pointer hover:bg-gray-400' onClick={() => handlePrevNext(Number(imageIndex) + 1)} />}
                     </div>
-                    {/* <div className="flex justify-center absolute bottom-[5px] w-full px-2">
+                    <div className="flex justify-center absolute bottom-[5px] w-full px-2">
                         <FiPlusSquare size={30} color="white" className='cursor-zoom-in bg-black/50 rounded-lg mr-3' onClick={() => handleZoom(1)} />
                         <FiMinusSquare size={30} color="white" className='cursor-zoom-out bg-black/50 rounded-lg' onClick={() => handleZoom(0)} />
-                    </div> */}
+                    </div>
                 </div>
             </div>
             <div className="lg:col-span-3 col-span-10 ">
