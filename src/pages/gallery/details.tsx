@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaFacebook, FaGlobe, FaInstagram } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight, FiMinusSquare, FiPlusSquare } from 'react-icons/fi';
-import { setGalleryDetails } from '../../store/slices/gallerySlice';
+import { getGalleryData, setGalleryDetails } from '../../store/slices/gallerySlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/reduxHooks';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
@@ -13,17 +13,37 @@ const Details = () => {
     const router = useRouter()
     const { g_index } = router.query
 
+
+
     const [imageIndex, setImageIndex] = useState(Number(g_index))
     const zoomScale = [.5, 1, 1.5, 2.5, 3.5]
     const [zoom, setZoom] = useState(zoomScale[1])
 
     // The `state` arg is correctly typed as `RootState` already
     const { galleryDetails, galleryData } = useAppSelector((state) => state.gallery)
+    useEffect(() => {
+        (function () { dispatch(getGalleryData()) })()
+    }, [])
+
+    useEffect(() => {
+        if (router.isReady) {
+            console.log(g_index, router.query);
+            setImageIndex(Number(g_index))
+            if (!galleryData.length) {
+                (async function () {
+                    await dispatch(getGalleryData())
+                    await dispatch(setGalleryDetails(Number(g_index)))
+                    await router.push(`/gallery/details?g_index=${Number(g_index)}`)
+                })()
+            }
+        }
+    }, [router.isReady, galleryData.length]);
 
     const handlePrevNext = (index: number) => {
         if (index >= 0 && index < galleryData.length) {
             setImageIndex(index)
             dispatch(setGalleryDetails(index))
+            router.push(`/gallery/details?g_index=${index}`)
         }
     }
     const handleZoom = (xoom: number) => {
