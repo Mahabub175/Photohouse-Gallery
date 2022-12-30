@@ -9,11 +9,8 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Details = () => {
     const dispatch = useAppDispatch()
-
     const router = useRouter()
     const { g_index } = router.query
-
-
 
     const [imageIndex, setImageIndex] = useState(Number(g_index))
     const zoomScale = [.5, 1, 1.5, 2.5, 3.5]
