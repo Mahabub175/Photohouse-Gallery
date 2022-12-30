@@ -1,22 +1,28 @@
 import { InstagramGallery } from "instagram-gallery";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import insta from "../../Images/Insta.png"
 const InstaGallery = () => {
+    // Insta_access_token
+    const [{ Insta_access_token }, setredirect_links] = useState({
+        Insta_access_token: ""
+    })
+    useEffect(() => {
+        const getLinks = () => {
+            fetch('https://api.photohousemagazine.com/redirect_links').then((response) => response.json())
+                .then((data) => setredirect_links(data))
+                .catch(() => getLinks())
+        }
+        getLinks()
+    }, [])
     return (
         <div className="px-[1%] mb-5 mt-2">
             <div className="w-full flex flex-col items-center py-2">
                 <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
-                    <Image
-                        src={insta}
-                        width={40}
-                        height={40}
-                    />Instagram
+                    <Image alt="" src={insta} width={40} height={40} /> Instagram
                 </h1>
             </div>
-            {/* <InstagramGallery
-                pagination={true}
-                accessToken="IGQVJXaXdkX0N1d0ZADUlJzbE1jUGlhLWJEMEh2THNMZATNlNUpiS2tzM2U4a3BaNGFtaUh1bEw0VEdOMHlWSXNFbktSS1lSNkNSbE1PWExWeHd3NnFmSzNlYklMQl9EZA2J2QmlONkF2aVI1ZAWxJVlN2dwZDZD"
-                count={10} /> */}
+            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={10} />}
         </div>
     );
 };
