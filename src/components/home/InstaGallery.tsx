@@ -13,10 +13,10 @@ const InstaGallery = () => {
                     />Instagram
                 </h1>
             </div>
-            <InstagramGallery
+            {/* <InstagramGallery
                 pagination={true}
                 accessToken="IGQVJXaXdkX0N1d0ZADUlJzbE1jUGlhLWJEMEh2THNMZATNlNUpiS2tzM2U4a3BaNGFtaUh1bEw0VEdOMHlWSXNFbktSS1lSNkNSbE1PWExWeHd3NnFmSzNlYklMQl9EZA2J2QmlONkF2aVI1ZAWxJVlN2dwZDZD"
-                count={10} />
+                count={10} /> */}
         </div>
     );
 };
