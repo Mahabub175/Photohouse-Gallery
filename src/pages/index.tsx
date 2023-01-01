@@ -7,8 +7,8 @@ import Magazines from "../components/home/Magazines";
 const Home: NextPage = () => (
   <Fragment>
     <Hero />
-    <Magazines />
     <InstaGallery />
+    <Magazines />
   </Fragment>
 );
 
