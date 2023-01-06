@@ -23,12 +23,12 @@ const InstaGallery = () => {
                     Instagram Feed
                 </h1>
             </div>
-            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={15} />}
-            <div className="w-100 text-center">
+            <div className="w-100 text-center mb-2">
                 <a href={instagram} target="_blank" rel="noopener noreferrer">
                     <button className="btn-blue"><Image alt="" src={insta} width={13} height={13} /> <span >Follow us</span></button>
                 </a>
             </div>
+            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={15} />}
         </div>
     );
 };
