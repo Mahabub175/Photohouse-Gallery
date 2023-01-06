@@ -28,7 +28,7 @@ const Magazines: FC = () => {
   }, [])
   return (
     <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">
-      <h1 className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+      <h1 className="font-bold text-transparent md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
         Magazines
       </h1>
       <Swiper

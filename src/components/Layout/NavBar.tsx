@@ -45,7 +45,7 @@ const NavBar = () => {
           {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
               <a
-                className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
+                className={`hover:text-cyan-300 cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                   (i === 0 && router.pathname == `/`)
                   ? " text-cyan-300 font-bold"
                   : " "
@@ -55,7 +55,7 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
-          <a className={`hover:font-bold cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
+          <a className={`hover:text-cyan-300 cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
             Submission
           </a>
         </div>
@@ -74,7 +74,7 @@ const NavBar = () => {
             <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
               <a
                 onClick={() => setMenu(show => !show)}
-                className={`hover:font-bold cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
+                className={`hover:text-cyan-300 cursor-pointer mx-2 ${router.pathname == `/${x.toLowerCase()}` ||
                   (i === 0 && router.pathname == `/`)
                   ? " text-cyan-300 font-bold"
                   : " "
@@ -84,7 +84,7 @@ const NavBar = () => {
               </a>
             </Link>
           ))}
-          <a className={`hover:font-bold cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
+          <a className={`hover:text-cyan-300 cursor-pointer mx-2`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
             Submission
           </a>
         </div>
