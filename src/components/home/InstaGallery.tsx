@@ -27,7 +27,7 @@ const InstaGallery = () => {
                     <button className="btn-blue"><span ><FaInstagram className="inline mt-[-4px]" /> Follow on Instagram</span></button>
                 </a>
             </div>
-            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={15} />}
+            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={25} />}
         </div>
     );
 };
