@@ -90,7 +90,6 @@ const Footer: React.FC = () => {
                       Privacy Policy
                     </a>
                   </Link>
-
                 </li>
               </ul>
             </div>

@@ -1,7 +1,6 @@
 import { InstagramGallery } from "instagram-gallery";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import insta from "../../Images/Insta.png"
+import { FaInstagram } from "react-icons/fa";
 const InstaGallery = () => {
     // Insta_access_token
     const [{ Insta_access_token, instagram }, setredirect_links] = useState({
@@ -25,7 +24,7 @@ const InstaGallery = () => {
             </div>
             <div className="w-100 text-center mb-2">
                 <a href={instagram} target="_blank" rel="noopener noreferrer">
-                    <button className="btn-blue"><Image alt="" src={insta} width={13} height={13} /> <span >Follow us</span></button>
+                    <button className="btn-blue"><span ><FaInstagram className="inline mt-[-4px]" /> Follow on Instagram</span></button>
                 </a>
             </div>
             {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={15} />}
