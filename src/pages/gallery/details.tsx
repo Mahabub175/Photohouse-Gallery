@@ -69,8 +69,9 @@ const Details = () => {
                 <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
                     <TransformWrapper>
                         <TransformComponent>
-                            <img src={galleryDetails.image} alt="" className="h-[90vh]" style={{ transform: `scale(${zoom})` }} />
-
+                            <div className="flex items-center h-[90vh]">
+                                <img src={galleryDetails.image} alt="" className="max-h-[90vh] " style={{ transform: `scale(${zoom})` }} />
+                            </div>
                             {/* <Image
                                 priority
                                 src={galleryDetails.image}
