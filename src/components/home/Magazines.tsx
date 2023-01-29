@@ -27,10 +27,10 @@ const Magazines: FC = () => {
     getData()
   }, [])
   return (
-    <div className="w-full min-h-[80vh]   flex flex-col items-center py-2">
-      <h1 className="font-bold text-transparent md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+    <div className="w-full my-10 flex flex-col items-center">
+      {/* <h1 className="font-bold text-transparent md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
         Magazines
-      </h1>
+      </h1> */}
       <Swiper
         breakpoints={{
           280: { slidesPerView: 1, },
@@ -42,7 +42,6 @@ const Magazines: FC = () => {
         speed={800}
         autoplay={{ delay: 1000, disableOnInteraction: false, }}
         modules={[Autoplay, EffectCoverflow, Navigation]}
-        className="my-4"
       // slidesPerView={5}
       // spaceBetween={0}
       // navigation

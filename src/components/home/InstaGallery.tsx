@@ -16,8 +16,8 @@ const InstaGallery = () => {
         getLinks()
     }, [])
     return (
-        <div className="px-[1%] mb-5 mt-2">
-            <div className="w-full flex flex-col items-center py-2">
+        <div className="px-[1%] mb-5">
+            <div className="w-full flex flex-col items-center">
                 <h1 className="font-bold text-transparent md:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
                     Instagram Feed
                 </h1>
@@ -27,7 +27,10 @@ const InstaGallery = () => {
                     <button className="btn-blue"><span ><FaInstagram className="inline mt-[-4px]" /> Follow on Instagram</span></button>
                 </a>
             </div>
-            {!!Insta_access_token && <InstagramGallery pagination={true} accessToken={Insta_access_token} count={25} />}
+            {!!Insta_access_token && <InstagramGallery
+                // pagination={true}
+                accessToken={Insta_access_token}
+                count={15} />}
         </div>
     );
 };

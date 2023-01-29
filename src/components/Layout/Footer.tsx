@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="p-4  sm:p-6 bg-[#182f38]">
+      <footer className="p-4  sm:p-6 bg-[#292929]">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">

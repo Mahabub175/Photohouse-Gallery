@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
   user-select: none;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Bebas Neue', cursive;
 }
 @tailwind base;
 @layer base {
   body {
-    @apply bg-[#06202A] text-white;
+    /* @apply bg-[#06202A] text-white; */
+    @apply bg-[#1b1b1b] text-white;
   }
 }
 @layer components {
@@ -29,12 +30,12 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white;
+  /* box-shadow: inset 0 0 5px white; */
   border-radius: 10px;
 }
 
