@@ -8,13 +8,13 @@ const Hero: FC = () => {
     <div className="w-full">
       <div className="grid grid-cols-3 gap-0">
         <div className="relative h-[100vh]">
-          <Image src={hero3} alt="hero image" layout='fill' objectFit='cover' />
+          <Image src={hero3} alt="hero image" layout='fill' objectFit='cover' priority/>
         </div>
         <div className="relative h-[100vh]">
-          <Image src={hero2} alt="hero image" layout='fill' objectFit='cover' />
+          <Image src={hero2} alt="hero image" layout='fill' objectFit='cover' priority/>
         </div>
         <div className="relative h-[100vh]">
-          <Image src={hero1} alt="hero image" layout='fill' objectFit='cover' />
+          <Image src={hero1} alt="hero image" layout='fill' objectFit='cover' priority/>
         </div>
       </div>
       <HeroMain />
