@@ -3,18 +3,17 @@
 @tailwind base;
 @layer base {
   body {
-    /* @apply bg-[#06202A] text-white; */
     @apply bg-[#1b1b1b] text-white;
   }
 }
 @layer components {
   .btn-blue {
     @apply text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-sky-300
-     font-medium rounded-full text-sm px-5 py-2 text-center mx-1;
+    font-medium rounded-full text-sm px-5 py-2 text-center mx-1;
   }
   .btn-danger {
     @apply text-white bg-gradient-to-r from-rose-500 to-red-700 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-red-300
-     font-medium rounded-full text-sm px-5 py-2 text-center mx-1 disabled:text-gray-700;
+    font-medium rounded-full text-sm px-5 py-2 text-center mx-1 disabled:text-gray-700;
   }
 }
 @tailwind components;
@@ -26,9 +25,10 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   user-select: none;
-  /* font-family: "Farro", sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-nav {
+nav div a {
   font-family: "Bebas Neue", cursive;
 }
 /* width */
