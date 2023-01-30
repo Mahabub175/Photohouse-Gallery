@@ -65,7 +65,7 @@ const Gallery: NextPage = (props: any) => {
 export default Gallery;
 export async function getStaticProps() {
   const gallryImages = await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
-    return response.data
+    return response.data.reverse()
   }).catch((err) => [])
   return { props: { gallryImages }, revalidate: 60 }
 }

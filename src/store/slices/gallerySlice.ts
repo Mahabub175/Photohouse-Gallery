@@ -11,7 +11,7 @@ const initialState: any = {
 export const getGalleryData = createAsyncThunk('gallery/getGallery',
     async (thunkAPI) => {
         const res = await fetch('https://api.photohousemagazine.com/gallery').then((data) => data.json())
-        return res
+        return res.reverse()
     })
 
 export const gallerySlice = createSlice({
