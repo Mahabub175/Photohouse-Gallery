@@ -1,8 +1,6 @@
 import axios from "axios";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Camera } from "react-feather";
+import { useState } from "react";
 import AvatarUpload from "../components/UI/AvatarUpload";
 
 const Register = (props: { countries: [] }) => {
@@ -170,7 +168,7 @@ const Register = (props: { countries: [] }) => {
               onChange={handleChange}
               className=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
             >
-              {props.countries.sort(function (a: any, b: any) {
+              {props.countries?.sort(function (a: any, b: any) {
                 if (a.name.common < b.name.common) { return -1; }
                 if (a.name.common > b.name.common) { return 1; }
                 return 0;
@@ -198,13 +196,13 @@ const Register = (props: { countries: [] }) => {
 
 export default Register;
 
-export async function getStaticProps() {
-  const countries = await axios.get('https://restcountries.com/v3.1/all').then((response) => {
-    return response.data.map((c: any) => { return { name: c.name, flag: c.flags } })
-  })
-  return {
-    props: {
-      countries
-    }
-  }
-}
+// export async function getStaticProps() {
+//   const countries = await axios.get('https://restcountries.com/v3.1/all').then((response) => {
+//     return response.data.map((c: any) => { return { name: c.name, flag: c.flags } })
+//   })
+//   return {
+//     props: {
+//       countries
+//     }
+//   }
+// }
