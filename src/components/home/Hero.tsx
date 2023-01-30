@@ -1,67 +1,27 @@
-import { FC, useEffect, useState } from "react";
-// import required modules
 import Image from "next/image";
-import { Autoplay, EffectFade } from "swiper";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import img1 from "../../Images/Landscape/Photohouse_Magazine1.jpg";
-import img2 from "../../Images/Landscape/Photohouse_Magazine_2.jpg";
-import img3 from "../../Images/Landscape/Photohouse_Magazine_3.jpg";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-fade";
-import Link from "next/link";
-
+import { FC, useEffect, useState } from "react";
+import hero1 from '../../Images/Landscape/3.png'
+import hero2 from '../../Images/Landscape/hero1.jpg'
+import hero3 from '../../Images/Landscape/hero2.jpg'
 const Hero: FC = () => {
   return (
-    <div className="w-full min-h-[100vh]">
-      <Swiper
-        spaceBetween={30}
-        effect={"fade"}
-        speed={1000}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        modules={[Autoplay, EffectFade]}
-        className="mySwiper"
-      >
-        {
-          [img1, img2, img3].map((img, index) => <SwiperSlide key={index + 11}>
-            <div className={"relative w-full h-100vh"}>
-              <div className="z-[-1]">
-                <Image
-                  priority
-                  src={img}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  alt="hero image"
-                />
-              </div>
-              <HeroMain />
-            </div>
-          </SwiperSlide>)
-        }
-
-        <SwiperSlide>
-          <div className={"relative w-full h-100vh"}>
-            <div className="z-[-1]">
-              <Image
-                priority
-                src={img2}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                alt="hero image"
-              />
-            </div>
-            <HeroMain />
-          </div>
-        </SwiperSlide>
-      </Swiper>
+    <div className="w-full">
+      <div className="grid grid-cols-3 gap-0">
+        <div className="relative h-[100vh]">
+          <Image src={hero3} alt="hero image" layout='fill' objectFit='cover' />
+        </div>
+        <div className="relative h-[100vh]">
+          <Image src={hero2} alt="hero image" layout='fill' objectFit='cover' />
+        </div>
+        <div className="relative h-[100vh]">
+          <Image src={hero1} alt="hero image" layout='fill' objectFit='cover' />
+        </div>
+      </div>
+      <HeroMain />
     </div>
   );
 };
-const HeroMain: FC = () => {
+export const HeroMain: FC = () => {
   const [redirect_links, setredirect_links] = useState({
     facebook_group: "#",
     instagram: "#",
@@ -76,12 +36,12 @@ const HeroMain: FC = () => {
     }
     getLinks()
   }, [])
-  return <div className="bg-[#00000050]  relative flex flex-col justify-center self-center h-[100vh] w-full">
-    <h1 className="mb-4 text-4xl font-extrabold  md:text-5xl lg:text-6xl">
-      Express talents Spread excellence
+  return <div className=" relative flex flex-col justify-center self-center w-full text-center my-5">
+    <h1 className="mb-3 text-4xl  md:text-5xl lg:text-6xl  tracking-wider">
+      Inspire and get inspired
     </h1>
     <p className="px-[5%] mb-2 text-emerald-100 text-bold text-xl">
-      Join the Photohouse community, submit your photo to our next magazine,
+      Join the Photohouse community, submit your photo to our next magazine
       {/* <br /> become our lifetime memeber. */}
     </p>
     <div className="flex justify-center flex-col md:flex-row self-start md:self-auto mx-auto">
@@ -95,13 +55,6 @@ const HeroMain: FC = () => {
         <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
         <span className="relative">Submit Your Photo</span>
       </a>
-      {/* <Link href="/register">
-        <a className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-cyan-400 rounded-lg group">
-          <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
-          <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-          <span className="relative">Become a Member</span>
-        </a>
-      </Link> */}
     </div>
   </div>
 }

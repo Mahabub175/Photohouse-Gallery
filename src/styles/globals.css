@@ -28,8 +28,9 @@
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-nav div a {
-  font-family: "Bebas Neue", cursive;
+nav div a,
+h1 {
+  font-family: "Bebas Neue", cursive !important;
 }
 /* width */
 ::-webkit-scrollbar {
