@@ -1,12 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  user-select: none;
-  font-family: 'Bebas Neue', cursive;
-}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Farro&display=swap");
 @tailwind base;
 @layer base {
   body {
@@ -27,7 +20,17 @@
 @tailwind components;
 
 @tailwind utilities;
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  user-select: none;
+  /* font-family: "Farro", sans-serif; */
+}
+nav {
+  font-family: "Bebas Neue", cursive;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
