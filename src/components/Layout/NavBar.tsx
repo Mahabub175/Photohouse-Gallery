@@ -42,22 +42,27 @@ const NavBar = () => {
           </a>
         </Link>
         <div className="hidden md:block tracking-wider">
-          {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
-            <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
-              <a
-                className={`hover:text-cyan-300 cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
-                  (i === 0 && router.pathname == `/`)
-                  ? " text-cyan-300 "
-                  : " "
-                  }`}
-              >
-                {x}
-              </a>
-            </Link>
+          {["Home", "Magazines", 'publish', "Gallery", "About"].map((x, i) => (
+            <>
+              {i !== 2 ?
+                <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
+                  <a
+                    className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
+                      (i === 0 && router.pathname == `/`)
+                      ? " text-[#DEDEDE]"
+                      : " "
+                      }`}
+                  >
+                    {x}
+                  </a>
+                </Link> :
+                <a className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
+                  Get Published
+                </a>
+              }
+            </>
           ))}
-          <a className={`hover:text-cyan-300 cursor-pointer mx-2 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
-            Submission
-          </a>
+
         </div>
         <div className="md:hidden h-full pt-6 cursor-pointer" onClick={() => setMenu(show => !show)}>
           <div className="w-[20px] h-[2px] bg-white mb-2"></div>
@@ -68,27 +73,32 @@ const NavBar = () => {
         <span className="hamburger__bottom-bun"></span>
       </button> */}
       </nav>
-      {showMenu && <div className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
-        <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-3xl">
-          {["Home", "Magazines", "Gallery", "About"].map((x, i) => (
-            <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
-              <a
-                onClick={() => setMenu(show => !show)}
-                className={`hover:text-cyan-300 cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
-                  (i === 0 && router.pathname == `/`)
-                  ? " text-cyan-300 "
-                  : " "
-                  }`}
-              >
-                {x}
-              </a>
-            </Link>
-          ))}
-          <a className={`hover:text-cyan-300 cursor-pointer mx-2 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
-            Submission
-          </a>
-        </div>
-      </div>}
+      {showMenu &&
+        <div className="navbar">
+          <nav className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
+            <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-2xl pt-20">
+              {["Home", "Magazines", "publish", "Gallery", "About"].map((x, i) => (
+                <>
+                  {i !== 2 ? <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
+                    <a
+                      onClick={() => setMenu(show => !show)}
+                      className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${router.pathname == `/${x.toLowerCase()}` ||
+                        (i === 0 && router.pathname == `/`)
+                        ? " text-[#DEDEDE] "
+                        : " "
+                        }`}
+                    >
+                      {x}
+                    </a>
+                  </Link> :
+                    <a className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
+                      Get Published
+                    </a>}
+                </>
+              ))}
+            </div>
+          </nav>
+        </div>}
     </div>
   );
 };
