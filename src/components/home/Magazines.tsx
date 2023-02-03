@@ -16,32 +16,25 @@ const Magazines: FC = () => {
   const [magazinesList, setmagazinesList] = useState([{ _id: 1, image: "" }, { _id: 11, image: "" }, { _id: 1111, image: "" }])
   useEffect(() => {
     const getData = async () => {
-      await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
-        // console.log(response.data)
-        setmagazinesList(response.data.reverse())
-      }).catch((err) => {
-        console.log(err)
-        getData()
-      })
+      await axios.get('https://api.photohousemagazine.com/magazines')
+        .then((response) => { setmagazinesList(response.data.reverse()) })
+        .catch((err) => { getData() })
     }
     getData()
   }, [])
   return (
     <div className="w-full my-10 flex flex-col items-center">
-      {/* <h1 className="font-bold text-transparent md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
-        Magazines
-      </h1> */}
       <Swiper
         breakpoints={{
           280: { slidesPerView: 1, },
           640: { slidesPerView: 3, },
-          768: { slidesPerView: 5, },
+          768: { slidesPerView: 5, }
         }}
         loop={true}
         effect={"coverflow"}
         speed={800}
-        autoplay={{ delay: 1000, disableOnInteraction: false, }}
-        modules={[Autoplay, EffectCoverflow, Navigation]}
+        autoplay={{ delay: 100000, disableOnInteraction: false, }}
+        modules={[Autoplay, Navigation, EffectCoverflow]}
       // slidesPerView={5}
       // spaceBetween={0}
       // navigation
@@ -50,8 +43,8 @@ const Magazines: FC = () => {
       // onSwiper={(swiper) => console.log(swiper)}
       >
         {magazinesList.map((x: any) => (
-          <SwiperSlide key={x._id} className="">
-            <Link href="/magazines" className="">
+          <SwiperSlide key={x._id} className='xl:py-2'>
+            <Link href="/magazines" >
               <Image
                 priority
                 // placeholder="blur"
