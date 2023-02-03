@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaEnvelope, FaTelegramPlane, FaWhatsapp, FaFacebook, FaLinkedin, FaInstagram, FaBattleNet, FaFacebookF, FaTwitter } from "react-icons/fa";
+import { FaBattleNet, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import logo_dark from "../../Images/logo.png";
-import { FcGlobe } from "react-icons/fc";
 
 const Footer: React.FC = () => {
   const [redirect_links, setredirect_links] = useState({
@@ -27,7 +26,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="p-4  sm:p-6 bg-[#292929]">
+      <footer className="px-4 pt-4 pb-2 bg-[#292929]">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
@@ -44,34 +43,18 @@ const Footer: React.FC = () => {
               <span className="ml-3">Follow Us :</span>
               <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
                 <FaFacebookF className="inline mx-2" />
-                {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
               </a>
               <a href={redirect_links.twitter} target="_blank" rel="noopener noreferrer">
                 <FaTwitter className="inline mx-2" />
-                {/* <img src="https://img.icons8.com/arcade/25/null/facebook-new.png" className="mx-2" /> */}
               </a>
               <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="inline mx-2" />
-                {/* <img src="https://img.icons8.com/arcade/25/null/instagram-new.png" className="mx-2" /> */}
               </a>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-8 md:gap-6 md:grid-cols-3">
             <div>
-              {/* <h2 className="mb-6 text-sm font-semibold  uppercase ">Resources</h2> */}
-              <ul className=" ">
-                {/* <li className="mb-4">
-                  <a href={redirect_links.sponsor} className="hover:underline">
-                    Become a sponsor
-                  </a>
-                </li> */}
-                {/* <li >
-                  <Link href="/register">
-                    <a className="hover:underline">
-                      Become a  member
-                    </a>
-                  </Link>
-                </li> */}
+              <ul>
               </ul>
             </div>
             <div>
@@ -117,18 +100,18 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-700 sm:mx-auto  lg:my-8" />
+        <hr className="mt-6 mb-1 border-gray-700 sm:mx-auto  lg:mt-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm  sm:text-center ">
+          <span className="text-xs  sm:text-center ">
             © {new Date().getFullYear()}{" "}
             <a href="#" className="hover:underline">
               Photohouse™
             </a>
             . All Rights Reserved.
           </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+          <div className="flex space-x-6 sm:justify-center text-xs">
             <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer">
-              <FaBattleNet className="inline animate-spin" color="cyan" size={20} />&nbsp;Developed by :
+              <FaBattleNet className="inline animate-spin" color="cyan" size={14} />&nbsp;Developed by :
               <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">Hasanul Banna</span>
             </a>
           </div>

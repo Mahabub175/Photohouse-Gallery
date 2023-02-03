@@ -26,7 +26,8 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
             Magazines
           </h1>
         </div>
-        {/* <p>
+      </div>
+      {/* <p>
           {["All", "Newest", "Popular", "Upcoming"].map((type: string, i: number) => <span
             key={i + 1}
             className={`mx-1 cursor-pointer ${Category === type && 'text-blue-400 font-bold'}`}
@@ -34,7 +35,6 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
             {type}</span>
           )}
         </p> */}
-      </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {FilteredData.map((x: any) => (
           <div className="max-w-[280px] my-3 m-auto animate-fade" key={x._id}>

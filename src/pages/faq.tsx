@@ -3,9 +3,16 @@ import React from 'react';
 const faq = () => {
     return (
         <div>
-            <div className="flex justify-between container m-auto items-center border-b-2 pb-2 pt-4 flex-col">
+            {/* <div className="flex justify-between container m-auto items-center border-b-2 pb-2 pt-4 flex-col">
                 <div className="w-full flex flex-col items-center ">
                     <h1 className="font-bold text-transparent sm:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+                        FAQ
+                    </h1>
+                </div>
+            </div> */}
+            <div className="flex justify-between container m-auto items-center border-b-gray-500 border-b-2 py-2 flex-col">
+                <div className="w-full flex flex-col items-center ">
+                    <h1 className=" text-white sm:text-5xl text-3xl tracking-wider">
                         FAQ
                     </h1>
                 </div>
