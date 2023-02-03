@@ -14,7 +14,8 @@ const About: NextPage = () => {
     sabbir_email: "#",
     sabbir_facebook: "#",
     sabbir_instagram: "#",
-    sabbir_web: "#"
+    sabbir_web: "#",
+    pagel_photo: ''
   })
   useEffect(() => {
     const getLinks = () => {
@@ -72,10 +73,10 @@ const About: NextPage = () => {
           <div>
             <Image
               priority
-              src={pagel}
+              src={redirect_links.pagel_photo}
               width={100}
               height={127}
-              alt="ceo"
+              alt="page7"
               className={`rounded-md animate-fade`}
             />
             <p className="text-3xl font-bold">PAGE7 Photo</p>
