@@ -24,7 +24,7 @@ const NavBar = () => {
       <nav
         className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10   ${router.pathname === "/"
           ? "absolute bg-[#00000055]"
-          : "relative bg-[#182f38]"
+          : "relative bg-[#00000055]"
           } z-10 w-full`}
       >
         <Link href="/">

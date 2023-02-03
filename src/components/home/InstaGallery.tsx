@@ -21,7 +21,7 @@ const InstaGallery = () => {
                 {/* <h1 className="font-bold text-transparent md:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
                     Instagram Feed
                 </h1> */}
-                <h1 className="md:text-5xl text-3xl tracking-wider pb-4">
+                <h1 className="md:text-5xl text-3xl tracking-wider pb-4 text-white">
                     Instagram Feed
                 </h1>
 

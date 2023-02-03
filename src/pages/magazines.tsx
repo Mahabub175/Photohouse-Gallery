@@ -19,10 +19,10 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
     }
   }
   return (
-    <main className="py-4">
-      <div className="flex justify-between container m-auto items-center border-b-2 pb-2 flex-col">
+    <main className="py-4 bg-gray-900">
+      <div className="flex justify-between container m-auto items-center border-b-gray-500 border-b-2 pb-2 flex-col">
         <div className="w-full flex flex-col items-center ">
-          <h1 className="font-bold text-transparent sm:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
+          <h1 className=" text-white sm:text-5xl text-3xl tracking-wider">
             Magazines
           </h1>
         </div>
@@ -37,7 +37,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
       </div>
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {FilteredData.map((x: any) => (
-          <div className="max-w-[200px] my-3 m-auto animate-fade" key={x._id}>
+          <div className="max-w-[280px] my-3 m-auto animate-fade" key={x._id}>
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
               <Image
                 priority
@@ -48,7 +48,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
                 className={`cursor-pointer rounded-md `}
               />
             </a>
-            <p className="text-gray-300 text-sm">{x.name}</p>
+            <p className="text-white text-sm text-center">{x.name}</p>
           </div>))}
       </div>
     </main>
