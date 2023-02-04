@@ -1,21 +1,52 @@
+import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
-import hero1 from '../../Images/Landscape/3.png'
-import hero2 from '../../Images/Landscape/hero1.jpg'
-import hero3 from '../../Images/Landscape/hero2.jpg'
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import hero4 from '../../Images/Landscape/1.png';
+import hero5 from '../../Images/Landscape/2.png';
+import hero1 from '../../Images/Landscape/3.png';
+import hero2 from '../../Images/Landscape/hero1.jpg';
+import hero3 from '../../Images/Landscape/hero2.jpg';
 const Hero: FC = () => {
+  const [imageArray, setimageArray] = useState([hero3, hero2, hero1])
+  const [sildes, setSlides] = useState(imageArray.slice(0, 3))
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    async function getImages() {
+      await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
+        const data = response.data.reverse().slice(0, 10).map((x: any) => x.image)
+        console.log(data)
+        setSlides(data.slice(0, 3))
+        setimageArray(data)
+      }).catch((err) => getImages())
+    }
+    getImages()
+  }, [])
+  const NextBtnClick = () => {
+    if (((current + 3) + 1) <= imageArray.length) {
+      setSlides(imageArray.slice(current + 1, (current + 3) + 1))
+      setCurrent(c => c + 1)
+    }
+  }
+  const PrevBtnClick = () => {
+    if ((current - 1) >= 0) {
+      setSlides(imageArray.slice(current - 1, (current + 3) - 1))
+      setCurrent(c => c - 1)
+    }
+  }
   return (
     <div className="w-full">
-      <div className="grid grid-cols-3 gap-0">
-        <div className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-          <Image src={hero3} alt="hero image" layout='fill' objectFit='cover' priority />
+      <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
+        <div className="flex justify-between absolute z-10 h-full w-full items-center">
+          <FaChevronLeft size={35} color='lightgray' className="cursor-pointer" onClick={PrevBtnClick} />
+          <FaChevronRight size={35} color='lightgray' className="cursor-pointer" onClick={NextBtnClick} />
         </div>
-        <div className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-          <Image src={hero2} alt="hero image" layout='fill' objectFit='cover' priority />
-        </div>
-        <div className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-          <Image src={hero1} alt="hero image" layout='fill' objectFit='cover' priority />
-        </div>
+        {
+          sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
+            <Image src={img} alt="hero image" layout='fill' objectFit='cover' priority className="animate-fadeIn" />
+          </div>)
+        }
       </div>
       <HeroMain />
     </div>
@@ -42,7 +73,6 @@ export const HeroMain: FC = () => {
     </h1>
     <p className="px-[5%] mb-2 text-bold md:text-lg text-sm">
       Join the Photohouse community, submit your photo to our next magazine
-      {/* <br /> become our lifetime memeber. */}
     </p>
     <div className="flex justify-center flex-col md:flex-row self-start md:self-auto mx-auto">
       <a href={redirect_links.facebook_group} className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-lg group">
