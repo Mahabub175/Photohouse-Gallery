@@ -23,7 +23,7 @@ const Magazines: FC = () => {
     getData()
   }, [])
   return (
-    <div className="max-w-[1360px] my-10 flex flex-col items-center m-auto">
+    <div className=" my-10 flex flex-col items-center m-auto">
       <Swiper
         breakpoints={{
           280: { slidesPerView: 1, },
@@ -43,7 +43,7 @@ const Magazines: FC = () => {
       // onSwiper={(swiper) => console.log(swiper)}
       >
         {magazinesList.map((x: any) => (
-          <SwiperSlide key={x._id}>
+          <SwiperSlide key={x._id} className='xl:py-3 py-0'>
             <Link href="/magazines" >
               <Image
                 priority
