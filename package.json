@@ -11,6 +11,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.1.3",
+    "caniuse-lite": "^1.0.30001450",
     "instagram-gallery": "^1.3.1",
     "next": "12.2.4",
     "react": "18.2.0",

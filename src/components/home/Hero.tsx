@@ -6,14 +6,14 @@ import hero1 from '../../Images/Landscape/3.png';
 import hero2 from '../../Images/Landscape/hero1.jpg';
 import hero3 from '../../Images/Landscape/hero2.jpg';
 const Hero: FC = () => {
-  const [imageArray, setimageArray] = useState([hero3, hero2, hero1])
-  const [sildes, setSlides] = useState(imageArray.slice(0, 3))
+  const [imageArray, setimageArray] = useState([])
+  const [sildes, setSlides] = useState([])
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
     async function getImages() {
-      await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
-        const data = response.data.reverse().slice(0, 15).map((x: any) => x.image)
+      await axios.get('https://api.photohousemagazine.com/home_slider_images').then((response) => {
+        const data = response.data.reverse().map((x: any) => x.image)
         console.log(data)
         setSlides(data.slice(0, 3))
         setimageArray(data)
