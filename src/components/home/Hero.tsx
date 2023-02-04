@@ -2,8 +2,6 @@ import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import hero4 from '../../Images/Landscape/1.png';
-import hero5 from '../../Images/Landscape/2.png';
 import hero1 from '../../Images/Landscape/3.png';
 import hero2 from '../../Images/Landscape/hero1.jpg';
 import hero3 from '../../Images/Landscape/hero2.jpg';
@@ -15,7 +13,7 @@ const Hero: FC = () => {
   useEffect(() => {
     async function getImages() {
       await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
-        const data = response.data.reverse().slice(0, 10).map((x: any) => x.image)
+        const data = response.data.reverse().slice(0, 15).map((x: any) => x.image)
         console.log(data)
         setSlides(data.slice(0, 3))
         setimageArray(data)
