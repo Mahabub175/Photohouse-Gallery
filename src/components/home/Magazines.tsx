@@ -43,7 +43,7 @@ const Magazines: FC = () => {
       // onSwiper={(swiper) => console.log(swiper)}
       >
         {magazinesList.map((x: any) => (
-          <SwiperSlide key={x._id} className='xl:py-3 py-0'>
+          <SwiperSlide key={x._id} className=''>
             <Link href="/magazines" >
               <Image
                 priority

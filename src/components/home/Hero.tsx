@@ -2,25 +2,28 @@ import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import hero1 from '../../Images/Landscape/3.png';
-import hero2 from '../../Images/Landscape/hero1.jpg';
-import hero3 from '../../Images/Landscape/hero2.jpg';
+import { setHeroImgData } from "../../store/slices/heroImgSlice";
+import { useAppSelector } from "../../utils/hooks/reduxHooks";
+
 const Hero: FC = () => {
-  const [imageArray, setimageArray] = useState([])
-  const [sildes, setSlides] = useState([])
+  const { heroImgsData } = useAppSelector((state) => state.heroImgs)
+  const [imageArray, setimageArray] = useState(heroImgsData)
+  const [sildes, setSlides] = useState(heroImgsData.slice(0, 3))
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
     async function getImages() {
       await axios.get('https://api.photohousemagazine.com/home_slider_images').then((response) => {
         const data = response.data.reverse().map((x: any) => x.image)
-        console.log(data)
+        setHeroImgData(data)
+        // console.log(data)
         setSlides(data.slice(0, 3))
         setimageArray(data)
       }).catch((err) => getImages())
     }
     getImages()
   }, [])
+
   const NextBtnClick = () => {
     if (((current + 3) + 1) <= imageArray.length) {
       setSlides(imageArray.slice(current + 1, (current + 3) + 1))
@@ -76,7 +79,7 @@ export const HeroMain: FC = () => {
       <a href={redirect_links.facebook_group} className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-lg group">
         <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-80 group-hover:h-56"></span>
         <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-        <span className="relative">Join Our Community</span>
+        <span className="relative">Join Our community</span>
       </a>
       <a href={redirect_links.submit_photo} className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-lg group">
         <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
