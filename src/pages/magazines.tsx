@@ -19,7 +19,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
     }
   }
   return (
-    <main className="py-4 bg-gray-900">
+    <main className="py-4">
       <div className="flex justify-between container m-auto items-center border-b-gray-500 border-b-2 pb-2 flex-col">
         <div className="w-full flex flex-col items-center ">
           <h1 className=" text-white sm:text-5xl text-3xl tracking-wider">

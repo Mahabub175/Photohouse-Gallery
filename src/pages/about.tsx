@@ -71,14 +71,18 @@ const About: NextPage = () => {
             {/* <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="lightgray" size={20} /></a> */}
           </div>
           <div>
-            <Image
-              priority
-              src={redirect_links.pagel_photo}
-              width={100}
-              height={127}
-              alt="page7"
-              className={`rounded-md animate-fade`}
-            />
+            <div className="w-[100px] h-[130px] relative m-auto">
+              <Image
+                priority
+                src={redirect_links.pagel_photo}
+                // width={100}
+                // height={127}
+                layout="fill"
+                objectFit="cover"
+                alt="page7"
+                className={`rounded-md animate-fade m-auto`}
+              />
+            </div>
             <p className="text-3xl font-bold">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
             <a href={redirect_links.pagel_facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF className="inline mx-2" color="lightgray" size={20} /></a>
@@ -87,12 +91,6 @@ const About: NextPage = () => {
             <a href={redirect_links.pagel_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="lightgray" size={20} /></a>
           </div>
         </div>
-        {/* <div className="px-[5%] flex flex-col justify-center self-center w-full">
-          <p className="text-xl">
-            <p className="text-center text-4xl font-bold mb-4">Our Mission</p>
-
-          </p>
-        </div> */}
       </div>
     </>
   );
