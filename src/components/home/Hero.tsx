@@ -36,7 +36,7 @@ const Hero: FC = () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-        <div className="flex justify-between absolute z-10 h-full w-full items-center">
+        <div className="flex justify-between absolute z-[2] h-full w-full items-center">
           <FaChevronLeft size={35} color='lightgray' className="cursor-pointer" onClick={PrevBtnClick} />
           <FaChevronRight size={35} color='lightgray' className="cursor-pointer" onClick={NextBtnClick} />
         </div>

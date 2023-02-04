@@ -20,7 +20,7 @@ const NavBar = () => {
     getLinks()
   }, [])
   return (
-    <div className="navbar">
+    <div className="navbar z-10">
       <nav
         className={`flex flex-1 justify-between align-middle leading-[60px] px-5 md:px-10   ${router.pathname === "/"
           ? "absolute bg-[#00000055]"
