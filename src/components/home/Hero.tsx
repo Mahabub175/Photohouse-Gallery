@@ -42,7 +42,7 @@ const Hero: FC = () => {
         </div>
         {
           sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-            <Image src={img} alt="hero image" layout='fill' objectFit='cover' priority className="animate-fadeIn" />
+            <Image src={img} alt="hero image" layout='fill' objectFit='cover' priority className="" />
           </div>)
         }
       </div>
