@@ -23,7 +23,7 @@ const Magazines: FC = () => {
     getData()
   }, [])
   return (
-    <div className="w-full my-10 flex flex-col items-center">
+    <div className="max-w-[1360px] my-10 flex flex-col items-center m-auto">
       <Swiper
         breakpoints={{
           280: { slidesPerView: 1, },
@@ -33,7 +33,7 @@ const Magazines: FC = () => {
         loop={true}
         effect={"coverflow"}
         speed={800}
-        autoplay={{ delay: 100000, disableOnInteraction: false, }}
+        autoplay={{ delay: 1000, disableOnInteraction: false, }}
         modules={[Autoplay, Navigation, EffectCoverflow]}
       // slidesPerView={5}
       // spaceBetween={0}
@@ -43,7 +43,7 @@ const Magazines: FC = () => {
       // onSwiper={(swiper) => console.log(swiper)}
       >
         {magazinesList.map((x: any) => (
-          <SwiperSlide key={x._id} className='xl:py-2'>
+          <SwiperSlide key={x._id}>
             <Link href="/magazines" >
               <Image
                 priority

@@ -16,7 +16,7 @@ const InstaGallery = () => {
         getLinks()
     }, [])
     return (
-        <div className="px-[1%] mb-5">
+        <div className="px-[1%] mb-5 mx-auto max-w-[1360px]">
             <div className="w-full flex flex-col items-center">
                 {/* <h1 className="font-bold text-transparent md:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
                     Instagram Feed
