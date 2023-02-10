@@ -27,7 +27,7 @@ const InstaGallery = () => {
 
             </div>
             {!!Insta_access_token && <InstagramGallery
-                // pagination={true}
+                pagination={true}
                 accessToken={Insta_access_token}
                 count={15} />}
             <div className="w-100 text-center my-3">

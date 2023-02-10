@@ -42,10 +42,10 @@ const NavBar = () => {
           </a>
         </Link>
         <div className="hidden md:block tracking-wider">
-          {["Home", "Magazines", 'publish', "Gallery", "About"].map((x, i) => (
+          {["Home", "|", "Magazines", "|", 'publish', "|", "Gallery", "|", "About"].map((x, i) => (
             <Fragment key={i + 1565}>
-              {i !== 2 ?
-                <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
+              {i !== 4 ?
+                (x === "|" ? <Link href="#">
                   <a
                     className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
                       (i === 0 && router.pathname == `/`)
@@ -55,7 +55,17 @@ const NavBar = () => {
                   >
                     {x}
                   </a>
-                </Link> :
+                </Link> : <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
+                  <a
+                    className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
+                      (i === 0 && router.pathname == `/`)
+                      ? " text-[#DEDEDE]"
+                      : " "
+                      }`}
+                  >
+                    {x}
+                  </a>
+                </Link>) :
                 <a className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
                   Get Published
                 </a>
