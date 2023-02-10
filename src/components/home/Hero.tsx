@@ -39,14 +39,14 @@ const Hero: FC = () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-        <div className="flex justify-between absolute z-[2] h-full w-full items-center">
-          <FaChevronLeft size={35} color='lightgray' className="cursor-pointer" onClick={PrevBtnClick} />
-          <FaChevronRight size={35} color='lightgray' className="cursor-pointer" onClick={NextBtnClick} />
+        <div className="flex justify-between absolute h-full w-full items-center">
+          <FaChevronLeft size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={PrevBtnClick} />
+          <FaChevronRight size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={NextBtnClick} />
         </div>
         {
           sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
             <Image src={img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
-            <p className="absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
+            <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
           </div>)
         }
       </div>
