@@ -32,6 +32,9 @@ nav div a,
 h1 {
   font-family: "Bebas Neue", cursive !important;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

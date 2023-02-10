@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./styles/Navbar.module.css";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false)
@@ -43,9 +43,9 @@ const NavBar = () => {
         </Link>
         <div className="hidden md:block tracking-wider">
           {["Home", "Magazines", 'publish', "Gallery", "About"].map((x, i) => (
-            <>
+            <Fragment key={i + 1565}>
               {i !== 2 ?
-                <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i}>
+                <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
                   <a
                     className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
                       (i === 0 && router.pathname == `/`)
@@ -60,7 +60,7 @@ const NavBar = () => {
                   Get Published
                 </a>
               }
-            </>
+            </Fragment>
           ))}
 
         </div>
@@ -78,8 +78,8 @@ const NavBar = () => {
           <nav className="bg-[#06202A] h-[100vh] md:hidden select-none animate-slideDown">
             <div className="tracking-wider flex flex-col h-[80vh] items-center justify-evenly text-2xl pt-20">
               {["Home", "Magazines", "publish", "Gallery", "About"].map((x, i) => (
-                <>
-                  {i !== 2 ? <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`} key={i} >
+                <Fragment key={i + 8948}>
+                  {i !== 2 ? <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}  >
                     <a
                       onClick={() => setMenu(show => !show)}
                       className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${router.pathname == `/${x.toLowerCase()}` ||
@@ -94,7 +94,7 @@ const NavBar = () => {
                     <a className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
                       Get Published
                     </a>}
-                </>
+                </Fragment>
               ))}
             </div>
           </nav>

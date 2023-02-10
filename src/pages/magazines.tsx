@@ -38,12 +38,13 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
       <div className="container m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {FilteredData.map((x: any) => (
           <div className="max-w-[280px] my-3 m-auto animate-fade" key={x._id}>
-            <a target={"_blank"} href={x.redirect_link} rel="noreferrer">
+            <a target={"_blank"} href={x.redirect_link} rel="noreferrer" className="relative">
               <Image
                 priority
                 src={x.image}
                 width={400}
-                height={550}
+                height={510}
+                layout="responsive"
                 alt="Magazines image"
                 className={`cursor-pointer rounded-md `}
               />
