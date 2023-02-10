@@ -1,7 +1,7 @@
 import axios from "axios";
-import Image from "next/image";
+import Link from "next/link";
 import { FC, useEffect, useState } from "react";
-import magaSliderStyles from "./magaSlide.module.css"
+import magaSliderStyles from "./magaSlide.module.css";
 
 const Magazines: FC = () => {
   const [magazinesList, setmagazinesList]: any[] = useState([])
@@ -24,12 +24,16 @@ const Magazines: FC = () => {
     <div className={magaSliderStyles.slider}>
       <div className={magaSliderStyles["slide-track"]}>
         {magazinesList.map((maga: any) => <div className={magaSliderStyles.slide} key={maga?._id}>
-          <img
-            src={maga?.image}
-            alt="img"
-            // className="max-w-[25%] max-h-[45vh] rounded-md "
-            className="h-[258px] w-[200px] rounded-sm"
-          />
+          <Link href='/magazines'>
+            <a>
+              <img
+                src={maga?.image}
+                alt="img"
+                // className="max-w-[25%] max-h-[45vh] rounded-md "
+                className="h-[258px] w-[200px] rounded-sm"
+              />
+            </a>
+          </Link>
         </div>)}
       </div>
     </div>

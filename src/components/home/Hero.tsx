@@ -14,9 +14,9 @@ const Hero: FC = () => {
   useEffect(() => {
     async function getImages() {
       await axios.get('https://api.photohousemagazine.com/home_slider_images').then((response) => {
-        const data = response.data.reverse().map((x: any) => x.image)
+        const data = response.data.reverse()
         setHeroImgData(data)
-        // console.log(data)
+        console.log(data)
         setSlides(data.slice(0, 3))
         setimageArray(data)
       }).catch((err) => getImages())
@@ -44,8 +44,9 @@ const Hero: FC = () => {
           <FaChevronRight size={35} color='lightgray' className="cursor-pointer" onClick={NextBtnClick} />
         </div>
         {
-          sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-            <Image src={img} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+          sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
+            <Image src={img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+            <p className="absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
           </div>)
         }
       </div>
