@@ -6,6 +6,7 @@ import { FiChevronLeft, FiChevronRight, FiMinusSquare, FiPlusSquare } from 'reac
 import { getGalleryData, setGalleryDetails } from '../../store/slices/gallerySlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/reduxHooks';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { base_url } from '../../configs';
 
 const Details = () => {
     const dispatch = useAppDispatch()
@@ -59,7 +60,7 @@ const Details = () => {
             <div className="lg:col-span-7 col-span-10  relative">
                 <Image
                     priority
-                    src={galleryDetails.image}
+                    src={`${base_url}/${galleryDetails.thumbnail}`}
                     quality={100}
                     // className="z-[-100]"
                     layout="fill"
@@ -70,7 +71,7 @@ const Details = () => {
                     <TransformWrapper>
                         <TransformComponent>
                             <div className="flex items-center h-[90vh]">
-                                <img src={galleryDetails.image} alt="" className="max-h-[90vh] " style={{ transform: `scale(${zoom})` }} />
+                                <img src={`${base_url}/${galleryDetails.image}`} alt="" className="max-h-[90vh] " style={{ transform: `scale(${zoom})` }} />
                             </div>
                             {/* <Image
                                 priority
@@ -105,7 +106,7 @@ const Details = () => {
                 <div className="grid grid-cols-1 px-2">
                     {
                         galleryDetails.artists?.map((artist: any, i: number) => <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1" key={i + 1212}>
-                            <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={artist.photo} alt="Bonnie Avatar" />
+                            <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={`${base_url}/${artist.photo}`} alt="Bonnie Avatar" />
                             <div className="px-5">
                                 <h3 className="text-sm font-bold tracking-tight text-white flex">{artist.name}&nbsp;&nbsp;
                                     {!!artist.flag && <img src={artist.flag} alt="flag" className="rounded-sm" style={{ height: "10px", marginTop: "6px" }} />}

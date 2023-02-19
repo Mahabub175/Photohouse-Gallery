@@ -2,9 +2,10 @@ import Image from "next/image";
 import { useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 import { Camera } from "react-feather";
+import { base_url } from "../../configs";
 import Modal from "./Modal";
 
-const AvatarUpload = ({ setFile }: any) => {
+const AvatarUpload = ({ setArtists, artIndex }: any) => {
     const [showModal, setShowModal] = useState(false);
     let editor: any = "";
     const [picture, setPicture]: any = useState({
@@ -31,12 +32,24 @@ const AvatarUpload = ({ setFile }: any) => {
             const canvasScaled = editor.getImageScaledToCanvas();
             const croppedImg = canvasScaled.toDataURL();
             const file = dataURLtoFile(croppedImg, "profile");
-            setFile(file)
+            postFile(file)
             setPicture({ ...picture, img: null, cropperOpen: false, croppedImg: croppedImg });
             setShowModal(false)
         }
     };
-
+    const postFile = async (newfile: any) => {
+        const formData = new FormData(); formData.append('image', newfile);
+        await fetch(`${base_url}/upload`, { method: 'POST', body: formData }).then(response => response.json())
+            .then(data => {
+                setArtists((art: any) => {
+                    const copy = [...art]
+                    const item = { ...art[artIndex], photo: data.url }
+                    copy[artIndex] = item
+                    return copy
+                })
+            })
+            .catch(error => alert("An error has occured! please try again."))
+    }
     const handleFileChange = (e: any) => {
         let url = URL.createObjectURL(e.target.files[0]);
         // console.log(url);
@@ -49,10 +62,10 @@ const AvatarUpload = ({ setFile }: any) => {
             <div className="w-full text-center">
                 {/* <img className="mx-auto" src={picture.croppedImg} style={{ width: "200px", height: "200px", padding: "5", borderRadius: '50%' }} alt='Avatar' /> <br /> */}
                 {/* <input className="w-[200px] h-[200px]" type="file" accept="image/*" onChange={handleFileChange} required /> */}
-                <div className="relative w-[150px] mx-auto">
-                    <input onChange={handleFileChange} type="file" className="cursor-pointer h-[150px] w-[150px] opacity-0 relative z-10" id="photo" name="photo" required />
-                    <div className="border-dashed border-2 border-gray-300 h-[150px] w-[150px] rounded-full mt-[-150px] ">
-                        {!picture.croppedImg ? <Camera color="whitesmoke" size={50} className='m-auto mt-[35%]' /> : <Image
+                <div className="relative w-[80px] mx-auto">
+                    <input onChange={handleFileChange} type="file" className="cursor-pointer h-[80px] w-[80px] opacity-0 relative z-10" id="photo" name="photo" />
+                    <div className="border-dashed border-2 border-gray-300 h-[80px] w-[80px] rounded-full mt-[-80px] ">
+                        {!picture.croppedImg ? <Camera color="whitesmoke" size={22} className='m-auto mt-[35%]' /> : <Image
                             priority
                             src={picture.croppedImg}
                             width={150}

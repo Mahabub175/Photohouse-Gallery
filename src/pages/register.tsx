@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AvatarUpload from "../components/UI/AvatarUpload";
-import { countries } from "../utils/countries"
+import { countries } from "../utils/countries";
 const Register = () => {
   const router = useRouter();
 
@@ -53,10 +52,10 @@ const Register = () => {
       label: "Website",
     },
   ];
-  useEffect(() => {
-    console.log(countries);
-    sessionStorage.setItem('countries', JSON.stringify(countries))
-  }, [])
+  // useEffect(() => {
+  //   console.log(countries);
+  //   sessionStorage.setItem('countries', JSON.stringify(countries))
+  // }, [])
   const [file, setFile]: any = useState(null);
   const [Preview, setPreview]: any = useState("");
   const [loading, setLoading]: any = useState(false);
@@ -113,7 +112,7 @@ const Register = () => {
   return (
     <main className=" py-12 min-h-[100vh] px-[10%] text-xl">
       <form onSubmit={handleSubmit}>
-        <AvatarUpload setFile={setFile} />
+        {/* <AvatarUpload setFile={setFile} /> */}
         <div className="flex justify-center pb-4">
         </div>
         <div className="grid md:grid-cols-2 md:gap-6 gap-2">

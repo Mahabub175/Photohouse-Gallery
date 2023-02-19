@@ -42,41 +42,36 @@ const NavBar = () => {
           </a>
         </Link>
         <div className="hidden md:block tracking-wider">
-          {["Home", "|", "Magazines", "|", 'publish', "|", "Gallery", "|", "About"].map((x, i) => (
-            <Fragment key={i + 1565}>
-              {i !== 4 ?
-                (x === "|" ? <Link href="#">
-                  <a
-                    className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
-                      (i === 0 && router.pathname == `/`)
-                      ? " text-[#DEDEDE]"
-                      : " "
-                      }`}
-                  >
-                    {x}
-                  </a>
-                </Link> : <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
-                  <a
-                    className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl ${router.pathname == `/${x.toLowerCase()}` ||
-                      (i === 0 && router.pathname == `/`)
-                      ? " text-[#DEDEDE]"
-                      : " "
-                      }`}
-                  >
-                    {x}
-                  </a>
-                </Link>) :
-                <a className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
-                  Get Published
-                </a>
-              }
-            </Fragment>
-          ))}
-
+          <Link href="/">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> Home </a>
+          </Link>
+          <a className='text-xl'> | </a>
+          <Link href="/magazines">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> Magazines </a>
+          </Link>
+          <a className='text-xl'> | </a>
+          <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`} href={redirect_links.submission_link} target="_blank" rel="noreferrer">
+            Get Published
+          </a>
+          <a className='text-xl'> | </a>
+          <Link href="/gallery">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> Gallery </a>
+          </Link>
+          <a className='text-xl'> | </a>
+          <Link href="/about">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> About </a>
+          </Link>
+          {/* <a className='text-xl'> | </a>
+          <Link href="/login">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> Login </a>
+          </Link>
+          <Link href="/dashboard">
+            <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}> Dashboard </a>
+          </Link> */}
         </div>
         <div className="md:hidden h-full pt-6 cursor-pointer" onClick={() => setMenu(show => !show)}>
-          <div className="w-[20px] h-[2px] bg-white mb-2"></div>
-          <div className="w-[20px] h-[2px] bg-white"></div>
+          <div className={`w-[20px] h-[2px] bg-white mb-2 ${showMenu && 'rotate-[180deg]'} transition ease-in-out delay-150`}></div>
+          <div className={`w-[20px] h-[2px] bg-white  ${showMenu && '-rotate-[180deg]'} transition ease-in-out delay-150`}></div>
         </div>
         {/* <button id="menuBtn" className="hamburger block sm:hidden focus:outline-none" type="button">
         <span className="hamburger__top-bun"></span>

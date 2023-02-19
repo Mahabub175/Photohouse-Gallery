@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Camera } from "react-feather";
+import { base_url } from "../../configs";
 import { getGalleryData, setGalleryDetails } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
 
@@ -22,9 +23,9 @@ const Gallery: NextPage = (props: any) => {
             {/* <div className="w-full h-full absolute backdrop-blur-sm bg-white/10 z-10"></div> */}
             <a className="relative transition-all duration-500 group-hover:scale-105 cursor-pointer ">
               <img
-                src={x.image}
+                src={`${base_url}/${x.thumbnail}`}
                 alt="gallery image"
-                className="animate-slideDown"
+                className="animate-slideDown w-full"
                 onClick={() => {
                   dispatch(setGalleryDetails(i))
                   router.push(`/gallery/details?g_index=${i}`)
@@ -49,7 +50,7 @@ const Gallery: NextPage = (props: any) => {
             <div className="w-full h-full absolute backdrop-blur-sm bg-white/10 z-10"></div>
             <a className="relative transition-all duration-500 group-hover:scale-105 cursor-pointer ">
               <img
-                src={x.image}
+                src={`${base_url}/${x.thumbnail}`}
                 alt="gallery image"
                 className="animate-slideDown"
               />

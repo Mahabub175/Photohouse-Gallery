@@ -7,6 +7,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}"
   ],
   // prefix: 'tw-',
+  // darkMode: 'media',
   theme: {
     colors: {
       transparent: 'transparent',

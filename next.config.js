@@ -10,7 +10,7 @@ const nextConfig = {
     //     pathname: '/**',
     //   },
     // ],
-    domains: ["i.ibb.co", "flagcdn.com", "images.unsplash.com"],
+    domains: ["i.ibb.co", "flagcdn.com", "images.unsplash.com", "localhost", "api.photohousemagazine.com"],
   },
   swcMinify: true,
 }
