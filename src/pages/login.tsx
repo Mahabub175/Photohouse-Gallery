@@ -5,9 +5,9 @@ import CustomInput from '../components/UI/CustomInput';
 const Login = () => {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
-    const [Email, setEmail] = useState("")
     // const [Email, setEmail] = useState("photohouseMagazine2023@gmail.com")
     // const [Pass, setPass] = useState("&3Yev7jUcEtK8g#37l8l")
+    const [Email, setEmail] = useState("")
     const [Pass, setPass] = useState("")
     const handleSubmit = (e: any) => {
         e.preventDefault()

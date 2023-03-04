@@ -23,10 +23,11 @@ const DashboardGallery = () => {
     const [imageUrl, setImageUrl]: any = useState(null)
     const [artists, setArtists] = useState([artistObj])
     const [loading, setLoading] = useState(false)
+    const [isHomeSlider, setisHomeSlider] = useState(false)
     const handleSubmit = (e: any) => {
         e.preventDefault()
         const defaultGuy = artists.find((x, i) => x.isDefault)
-        const body = { artists, thumbnail, image: imageUrl, click: defaultGuy?.name || "", flag: defaultGuy?.flag || "" }
+        const body = { artists, thumbnail, image: imageUrl, isHomeSlider, click: defaultGuy?.name || "", flag: defaultGuy?.flag || "" }
         // console.log(body)
         postDatas(body)
     }
@@ -134,6 +135,11 @@ const DashboardGallery = () => {
                     </div>)
                 }
 
+            </div>
+            <div className='my-2'>
+                <input type="checkbox"
+                    onChange={(e: any) => setisHomeSlider(e.target.checked)} checked={isHomeSlider}
+                    name="isDefault" id="isDefault" className='h-[15px] w-[15px] mt-4' /> &nbsp; <span>Add this to home slider</span>
             </div>
             <div className="flex justify-center mt-5">
                 <button type="submit" className="btn-blue px-12 rounded-md " disabled={loading}>

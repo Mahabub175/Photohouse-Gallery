@@ -44,7 +44,7 @@ const Gallery: NextPage = (props: any) => {
 
         </div>
       ))}
-      {!galleryData.length && gallryImages?.map((x, i) => (
+      {/* {!galleryData.length && gallryImages?.map((x, i) => (
         <div className="mb-1 animate-fadeIn" key={x._id}>
           <div className="group relative block overflow-hidden transition-all duration-500 ">
             <div className="w-full h-full absolute backdrop-blur-sm bg-white/10 z-10"></div>
@@ -58,15 +58,15 @@ const Gallery: NextPage = (props: any) => {
           </div>
 
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
 
 export default Gallery;
-export async function getStaticProps() {
-  const gallryImages = await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
-    return response.data.reverse()
-  }).catch((err) => [])
-  return { props: { gallryImages }, revalidate: 60 }
-}
+// export async function getStaticProps() {
+//   const gallryImages = await axios.get('https://api.photohousemagazine.com/gallery').then((response) => {
+//     return response.data.reverse()
+//   }).catch((err) => [])
+//   return { props: { gallryImages }, revalidate: 60 }
+// }
