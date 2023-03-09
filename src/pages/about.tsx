@@ -1,3 +1,4 @@
+import axios from "axios";
 import { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -20,9 +21,8 @@ const About: NextPage = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch(`${base_url}/redirect_links`)
-        .then((response) => response.json())
-        .then((data) => { setredirect_links(data); console.log(data) }).catch(() => getLinks())
+      axios.get(`${base_url}/redirect_links`)
+        .then((data) => { setredirect_links(data.data) }).catch(() => getLinks())
     }
     getLinks()
   }, [])

@@ -3,26 +3,17 @@ import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { base_url } from "../../configs";
-import { setHeroImgData } from "../../store/slices/heroImgSlice";
-import { useAppSelector } from "../../utils/hooks/reduxHooks";
 
 const Hero: FC = () => {
-  const { heroImgsData } = useAppSelector((state) => state.heroImgs)
-  const [imageArray, setimageArray] = useState(heroImgsData)
-  const [sildes, setSlides] = useState(heroImgsData.slice(0, 3))
+  const [imageArray, setimageArray] = useState([])
+  const [sildes, setSlides] = useState([])
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
     async function getImages() {
-      await axios.get(`${base_url}/home_slider_images`).then((response) => {
-        const data = response.data.reverse()
-        setHeroImgData(data)
-        console.log(data)
-        setSlides(data.slice(0, 3))
-        setimageArray(data)
-      }).catch((err) => getImages())
+      await axios.get(`${base_url}/home_slider_images`).then((res) => { }).catch((err) => getImages())
     }
-    getImages()
+    // getImages()
   }, [])
 
   const NextBtnClick = () => {
@@ -64,9 +55,8 @@ export const HeroMain: FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch(`${base_url}/redirect_links`)
-        .then((response) => response.json())
-        .then((data) => setredirect_links(data)).catch(() => getLinks())
+      axios.get(`${base_url}/redirect_links`)
+        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
     }
     getLinks()
   }, [])
