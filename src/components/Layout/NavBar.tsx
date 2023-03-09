@@ -4,6 +4,7 @@ import styles from "./styles/Navbar.module.css";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
+import { base_url } from "../../configs";
 
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false)
@@ -13,7 +14,7 @@ const NavBar = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch('https://api.photohousemagazine.com/redirect_links')
+      fetch(`${base_url}/redirect_links`)
         .then((response) => response.json())
         .then((data) => setredirect_links(data)).catch(() => getLinks())
     }

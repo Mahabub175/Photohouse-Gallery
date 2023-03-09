@@ -1,13 +1,14 @@
 import axios from "axios";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
+import { base_url } from "../../configs";
 import magaSliderStyles from "./magaSlide.module.css";
 
 const Magazines: FC = () => {
   const [magazinesList, setmagazinesList]: any[] = useState([])
   useEffect(() => {
     const getData = async () => {
-      await axios.get('https://api.photohousemagazine.com/magazines')
+      await axios.get(`${base_url}/magazines`)
         .then((response) => { setmagazinesList(response.data.reverse()) })
         .catch((err) => { getData() })
     }

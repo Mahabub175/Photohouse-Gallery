@@ -2,6 +2,7 @@ import axios from "axios";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useState } from "react";
+import { base_url } from "../configs";
 
 const Magazines: NextPage = ({ magazinesList }: any) => {
   const [FilteredData, setFilteredData] = useState(magazinesList)
@@ -59,7 +60,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
 export default Magazines;
 
 export async function getStaticProps() {
-  const magazinesList = await axios.get('https://api.photohousemagazine.com/magazines').then((response) => {
+  const magazinesList = await axios.get(`${base_url}/magazines`).then((response) => {
     return response.data.reverse()
   }).catch((err) => [])
   return { props: { magazinesList }, revalidate: 60 }

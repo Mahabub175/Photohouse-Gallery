@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaBattleNet, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { base_url } from "../../configs";
 import logo_dark from "../../Images/logo.png";
 
 const Footer: React.FC = () => {
@@ -16,7 +17,7 @@ const Footer: React.FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch('https://api.photohousemagazine.com/redirect_links')
+      fetch(`${base_url}/redirect_links`)
         .then((response) => response.json())
         .then((data) => setredirect_links(data)).catch(() => getLinks())
     }

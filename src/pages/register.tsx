@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AvatarUpload from "../components/UI/AvatarUpload";
+import { base_url } from "../configs";
 import { countries } from "../utils/countries";
 const Register = () => {
   const router = useRouter();
@@ -91,14 +92,14 @@ const Register = () => {
     formData.append('email', userData.email);
     formData.append('profession', userData.profession);
     formData.append('name', userData.firstname + " " + userData.lastname);
-    console.log(formData);
+    // console.log(formData);
     setLoading(true)
-    fetch('https://api.photohousemagazine.com/regn_memeber', {
+    fetch(`${base_url}/regn_memeber`, {
       method: 'POST',
       body: formData
     }).then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         router.push("/members")
       })
       .catch(error => console.error(error))

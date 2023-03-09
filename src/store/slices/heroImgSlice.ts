@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { base_url } from '../../configs';
 // Define the initial state using that type
 const initialState: any = {
     heroImgsData: [],
@@ -10,7 +11,7 @@ const initialState: any = {
 }
 export const getheroImgsData = createAsyncThunk('heroImgs/getheroImgs',
     async (thunkAPI) => {
-        const res = await fetch('https://api.photohousemagazine.com/home_slider_images').then((data) => data.json())
+        const res = await fetch(`${base_url}/home_slider_images`).then((data) => data.json())
         return res.reverse()
     })
 

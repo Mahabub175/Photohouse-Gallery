@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FaFacebookSquare, FaFirefoxBrowser, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
+import { base_url } from '../configs';
 
 const Members = (props: any) => {
 
@@ -11,8 +12,8 @@ const Members = (props: any) => {
     const [membersList, setmembersList] = useState([])
     useEffect(() => {
         const getData = async () => {
-            await axios.get('https://api.photohousemagazine.com/members').then((response) => {
-                console.log(response.data)
+            await axios.get(`${base_url}/members`).then((response) => {
+                // console.log(response.data)
                 setmembersList(response.data)
             }).catch((err) => {
                 console.log(err)
@@ -102,7 +103,7 @@ const Members = (props: any) => {
 
 export default Members;
 // export async function getServerSideProps() {
-//     const membersList = await axios.get('https://api.photohousemagazine.com/members').then((response) => {
+//     const membersList = await axios.get('${base_url}/members').then((response) => {
 //         return response.data
 //     }).catch((err) => {
 //         console.log(err)

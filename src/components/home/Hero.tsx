@@ -2,6 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { base_url } from "../../configs";
 import { setHeroImgData } from "../../store/slices/heroImgSlice";
 import { useAppSelector } from "../../utils/hooks/reduxHooks";
 
@@ -13,7 +14,7 @@ const Hero: FC = () => {
 
   useEffect(() => {
     async function getImages() {
-      await axios.get('https://api.photohousemagazine.com/home_slider_images').then((response) => {
+      await axios.get(`${base_url}/home_slider_images`).then((response) => {
         const data = response.data.reverse()
         setHeroImgData(data)
         console.log(data)
@@ -63,7 +64,7 @@ export const HeroMain: FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch('https://api.photohousemagazine.com/redirect_links')
+      fetch(`${base_url}/redirect_links`)
         .then((response) => response.json())
         .then((data) => setredirect_links(data)).catch(() => getLinks())
     }

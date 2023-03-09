@@ -1,8 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../index'
-import img1 from "../../Images/Gallery/1.png";
-import imgL from "../../Images/Landscape/land04.png";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { base_url } from '../../configs';
 // Define the initial state using that type
 const initialState: any = {
     galleryData: [],
@@ -10,7 +8,7 @@ const initialState: any = {
 }
 export const getGalleryData = createAsyncThunk('gallery/getGallery',
     async (thunkAPI) => {
-        const res = await fetch('https://api.photohousemagazine.com/gallery').then((data) => data.json())
+        const res = await fetch(`${base_url}/gallery`).then((data) => data.json())
         return res.reverse()
     })
 

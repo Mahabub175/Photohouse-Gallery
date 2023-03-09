@@ -1,6 +1,7 @@
 import { InstagramGallery } from "instagram-gallery";
 import { useEffect, useState } from "react";
 import { FaInstagram } from "react-icons/fa";
+import { base_url } from "../../configs";
 const InstaGallery = () => {
     // Insta_access_token
     const [{ Insta_access_token, instagram }, setredirect_links] = useState({
@@ -9,7 +10,7 @@ const InstaGallery = () => {
     })
     useEffect(() => {
         const getLinks = () => {
-            fetch('https://api.photohousemagazine.com/redirect_links').then((response) => response.json())
+            fetch(`${base_url}/redirect_links`).then((response) => response.json())
                 .then((data) => setredirect_links(data))
                 .catch(() => getLinks())
         }

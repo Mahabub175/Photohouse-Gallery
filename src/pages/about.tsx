@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaEnvelope, FaFacebookF, FaGlobe, FaInstagram } from "react-icons/fa";
+import { base_url } from "../configs";
 import ceo from "../Images/CEO.jpg";
 import pagel from "../Images/pagel.jpg";
 
@@ -19,7 +20,7 @@ const About: NextPage = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch('https://api.photohousemagazine.com/redirect_links')
+      fetch(`${base_url}/redirect_links`)
         .then((response) => response.json())
         .then((data) => { setredirect_links(data); console.log(data) }).catch(() => getLinks())
     }
