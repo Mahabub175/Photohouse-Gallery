@@ -15,7 +15,7 @@ const InstaGallery = () => {
                 .then((data) => setredirect_links(data.data))
                 .catch(() => getLinks())
         }
-        getLinks()
+        // getLinks()
     }, [])
     return (
         <div className="px-[1%] mb-5 mx-auto">

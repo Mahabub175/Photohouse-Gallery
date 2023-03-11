@@ -24,7 +24,7 @@ const About: NextPage = () => {
       axios.get(`${base_url}/redirect_links`)
         .then((data) => { setredirect_links(data.data) }).catch(() => getLinks())
     }
-    getLinks()
+    // getLinks()
   }, [])
   return (
     <>

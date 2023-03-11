@@ -12,7 +12,7 @@ const Magazines: FC = () => {
         .then((response) => { setmagazinesList(response.data.reverse()) })
         .catch((err) => { getData() })
     }
-    getData()
+    // getData()
   }, [])
   {/* <div className=" my-10 flex flex-row gap-3 overflow-x-auto scrollbar-hide">
   {magazinesList.map((maga: any) => <img
