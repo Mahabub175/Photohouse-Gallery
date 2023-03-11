@@ -98,3 +98,17 @@ h1 {
   right: 0px !important;
   z-index: 100;
 }
+.maga-slide .slick-slide {
+  opacity: 0.4;
+}
+.maga-slide .slick-center {
+  opacity: 1 !important;
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+}
+.maga-slide .slick-prev {
+  display: none !important;
+}
+.maga-slide .slick-next {
+  display: none !important;
+}

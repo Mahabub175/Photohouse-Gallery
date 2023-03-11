@@ -15,8 +15,7 @@ const Hero: FC = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+    // fade: true,
     cssEase: "linear",
     slidesToShow: 3,
     slidesToScroll: 1
@@ -46,7 +45,7 @@ const Hero: FC = () => {
     }
   }
   return (
-    <div className="w-full">
+    <div className="w-full home-slide">
       {/* <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
         <div className="flex justify-between absolute h-full w-full items-center">
           <FaChevronLeft size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={PrevBtnClick} />
