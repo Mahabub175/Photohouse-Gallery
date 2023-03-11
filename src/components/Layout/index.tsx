@@ -15,7 +15,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setPreloader(false)
-    }, 0);
+    }, 2000);
   }, [])
 
   return (

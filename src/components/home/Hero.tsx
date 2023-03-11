@@ -58,14 +58,16 @@ const Hero: FC = () => {
           </div>)
         }
       </div> */}
-      <Slider {...settings}>
-        {
-          sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
-            <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
-            <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
-          </div>)
-        }
-      </Slider>
+      <div className="min-h-[95vh]">
+        <Slider {...settings}>
+          {
+            sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
+              <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+              <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
+            </div>)
+          }
+        </Slider>
+      </div>
       <HeroMain />
     </div>
   );
