@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaImage } from 'react-icons/fa';
@@ -9,17 +10,20 @@ const ImageUploader = (props: any) => {
     const handleFile = (e: any) => {
         const newfile = e.target.files[0];
         if (newfile) {
-            setLoading(true)
             setImageUrl(null)
+            setLoading(true)
             postFile(newfile)
         }
 
     }
     const postFile = async (newfile: any) => {
         const formData = new FormData(); formData.append('image', newfile);
-
-        await fetch(`${base_url}/upload`, { method: 'POST', body: formData }).then(response => response.json())
-            .then(data => { setImageUrl(data.url) })
+        await axios({
+            method: "post",
+            url: `${base_url}/upload`,
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+        }).then(data => setImageUrl(data.data.url))
             .catch(error => console.error(error))
             .finally(() => setLoading(false))
 

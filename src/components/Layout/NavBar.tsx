@@ -5,6 +5,7 @@ import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import { base_url } from "../../configs";
+import axios from "axios";
 
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false)
@@ -14,11 +15,10 @@ const NavBar = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch(`${base_url}/redirect_links`)
-        .then((response) => response.json())
-        .then((data) => setredirect_links(data)).catch(() => getLinks())
+      axios.get(`${base_url}/redirect_links`)
+        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
     }
-    getLinks()
+    // getLinks()
   }, [])
   return (
     <div className="navbar z-10">

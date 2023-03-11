@@ -1,3 +1,4 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -17,11 +18,10 @@ const Footer: React.FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch(`${base_url}/redirect_links`)
-        .then((response) => response.json())
-        .then((data) => setredirect_links(data)).catch(() => getLinks())
+      axios.get(`${base_url}/redirect_links`)
+        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
     }
-    getLinks()
+    // getLinks()
   }, [])
 
 

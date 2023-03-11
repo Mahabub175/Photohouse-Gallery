@@ -20,7 +20,7 @@ const Members = (props: any) => {
                 getData()
             })
         }
-        getData()
+        // getData()
     }, [])
     return (
         <>

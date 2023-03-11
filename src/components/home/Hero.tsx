@@ -3,24 +3,31 @@ import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { base_url } from "../../configs";
-import { setHeroImgData } from "../../store/slices/heroImgSlice";
-import { useAppSelector } from "../../utils/hooks/reduxHooks";
-
+import Slider from "react-slick";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const Hero: FC = () => {
-  const { heroImgsData } = useAppSelector((state) => state.heroImgs)
-  const [imageArray, setimageArray] = useState(heroImgsData)
-  const [sildes, setSlides] = useState(heroImgsData.slice(0, 3))
+  const [imageArray, setimageArray] = useState([])
+  const [sildes, setSlides] = useState([])
   const [current, setCurrent] = useState(0)
-
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    // fade: true,
+    cssEase: "linear",
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
   useEffect(() => {
     async function getImages() {
-      await axios.get(`${base_url}/home_slider_images`).then((response) => {
-        const data = response.data.reverse()
-        setHeroImgData(data)
-        console.log(data)
-        setSlides(data.slice(0, 3))
-        setimageArray(data)
-      }).catch((err) => getImages())
+      await axios.get(`${base_url}/all`)
+        .then((res) => {
+          setimageArray(res.data.homeSliderImgs)
+          setSlides(res.data.homeSliderImgs)
+        })
+        .catch((err) => getImages())
     }
     getImages()
   }, [])
@@ -38,18 +45,28 @@ const Hero: FC = () => {
     }
   }
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
+    <div className="w-full home-slide">
+      {/* <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
         <div className="flex justify-between absolute h-full w-full items-center">
           <FaChevronLeft size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={PrevBtnClick} />
           <FaChevronRight size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={NextBtnClick} />
         </div>
         {
           sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
-            <Image src={img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+            <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
             <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
           </div>)
         }
+      </div> */}
+      <div className="min-h-[95vh]">
+        <Slider {...settings}>
+          {
+            sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
+              <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+              <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
+            </div>)
+          }
+        </Slider>
       </div>
       <HeroMain />
     </div>
@@ -64,11 +81,10 @@ export const HeroMain: FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      fetch(`${base_url}/redirect_links`)
-        .then((response) => response.json())
-        .then((data) => setredirect_links(data)).catch(() => getLinks())
+      axios.get(`${base_url}/redirect_links`)
+        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
     }
-    getLinks()
+    // getLinks()
   }, [])
   return <div className=" relative flex flex-col justify-center self-center w-full text-center my-5">
     <h1 className="mb-3 text-2xl  md:text-5xl lg:text-6xl  tracking-wider text-white">

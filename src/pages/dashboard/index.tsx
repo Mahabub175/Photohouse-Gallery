@@ -6,7 +6,7 @@ import Sidebar from '../../components/dashComps/sidebar';
 
 const Index = () => {
     const router = useRouter()
-    const [activePage, setActive] = useState("G")
+    const [activePage, setActive] = useState("M")
     useEffect(() => {
         const isLoggedIn: any = localStorage.getItem("isAshrafPagel")
         if (!JSON.parse(isLoggedIn)) {

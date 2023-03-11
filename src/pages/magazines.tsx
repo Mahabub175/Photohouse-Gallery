@@ -42,7 +42,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
             <a target={"_blank"} href={x.redirect_link} rel="noreferrer" className="relative">
               <Image
                 priority
-                src={x.image}
+                src={base_url + "/" + x.thumbnail}
                 width={400}
                 height={517}
                 layout="responsive"
@@ -60,8 +60,8 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
 export default Magazines;
 
 export async function getStaticProps() {
-  const magazinesList = await axios.get(`${base_url}/magazines`).then((response) => {
-    return response.data.reverse()
+  const magazinesList = await axios.get(`${base_url}/all`).then((response) => {
+    return response.data.Magazines.reverse()
   }).catch((err) => [])
   return { props: { magazinesList }, revalidate: 60 }
 }

@@ -28,7 +28,8 @@ const DashboardGallery = () => {
         e.preventDefault()
         const defaultGuy = artists.find((x, i) => x.isDefault)
         const body = { artists, thumbnail, image: imageUrl, isHomeSlider, click: defaultGuy?.name || "", flag: defaultGuy?.flag || "" }
-        // console.log(body)
+        console.log(body)
+        // return
         postDatas(body)
     }
     const postDatas = async (body: any) => {

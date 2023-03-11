@@ -1,42 +1,59 @@
 import axios from "axios";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
+import Slider from "react-slick";
 import { base_url } from "../../configs";
-import magaSliderStyles from "./magaSlide.module.css";
 
 const Magazines: FC = () => {
   const [magazinesList, setmagazinesList]: any[] = useState([])
+  const settings = {
+    className: "center",
+    centerMode: true,
+    centerPadding: "80px",
+    slidesToShow: 5,
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   useEffect(() => {
     const getData = async () => {
-      await axios.get(`${base_url}/magazines`)
-        .then((response) => { setmagazinesList(response.data.reverse()) })
+      await axios.get(`${base_url}/all`)
+        .then((response) => { setmagazinesList(response.data.Magazines.reverse()) })
         .catch((err) => { getData() })
     }
     getData()
   }, [])
-  {/* <div className=" my-10 flex flex-row gap-3 overflow-x-auto scrollbar-hide">
-  {magazinesList.map((maga: any) => <img
-      src={maga?.image}
-      alt="img"
-      className="max-w-[25%] max-h-[45vh] rounded-md "
-      key={maga?._id} />)} 
-      </div>*/}
   return (
-    <div className={magaSliderStyles.slider}>
-      <div className={magaSliderStyles["slide-track"]}>
-        {magazinesList.map((maga: any) => <div className={magaSliderStyles.slide} key={maga?._id}>
+    <div className="maga-slide my-5">
+      <Slider {...settings}>
+        {magazinesList.map((maga: any) => <div key={maga?._id}>
           <Link href='/magazines'>
             <a>
-              <img
-                src={maga?.image}
-                alt="img"
-                // className="max-w-[25%] max-h-[45vh] rounded-md "
-                className="h-[258px] w-[200px] rounded-sm"
-              />
+              <img src={base_url + "/" + maga?.thumbnail} alt="img" className="w-full  px-[10px] py-[50px] rounded-sm" />
             </a>
           </Link>
         </div>)}
-      </div>
+      </Slider>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { InstagramGallery } from "instagram-gallery";
 import { useEffect, useState } from "react";
 import { FaInstagram } from "react-icons/fa";
@@ -9,19 +10,16 @@ const InstaGallery = () => {
         instagram: "#",
     })
     useEffect(() => {
-        const getLinks = () => {
-            fetch(`${base_url}/redirect_links`).then((response) => response.json())
-                .then((data) => setredirect_links(data))
+        const getLinks = async () => {
+            await axios.get(`${base_url}/redirect_links`)
+                .then((data) => setredirect_links(data.data))
                 .catch(() => getLinks())
         }
-        getLinks()
+        // getLinks()
     }, [])
     return (
         <div className="px-[1%] mb-5 mx-auto">
             <div className="w-full flex flex-col items-center">
-                {/* <h1 className="font-bold text-transparent md:text-5xl text-3xl bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-300 pb-4">
-                    Instagram Feed
-                </h1> */}
                 <h1 className="md:text-5xl text-3xl tracking-wider pb-4 text-white">
                     Instagram Feed
                 </h1>

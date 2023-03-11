@@ -106,7 +106,7 @@ const Details = () => {
                 <div className="grid grid-cols-1 px-2">
                     {
                         galleryDetails.artists?.map((artist: any, i: number) => <div className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1" key={i + 1212}>
-                            <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={`${base_url}/${artist.photo}`} alt="Bonnie Avatar" />
+                            <img className="w-[50px] h-[50px] rounded-full ring ring-emerald-400" src={`${base_url}/${artist.photo}`} alt="" />
                             <div className="px-5">
                                 <h3 className="text-sm font-bold tracking-tight text-white flex">{artist.name}&nbsp;&nbsp;
                                     {!!artist.flag && <img src={artist.flag} alt="flag" className="rounded-sm" style={{ height: "10px", marginTop: "6px" }} />}

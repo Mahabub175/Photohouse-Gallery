@@ -5,43 +5,28 @@ import CustomInput from '../UI/CustomInput';
 import ImageUploader from './ImageUploader';
 
 const AddMagazine = () => {
-    const artistObj = {
-        photo: "",
-        name: "",
-        profession: "",
-        facebook: "",
-        instagram: "",
-        website: "",
-        Country: "",
-        flag: "",
-        isDefault: true
-    }
     const [thumbnail, setThumbnail]: any = useState(null)
-    const [imageUrl, setImageUrl]: any = useState(null)
-    const [artists, setArtists] = useState([artistObj])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
+    const [magaData, setMagaData] = useState({
+        Redirectlink: "", name: ""
+    })
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        const body = { artists, thumbnail, image: imageUrl }
-        // console.log(body)
+        const body = { thumbnail, redirect_link: magaData.Redirectlink, name: magaData.name }
+        console.log(body)
         postDatas(body)
     }
     const postDatas = async (body: any) => {
         setLoading(true)
-        await axios.post(`${base_url}/gallery`, body)
+        await axios.post(`${base_url}/magazines`, body)
             .then(data => {
                 alert(data.data?.message)
             })
             .catch(error => alert("An error has occured! please try again."))
             .finally(() => setLoading(false))
     }
-    const handleChange = (e: any, index: number) => {
-        setArtists((art: any) => {
-            const copy = [...art]
-            const item = { ...art[index], [e.target.name]: e.target.value }
-            copy[index] = item
-            return copy
-        })
+    const handleChange = (e: any) => {
+        setMagaData({ ...magaData, [e.target.name]: e.target.value })
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -50,17 +35,17 @@ const AddMagazine = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-10">
                 <CustomInput type="text" placeholder=""
-                    // value={item.name}
+                    value={magaData.name}
                     name="name"
                     label="Name"
                     required
-                // onChange={(e: any) => handleChange(e, index)} 
+                    onChange={(e: any) => handleChange(e)}
                 />
                 <CustomInput type="text" placeholder=""
-                    // value={item.Redirect link}
-                    name="Redirect link"
+                    value={magaData.Redirectlink}
+                    name="Redirectlink"
                     label="Redirect link"
-                // onChange={(e: any) => handleChange(e, index)} 
+                    onChange={(e: any) => handleChange(e)}
                 />
 
             </div>
