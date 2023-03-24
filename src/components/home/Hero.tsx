@@ -1,12 +1,11 @@
 import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { base_url } from "../../configs";
 import Slider from "react-slick";
+import { base_url } from "../../configs";
 // Import css files
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 const Hero: FC = () => {
   const [imageArray, setimageArray] = useState([])
   const [sildes, setSlides] = useState([])
@@ -26,8 +25,7 @@ const Hero: FC = () => {
         .then((res) => {
           setimageArray(res.data.homeSliderImgs)
           setSlides(res.data.homeSliderImgs)
-        })
-        .catch((err) => getImages())
+        }).catch((err) => getImages())
     }
     getImages()
   }, [])
