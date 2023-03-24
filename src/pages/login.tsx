@@ -11,7 +11,7 @@ const Login = () => {
     const [Pass, setPass] = useState("")
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        if (Email === "photohouseMagazine2023@gmail.com" && Pass === "&3Yev7jUcEtK8g#37l8l") {
+        if (["ThomasPagel", "SabbirAshraf"].includes(Email.trim()) && Pass === "photohousemagazine22@gofc") {
             localStorage.setItem("isAshrafPagel", JSON.stringify(true))
             router.push("/dashboard")
         } else {
@@ -29,7 +29,7 @@ const Login = () => {
                         type="email"
                         placeholder=""
                         value={Email}
-                        label="Email"
+                        label="Username"
                         name="email"
                         onChange={(e: any) => setEmail(e.target.value)}
                     />
