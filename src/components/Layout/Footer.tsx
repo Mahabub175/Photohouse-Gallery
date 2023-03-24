@@ -18,10 +18,10 @@ const Footer: React.FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      axios.get(`${base_url}/redirect_links`)
-        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
+      axios.get(`${base_url}/all`)
+        .then((data) => setredirect_links(data.data.links)).catch(() => getLinks())
     }
-    // getLinks()
+    getLinks()
   }, [])
 
 

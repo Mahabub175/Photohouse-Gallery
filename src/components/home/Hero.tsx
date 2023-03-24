@@ -1,12 +1,11 @@
 import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { base_url } from "../../configs";
 import Slider from "react-slick";
+import { base_url } from "../../configs";
 // Import css files
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 const Hero: FC = () => {
   const [imageArray, setimageArray] = useState([])
   const [sildes, setSlides] = useState([])
@@ -26,8 +25,7 @@ const Hero: FC = () => {
         .then((res) => {
           setimageArray(res.data.homeSliderImgs)
           setSlides(res.data.homeSliderImgs)
-        })
-        .catch((err) => getImages())
+        }).catch((err) => getImages())
     }
     getImages()
   }, [])
@@ -62,7 +60,7 @@ const Hero: FC = () => {
         <Slider {...settings}>
           {
             sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
-              <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
+              <Image src={base_url + "/" + img.thumbnail} alt="hero image" layout='fill' objectFit='cover' priority className="" />
               <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
             </div>)
           }
@@ -81,10 +79,10 @@ export const HeroMain: FC = () => {
   })
   useEffect(() => {
     const getLinks = () => {
-      axios.get(`${base_url}/redirect_links`)
-        .then((data) => setredirect_links(data.data)).catch(() => getLinks())
+      axios.get(`${base_url}/all`)
+        .then((data) => setredirect_links(data.data.links)).catch(() => getLinks())
     }
-    // getLinks()
+    getLinks()
   }, [])
   return <div className=" relative flex flex-col justify-center self-center w-full text-center my-5">
     <h1 className="mb-3 text-2xl  md:text-5xl lg:text-6xl  tracking-wider text-white">

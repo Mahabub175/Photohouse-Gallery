@@ -50,7 +50,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
                 className={`cursor-pointer rounded-md `}
               />
             </a>
-            <p className="text-white text-sm text-center">{x.name}</p>
+            <p className="text-white text-xs text-center">{x.name}</p>
           </div>))}
       </div>
     </main>

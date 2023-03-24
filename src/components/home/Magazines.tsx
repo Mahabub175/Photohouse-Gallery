@@ -46,7 +46,7 @@ const Magazines: FC = () => {
   return (
     <div className="maga-slide my-5">
       <Slider {...settings}>
-        {magazinesList.map((maga: any) => <div key={maga?._id}>
+        {(magazinesList.length > 5 ? magazinesList : [...magazinesList, ...magazinesList, ...magazinesList, ...magazinesList]).map((maga: any) => <div key={maga?._id}>
           <Link href='/magazines'>
             <a>
               <img src={base_url + "/" + maga?.thumbnail} alt="img" className="w-full  px-[10px] py-[50px] rounded-sm" />
