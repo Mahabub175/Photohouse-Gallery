@@ -26,7 +26,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 md:gap-6 gap-2">
                     <CustomInput
-                        type="email"
+                        type="text"
                         placeholder=""
                         value={Email}
                         label="Username"
