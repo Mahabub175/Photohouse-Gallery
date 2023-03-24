@@ -11,11 +11,11 @@ const InstaGallery = () => {
     })
     useEffect(() => {
         const getLinks = async () => {
-            await axios.get(`${base_url}/redirect_links`)
-                .then((data) => setredirect_links(data.data))
+            await axios.get(`${base_url}/all`)
+                .then((data) => setredirect_links(data.data.links))
                 .catch(() => getLinks())
         }
-        // getLinks()
+        getLinks()
     }, [])
     return (
         <div className="px-[1%] mb-5 mx-auto">
