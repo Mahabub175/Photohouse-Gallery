@@ -13,8 +13,10 @@ const Hero: FC = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
-    // fade: true,
+    speed: 300,
+    pauseOnHover: false,
+    autoplay: true,
+    autoplaySpeed: 1500,
     cssEase: "linear",
     slidesToShow: 3,
     slidesToScroll: 1
@@ -56,7 +58,7 @@ const Hero: FC = () => {
           </div>)
         }
       </div> */}
-      <div className="min-h-[95vh]">
+      <div className="lg:h-[100vh] md:h-[80vh] h-[60vh]">
         <Slider {...settings}>
           {
             sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
