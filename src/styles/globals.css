@@ -112,3 +112,15 @@ h1 {
 .maga-slide .slick-next {
   display: none !important;
 }
+.pagination-next,
+.pagination-prev {
+  color: transparent !important;
+}
+.pagination-next::before {
+  content: ">" !important;
+  color: white !important;
+}
+.pagination-prev::before {
+  color: white !important;
+  content: "<" !important;
+}

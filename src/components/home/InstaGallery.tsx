@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { base_url } from "../../configs";
 const InstaGallery = () => {
+    const nxt = document.querySelector('.pagination-next')
     // Insta_access_token
     const [{ Insta_access_token, instagram }, setredirect_links] = useState({
         Insta_access_token: "",
