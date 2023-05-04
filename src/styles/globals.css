@@ -112,15 +112,27 @@ h1 {
 .maga-slide .slick-next {
   display: none !important;
 }
+.pagination {
+  padding-bottom: 0px !important;
+}
 .pagination-next,
 .pagination-prev {
   color: transparent !important;
+  position: relative;
 }
 .pagination-next::before {
-  content: ">" !important;
-  color: white !important;
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
 }
 .pagination-prev::before {
-  color: white !important;
-  content: "<" !important;
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
 }
