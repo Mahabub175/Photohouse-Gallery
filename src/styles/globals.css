@@ -136,3 +136,12 @@ h1 {
   background-color: lightgray;
   border-radius: 50%;
 }
+.instagram-image {
+  height: auto;
+  width: auto;
+}
+video {
+  margin-top: -26%;
+  clip-path: polygon(0 15%, 100% 15%, 100% 97%, 0% 97%);
+  -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 97%, 0% 97%);
+}
