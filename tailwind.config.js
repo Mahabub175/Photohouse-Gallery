@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}"
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   // prefix: 'tw-',
   // darkMode: 'media',
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
+      transparent: "transparent",
+      current: "currentColor",
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
@@ -28,25 +28,25 @@ module.exports = {
     },
     extend: {
       animation: {
-        fade: 'fade .5s ease-in-out',
-        fadeIn: 'fadeIn .2s ease-in',
-        slideDown: 'slideDown .5s ease-out'
+        fade: "fade .5s ease-in-out",
+        fadeIn: "fadeIn .2s ease-in",
+        slideDown: "slideDown .5s ease-out",
       },
       keyframes: () => ({
         fade: {
-          '0%': { opacity: 0, paddingTop: "20px" },
-          '100%': { opacity: 1, paddingTop: "0" }
+          "0%": { opacity: 0, paddingTop: "20px" },
+          "100%": { opacity: 1, paddingTop: "0" },
         },
         fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 }
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
         slideDown: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 }
-        }
-      })
-    }
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      }),
+    },
   },
-  plugins: [],
-}
+  plugins: [require("daisyui")],
+};
