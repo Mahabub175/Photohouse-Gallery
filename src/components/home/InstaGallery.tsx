@@ -13,51 +13,62 @@ interface Post {
 
 const InstaGallery = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   useEffect(() => {
     const getPosts = async () => {
-      const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
-      let allPosts: Post[] = [];
-      let hasNextPage = true;
-      let cursor = null;
+      try {
+        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
+        let allPosts: Post[] = [];
+        let hasNextPage = true;
+        let cursor = null;
 
-      while (hasNextPage) {
-        let url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,thumbnail_url,permalink&access_token=${accessToken}`;
+        while (hasNextPage) {
+          let url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,thumbnail_url,permalink&access_token=${accessToken}`;
 
-        if (cursor) {
-          url += `&after=${cursor}`;
-        }
+          if (cursor) {
+            url += `&after=${cursor}`;
+          }
 
-        const { data } = await axios.get(url);
+          const { data } = await axios.get(url);
 
-        if (data && data.data && data.data.length > 0) {
-          allPosts = [...allPosts, ...data.data];
-          if (data.paging && data.paging.cursors && data.paging.cursors.after) {
-            cursor = data.paging.cursors.after;
+          if (data && data.data && data.data.length > 0) {
+            allPosts = [...allPosts, ...data.data];
+            if (
+              data.paging &&
+              data.paging.cursors &&
+              data.paging.cursors.after
+            ) {
+              cursor = data.paging.cursors.after;
+            } else {
+              hasNextPage = false;
+            }
           } else {
             hasNextPage = false;
           }
-        } else {
-          hasNextPage = false;
         }
-      }
 
-      setPosts(allPosts);
+        setPosts(allPosts);
+      } catch (error) {
+        console.error("Error fetching Instagram posts:", error);
+      }
     };
     getPosts();
   }, []);
-  console.log(posts);
 
   const totalPosts = posts.length;
   const itemsPerPage = 9;
 
   const totalPages = Math.ceil(totalPosts / itemsPerPage);
 
-  const PageNumbers = [...Array(totalPages).keys()];
+  const pageNumbers: number[] = [];
+  for (let i = 0; i < totalPages; i++) {
+    pageNumbers.push(i);
+  }
 
   const startIndex = currentPage * itemsPerPage;
-  const visiblePosts = posts.slice(startIndex, startIndex + itemsPerPage);
+  const endIndex = startIndex + itemsPerPage;
+  const visiblePosts = posts.slice(startIndex, endIndex);
 
   return (
     <div className="px-[1%] mb-5 mx-auto">
@@ -93,7 +104,7 @@ const InstaGallery = () => {
           ))}
         </div>
         <div className="flex justify-center mb-12 gap-6 ">
-          {PageNumbers.map((number) => (
+          {pageNumbers.map((number) => (
             <button
               key={number}
               className={
