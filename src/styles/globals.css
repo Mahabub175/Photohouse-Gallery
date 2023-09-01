@@ -58,19 +58,7 @@ h1 {
 }
 
 /* Insta styles */
-.instagram-gallery {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.instagram-item {
-  -webkit-box-flex: 0;
-  flex: 0 0 calc(100% / 5 - 10px);
-  margin: 5px;
-  display: block;
-  position: relative;
-}
 @media only screen and (max-width: 600px) {
   .instagram-item {
     flex: 0 0 calc(100% / 3 - 10px);
