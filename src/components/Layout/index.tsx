@@ -9,42 +9,39 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-
-  const [preLoading, setPreloader]: any = useState(true)
+  const [preLoading, setPreloader]: any = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setPreloader(false)
+      setPreloader(false);
     }, 2500);
-  }, [])
+  }, []);
 
   return (
     <>
       <Head>
         <title>Photohouse</title>
-        <meta
-          name="description"
-          content="Photohouse Magazine"
-          key="title"
-        />
+        <meta name="description" content="Photohouse Magazine" key="title" />
         <link rel="icon" href="/icon.png" />
       </Head>
       <NavBar />
-      <main className="min-h-[90vh]">{children}</main>
+      <main className="min-h-[90vh] overflow-hidden">{children}</main>
       <Footer />
       {/* Pre-loader */}
-      {preLoading && <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
-        <div className="animate-bounce mx-auto">
-          <Image
-            priority
-            src={logo_dark}
-            width={160}
-            height={54}
-            alt="logo"
-            className={`cursor-pointer rounded-md`}
-          />
+      {preLoading && (
+        <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
+          <div className="animate-bounce mx-auto">
+            <Image
+              priority
+              src={logo_dark}
+              width={160}
+              height={54}
+              alt="logo"
+              className={`cursor-pointer rounded-md`}
+            />
+          </div>
         </div>
-      </div>}
+      )}
     </>
   );
 };

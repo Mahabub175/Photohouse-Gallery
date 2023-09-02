@@ -18,7 +18,7 @@ const InstaGallery = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
+        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
         let allPosts: Post[] = [];
         let hasNextPage = true;
         let cursor = null;
