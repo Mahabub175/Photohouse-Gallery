@@ -1,10 +1,18 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { FaBattleNet, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaWhatsapp } from "react-icons/fa";
-import { base_url } from "../../configs";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  FaBattleNet,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaTelegramPlane,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
 import logo_dark from "../../Images/logo.png";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Footer: React.FC = () => {
   const [redirect_links, setredirect_links] = useState({
@@ -14,17 +22,24 @@ const Footer: React.FC = () => {
     twitter: "#",
     facebook_page: "#",
     sponsor: "#",
-    submit_photo: "#"
-  })
+    submit_photo: "#",
+  });
+  // useEffect(() => {
+  //   const getLinks = () => {
+  //     axios
+  //       .get(`${base_url}/all`)
+  //       .then((data) => setredirect_links(data.data.links))
+  //       .catch(() => getLinks());
+  //   };
+  //   getLinks();
+  // }, []);
+
+  const footerLink: any = useContext(API_CONTEXT);
   useEffect(() => {
-    const getLinks = () => {
-      axios.get(`${base_url}/all`)
-        .then((data) => setredirect_links(data.data.links)).catch(() => getLinks())
+    if (footerLink?.data?.links?.sabbir_email) {
+      setredirect_links(footerLink.data.links);
     }
-    getLinks()
-  }, [])
-
-
+  }, [footerLink]);
   return (
     <>
       <footer className="px-4 pt-4 pb-2 bg-[#292929]">
@@ -42,37 +57,46 @@ const Footer: React.FC = () => {
             </a>
             <div className="flex flex-wrap leading-[25px]">
               <span className="ml-3">Follow Us :</span>
-              <a href={redirect_links.facebook_page} target="_blank" rel="noopener noreferrer">
+              <a
+                href={redirect_links.facebook_page}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookF className="inline mx-2" />
               </a>
-              <a href={redirect_links.twitter} target="_blank" rel="noopener noreferrer">
+              <a
+                href={redirect_links.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaTwitter className="inline mx-2" />
               </a>
-              <a href={redirect_links.instagram} target="_blank" rel="noopener noreferrer">
+              <a
+                href={redirect_links.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram className="inline mx-2" />
               </a>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-8 md:gap-6 md:grid-cols-3">
             <div>
-              <ul>
-              </ul>
+              <ul></ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold  uppercase ">Information</h2>
+              <h2 className="mb-6 text-sm font-semibold  uppercase ">
+                Information
+              </h2>
               <ul className=" ">
                 <li className="mb-4">
                   <Link href="/faq">
-                    <a className="hover:underline">
-                      FAQ
-                    </a>
+                    <a className="hover:underline">FAQ</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/privacy_policy">
-                    <a className="hover:underline">
-                      Privacy Policy
-                    </a>
+                    <a className="hover:underline">Privacy Policy</a>
                   </Link>
                 </li>
               </ul>
@@ -83,8 +107,12 @@ const Footer: React.FC = () => {
               </h2>
               <ul className="break-all ">
                 <li className="mb-4">
-                  <a href="mailto:photohousemagazine@gmail.com" className="hover:underline">
-                    <FaEnvelope className="inline" /> : photohousemagazine@gmail.com
+                  <a
+                    href="mailto:photohousemagazine@gmail.com"
+                    className="hover:underline"
+                  >
+                    <FaEnvelope className="inline" /> :
+                    photohousemagazine@gmail.com
                   </a>
                 </li>
                 <li className="mb-4">
@@ -111,9 +139,20 @@ const Footer: React.FC = () => {
             . All Rights Reserved.
           </span>
           <div className="flex space-x-6 sm:justify-center text-xs">
-            <a href="https://hasanul-banna.github.io/Portfolio" target="_blank" rel="noopener noreferrer">
-              <FaBattleNet className="inline animate-spin" color="cyan" size={14} />&nbsp;Developed by :
-              <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">Hasanul Banna</span>
+            <a
+              href="https://hasanul-banna.github.io/Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaBattleNet
+                className="inline animate-spin"
+                color="cyan"
+                size={14}
+              />
+              &nbsp;Developed by :
+              <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">
+                Hasanul Banna
+              </span>
             </a>
           </div>
         </div>

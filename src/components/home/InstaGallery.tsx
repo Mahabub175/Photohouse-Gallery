@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 interface Post {
   id: string;
@@ -15,16 +16,16 @@ const InstaGallery = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
 
+  const token: any = useContext(API_CONTEXT);
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
         let allPosts: Post[] = [];
         let hasNextPage = true;
         let cursor = null;
 
         while (hasNextPage) {
-          let url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,thumbnail_url,permalink&access_token=${accessToken}`;
+          let url: string = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,thumbnail_url,permalink&access_token=${token?.data?.links?.Insta_access_token}`;
 
           if (cursor) {
             url += `&after=${cursor}`;
@@ -54,17 +55,14 @@ const InstaGallery = () => {
       }
     };
     getPosts();
-  }, []);
+  }, [token]);
 
   const totalPosts = posts.length;
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   const totalPages = Math.ceil(totalPosts / itemsPerPage);
 
-  const pageNumbers: number[] = [];
-  for (let i = 0; i < totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const pageNumbers: number[] = Array.from({ length: totalPages }, (_, i) => i);
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -78,7 +76,7 @@ const InstaGallery = () => {
         </h1>
       </div>
       <div className="w-100 text-center my-3">
-        <div className="grid grid-cols-3 gap-4 px-12 mt-12 justify-center">
+        <div className="grid grid-cols-4 gap-[1px] px-12 mt-12 justify-center">
           {visiblePosts.map((post) => (
             <a
               key={post.id}
@@ -95,7 +93,7 @@ const InstaGallery = () => {
                 </video>
               ) : (
                 <img
-                  className="rounded-sm hover:scale-110 transition-all duration-300 skeleton-photo"
+                  className="rounded-sm skeleton-photo"
                   src={post.media_url}
                   alt={post.caption}
                 />

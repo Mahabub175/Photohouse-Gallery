@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import axios from "axios";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useContext } from "react";
 import Slider from "react-slick";
 import { base_url } from "../../configs";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Magazines: FC = () => {
   const [magazinesList, setmagazinesList]: any[] = useState([]);
@@ -36,19 +37,25 @@ const Magazines: FC = () => {
       },
     ],
   };
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     await axios
+  //       .get(`${base_url}/all`)
+  //       .then((response) => {
+  //         setmagazinesList(response.data.Magazines.reverse());
+  //       })
+  //       .catch((err) => {
+  //         getData();
+  //       });
+  //   };
+  //   getData();
+  // }, []);
+  const getData: any = useContext(API_CONTEXT);
   useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get(`${base_url}/all`)
-        .then((response) => {
-          setmagazinesList(response.data.Magazines.reverse());
-        })
-        .catch((err) => {
-          getData();
-        });
-    };
-    getData();
-  }, []);
+    if (getData?.data?.links) {
+      setmagazinesList(getData?.data?.Magazines.reverse());
+    }
+  }, [getData]);
   return (
     <div className="maga-slide my-5">
       <Slider {...settings}>

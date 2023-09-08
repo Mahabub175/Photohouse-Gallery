@@ -1,9 +1,10 @@
 import Head from "next/head";
-import React, { ReactNode, FC, useState, useEffect } from "react";
+import React, { ReactNode, FC, useState, useEffect, useContext } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
+import { API_CONTEXT } from "../../utils/globalContext";
 interface LayoutProps {
   children?: ReactNode;
 }
@@ -28,7 +29,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <main className="min-h-[90vh] overflow-hidden">{children}</main>
       <Footer />
       {/* Pre-loader */}
-      {preLoading && (
+      {/* {preLoading && (
         <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
           <div className="animate-bounce mx-auto">
             <Image
@@ -41,7 +42,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

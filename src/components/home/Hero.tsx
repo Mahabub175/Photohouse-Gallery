@@ -1,11 +1,12 @@
 import axios from "axios";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { base_url } from "../../configs";
 // Import css files
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 const Hero: FC = () => {
   const [imageArray, setimageArray] = useState([]);
   const [sildes, setSlides] = useState([]);
@@ -21,18 +22,26 @@ const Hero: FC = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+  // useEffect(() => {
+  //   async function getImages() {
+  //     await axios
+  //       .get(`${base_url}/all`)
+  //       .then((res) => {
+  //         setimageArray(res.data.homeSliderImgs);
+  //         setSlides(res.data.homeSliderImgs);
+  //       })
+  //       .catch((err) => getImages());
+  //   }
+  //   getImages();
+  // }, []);
+  const getImages: any = useContext(API_CONTEXT);
   useEffect(() => {
-    async function getImages() {
-      await axios
-        .get(`${base_url}/all`)
-        .then((res) => {
-          setimageArray(res.data.homeSliderImgs);
-          setSlides(res.data.homeSliderImgs);
-        })
-        .catch((err) => getImages());
+    if (getImages?.data?.homeSliderImgs) {
+      setimageArray(getImages?.data?.homeSliderImgs);
+      setSlides(getImages?.data?.homeSliderImgs);
     }
-    getImages();
-  }, []);
+    // console.log(getImages);
+  }, [getImages]);
 
   const NextBtnClick = () => {
     if (current + 3 + 1 <= imageArray.length) {
@@ -93,15 +102,21 @@ export const HeroMain: FC = () => {
     sponsor: "#",
     submit_photo: "#",
   });
+  // useEffect(() => {
+  //   const getLinks = () => {
+  //     axios
+  //       .get(`${base_url}/all`)
+  //       .then((data) => setredirect_links(data.data.links))
+  //       .catch(() => getLinks());
+  //   };
+  //   getLinks();
+  // }, []);
+  const getLinks: any = useContext(API_CONTEXT);
   useEffect(() => {
-    const getLinks = () => {
-      axios
-        .get(`${base_url}/all`)
-        .then((data) => setredirect_links(data.data.links))
-        .catch(() => getLinks());
-    };
-    getLinks();
-  }, []);
+    if (getLinks?.data?.links) {
+      setredirect_links(getLinks?.data?.links);
+    }
+  }, [getLinks]);
   return (
     <div className=" relative flex flex-col justify-center self-center w-full text-center my-5">
       <h1 className="mb-3 text-2xl  md:text-5xl lg:text-6xl  tracking-wider text-white">
