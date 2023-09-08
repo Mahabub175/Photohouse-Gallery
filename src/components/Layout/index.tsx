@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
-import { API_CONTEXT } from "../../utils/globalContext";
 interface LayoutProps {
   children?: ReactNode;
 }
