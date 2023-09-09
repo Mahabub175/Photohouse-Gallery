@@ -25,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <link rel="icon" href="/icon.png" />
       </Head>
       <NavBar />
-      <main className="min-h-[90vh] overflow-hidden">{children}</main>
+      <main className="min-h-[90vh]">{children}</main>
       <Footer />
       {/* Pre-loader */}
       {/* {preLoading && (
