@@ -19,7 +19,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         setPreloader(false);
       }, 1000);
     } else {
-      getData();
+      getData;
     }
     // console.log(getData);
   }, [getData]);
