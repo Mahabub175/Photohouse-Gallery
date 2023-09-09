@@ -20,13 +20,7 @@ const About: NextPage = () => {
     sabbir_web: "#",
     pagel_photo: "",
   });
-  // useEffect(() => {
-  //   const getLinks = () => {
-  //     axios.get(`${base_url}/all`)
-  //       .then((data) => setredirect_links(data.data.links)).catch(() => getLinks())
-  //   }
-  //   getLinks()
-  // }, [])
+
   const getLinks: any = useContext(API_CONTEXT);
   useEffect(() => {
     if (getLinks?.data?.links) {

@@ -22,18 +22,7 @@ const Hero: FC = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  // useEffect(() => {
-  //   async function getImages() {
-  //     await axios
-  //       .get(`${base_url}/all`)
-  //       .then((res) => {
-  //         setimageArray(res.data.homeSliderImgs);
-  //         setSlides(res.data.homeSliderImgs);
-  //       })
-  //       .catch((err) => getImages());
-  //   }
-  //   getImages();
-  // }, []);
+
   const getImages: any = useContext(API_CONTEXT);
   useEffect(() => {
     if (getImages?.data?.homeSliderImgs) {

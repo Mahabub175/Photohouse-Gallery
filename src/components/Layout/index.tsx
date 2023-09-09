@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 interface LayoutProps {
   children?: ReactNode;
 }
@@ -11,11 +12,17 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   const [preLoading, setPreloader]: any = useState(true);
 
+  const getData: any = useContext(API_CONTEXT);
   useEffect(() => {
-    setTimeout(() => {
-      setPreloader(false);
-    }, 2500);
-  }, []);
+    if (getData?.data?.homeSliderImgs) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 1000);
+    } else {
+      getData();
+    }
+    // console.log(getData);
+  }, [getData]);
 
   return (
     <>
@@ -27,8 +34,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <NavBar />
       <main className="min-h-[90vh]">{children}</main>
       <Footer />
-      {/* Pre-loader */}
-      {/* {preLoading && (
+      {preLoading && (
         <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
           <div className="animate-bounce mx-auto">
             <Image
@@ -41,7 +47,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             />
           </div>
         </div>
-      )} */}
+      )}
     </>
   );
 };
