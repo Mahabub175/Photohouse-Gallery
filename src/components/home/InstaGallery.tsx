@@ -17,12 +17,13 @@ const InstaGallery = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  // const token: any = useContext(API_CONTEXT);
+  const token: any = useContext(API_CONTEXT);
   // console.log(token?.data?.links?.Insta_access_token);
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
+        // const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
+        const accessToken = token?.data?.links?.Insta_access_token;
 
         let url: string = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}`;
 
@@ -34,7 +35,7 @@ const InstaGallery = () => {
       }
     };
     getPosts();
-  }, []);
+  }, [token]);
 
   const totalPosts = posts?.length;
   const itemsPerPage = 12;
