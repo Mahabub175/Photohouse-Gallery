@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { API_CONTEXT } from "../../utils/GlobalContext";
 
+import { Button, IconButton } from "@material-tailwind/react";
+import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false);
   const router = useRouter();
@@ -23,14 +26,16 @@ const NavBar = () => {
     <div className="z-10">
       <nav className="flex justify-between px-10 py-1 items-center">
         <div>
-          <Image
-            priority
-            src={logo_dark}
-            width={160}
-            height={54}
-            alt="logo"
-            className={`cursor-pointer rounded-md`}
-          ></Image>
+          <Link href="/">
+            <Image
+              priority
+              src={logo_dark}
+              width={160}
+              height={54}
+              alt="logo"
+              className={`cursor-pointer rounded-md`}
+            ></Image>
+          </Link>
         </div>
         <div>
           <div className="hidden md:block tracking-wider">
