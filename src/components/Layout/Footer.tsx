@@ -154,7 +154,11 @@ const Footer: React.FC = () => {
                 Hasanul Banna
               </span>
             </a>
-            <a href="https://mahabub-ahmed.web.app/">
+            <a
+              href="https://mahabub-ahmed.web.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">
                 {" "}
                 Mahabub Ahmed
