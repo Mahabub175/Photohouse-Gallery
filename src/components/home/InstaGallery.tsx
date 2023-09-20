@@ -38,15 +38,15 @@ const InstaGallery = () => {
   }, [token]);
 
   const totalPosts = posts?.length;
-  const itemsPerPage = 9;
+  const itemsPerPage = 8;
 
-  const totalPages = Math.ceil(totalPosts / itemsPerPage);
+  const totalPages = Math.ceil((totalPosts - 1) / itemsPerPage);
 
   const pageNumbers: number[] = Array.from({ length: totalPages }, (_, i) => i);
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visiblePosts = posts?.slice(startIndex, endIndex);
+  const visiblePosts = posts?.slice(0, 24).slice(startIndex, endIndex);
 
   return (
     <div className="px-[1%] mb-5 mx-auto">
@@ -56,7 +56,7 @@ const InstaGallery = () => {
         </h1>
       </div>
       <div className="w-100 text-center my-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] px-12 mt-12 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] px-12 mt-12 justify-center items-center">
           {visiblePosts?.map((post) => (
             <a
               key={post?.id}
@@ -66,7 +66,10 @@ const InstaGallery = () => {
               className="relative"
             >
               {post?.media_type === "VIDEO" ? (
-                <video controls className="rounded-sm mt-4 w-[445px] h-[555px]">
+                <video
+                  controls
+                  className="rounded-sm w-[645px] h-[650px] object-contain"
+                >
                   <source src={post?.media_url} type="video/mp4" />
                 </video>
               ) : (
@@ -76,8 +79,8 @@ const InstaGallery = () => {
                     src={post?.media_url}
                     alt={post?.caption}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 top-0 bg-black flex flex-col justify-center items-center text-white opacity-0 transition-opacity duration-500 hover:opacity-80 p-2">
-                    <p className="text-xs">{post?.caption}</p>
+                  <div className="absolute bottom-0 left-0 right-0 top-0 bg-black flex flex-col justify-center items-center text-white opacity-0 transition-opacity duration-500 hover:opacity-60 p-2">
+                    <p className="text-xs"></p>
                   </div>
                 </div>
               )}
@@ -99,11 +102,6 @@ const InstaGallery = () => {
               {number + 1}
             </button>
           ))}
-          {/* <InstagramGallery
-            accessToken={`${process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT}`}
-            count={15}
-            pagination={true}
-          /> */}
         </div>
       </div>
     </div>

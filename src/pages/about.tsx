@@ -1,11 +1,10 @@
-import axios from "axios";
+/* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState, useContext } from "react";
 import { FaEnvelope, FaFacebookF, FaGlobe, FaInstagram } from "react-icons/fa";
-import { base_url } from "../configs";
 import ceo from "../Images/CEO.jpg";
-import pagel from "../Images/pagel.jpg";
+import co_ceo from "../Images/photo_7.jpg";
 import { API_CONTEXT } from "../utils/GlobalContext";
 
 const About: NextPage = () => {
@@ -98,7 +97,7 @@ const About: NextPage = () => {
               />
             </a>
             <a
-              href={`mailto:${redirect_links.sabbir_email}`}
+              href={`mailto:${redirect_links?.sabbir_email}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -110,7 +109,7 @@ const About: NextPage = () => {
             <div className="w-[100px] h-[130px] relative m-auto">
               <Image
                 priority
-                src={redirect_links.pagel_photo}
+                src={co_ceo}
                 // width={100}
                 // height={127}
                 layout="fill"
@@ -122,7 +121,7 @@ const About: NextPage = () => {
             <p className="text-3xl font-bold">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
             <a
-              href={redirect_links.pagel_facebook}
+              href={redirect_links?.pagel_facebook}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -133,7 +132,7 @@ const About: NextPage = () => {
               />
             </a>
             <a
-              href={redirect_links.pagel_instagram}
+              href={redirect_links?.pagel_instagram}
               target="_blank"
               rel="noopener noreferrer"
             >
