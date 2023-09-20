@@ -38,7 +38,7 @@ const InstaGallery = () => {
   }, [token]);
 
   const totalPosts = posts?.length;
-  const itemsPerPage = 12;
+  const itemsPerPage = 9;
 
   const totalPages = Math.ceil(totalPosts / itemsPerPage);
 
@@ -56,7 +56,7 @@ const InstaGallery = () => {
         </h1>
       </div>
       <div className="w-100 text-center my-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] px-12 mt-12 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] px-12 mt-12 justify-center">
           {visiblePosts?.map((post) => (
             <a
               key={post?.id}
@@ -77,7 +77,7 @@ const InstaGallery = () => {
                     alt={post?.caption}
                   />
                   <div className="absolute bottom-0 left-0 right-0 top-0 bg-black flex flex-col justify-center items-center text-white opacity-0 transition-opacity duration-500 hover:opacity-80 p-2">
-                    <p className="text-sm">{post?.caption.slice(0, 60)}</p>
+                    <p className="text-xs">{post?.caption}</p>
                   </div>
                 </div>
               )}
@@ -90,11 +90,13 @@ const InstaGallery = () => {
             <button
               key={number}
               className={
-                currentPage === number ? " font-bold text-4xl mt-6 " : "mt-6"
+                currentPage === number
+                  ? " font-bold bg-gray-500 rounded-full w-12 h-12 mt-6 "
+                  : "mt-6"
               }
               onClick={() => setCurrentPage(number)}
             >
-              {/* {number + 1} */}.
+              {number + 1}
             </button>
           ))}
           {/* <InstagramGallery
