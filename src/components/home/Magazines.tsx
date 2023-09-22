@@ -37,19 +37,6 @@ const Magazines: FC = () => {
       },
     ],
   };
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     await axios
-  //       .get(`${base_url}/all`)
-  //       .then((response) => {
-  //         setmagazinesList(response.data.Magazines.reverse());
-  //       })
-  //       .catch((err) => {
-  //         getData();
-  //       });
-  //   };
-  //   getData();
-  // }, []);
   const getData: any = useContext(API_CONTEXT);
   useEffect(() => {
     if (getData?.data?.links) {
