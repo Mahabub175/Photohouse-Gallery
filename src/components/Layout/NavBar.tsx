@@ -6,9 +6,6 @@ import Image from "next/image";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { API_CONTEXT } from "../../utils/GlobalContext";
 
-import { Button, IconButton } from "@material-tailwind/react";
-import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-
 const NavBar = () => {
   const [showMenu, setMenu] = useState(false);
   const router = useRouter();
