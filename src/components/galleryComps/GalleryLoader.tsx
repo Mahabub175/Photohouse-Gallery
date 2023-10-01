@@ -1,56 +1,14 @@
-import { Skeleton } from "@mui/material";
-
 const GalleryLoader = () => {
   return (
-    <div className="flex flex-col justify-center items-center mx-auto container mt-32 gap-10">
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
-      <Skeleton
-        sx={{ bgcolor: "grey.900" }}
-        variant="rectangular"
-        width={300}
-        height={400}
-      />
+    <div className="grid grid-cols-4 justify-center items-center gap-20 container mx-auto mt-20 mb-28">
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
+      <div className="w-[400px] h-[450px] bg-gray-400 animate-pulse rounded-lg"></div>
     </div>
   );
 };

@@ -29,8 +29,8 @@ const Hero: FC = () => {
       setimageArray(getImages?.data?.homeSliderImgs);
       setSlides(getImages?.data?.homeSliderImgs);
     }
-    // console.log(getImages);
   }, [getImages]);
+  console.log(imageArray);
 
   const NextBtnClick = () => {
     if (current + 3 + 1 <= imageArray.length) {

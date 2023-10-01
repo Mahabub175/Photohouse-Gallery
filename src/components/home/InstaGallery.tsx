@@ -22,8 +22,8 @@ const InstaGallery = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        // const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
-        const accessToken = token?.data?.links?.Insta_access_token;
+        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
+        // const accessToken = token?.data?.links?.Insta_access_token;
 
         let url: string = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}`;
 

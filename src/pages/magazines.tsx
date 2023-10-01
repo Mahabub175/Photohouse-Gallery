@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import axios from "axios";
 import { NextPage } from "next";
 import Image from "next/image";
@@ -30,24 +31,16 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
           </h1>
         </div>
       </div>
-      {/* <p>
-          {["All", "Newest", "Popular", "Upcoming"].map((type: string, i: number) => <span
-            key={i + 1}
-            className={`mx-1 cursor-pointer ${Category === type && 'text-blue-400 font-bold'}`}
-            onClick={() => handleFilter(type)}>
-            {type}</span>
-          )}
-        </p> */}
-      <div className="container m-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 mt-6">
         {FilteredData.map((x: any) => (
-          <div className="max-w-[280px] my-3 m-auto animate-fade" key={x._id}>
+          <div className="my-3 m-auto animate-fade" key={x._id}>
             <a
               target={"_blank"}
               href={x.redirect_link}
               rel="noreferrer"
               className="relative"
             >
-              <Image
+              {/* <Image
                 priority
                 src={base_url + "/" + x.thumbnail}
                 width={400}
@@ -55,6 +48,11 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
                 layout="responsive"
                 alt="Magazines image"
                 className={`cursor-pointer rounded-md `}
+              /> */}
+              <img
+                src={base_url + "/" + x.thumbnail}
+                alt="Magazines image"
+                className="cursor-pointer rounded-md w-[400px] h-[514px]"
               />
             </a>
             <p className="text-white text-xs text-center">{x.name}</p>
