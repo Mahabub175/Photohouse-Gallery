@@ -15,18 +15,22 @@ interface Post {
 
 const InstaGallery = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [displayedPosts, setDisplayedPosts] = useState<Post[]>([]);
+  const initialPostsToDisplay = 12;
+  const postsToLoad = 12;
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const token: any = useContext(API_CONTEXT);
-  // console.log(token?.data?.links?.Insta_access_token);
+  // const token: any = useContext(API_CONTEXT);
+
   useEffect(() => {
     const getPosts = async () => {
       try {
         const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
-        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100&after=QVFIUnpMbXhXVDg4OFJWbTJuc1FKLV93UjJhUHZAuR3hPY0QwNTlINk9OZAlhCcWcyZAUF6elFXelhxNUctUFFEaW1uZAVFSMjl0cTI5TGp1VWE2NnVpWXJNQWFB`;
+        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
         const response = await fetch(url);
         const data = await response.json();
         setPosts(data.data);
+        setDisplayedPosts(data.data.slice(0, initialPostsToDisplay));
       } catch (error) {
         console.error("Error fetching Instagram posts:", error);
       }
@@ -34,16 +38,34 @@ const InstaGallery = () => {
     getPosts();
   }, []);
 
-  const totalPosts = posts?.length;
-  const itemsPerPage = 8;
+  // const loadMorePosts = () => {
+  //   const endIndex = displayedPosts.length + postsToLoad;
+  //   if (endIndex <= posts.length) {
+  //     setDisplayedPosts(posts.slice(0, endIndex));
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
 
-  const totalPages = Math.ceil((totalPosts - 1) / itemsPerPage);
+  const totalPages = Math.ceil(posts.length / postsToLoad);
 
-  const pageNumbers: number[] = Array.from({ length: totalPages }, (_, i) => i);
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    const startIndex = (page - 1) * postsToLoad;
+    const endIndex = startIndex + postsToLoad;
+    setDisplayedPosts(posts.slice(startIndex, endIndex));
+  };
 
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visiblePosts = posts?.slice(startIndex, endIndex);
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
+  };
 
   return (
     <div className="px-[1%] mb-5 mx-auto">
@@ -54,7 +76,7 @@ const InstaGallery = () => {
       </div>
       <div className="w-100 text-center my-3">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] px-12 mt-12 justify-center items-center">
-          {visiblePosts?.map((post) => (
+          {displayedPosts.map((post) => (
             <a
               key={post?.id}
               href={post?.permalink}
@@ -85,20 +107,38 @@ const InstaGallery = () => {
           ))}
         </div>
 
-        <div className="flex justify-center mb-12 gap-6 ">
-          {pageNumbers.map((number) => (
+        <div className="flex justify-center my-4 items-center">
+          <div className="border-2 rounded-full w-[150px] py-2 px-6 flex justify-between items-center">
             <button
-              key={number}
+              onClick={handlePrevPage}
               className={
-                currentPage === number
-                  ? " font-bold bg-gray-500 rounded-full w-12 h-12 mt-6 "
-                  : "mt-6"
+                currentPage === 1
+                  ? " text-gray-500 font-semibold text-xl py-2 px-4 rounded-full mr-2 disabled -mt-2"
+                  : " hover:text-gray-600 text-white  rounded-full duration-300 text-3xl font-extrabold -mt-2"
               }
-              onClick={() => setCurrentPage(number)}
             >
-              {number + 1}
+              {"<"}
             </button>
-          ))}
+            <button
+              onClick={handleNextPage}
+              className={
+                currentPage === totalPages
+                  ? " text-gray-500 font-semibold text-xl py-2 px-4 rounded-full disabled -mt-2"
+                  : "hover:text-gray-600 text-white font-extrabold text-3xl rounded-full duration-300 -mt-2"
+              }
+            >
+              {">"}
+            </button>
+          </div>
+        </div>
+
+        <div className="flex justify-center">
+          {/* <button
+            onClick={loadMorePosts}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
+          >
+            Load More
+          </button> */}
         </div>
       </div>
     </div>
