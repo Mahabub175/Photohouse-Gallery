@@ -23,19 +23,16 @@ const InstaGallery = () => {
     const getPosts = async () => {
       try {
         const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
-        // const accessToken = token?.data?.links?.Insta_access_token;
-
-        let url: string = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}`;
-
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => setPosts(data?.data));
+        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100&after=QVFIUnpMbXhXVDg4OFJWbTJuc1FKLV93UjJhUHZAuR3hPY0QwNTlINk9OZAlhCcWcyZAUF6elFXelhxNUctUFFEaW1uZAVFSMjl0cTI5TGp1VWE2NnVpWXJNQWFB`;
+        const response = await fetch(url);
+        const data = await response.json();
+        setPosts(data.data);
       } catch (error) {
         console.error("Error fetching Instagram posts:", error);
       }
     };
     getPosts();
-  }, [token]);
+  }, []);
 
   const totalPosts = posts?.length;
   const itemsPerPage = 8;
@@ -46,7 +43,7 @@ const InstaGallery = () => {
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visiblePosts = posts?.slice(0, 24).slice(startIndex, endIndex);
+  const visiblePosts = posts?.slice(startIndex, endIndex);
 
   return (
     <div className="px-[1%] mb-5 mx-auto">
