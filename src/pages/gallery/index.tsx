@@ -63,9 +63,7 @@ const Gallery: NextPage = () => {
             </div>
           ))}
         </div>
-      ) : (
-        <GalleryLoader />
-      )}
+      ) : null}
     </div>
   );
 };
