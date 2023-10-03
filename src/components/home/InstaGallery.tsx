@@ -38,32 +38,20 @@ const InstaGallery = () => {
     getPosts();
   }, []);
 
-  // const loadMorePosts = () => {
-  //   const endIndex = displayedPosts.length + postsToLoad;
-  //   if (endIndex <= posts.length) {
-  //     setDisplayedPosts(posts.slice(0, endIndex));
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  const totalPages = Math.ceil(posts.length / postsToLoad);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    const startIndex = (page - 1) * postsToLoad;
-    const endIndex = startIndex + postsToLoad;
-    setDisplayedPosts(posts.slice(startIndex, endIndex));
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      handlePageChange(currentPage + 1);
+  const loadMorePosts = () => {
+    const endIndex = displayedPosts.length + postsToLoad;
+    if (endIndex <= posts.length) {
+      setDisplayedPosts(posts.slice(0, endIndex));
+      setCurrentPage(currentPage + 1);
     }
   };
 
-  const handlePrevPage = () => {
+  const loadLessPosts = () => {
     if (currentPage > 1) {
-      handlePageChange(currentPage - 1);
+      const startIndex = (currentPage - 2) * postsToLoad;
+      const endIndex = startIndex + initialPostsToDisplay;
+      setDisplayedPosts(posts.slice(startIndex, endIndex));
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -107,39 +95,30 @@ const InstaGallery = () => {
           ))}
         </div>
 
-        <div className="flex justify-center my-4 items-center">
-          <div className="border-2 rounded-full w-[150px] py-2 px-6 flex justify-between items-center">
+        {currentPage < Math.ceil(posts.length / postsToLoad) && (
+          <div className="flex justify-center mt-6">
             <button
-              onClick={handlePrevPage}
-              className={
-                currentPage === 1
-                  ? " text-gray-500 font-semibold text-xl py-2 px-4 rounded-full mr-2 disabled -mt-2"
-                  : " hover:text-gray-600 text-white  rounded-full duration-300 text-3xl font-extrabold -mt-2"
-              }
+              onClick={loadMorePosts}
+              className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group"
             >
-              {"<"}
-            </button>
-            <button
-              onClick={handleNextPage}
-              className={
-                currentPage === totalPages
-                  ? " text-gray-500 font-semibold text-xl py-2 px-4 rounded-full disabled -mt-2"
-                  : "hover:text-gray-600 text-white font-extrabold text-3xl rounded-full duration-300 -mt-2"
-              }
-            >
-              {">"}
+              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+              <span className="relative">Load More</span>
             </button>
           </div>
-        </div>
-
-        <div className="flex justify-center">
-          {/* <button
-            onClick={loadMorePosts}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
-          >
-            Load More
-          </button> */}
-        </div>
+        )}
+        {currentPage > 1 && (
+          <div className="flex justify-center mt-4 mb-10">
+            <button
+              onClick={loadLessPosts}
+              className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group"
+            >
+              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+              <span className="relative">Load Less</span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
