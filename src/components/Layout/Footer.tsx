@@ -1,7 +1,6 @@
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+
 import {
   FaBattleNet,
   FaEnvelope,
@@ -12,34 +11,8 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import logo_dark from "../../Images/logo.png";
-import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Footer: React.FC = () => {
-  const [redirect_links, setredirect_links] = useState({
-    facebook_group: "#",
-    instagram: "#",
-    linked_in: "#",
-    twitter: "#",
-    facebook_page: "#",
-    sponsor: "#",
-    submit_photo: "#",
-  });
-  // useEffect(() => {
-  //   const getLinks = () => {
-  //     axios
-  //       .get(`${base_url}/all`)
-  //       .then((data) => setredirect_links(data.data.links))
-  //       .catch(() => getLinks());
-  //   };
-  //   getLinks();
-  // }, []);
-
-  const footerLink: any = useContext(API_CONTEXT);
-  useEffect(() => {
-    if (footerLink?.data?.links?.sabbir_email) {
-      setredirect_links(footerLink.data.links);
-    }
-  }, [footerLink]);
   return (
     <>
       <footer className="px-4 pt-4 pb-2 bg-[#292929]">
@@ -58,21 +31,21 @@ const Footer: React.FC = () => {
             <div className="flex flex-wrap leading-[25px]">
               <span className="ml-3">Follow Us :</span>
               <a
-                href={redirect_links.facebook_page}
+                href="https://www.facebook.com/photohouse.magazine"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaFacebookF className="inline mx-2" />
               </a>
               <a
-                href={redirect_links.twitter}
+                href="https://twitter.com/photohouse_"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaTwitter className="inline mx-2" />
               </a>
               <a
-                href={redirect_links.instagram}
+                href="https://www.instagram.com/photohouse_magazine/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
