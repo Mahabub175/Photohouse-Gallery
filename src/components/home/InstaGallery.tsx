@@ -1,8 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { API_CONTEXT } from "../../utils/GlobalContext";
-import { InstagramGallery } from "instagram-gallery";
+import { useEffect, useState } from "react";
 
 interface Post {
   id: string;
@@ -75,7 +72,7 @@ const InstaGallery = () => {
               {post?.media_type === "VIDEO" ? (
                 <video
                   controls
-                  className="rounded-sm w-[645px] h-[650px] object-contain"
+                  className="rounded-sm w-[450px] h-[660px] object-fill"
                 >
                   <source src={post?.media_url} type="video/mp4" />
                 </video>
