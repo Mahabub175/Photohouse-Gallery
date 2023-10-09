@@ -46,7 +46,7 @@ const Hero: FC = () => {
 
   return (
     <div className="w-full home-slide overflow-hidden">
-      <div className="lg:h-[100vh] md:h-[80vh] h-[60vh] -mb-8">
+      <div className="lg:h-[100vh] md:h-[80vh] h-[60vh] mb-10 lg:-mb-8">
         <Slider {...settings}>
           {sildes.map((img: any, index: number) => (
             <div
