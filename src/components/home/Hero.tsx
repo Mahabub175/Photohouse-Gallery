@@ -46,7 +46,7 @@ const Hero: FC = () => {
 
   return (
     <div className="w-full home-slide overflow-hidden">
-      <div className="lg:h-[100vh] md:h-[80vh] h-[60vh]">
+      <div className="lg:h-[100vh] md:h-[80vh] h-[60vh] -mb-8">
         <Slider {...settings}>
           {sildes.map((img: any, index: number) => (
             <div
@@ -86,7 +86,7 @@ export const HeroMain: FC = () => {
     }
   }, [getLinks]);
   return (
-    <div className="relative flex flex-col justify-center self-center w-full text-center my-5">
+    <div className="relative flex flex-col justify-center self-center w-full text-center">
       <h1 className="mb-3 text-2xl  md:text-5xl lg:text-6xl  tracking-wider text-white">
         Inspire and get inspired
       </h1>
