@@ -43,29 +43,18 @@ const Hero: FC = () => {
       setCurrent((c) => c - 1);
     }
   };
+
   return (
     <div className="w-full home-slide overflow-hidden">
-      {/* <div className="grid grid-cols-3 gap-0 relative lg:h-[100vh] md:h-[80vh] h-[60vh]">
-        <div className="flex justify-between absolute h-full w-full items-center">
-          <FaChevronLeft size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={PrevBtnClick} />
-          <FaChevronRight size={35} color='lightgray' className="cursor-pointer z-[10]" onClick={NextBtnClick} />
-        </div>
-        {
-          sildes.map((img: any, index: number) => <div key={index + 1515} className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group">
-            <Image src={base_url + "/" + img.image} alt="hero image" layout='fill' objectFit='cover' priority className="" />
-            <p className="hidden group-hover:block absolute bottom-0 text-sm text-center w-full bg-black/30">{img.click}</p>
-          </div>)
-        }
-      </div> */}
       <div className="lg:h-[100vh] md:h-[80vh] h-[60vh]">
         <Slider {...settings}>
           {sildes.map((img: any, index: number) => (
             <div
               key={index + 1515}
-              className="relative lg:h-[100vh] md:h-[80vh] h-[60vh] group"
+              className="relative lg:h-[90vh] md:h-[80vh] h-[60vh] group"
             >
               <Image
-                src={base_url + "/" + img.thumbnail}
+                src={base_url + "/" + img.image}
                 alt="hero image"
                 layout="fill"
                 objectFit="cover"
@@ -90,15 +79,6 @@ export const HeroMain: FC = () => {
     sponsor: "#",
     submit_photo: "#",
   });
-  // useEffect(() => {
-  //   const getLinks = () => {
-  //     axios
-  //       .get(`${base_url}/all`)
-  //       .then((data) => setredirect_links(data.data.links))
-  //       .catch(() => getLinks());
-  //   };
-  //   getLinks();
-  // }, []);
   const getLinks: any = useContext(API_CONTEXT);
   useEffect(() => {
     if (getLinks?.data?.links) {
@@ -106,7 +86,7 @@ export const HeroMain: FC = () => {
     }
   }, [getLinks]);
   return (
-    <div className=" relative flex flex-col justify-center self-center w-full text-center my-5">
+    <div className="relative flex flex-col justify-center self-center w-full text-center my-5">
       <h1 className="mb-3 text-2xl  md:text-5xl lg:text-6xl  tracking-wider text-white">
         Inspire and get inspired
       </h1>

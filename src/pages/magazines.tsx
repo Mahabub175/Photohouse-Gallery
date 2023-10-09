@@ -52,7 +52,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
               <img
                 src={base_url + "/" + x.thumbnail}
                 alt="Magazines image"
-                className="cursor-pointer rounded-md "
+                className="cursor-pointer rounded-md"
               />
             </a>
             <p className="text-white text-xs text-center">{x.name}</p>
