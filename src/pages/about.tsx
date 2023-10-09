@@ -36,17 +36,7 @@ const About: NextPage = () => {
         </div>
       </div>
       <div className="relative min-h-[100vh] w-full container m-auto pt-10 ">
-        {/* <Image
-          priority
-          src={img}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt="hero image"
-          bg-[#0000008a] 
-        /> */}
         <div className="px-[5%] flex flex-col justify-center self-center w-full text-justify">
-          {/* <p className="text-center text-4xl font-bold mb-4">About Us</p> */}
           <p className="text-xl">
             Photohouse is an international photography organization founded in
             February 2016. During Photohouse&apos;s seven-year journey, it has
@@ -62,7 +52,7 @@ const About: NextPage = () => {
             remarkable works and photogenic thoughts.
           </p>
         </div>
-        <div className="flex justify-between pt-10 text-center px-[5%]">
+        <div className="flex justify-between pt-10 text-center px-[5%] items-center">
           <div>
             <Image
               priority
@@ -103,17 +93,14 @@ const About: NextPage = () => {
             >
               <FaEnvelope className="inline mx-2" color="lightgray" size={20} />
             </a>
-            {/* <a href={redirect_links.sabbir_web} target="_blank" rel="noopener noreferrer"><FaGlobe className="inline mx-2" color="lightgray" size={20} /></a> */}
           </div>
           <div>
             <div className="w-[100px] h-[130px] relative m-auto">
               <Image
                 priority
                 src={co_ceo}
-                // width={100}
-                // height={127}
-                layout="fill"
-                objectFit="cover"
+                width={100}
+                height={127}
                 alt="page7"
                 className={`rounded-md animate-fade m-auto`}
               />
