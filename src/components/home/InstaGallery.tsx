@@ -72,7 +72,7 @@ const InstaGallery = () => {
               {post?.media_type === "VIDEO" ? (
                 <video
                   controls
-                  className="rounded-sm w-[450px] h-[600px] object-fit"
+                  className="rounded-sm w-[450px] h-[550px] object-fit"
                 >
                   <source src={post?.media_url} type="video/mp4" />
                 </video>
