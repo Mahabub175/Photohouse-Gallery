@@ -34,11 +34,12 @@ const InstaGallery = () => {
     };
     getPosts();
   }, []);
+  console.log(posts);
 
   const loadMorePosts = () => {
-    const endIndex = displayedPosts.length + postsToLoad;
-    if (endIndex <= posts.length) {
-      setDisplayedPosts(posts.slice(0, endIndex));
+    const endIndex = displayedPosts?.length + postsToLoad;
+    if (endIndex <= posts?.length) {
+      setDisplayedPosts(posts?.slice(0, endIndex));
       setCurrentPage(currentPage + 1);
     }
   };
@@ -47,7 +48,7 @@ const InstaGallery = () => {
     if (currentPage > 1) {
       const startIndex = (currentPage - 2) * postsToLoad;
       const endIndex = startIndex + initialPostsToDisplay;
-      setDisplayedPosts(posts.slice(startIndex, endIndex));
+      setDisplayedPosts(posts?.slice(startIndex, endIndex));
       setCurrentPage(currentPage - 1);
     }
   };
@@ -92,7 +93,7 @@ const InstaGallery = () => {
           ))}
         </div>
 
-        {currentPage < Math.ceil(posts.length / postsToLoad) && (
+        {currentPage < Math.ceil(posts?.length / postsToLoad) && (
           <div className="flex justify-center mt-6">
             <button
               onClick={loadMorePosts}
