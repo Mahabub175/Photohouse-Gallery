@@ -31,7 +31,7 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
           </h1>
         </div>
       </div>
-      <div className="container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 mt-6">
+      <div className="container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6">
         {FilteredData.map((x: any) => (
           <div className="my-3 m-auto animate-fade" key={x._id}>
             <a
@@ -40,20 +40,20 @@ const Magazines: NextPage = ({ magazinesList }: any) => {
               rel="noreferrer"
               className="relative"
             >
-              {/* <Image
+              <Image
                 priority
                 src={base_url + "/" + x.thumbnail}
-                width={400}
-                height={517}
+                width={380}
+                height={550}
                 layout="responsive"
                 alt="Magazines image"
                 className={`cursor-pointer rounded-md `}
-              /> */}
-              <img
+              />
+              {/* <img
                 src={base_url + "/" + x.thumbnail}
                 alt="Magazines image"
                 className="cursor-pointer rounded-md"
-              />
+              /> */}
             </a>
             <p className="text-white text-xs text-center">{x.name}</p>
           </div>
@@ -69,7 +69,7 @@ export async function getStaticProps() {
   const magazinesList = await axios
     .get(`${base_url}/all`)
     .then((response) => {
-      return response.data.Magazines.reverse();
+      return response?.data?.Magazines.reverse();
     })
     .catch((err) => []);
   return { props: { magazinesList }, revalidate: 60 };

@@ -26,15 +26,14 @@ const InstaGallery = () => {
         const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
         const response = await fetch(url);
         const data = await response.json();
-        setPosts(data.data);
-        setDisplayedPosts(data.data.slice(0, initialPostsToDisplay));
+        setPosts(data?.data);
+        setDisplayedPosts(data?.data?.slice(0, initialPostsToDisplay));
       } catch (error) {
         console.error("Error fetching Instagram posts:", error);
       }
     };
     getPosts();
   }, []);
-  console.log(posts);
 
   const loadMorePosts = () => {
     const endIndex = displayedPosts?.length + postsToLoad;
@@ -62,7 +61,7 @@ const InstaGallery = () => {
       </div>
       <div className="w-100 text-center my-3">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] px-12 mt-12 justify-center items-center">
-          {displayedPosts.map((post) => (
+          {displayedPosts?.map((post) => (
             <a
               key={post?.id}
               href={post?.permalink}
