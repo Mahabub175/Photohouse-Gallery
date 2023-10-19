@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
           </span>
           <div className="flex space-x-2 sm:justify-center text-xs">
             <a
-              href="https://hasanul-banna.github.io/Portfolio"
+              href="https://mahabub-ahmed.web.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -124,16 +124,6 @@ const Footer: React.FC = () => {
               />
               &nbsp;Developed by :
               <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">
-                Hasanul Banna
-              </span>
-            </a>
-            <a
-              href="https://mahabub-ahmed.web.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="hover:underline text-cyan-300 font-semibold tracking-wider ml-2">
-                {" "}
                 Mahabub Ahmed
               </span>
             </a>
