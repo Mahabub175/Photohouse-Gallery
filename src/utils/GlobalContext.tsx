@@ -29,7 +29,7 @@ const GlobalContext: React.FC<GlobalContextProps> = ({ children }) => {
         setData(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
         fetchData();
       });
   };

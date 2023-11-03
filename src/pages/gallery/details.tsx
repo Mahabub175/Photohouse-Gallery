@@ -38,7 +38,7 @@ const Details = () => {
 
   useEffect(() => {
     if (router.isReady) {
-      console.log(g_index, router.query);
+      // console.log(g_index, router.query);
       setImageIndex(Number(g_index));
       if (!galleryData.length) {
         (async function () {
