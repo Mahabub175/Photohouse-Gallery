@@ -1,5 +1,5 @@
+import React, { createContext, useEffect, useState, ReactNode } from "react";
 import axios from "axios";
-import { createContext, useEffect, useState, ReactNode } from "react";
 import { base_url } from "../configs";
 
 type ApiData = {
@@ -8,9 +8,12 @@ type ApiData = {
   };
 };
 
-const API_CONTEXT = createContext<
-  { data: ApiData[]; setData: (data: ApiData[]) => void } | undefined
->(undefined);
+interface ApiContextInterface {
+  data: ApiData[];
+  setData: React.Dispatch<React.SetStateAction<ApiData[]>>;
+}
+
+const API_CONTEXT = createContext<ApiContextInterface | undefined>(undefined);
 
 type GlobalContextProps = {
   children: ReactNode;
@@ -19,27 +22,30 @@ type GlobalContextProps = {
 const GlobalContext: React.FC<GlobalContextProps> = ({ children }) => {
   const [data, setData] = useState<ApiData[]>([]);
 
-  useEffect(() => {
-    const getData = () => {
-      axios
-        .get(`${base_url}/all`)
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch(() => {
-          getData();
-        });
-    };
+  const fetchData = () => {
+    axios
+      .get(`${base_url}/all`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        fetchData();
+      });
+  };
 
-    getData();
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  const value = {
+  const contextValue: ApiContextInterface = {
     data,
     setData,
   };
 
-  return <API_CONTEXT.Provider value={value}>{children}</API_CONTEXT.Provider>;
+  return (
+    <API_CONTEXT.Provider value={contextValue}>{children}</API_CONTEXT.Provider>
+  );
 };
 
 export { API_CONTEXT, GlobalContext as default };
