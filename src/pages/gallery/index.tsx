@@ -25,7 +25,12 @@ const Gallery: NextPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getGalleryData());
+    try {
+      dispatch(getGalleryData());
+    } catch (error) {
+      console.log(error);
+      dispatch(getGalleryData());
+    }
   }, [dispatch]);
 
   const galleryData: GalleryItem[] = useAppSelector(

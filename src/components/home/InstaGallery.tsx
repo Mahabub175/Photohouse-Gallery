@@ -29,7 +29,7 @@ const InstaGallery = () => {
         setPosts(data?.data);
         setDisplayedPosts(data?.data?.slice(0, initialPostsToDisplay));
       } catch (error) {
-        console.error("Error fetching Instagram posts:", error);
+        // console.error("Error fetching Instagram posts:", error);
       }
     };
     getPosts();
@@ -72,14 +72,14 @@ const InstaGallery = () => {
               {post?.media_type === "VIDEO" ? (
                 <video
                   controls
-                  className="rounded-sm w-[550px] h-[600px] object-fit"
+                  className="rounded-sm object-fit max-w-[450px] max-h-[550px] mx-auto"
                 >
                   <source src={post?.media_url} type="video/mp4" />
                 </video>
               ) : (
                 <div className="relative">
                   <img
-                    className="rounded-sm skeleton-photo"
+                    className="rounded-sm"
                     src={post?.media_url}
                     alt={post?.caption}
                   />

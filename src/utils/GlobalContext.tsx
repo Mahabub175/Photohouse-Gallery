@@ -22,16 +22,16 @@ type GlobalContextProps = {
 const GlobalContext: React.FC<GlobalContextProps> = ({ children }) => {
   const [data, setData] = useState<ApiData[]>([]);
 
-  const fetchData = () => {
-    axios
-      .get(`${base_url}/all`)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        // console.error("Error fetching data:", error);
-        fetchData();
-      });
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${base_url}/all`);
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      await fetchData();
+    } finally {
+      await fetchData();
+    }
   };
 
   useEffect(() => {

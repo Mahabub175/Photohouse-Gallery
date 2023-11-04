@@ -43,7 +43,7 @@ const Details = () => {
       if (!galleryData.length) {
         (async function () {
           await dispatch(getGalleryData());
-          await dispatch(setGalleryDetails(Number(g_index)));
+          dispatch(setGalleryDetails(Number(g_index)));
           await router.push(`/gallery/details?g_index=${Number(g_index)}`);
         })();
       }
@@ -73,12 +73,8 @@ const Details = () => {
     }
   };
   return (
-    <div className="grid grid-cols-10">
-      {/* <p className='text-emerald-300'>{count}</p>
-            <p className='text-emerald-300' onClick={() => dispatch(increment())}>Inc</p>
-            <p className='text-emerald-300' onClick={() => dispatch(incrementByAmount(15))}>add15</p>
-            <p className='text-emerald-300' onClick={() => dispatch(decrement())}>Dec</p> */}
-      <div className="lg:col-span-7 col-span-10  relative">
+    <div className="flex flex-col-reverse lg:grid lg:grid-cols-10 mb-20 mt-10 gap-10">
+      <div className="lg:col-span-7 col-span-10 relative">
         <Image
           priority
           src={`${base_url}/${galleryDetails.thumbnail}`}
@@ -99,16 +95,6 @@ const Details = () => {
                   style={{ transform: `scale(${zoom})` }}
                 />
               </div>
-              {/* <Image
-                                priority
-                                src={galleryDetails.image}
-                                quality={100}
-                                style={{ transform: `scale(${zoom})` }}
-                                // className={`scale-[${zoom}]`}
-                                layout="fill"
-                                objectFit="contain"
-                                alt="gallary image"
-                            /> */}
             </TransformComponent>
           </TransformWrapper>
           <div className="flex justify-between absolute top-[48%] w-full px-2">
@@ -147,7 +133,7 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div className="lg:col-span-3 col-span-10 ">
+      <div className="col-span-3">
         <div className="flex justify-between container m-auto items-center border-b-2 pb-1 flex-col pt-4">
           <div className="w-full flex flex-col items-center ">
             <h1 className="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">

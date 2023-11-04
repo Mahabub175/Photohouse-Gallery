@@ -74,11 +74,11 @@ const NavBar = () => {
             </Link>
           </div>
           <div
-            className="md:hidden h-full text-center cursor-pointer"
+            className="md:hidden h-full text-center cursor-pointer flex flex-col items-center gap-1"
             onClick={() => setMenu((show) => !show)}
           >
             <div
-              className={`w-[20px] h-[2px] bg-white mb-2 ${
+              className={`w-[20px] h-[2px] bg-white ${
                 showMenu && "rotate-[180deg]"
               } transition ease-in-out delay-150`}
             ></div>
@@ -87,6 +87,12 @@ const NavBar = () => {
                 showMenu && "-rotate-[180deg]"
               } transition ease-in-out delay-150`}
             ></div>
+            <div
+              className={`w-[20px] h-[2px] bg-white  ${
+                showMenu && "-rotate-[180deg]"
+              } transition ease-in-out delay-150`}
+            ></div>
+            <div>Menu</div>
           </div>
         </div>
       </nav>
