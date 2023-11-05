@@ -21,7 +21,7 @@ const NavBar = () => {
   }, [navLink]);
   return (
     <div className="z-10">
-      <nav className="flex justify-between px-10 py-1 items-center">
+      <nav className="flex justify-between px-2 md:px-10 py-1 items-center mb-4">
         <div>
           <Link href="/">
             <Image
