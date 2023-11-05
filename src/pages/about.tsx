@@ -105,7 +105,7 @@ const About: NextPage = () => {
                 className={`rounded-md animate-fade m-auto`}
               />
             </div>
-            <p className="text-3xl font-bold">PAGE7 Photo</p>
+            <p className="text-3xl font-bold pt-2">PAGE7 Photo</p>
             <p className="text-slate-400">Co-Founder</p>
             <a
               href={redirect_links?.pagel_facebook}
