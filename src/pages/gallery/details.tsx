@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaFacebook, FaGlobe, FaInstagram } from "react-icons/fa";
 import {
   FiChevronLeft,
@@ -16,6 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { base_url } from "../../configs";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Details = () => {
   const dispatch = useAppDispatch();
@@ -26,7 +27,6 @@ const Details = () => {
   const zoomScale = [0.5, 1, 1.5, 2.5, 3.5];
   const [zoom, setZoom] = useState(zoomScale[1]);
 
-  // The `state` arg is correctly typed as `RootState` already
   const { galleryDetails, galleryData } = useAppSelector(
     (state) => state.gallery
   );
@@ -38,7 +38,6 @@ const Details = () => {
 
   useEffect(() => {
     if (router.isReady) {
-      // console.log(g_index, router.query);
       setImageIndex(Number(g_index));
       if (!galleryData.length) {
         (async function () {
@@ -57,46 +56,41 @@ const Details = () => {
       router.push(`/gallery/details?g_index=${index}`);
     }
   };
-  const handleZoom = (xoom: number) => {
-    if (xoom) {
-      setZoom((z) =>
-        !!zoomScale[zoomScale.indexOf(z) + 1]
-          ? zoomScale[zoomScale.indexOf(z) + 1]
-          : 1
-      );
-    } else {
-      setZoom((z) =>
-        !!zoomScale[zoomScale.indexOf(z) - 1]
-          ? zoomScale[zoomScale.indexOf(z) - 1]
-          : 1
-      );
-    }
-  };
+  // const handleZoom = (zoom: number) => {
+  //   setZoom((z) => {
+  //     const currentIndex = zoomScale.indexOf(z);
+  //     const nextIndex = zoom ? currentIndex + 1 : currentIndex - 1;
+
+  //     const newIndex = Math.max(0, Math.min(zoomScale.length - 1, nextIndex));
+
+  //     return zoomScale[newIndex];
+  //   });
+  // };
+
   return (
-    <div className="flex flex-col-reverse lg:grid lg:grid-cols-10 mb-20 mt-10 gap-10">
+    <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-10 gap-10">
       <div className="lg:col-span-7 col-span-10 relative">
         <Image
           priority
-          src={`${base_url}/${galleryDetails.thumbnail}`}
+          src={`${base_url}/${galleryDetails.image}`}
           quality={100}
-          // className="z-[-100]"
           layout="fill"
           objectFit="cover"
           alt="gallary image"
         />
         <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
-          <TransformWrapper>
-            <TransformComponent>
-              <div className="flex items-center h-[90vh]">
-                <img
-                  src={`${base_url}/${galleryDetails.image}`}
-                  alt=""
-                  className="max-h-[90vh] "
-                  style={{ transform: `scale(${zoom})` }}
-                />
-              </div>
-            </TransformComponent>
-          </TransformWrapper>
+          {/* <TransformWrapper>
+            <TransformComponent> */}
+          <div className="flex items-center h-[90vh]">
+            <img
+              src={`${base_url}/${galleryDetails.image}`}
+              alt=""
+              className="max-h-[90vh] "
+              // style={{ transform: `scale(${zoom})` }}
+            />
+          </div>
+          {/* </TransformComponent>
+          </TransformWrapper> */}
           <div className="flex justify-between absolute top-[48%] w-full px-2">
             {imageIndex > 0 ? (
               <FiChevronLeft
@@ -117,7 +111,7 @@ const Details = () => {
               />
             )}
           </div>
-          <div className="flex justify-center absolute bottom-[5px] w-full px-2">
+          {/* <div className="flex justify-center absolute bottom-[5px] w-full px-2">
             <FiPlusSquare
               size={30}
               color="white"
@@ -130,21 +124,21 @@ const Details = () => {
               className="cursor-zoom-out bg-black/50 rounded-lg"
               onClick={() => handleZoom(0)}
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="col-span-3">
         <div className="flex justify-between container m-auto items-center border-b-2 pb-1 flex-col pt-4">
           <div className="w-full flex flex-col items-center ">
-            <h1 className="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">
+            <h1 className="font-bold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">
               Publication Photohouse Magazine
             </h1>
           </div>
         </div>
-        <div className="grid grid-cols-1 px-2">
-          {galleryDetails.artists?.map((artist: any, i: number) => (
+        <div className="grid grid-cols-1 px-2 pr-8 mt-4">
+          {galleryDetails?.artists?.map((artist: any, i: number) => (
             <div
-              className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 p-2 my-1"
+              className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 py-2 my-1"
               key={i + 1212}
             >
               <img

@@ -4,7 +4,6 @@
 import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { Camera } from "react-feather";
 import { base_url } from "../../configs";
 import {
@@ -12,12 +11,15 @@ import {
   setGalleryDetails,
 } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
+import { useContext, useEffect, useState } from "react";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 interface GalleryItem {
   _id: string;
   thumbnail: string;
   click: number;
   flag?: string;
+  image?: any;
 }
 
 const Gallery: NextPage = () => {
@@ -42,11 +44,22 @@ const Gallery: NextPage = () => {
     router.push(`/gallery/details?g_index=${index}`);
   };
 
+  const [galData, setGalData] = useState<GalleryItem[]>([]);
+
+  const getData: any = useContext(API_CONTEXT);
+  useEffect(() => {
+    if (getData?.data?.gallery) {
+      setGalData(getData?.data?.gallery.reverse());
+    }
+  }, [getData]);
+
+  // console.log(galData);
+
   return (
     <div className="mb-28">
-      {galleryData?.length > 0 && (
-        <div className="md:columns-4 columns-2 container mx-auto mt-12">
-          {galleryData.map((item, index) => (
+      {galData?.length > 0 && (
+        <div className="column-2 md:columns-4 container mx-auto mt-12">
+          {galData.map((item, index) => (
             <div key={item._id}>
               <div className="mb-1 animate-fadeIn">
                 <div className="group relative block overflow-hidden transition-all duration-500">
@@ -55,18 +68,18 @@ const Gallery: NextPage = () => {
                     onClick={() => handleClick(index)}
                   >
                     <img
-                      src={`${base_url}/${item.thumbnail}`}
+                      src={`${base_url + "/" + item?.image}`}
                       alt="gallery image"
-                      className="animate-slideDown w-full"
+                      className="animate-slideDown w-full mb-3"
                     />
                   </a>
                   <div className="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-black/60 p-4 rounded shadow shadow-gray-700">
                     <a className="hover:text-primary-600 text-lg transition duration-500 font-medium flex">
                       <Camera size={18} className="mt-[5px] mr-2" />:{" "}
-                      {item.click}
-                      {!!item.flag && (
+                      {item?.click}
+                      {!!item?.flag && (
                         <img
-                          src={item.flag}
+                          src={item?.flag}
                           alt="flag"
                           className="rounded-sm"
                           style={{ height: "13px", marginTop: "8px" }}

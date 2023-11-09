@@ -30,12 +30,13 @@ const GlobalContext: React.FC<GlobalContextProps> = ({ children }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
         await fetchData();
-      } finally {
-        await fetchData();
       }
     };
-    fetchData();
-  }, []);
+
+    if (data.length === 0) {
+      fetchData();
+    }
+  }, [data]);
 
   const contextValue: ApiContextInterface = {
     data,

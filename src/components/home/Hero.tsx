@@ -96,6 +96,7 @@ export const HeroMain: FC = () => {
       <div className="flex justify-center flex-col md:flex-row self-start md:self-auto mx-auto">
         <a
           href={redirect_links.facebook_group}
+          target="blank"
           className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-lg group"
         >
           <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-80 group-hover:h-56"></span>
@@ -104,6 +105,7 @@ export const HeroMain: FC = () => {
         </a>
         <a
           href={redirect_links.submit_photo}
+          target="blank"
           className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-lg group"
         >
           <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
