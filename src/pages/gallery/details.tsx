@@ -14,8 +14,8 @@ import {
   setGalleryDetails,
 } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { base_url } from "../../configs";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Details = () => {
@@ -72,7 +72,7 @@ const Details = () => {
       <div className="lg:col-span-7 col-span-10 relative">
         <Image
           priority
-          src={`${base_url}/${galleryDetails.image}`}
+          src={`${base_url + "/" + galleryDetails?.image}`}
           quality={100}
           layout="fill"
           objectFit="cover"
@@ -83,7 +83,7 @@ const Details = () => {
             <TransformComponent> */}
           <div className="flex items-center h-[90vh]">
             <img
-              src={`${base_url}/${galleryDetails.image}`}
+              src={`${base_url + "/" + galleryDetails?.image}`}
               alt=""
               className="max-h-[90vh] "
               // style={{ transform: `scale(${zoom})` }}
