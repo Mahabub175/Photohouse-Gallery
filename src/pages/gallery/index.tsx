@@ -58,7 +58,7 @@ const Gallery: NextPage = () => {
   return (
     <div className="mb-28">
       {galData?.length > 0 && (
-        <div className="column-2 md:columns-4 container mx-auto mt-12">
+        <div className="sm:columns-2 md:columns-4 mt-12 px-6 md:px-0">
           {galData.map((item, index) => (
             <div key={item._id}>
               <div className="mb-1 animate-fadeIn">

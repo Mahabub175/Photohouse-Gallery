@@ -77,7 +77,9 @@ const Details = () => {
           layout="fill"
           objectFit="cover"
           alt="gallary image"
+          className="h-[200px]"
         />
+        {/* <img src={`${base_url + "/" + galleryDetails?.image}`} alt="" /> */}
         <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
           {/* <TransformWrapper>
             <TransformComponent> */}
