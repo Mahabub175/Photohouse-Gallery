@@ -1,22 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaGlobe, FaInstagram } from "react-icons/fa";
-import {
-  FiChevronLeft,
-  FiChevronRight,
-  FiMinusSquare,
-  FiPlusSquare,
-} from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import {
   getGalleryData,
   setGalleryDetails,
 } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
 import { base_url } from "../../configs";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { API_CONTEXT } from "../../utils/GlobalContext";
+// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+// import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Details = () => {
   const dispatch = useAppDispatch();
@@ -70,30 +65,20 @@ const Details = () => {
   return (
     <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-10 gap-10">
       <div className="lg:col-span-7 col-span-10 relative">
-        <Image
-          priority
+        <img
           src={`${base_url + "/" + galleryDetails?.image}`}
-          quality={100}
-          layout="fill"
-          objectFit="cover"
-          alt="gallary image"
-          className="h-[200px]"
+          alt=""
+          className="absolute top-0 left-0 w-full h-full"
         />
-        {/* <img src={`${base_url + "/" + galleryDetails?.image}`} alt="" /> */}
-        <div className="min-h-[90vh] relative backdrop-blur-sm bg-white/10 flex justify-center  cursor-move">
-          {/* <TransformWrapper>
-            <TransformComponent> */}
-          <div className="flex items-center h-[90vh]">
+        <div className="min-h-[90vh] relative backdrop-blur-sm  flex justify-center  cursor-move">
+          <div className="flex items-center h-[90vh] relative z-10">
             <img
               src={`${base_url + "/" + galleryDetails?.image}`}
               alt=""
-              className="max-h-[90vh] "
-              // style={{ transform: `scale(${zoom})` }}
+              className="max-h-[90vh]"
             />
           </div>
-          {/* </TransformComponent>
-          </TransformWrapper> */}
-          <div className="flex justify-between absolute top-[48%] w-full px-2">
+          <div className="flex justify-between absolute top-[48%] w-full px-2 z-20">
             {imageIndex > 0 ? (
               <FiChevronLeft
                 size={30}
@@ -113,34 +98,21 @@ const Details = () => {
               />
             )}
           </div>
-          {/* <div className="flex justify-center absolute bottom-[5px] w-full px-2">
-            <FiPlusSquare
-              size={30}
-              color="white"
-              className="cursor-zoom-in bg-black/50 rounded-lg mr-3"
-              onClick={() => handleZoom(1)}
-            />
-            <FiMinusSquare
-              size={30}
-              color="white"
-              className="cursor-zoom-out bg-black/50 rounded-lg"
-              onClick={() => handleZoom(0)}
-            />
-          </div> */}
         </div>
       </div>
+
       <div className="col-span-3">
         <div className="flex justify-between container m-auto items-center border-b-2 pb-1 flex-col pt-4">
           <div className="w-full flex flex-col items-center ">
-            <h1 className="font-bold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">
+            <h1 className="font-bold text-transparent text-2xl md:text-3xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">
               Publication Photohouse Magazine
             </h1>
           </div>
         </div>
-        <div className="grid grid-cols-1 px-2 pr-8 mt-4">
+        <div className="grid grid-cols-1 px-6 pr-8 mt-4">
           {galleryDetails?.artists?.map((artist: any, i: number) => (
             <div
-              className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 py-2 my-1"
+              className="items-center bg-gray-800 rounded-lg shadow flex border-gray-600 py-2 my-1 px-4"
               key={i + 1212}
             >
               <img
