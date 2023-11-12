@@ -70,7 +70,7 @@ const Details = () => {
           alt=""
           className="absolute top-0 left-0 w-full h-full"
         /> */}
-        <div className="min-h-[90vh] relative backdrop-blur-sm  flex justify-center  cursor-move">
+        <div className="min-h-[90vh] relative backdrop-blur-sm flex justify-center  cursor-move">
           <div className="flex items-center h-[90vh] relative z-10">
             <img
               src={`${base_url + "/" + galleryDetails?.image}`}
