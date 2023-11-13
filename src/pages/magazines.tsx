@@ -10,9 +10,11 @@ const Magazines: NextPage = () => {
   const [magazineData, setMagazineData] = useState([]);
 
   const getData: any = useContext(API_CONTEXT);
+
   useEffect(() => {
     if (getData?.data?.Magazines) {
-      setMagazineData(getData?.data?.Magazines.reverse());
+      const reversedMagazines: any = [...getData?.data?.Magazines].reverse();
+      setMagazineData(reversedMagazines);
     }
   }, [getData]);
 

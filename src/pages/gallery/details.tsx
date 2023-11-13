@@ -101,7 +101,7 @@ const Details = () => {
         </div>
       </div>
 
-      <div className="col-span-3 md:border-l-[2px] md:pl-6">
+      <div className="col-span-3 md:border-l-[0.5px] border-white/40 md:pl-6">
         <div className="flex justify-between container m-auto items-center border-b-2 pb-1 flex-col pt-4">
           <div className="w-full flex flex-col items-center ">
             <h1 className="font-bold text-transparent text-2xl md:text-3xl bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-300 pb-4">
