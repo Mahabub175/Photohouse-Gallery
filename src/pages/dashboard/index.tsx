@@ -12,7 +12,7 @@ const Index = () => {
     if (!JSON.parse(isLoggedIn)) {
       router.push("/login");
     }
-  }, []);
+  }, [router]);
   return (
     <div className="flex overflow-hidden">
       <Sidebar setActive={setActive} />
