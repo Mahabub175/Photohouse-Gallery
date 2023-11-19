@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
-
-import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Camera } from "react-feather";
@@ -49,11 +47,15 @@ const Gallery: NextPage = () => {
   const getData: any = useContext(API_CONTEXT);
   useEffect(() => {
     if (getData?.data?.gallery) {
-      setGalData(getData?.data?.gallery.reverse());
+      const reversedGalleryData = [...getData?.data?.gallery]
+        .reverse()
+        .map((item) => ({
+          ...item,
+          image: base_url + "/" + item?.image,
+        }));
+      setGalData(reversedGalleryData);
     }
   }, [getData]);
-
-  // console.log(galData);
 
   return (
     <div className="mb-28">
@@ -68,7 +70,7 @@ const Gallery: NextPage = () => {
                     onClick={() => handleClick(index)}
                   >
                     <img
-                      src={`${base_url + "/" + item?.image}`}
+                      src={item?.image}
                       alt="gallery image"
                       className="animate-slideDown w-full mb-3"
                     />

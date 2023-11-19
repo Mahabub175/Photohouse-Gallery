@@ -31,18 +31,20 @@ const Hero: FC = () => {
     }
   }, [getImages]);
 
-  const NextBtnClick = () => {
-    if (current + 3 + 1 <= imageArray.length) {
-      setSlides(imageArray.slice(current + 1, current + 3 + 1));
-      setCurrent((c) => c + 1);
-    }
-  };
-  const PrevBtnClick = () => {
-    if (current - 1 >= 0) {
-      setSlides(imageArray.slice(current - 1, current + 3 - 1));
-      setCurrent((c) => c - 1);
-    }
-  };
+  // const NextBtnClick = () => {
+  //   if (current + 3 + 1 <= imageArray.length) {
+  //     setSlides(imageArray.slice(current + 1, current + 3 + 1));
+  //     setCurrent((c) => c + 1);
+  //   }
+  // };
+  // const PrevBtnClick = () => {
+  //   if (current - 1 >= 0) {
+  //     setSlides(imageArray.slice(current - 1, current + 3 - 1));
+  //     setCurrent((c) => c - 1);
+  //   }
+  // };
+
+  // console.log(getImages);
 
   return (
     <div className="w-full home-slide overflow-hidden">
