@@ -63,7 +63,7 @@ const Details = () => {
   // };
 
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-10 gap-10">
+    <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-2 gap-10">
       <div className="lg:col-span-7 col-span-10 relative">
         {/* <img
           src={`${base_url + "/" + galleryDetails?.image}`}

@@ -83,7 +83,7 @@ const Gallery: NextPage = () => {
                         <img
                           src={item?.flag}
                           alt="flag"
-                          className="rounded-sm"
+                          className="rounded-sm ml-2"
                           style={{ height: "13px", marginTop: "8px" }}
                         />
                       )}
