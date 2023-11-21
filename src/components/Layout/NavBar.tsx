@@ -19,6 +19,7 @@ const NavBar = () => {
       setredirect_links(navLink?.data?.links);
     }
   }, [navLink]);
+
   return (
     <div className="z-10">
       <nav className="flex justify-between px-2 md:px-10 py-1 items-center mb-4">
@@ -37,21 +38,33 @@ const NavBar = () => {
         <div>
           <div className="hidden md:block tracking-wider">
             <Link href="/">
-              <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}>
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/" ? "font-bold" : ""
+                }`}
+              >
                 {" "}
                 Home{" "}
               </a>
             </Link>
             <a className="text-xl"> | </a>
             <Link href="/magazines">
-              <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}>
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/magazines" ? "font-bold" : ""
+                }`}
+              >
                 {" "}
                 Magazines{" "}
               </a>
             </Link>
             <a className="text-xl"> | </a>
             <a
-              className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}
+              className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                router.pathname === redirect_links.submission_link
+                  ? "font-bold"
+                  : ""
+              }`}
               href={redirect_links.submission_link}
               target="_blank"
               rel="noreferrer"
@@ -60,14 +73,22 @@ const NavBar = () => {
             </a>
             <a className="text-xl"> | </a>
             <Link href="/gallery">
-              <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}>
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/gallery" ? "font-bold" : ""
+                }`}
+              >
                 {" "}
                 Gallery{" "}
               </a>
             </Link>
             <a className="text-xl"> | </a>
             <Link href="/about">
-              <a className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl`}>
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/about" ? "font-bold" : ""
+                }`}
+              >
                 {" "}
                 About{" "}
               </a>
@@ -108,10 +129,10 @@ const NavBar = () => {
                         <a
                           onClick={() => setMenu((show) => !show)}
                           className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${
-                            router.pathname == `/${x.toLowerCase()}` ||
-                            (i === 0 && router.pathname == `/`)
-                              ? " text-[#DEDEDE] "
-                              : " "
+                            router.pathname ===
+                            (i === 0 ? "/" : `/${x.toLowerCase()}`)
+                              ? "font-bold"
+                              : ""
                           }`}
                         >
                           {x}
@@ -119,7 +140,11 @@ const NavBar = () => {
                       </Link>
                     ) : (
                       <a
-                        className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl`}
+                        className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${
+                          router.pathname === redirect_links.submission_link
+                            ? "font-bold"
+                            : ""
+                        }`}
                         href={redirect_links.submission_link}
                         target="_blank"
                         rel="noreferrer"
