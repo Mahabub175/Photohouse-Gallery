@@ -2,10 +2,7 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 const colors = require("tailwindcss/colors");
 
 module.exports = withMT({
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   // prefix: 'tw-',
   // darkMode: 'media',
   theme: {

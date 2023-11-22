@@ -1,11 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
 import Image from "next/image";
 import bgImage from "../../assets/images/Contact-Banner.jpg";
 import { StaticInfo } from "../../components/Contact/StaticInfo";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import { MailingList } from "../../components/Contact/MailingList";
+import { useForm } from "react-hook-form";
 
 const index = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <section className="pb-20">
       <div className="relative">
@@ -21,19 +27,44 @@ const index = () => {
         <div className="bg-black text-center py-32 px-10 rounded-lg relative">
           <StaticInfo />
         </div>
-        <div className="mx-auto flex flex-col gap-8 w-full max-w-[350px] mt-20 md:mt-0 py-16 md:py-0">
-          <Input variant="standard" type="text" label="Full Name" required />
-          <Input variant="standard" type="email" label="Email" required />
-          <Textarea variant="standard" label="Message" required />
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-auto flex flex-col gap-8 w-full max-w-[350px] mt-20 md:mt-0 py-16 md:py-0"
+        >
+          <Input
+            {...register("fullName", { required: true })}
+            variant="standard"
+            type="text"
+            label="Full Name"
+            required
+          />
+
+          <Input
+            {...register("email", { required: true })}
+            variant="standard"
+            type="email"
+            label="Email"
+            required
+          />
+
+          <Textarea
+            {...register("message", { required: true })}
+            variant="standard"
+            label="Message"
+            required
+          />
+
           <div className="flex justify-end mt-4">
             <Button
+              type="submit"
               variant="outlined"
               className="hover:bg-black hover:text-white text-bold duration-300 text-black"
             >
               Send Message
             </Button>
           </div>
-        </div>
+        </form>
       </div>
       <MailingList />
     </section>

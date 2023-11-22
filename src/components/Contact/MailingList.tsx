@@ -1,6 +1,12 @@
 import { Button, Input } from "@material-tailwind/react";
+import { useForm } from "react-hook-form";
 
 export const MailingList = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
   return (
     <div className="container mx-auto py-20 mt-20 px-10 md:px-0">
       <div className="text-center">
@@ -10,9 +16,13 @@ export const MailingList = () => {
           surprises.
         </p>
       </div>
-      <div className="flex flex-col gap-8  md:mt-10 py-16 md:py-0 items-center">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-8  md:mt-10 py-16 md:py-0 items-center"
+      >
         <div className="flex flex-col md:flex-row w-full max-w-[800px] mx-auto gap-8">
           <Input
+            {...register("fullName", { required: true })}
             variant="outlined"
             color="blue"
             type="text"
@@ -23,10 +33,11 @@ export const MailingList = () => {
             onResizeCapture={undefined}
           />
           <Input
+            {...register("email", { required: true })}
             variant="outlined"
             type="email"
             color="blue"
-            label="Outlined"
+            label="Email"
             nonce={undefined}
             onResize={undefined}
             required
@@ -36,6 +47,7 @@ export const MailingList = () => {
 
         <div className="">
           <Button
+            type="submit"
             variant="gradient"
             className="text-white text-bold duration-300  px-6"
             nonce={undefined}
@@ -45,7 +57,7 @@ export const MailingList = () => {
             Subscribe
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

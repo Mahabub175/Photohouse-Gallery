@@ -56,7 +56,7 @@ const Magazines: NextPage = () => {
 
   return (
     <main className="py-4">
-      <div className="flex container justify-between m-auto items-center border-b-gray-500 border-b-2 pb-2 flex-col">
+      <div className="flex max-w-[1800px] justify-between m-auto items-center border-b-gray-500 border-b-2 pb-2 flex-col">
         <div className="w-full flex flex-col items-center mb-4">
           <h1 className="text-white sm:text-5xl text-3xl tracking-wider">
             Magazines
@@ -88,7 +88,7 @@ const Magazines: NextPage = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6 gap-x-8 container mx-auto mb-0 md:mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6 gap-x-8 px-5 md:px-20 mx-auto mb-0 md:mb-24">
           {activeTab === "special" && magazineData?.length === 0 ? (
             <p className="text-white text-center">
               Special Edition is coming soon!
