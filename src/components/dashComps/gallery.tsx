@@ -6,8 +6,7 @@ import { countries } from "../../utils/countries";
 import AvatarUpload from "../UI/AvatarUpload";
 import CustomInput from "../UI/CustomInput";
 import ImageUploader from "./ImageUploader";
-import { error } from "console";
-
+import toast from "react-hot-toast";
 const DashboardGallery = () => {
   const artistObj = {
     photo: "",
@@ -36,7 +35,6 @@ const DashboardGallery = () => {
       click: defaultGuy?.name || "",
       flag: defaultGuy?.flag || "",
     };
-    console.log(body);
     // return
     postDatas(body);
   };
@@ -45,10 +43,11 @@ const DashboardGallery = () => {
     await axios
       .post(`${base_url}/gallery`, body)
       .then((data) => {
-        alert(data.data?.message);
+        toast.success(data?.data?.message);
       })
       .catch((error) => {
-        alert("An error has occured! please try again."), console.log(error);
+        toast.error("An error has occurred! please try again."),
+          console.log(error);
       })
       .finally(() => setLoading(false));
   };
