@@ -15,7 +15,7 @@ const Magazines: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const magazinesData = getData?.data?.Magazines;
+        const magazinesData = await getData?.data?.Magazines;
 
         if (Array.isArray(magazinesData)) {
           const filteredMagazines: any = [...magazinesData]
@@ -67,8 +67,8 @@ const Magazines: NextPage = () => {
             onClick={() => handleTabChange("normal")}
             className={`px-4 py-2 ${
               activeTab === "normal"
-                ? "bg-blue-500 text-white"
-                : "bg-white text-blue-500 border border-blue-500"
+                ? "bg-gray-500 text-white"
+                : "bg-transparent text-white border border-gray-500"
             } rounded-xl`}
           >
             Normal Edition
@@ -77,8 +77,8 @@ const Magazines: NextPage = () => {
             onClick={() => handleTabChange("special")}
             className={`px-4 py-2 ${
               activeTab === "special"
-                ? "bg-blue-500 text-white"
-                : "bg-white text-blue-500 border border-blue-500"
+                ? "bg-gray-500 text-white"
+                : "bg-transparent text-white border border-gray-500"
             } rounded-xl`}
           >
             Special Edition

@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+const withMT = require("@material-tailwind/react/utils/withMT");
 const colors = require("tailwindcss/colors");
 
-module.exports = {
+module.exports = withMT({
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
@@ -27,6 +27,9 @@ module.exports = {
       slate: colors.slate,
     },
     extend: {
+      backgroundImage: {
+        contact: "url('/src/assets/images/Contact-Banner.jpg')",
+      },
       animation: {
         fade: "fade .5s ease-in-out",
         fadeIn: "fadeIn .2s ease-in",
@@ -48,5 +51,4 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("daisyui")],
-};
+});

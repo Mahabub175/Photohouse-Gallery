@@ -93,6 +93,17 @@ const NavBar = () => {
                 About{" "}
               </a>
             </Link>
+            <a className="text-xl"> | </a>
+            <Link href="/contact">
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/contact" ? "font-bold" : ""
+                }`}
+              >
+                {" "}
+                Contact{" "}
+              </a>
+            </Link>
           </div>
           <div
             className="md:hidden h-full text-center cursor-pointer flex flex-col items-center gap-1"
@@ -121,40 +132,45 @@ const NavBar = () => {
         <div className="">
           <nav className="bg-[#06202A] h-[100vh] w-full md:hidden select-none animate-slideDown relative">
             <div className="tracking-wider flex flex-col h-[80vh] items-center text-center justify-evenly text-2xl pt-20 absolute left-1/3 top-0">
-              {["Home", "Magazines", "publish", "Gallery", "About"].map(
-                (x, i) => (
-                  <Fragment key={i + 8948}>
-                    {i !== 2 ? (
-                      <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
-                        <a
-                          onClick={() => setMenu((show) => !show)}
-                          className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${
-                            router.pathname ===
-                            (i === 0 ? "/" : `/${x.toLowerCase()}`)
-                              ? "font-bold"
-                              : ""
-                          }`}
-                        >
-                          {x}
-                        </a>
-                      </Link>
-                    ) : (
+              {[
+                "Home",
+                "Magazines",
+                "publish",
+                "Gallery",
+                "About",
+                "Contact",
+              ].map((x, i) => (
+                <Fragment key={i + 8948}>
+                  {i !== 2 ? (
+                    <Link href={i === 0 ? "/" : `/${x.toLowerCase()}`}>
                       <a
+                        onClick={() => setMenu((show) => !show)}
                         className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${
-                          router.pathname === redirect_links.submission_link
+                          router.pathname ===
+                          (i === 0 ? "/" : `/${x.toLowerCase()}`)
                             ? "font-bold"
                             : ""
                         }`}
-                        href={redirect_links.submission_link}
-                        target="_blank"
-                        rel="noreferrer"
                       >
-                        Get Published
+                        {x}
                       </a>
-                    )}
-                  </Fragment>
-                )
-              )}
+                    </Link>
+                  ) : (
+                    <a
+                      className={`hover:text-[#DEDEDE] cursor-pointer mx-2 text-2xl ${
+                        router.pathname === redirect_links.submission_link
+                          ? "font-bold"
+                          : ""
+                      }`}
+                      href={redirect_links.submission_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Get Published
+                    </a>
+                  )}
+                </Fragment>
+              ))}
             </div>
           </nav>
         </div>

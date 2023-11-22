@@ -34,7 +34,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <NavBar />
       <main className="min-h-[90vh]">{children}</main>
       <Footer />
-      {preLoading && (
+      {/* {preLoading && (
         <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
           <div className="animate-bounce mx-auto">
             <Image
@@ -47,7 +47,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

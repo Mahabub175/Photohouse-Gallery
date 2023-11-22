@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import {
   FaBattleNet,
   FaEnvelope,
   FaFacebookF,
   FaInstagram,
   FaTelegramPlane,
-  FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import logo_dark from "../../Images/logo.png";
 
 const Footer: React.FC = () => {
@@ -42,7 +41,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaTwitter className="inline mx-2" />
+                <FaXTwitter className="inline mx-2" />
               </a>
               <a
                 href="https://www.instagram.com/photohouse_magazine/"
@@ -78,7 +77,7 @@ const Footer: React.FC = () => {
               <h2 className="mb-6 text-sm font-semibold  uppercase ">
                 Contact Us
               </h2>
-              <ul className="break-all ">
+              <ul className="break-all">
                 <li className="mb-4">
                   <a
                     href="mailto:photohousemagazine@gmail.com"
