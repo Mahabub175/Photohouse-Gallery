@@ -33,7 +33,7 @@ export const StaticInfo = () => {
           </a>
         </li>
       </ul>
-      <div className="flex flex-wrap leading-[25px] absolute bottom-6 right-28">
+      <div className="flex flex-wrap leading-[25px] absolute bottom-6 right-28 md:left-10">
         <a
           href="https://www.facebook.com/photohouse.magazine"
           target="_blank"
