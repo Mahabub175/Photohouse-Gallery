@@ -1,22 +1,48 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+"use client";
 import Image from "next/image";
-import bgImage from "../../assets/images/Contact-Banner.jpg";
+import bgImage from "../../assets/images/contact-2.jpg";
 import { StaticInfo } from "../../components/Contact/StaticInfo";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import { MailingList } from "../../components/Contact/MailingList";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 const index = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const serviceId = process.env.NEXT_PUBLIC_SERVICEID;
+    const templateId = process.env.NEXT_PUBLIC_TEMPLATEID;
+    const publicKey = process.env.NEXT_PUBLIC_PUBLICKEY;
+
+    const templateParam = {
+      from_name: data?.name,
+      from_email: data?.email,
+      to_name: "Photohouse Magazine",
+      message: data?.message,
+    };
+
+    try {
+      emailjs
+        .send(serviceId, templateId, templateParam, publicKey)
+        .then((res) => {
+          toast.success(`Thanks for your message ${templateParam?.from_name}`);
+        })
+        .error(() => {
+          toast.error("Something Went Wrong! Please Try Again");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+    reset();
   };
   return (
     <section className="pb-20">
       <div className="relative">
-        <Image src={bgImage} alt="Contact Banner" height={800} />
-        <div className="absolute mt-4 md:mt-0 text-2xl top-4 md:top-1/2 left-1/2 text-center px-5 md:px-0">
+        <Image src={bgImage} alt="Contact Banner" height={900} />
+        <div className="md:mt-20 mb-20 text-2xl text-center px-5 md:px-0 mx-auto">
           <p className="md:text-7xl font-bold mb-4 font-sans">Contact Us</p>
           <p className="text-bold text-xs md:text-xl">
             Any question or remarks? Just write us a message!
@@ -33,7 +59,7 @@ const index = () => {
           className="mx-auto flex flex-col gap-8 w-full max-w-[350px] mt-20 md:mt-0 py-16 md:py-0"
         >
           <Input
-            {...register("fullName", { required: true })}
+            {...register("name", { required: true })}
             variant="standard"
             type="text"
             label="Full Name"

@@ -1,12 +1,44 @@
 import { Button, Input } from "@material-tailwind/react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
-export const MailingList = () => {
-  const { register, handleSubmit } = useForm();
+interface FormData {
+  name: string;
+  email: string;
+}
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+export const MailingList: React.FC = () => {
+  const { register, handleSubmit, reset } = useForm<FormData>();
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    const serviceId: any = process.env.NEXT_PUBLIC_SERVICEID;
+    const templateId: any = process.env.NEXT_PUBLIC_SECOND_TEMPLATEID;
+    const publicKey: any = process.env.NEXT_PUBLIC_PUBLICKEY;
+
+    const templateParam = {
+      from_name: data?.name,
+      from_email: data?.email,
+      to_name: "Photohouse Magazine",
+    };
+
+    try {
+      emailjs
+        .send(serviceId, templateId, templateParam, publicKey)
+        .then((res) => {
+          toast.success(
+            `Welcome to our Newsletter ${templateParam?.from_name}`
+          );
+        })
+        .catch(() => {
+          toast.error("Something Went Wrong! Please Try Again");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+    reset();
   };
+
   return (
     <div className="container mx-auto py-20 mt-20 px-10 md:px-0">
       <div className="text-center">
@@ -22,26 +54,26 @@ export const MailingList = () => {
       >
         <div className="flex flex-col md:flex-row w-full max-w-[800px] mx-auto gap-8">
           <Input
-            {...register("fullName", { required: true })}
+            nonce={undefined}
+            onResize={undefined}
+            onResizeCapture={undefined}
+            {...register("name", { required: true })}
             variant="outlined"
             color="blue"
             type="text"
             label="Full Name"
-            nonce={undefined}
-            onResize={undefined}
             required
-            onResizeCapture={undefined}
           />
           <Input
+            nonce={undefined}
+            onResize={undefined}
+            onResizeCapture={undefined}
             {...register("email", { required: true })}
             variant="outlined"
             type="email"
             color="blue"
             label="Email"
-            nonce={undefined}
-            onResize={undefined}
             required
-            onResizeCapture={undefined}
           />
         </div>
 
