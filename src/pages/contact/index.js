@@ -42,14 +42,16 @@ const index = () => {
     <section className="pb-20">
       <div className="relative">
         <Image src={bgImage} alt="Contact Banner" height={900} />
-        <div className="md:mt-20 mb-20 text-2xl text-center px-5 md:px-0 mx-auto">
-          <p className="md:text-7xl font-bold mb-4 font-sans">Contact Us</p>
+        <div className="text-2xl text-center px-5 md:px-0 mx-auto absolute top-10 left-10 md:top-1/2 md:left-1/2">
+          <p className="text-2xl md:text-7xl font-bold mb-4 font-sans">
+            Contact Us
+          </p>
           <p className="text-bold text-xs md:text-xl">
             Any question or remarks? Just write us a message!
           </p>
         </div>
       </div>
-      <div className="md:flex items-center container mx-auto bg-white mt-20 rounded-lg">
+      <div className="md:flex items-center container mx-auto bg-white mt-10 rounded-lg">
         <div className="bg-black text-center py-32 px-10 rounded-lg relative">
           <StaticInfo />
         </div>

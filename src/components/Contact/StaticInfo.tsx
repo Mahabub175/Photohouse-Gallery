@@ -33,27 +33,27 @@ export const StaticInfo = () => {
           </a>
         </li>
       </ul>
-      <div className="flex flex-wrap leading-[25px] absolute bottom-3 left-32">
+      <div className="flex flex-wrap leading-[25px] absolute bottom-6">
         <a
           href="https://www.facebook.com/photohouse.magazine"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaFacebookF className="inline mx-6 text-3xl hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+          <FaFacebookF className="inline mr-6 text-[28px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
         </a>
         <a
           href="https://twitter.com/photohouse_"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaXTwitter className="inline mx-6 text-3xl hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+          <FaXTwitter className="inline mx-6 text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
         </a>
         <a
           href="https://www.instagram.com/photohouse_magazine/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaInstagram className="inline mx-6 text-3xl hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+          <FaInstagram className="inline mx-6 text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
         </a>
       </div>
     </>
