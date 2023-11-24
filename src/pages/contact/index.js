@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-"use client";
 import Image from "next/image";
 import bgImage from "../../assets/images/contact-2.jpg";
 import { StaticInfo } from "../../components/Contact/StaticInfo";
@@ -42,8 +41,8 @@ const index = () => {
     <section className="pb-20">
       <div className="relative">
         <Image src={bgImage} alt="Contact Banner" height={900} />
-        <div className="text-center px-5 md:px-0 mx-auto absolute top-10 left-10 md:top-1/2 md:left-1/2">
-          <p className="text-3xl md:text-7xl font-bold mb-4 font-sans">
+        <div className="text-center px-5 md:px-0 mx-auto top-16 md:top-1/2 absolute right-10 md:right-[35%]">
+          <p className="text-3xl md:text-[100px] font-bold md:mb-8 font-sans">
             Contact Us
           </p>
           <p className="text-bold text-xs md:text-xl">
@@ -51,14 +50,14 @@ const index = () => {
           </p>
         </div>
       </div>
-      <div className="md:flex items-center container mx-auto bg-white md:mt-10 rounded-lg">
+      <div className="md:flex items-center mx-auto bg-white md:mt-10 rounded-lg">
         <div className="bg-black text-center py-32 px-10 rounded-lg relative">
           <StaticInfo />
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto flex flex-col gap-8 w-full max-w-[350px] mt-20 md:mt-0 py-16 md:py-0"
+          className="mx-auto flex flex-col gap-8 w-full max-w-[550px] mt-20 md:mt-0 py-16 md:py-0 px-10 md:px-0"
         >
           <Input
             {...register("name", { required: true })}

@@ -25,7 +25,7 @@ module.exports = withMT({
     },
     extend: {
       backgroundImage: {
-        contact: "url('/src/assets/images/Contact-Banner.jpg')",
+        contact: "url('/src/assets/images/contact-2.jpg')",
       },
       animation: {
         fade: "fade .5s ease-in-out",
