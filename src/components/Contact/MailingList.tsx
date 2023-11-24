@@ -42,7 +42,7 @@ export const MailingList: React.FC = () => {
   return (
     <div className="container mx-auto py-10 mt-20 px-10 md:px-0">
       <div className="text-center">
-        <p className="text-6xl font-bold mb-4">Join our Newsletter</p>
+        <p className="text-[42px] font-bold mb-4">Join our Newsletter</p>
         <p>
           Sign up for exclusive content, opportunities, news + plus a few
           surprises.
