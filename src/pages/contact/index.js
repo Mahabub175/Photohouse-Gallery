@@ -50,14 +50,14 @@ const index = () => {
           </p>
         </div>
       </div>
-      <div className="-mt-2 md:flex items-center mx-auto bg-white">
-        <div className="bg-black text-center py-32 px-10 relative">
+      <div className="-mt-3 md:flex items-center mx-auto bg-white">
+        <div className="bg-[#0b0b0b] text-center px-10 py-[80px]">
           <StaticInfo />
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto flex flex-col gap-8 w-full max-w-[550px] mt-20 md:mt-0 py-16 md:py-0 px-10 md:px-0"
+          className="mx-auto flex flex-col gap-8 w-full max-w-[550px] mt-20 md:mt-0 pb-10 md:py-10 px-10 md:px-0"
         >
           <Input
             {...register("name", { required: true })}

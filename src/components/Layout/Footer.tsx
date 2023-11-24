@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     <>
       <footer className="px-4 pt-4 pb-2 bg-[#292929]">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0 -ml-3 md:ml-0">
+          <div className="mb-6 md:mb-0 -ml-3 md:ml-0 flex flex-col justify-center">
             <a href="#" className="flex items-center">
               <Image
                 priority
@@ -28,13 +28,13 @@ const Footer: React.FC = () => {
               />
             </a>
             <div className="flex flex-wrap leading-[25px] md:justify-center items-center">
-              <span className="text-bold ml-2 mr-2">Follow Us:</span>
+              <span className="text-bold ml-3 mr-2">Follow Us:</span>
               <a
                 href="https://www.facebook.com/photohouse.magazine"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebookF className="inline text-[28px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
+                <FaFacebookF className="inline text-[27px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
               </a>
               <a
                 href="https://twitter.com/photohouse_"

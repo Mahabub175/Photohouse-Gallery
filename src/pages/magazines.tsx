@@ -71,7 +71,7 @@ const Magazines: NextPage = () => {
                 : "bg-transparent text-white border border-gray-500"
             } rounded-xl`}
           >
-            Normal Edition
+            Regular Edition
           </button>
           <button
             onClick={() => handleTabChange("special")}
