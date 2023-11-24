@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     <>
       <footer className="px-4 pt-4 pb-2 bg-[#292929]">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 -ml-3 md:ml-0">
             <a href="#" className="flex items-center">
               <Image
                 priority
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                 className={`cursor-pointer rounded-md`}
               />
             </a>
-            <div className="flex flex-wrap leading-[25px] justify-center items-center">
+            <div className="flex flex-wrap leading-[25px] md:justify-center items-center">
               <span className="text-bold ml-2 mr-2">Follow Us:</span>
               <a
                 href="https://www.facebook.com/photohouse.magazine"
