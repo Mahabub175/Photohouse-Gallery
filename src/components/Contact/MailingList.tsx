@@ -50,7 +50,7 @@ export const MailingList: React.FC = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-8  md:mt-10 py-16 md:py-0 items-center"
+        className="md:flex flex-col gap-8  md:mt-10 py-16 md:py-0 items-center justify-center"
       >
         <div className="flex flex-col md:flex-row w-full max-w-[800px] mx-auto gap-8">
           <Input
@@ -75,19 +75,18 @@ export const MailingList: React.FC = () => {
             label="Email"
             required
           />
-        </div>
-
-        <div className="">
-          <Button
-            type="submit"
-            variant="gradient"
-            className="text-white text-bold duration-300  px-6"
-            nonce={undefined}
-            onResize={undefined}
-            onResizeCapture={undefined}
-          >
-            Subscribe
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              variant="gradient"
+              className="text-white text-bold duration-300  px-6"
+              nonce={undefined}
+              onResize={undefined}
+              onResizeCapture={undefined}
+            >
+              Subscribe
+            </Button>
+          </div>
         </div>
       </form>
     </div>

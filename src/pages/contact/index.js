@@ -50,7 +50,7 @@ const index = () => {
           </p>
         </div>
       </div>
-      <div className="md:flex items-center mx-auto bg-white">
+      <div className="-mt-2 md:flex items-center mx-auto bg-white">
         <div className="bg-black text-center py-32 px-10 relative">
           <StaticInfo />
         </div>

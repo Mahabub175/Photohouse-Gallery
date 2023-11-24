@@ -27,28 +27,28 @@ const Footer: React.FC = () => {
                 className={`cursor-pointer rounded-md`}
               />
             </a>
-            <div className="flex flex-wrap leading-[25px]">
-              <span className="ml-3">Follow Us :</span>
+            <div className="flex flex-wrap leading-[25px] justify-center items-center">
+              <span className="text-bold ml-2 mr-2">Follow Us:</span>
               <a
                 href="https://www.facebook.com/photohouse.magazine"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebookF className="inline mx-2" />
+                <FaFacebookF className="inline text-[28px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
               </a>
               <a
                 href="https://twitter.com/photohouse_"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaXTwitter className="inline mx-2" />
+                <FaXTwitter className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
               </a>
               <a
                 href="https://www.instagram.com/photohouse_magazine/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram className="inline mx-2" />
+                <FaInstagram className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
               </a>
             </div>
           </div>

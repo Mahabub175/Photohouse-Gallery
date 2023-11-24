@@ -12,7 +12,30 @@ export const StaticInfo = () => {
     <>
       <p className="text-5xl font-bold mb-4 font-sans">Contact Information</p>
       <p className="">Say something to start a live chat!</p>
-      <ul className="break-all mt-20 text-start">
+      <div className="flex flex-wrap leading-[25px] justify-center mt-4 gap-4">
+        <a
+          href="https://www.facebook.com/photohouse.magazine"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaFacebookF className="inline text-[28px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+        </a>
+        <a
+          href="https://twitter.com/photohouse_"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaXTwitter className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+        </a>
+        <a
+          href="https://www.instagram.com/photohouse_magazine/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaInstagram className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+        </a>
+      </div>
+      <ul className="break-all mt-10 text-start">
         <li className="mb-4">
           <a
             href="mailto:photohousemagazine@gmail.com"
@@ -33,29 +56,6 @@ export const StaticInfo = () => {
           </a>
         </li>
       </ul>
-      <div className="flex flex-wrap leading-[25px] absolute bottom-6 right-28 md:left-10">
-        <a
-          href="https://www.facebook.com/photohouse.magazine"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebookF className="inline mr-6 text-[28px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
-        </a>
-        <a
-          href="https://twitter.com/photohouse_"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaXTwitter className="inline mx-6 text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
-        </a>
-        <a
-          href="https://www.instagram.com/photohouse_magazine/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram className="inline mx-6 text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
-        </a>
-      </div>
     </>
   );
 };
