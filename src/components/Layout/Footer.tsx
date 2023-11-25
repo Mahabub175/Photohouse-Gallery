@@ -14,7 +14,7 @@ import logo_dark from "../../Images/logo.png";
 const Footer: React.FC = () => {
   return (
     <>
-      <footer className="px-4 pt-4 pb-2 bg-[#292929]">
+      <footer className="px-4 pt-4 pb-2 bg-[#0b0b0b]">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 -ml-3 md:ml-0 flex flex-col justify-center">
             <a href="#" className="flex items-center">
