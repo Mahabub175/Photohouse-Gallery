@@ -11,7 +11,7 @@ const Magazines: NextPage = () => {
 
   const storedActiveTab =
     typeof window !== "undefined" ? localStorage.getItem("activeTab") : null;
-  const [activeTab, setActiveTab] = useState(storedActiveTab);
+  const [activeTab, setActiveTab] = useState(storedActiveTab || "normal");
 
   const getData: any = useContext(API_CONTEXT);
 
