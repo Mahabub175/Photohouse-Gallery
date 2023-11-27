@@ -61,7 +61,7 @@ const Magazines: FC = () => {
             <Link href="/magazines">
               <a>
                 <img
-                  src={base_url + "/" + maga?.thumbnail}
+                  src={base_url + "/" + maga?.image}
                   alt="img"
                   className="w-full  px-[10px] py-[50px] rounded-sm"
                 />
