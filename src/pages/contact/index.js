@@ -40,8 +40,8 @@ const index = () => {
   return (
     <section className="pb-20">
       <div className="relative">
-        <Image src={bgImage} alt="Contact Banner" height={500} priority />
-        <div className="text-center px-5 md:px-0 mx-auto top-[10%] md:top-[40%] absolute right-10 md:right-[35%]">
+        <Image src={bgImage} alt="Contact Banner" height={700} />
+        <div className="text-center px-5 md:px-0 mx-auto top-[20%] md:top-[40%] absolute right-[15%] md:right-[35%]">
           <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
             Contact Us
           </p>

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { base_url } from "../configs";
 import { useContext } from "react";
 import { API_CONTEXT } from "../utils/GlobalContext";
@@ -59,8 +59,6 @@ const Magazines: NextPage = () => {
     }
   };
 
-  console.log(magazineData);
-
   return (
     <main className="py-4">
       <div className="flex max-w-[1800px] justify-between m-auto items-center border-b-gray-500 border-b-2 pb-2 flex-col">
@@ -74,8 +72,8 @@ const Magazines: NextPage = () => {
             onClick={() => handleTabChange("normal")}
             className={`px-4 py-2 ${
               activeTab === "normal"
-                ? "bg-gray-500 text-white"
-                : "bg-transparent text-white border border-gray-500"
+                ? "bg-gray-500 text-white border-gray-500"
+                : "bg-transparent text-white border border-gray-500 hover:bg-gray-400 duration-300"
             } rounded-xl`}
           >
             Regular Edition
@@ -84,8 +82,8 @@ const Magazines: NextPage = () => {
             onClick={() => handleTabChange("special")}
             className={`px-4 py-2 ${
               activeTab === "special"
-                ? "bg-gray-500 text-white"
-                : "bg-transparent text-white border border-gray-500"
+                ? "bg-gray-500 text-white border-gray-500"
+                : "bg-transparent text-white border border-gray-500 hover:bg-gray-400 duration-300"
             } rounded-xl`}
           >
             Special Edition
