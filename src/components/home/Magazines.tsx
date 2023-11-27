@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios";
 import Link from "next/link";
 import { FC, useEffect, useState, useContext } from "react";
 import Slider from "react-slick";

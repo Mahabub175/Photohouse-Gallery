@@ -47,12 +47,12 @@ export const StaticInfo = () => {
         </li>
         <li className="mb-4">
           <a href="#" className="hover:underline">
-            <FaWhatsapp className="inline mr-3" /> +8801837240350
+            <FaWhatsapp className="inline mr-3" /> +8801886022750
           </a>
         </li>
         <li>
           <a href="#" className="hover:underline">
-            <FaTelegramPlane className="inline mr-3" /> +8801837240350
+            <FaTelegramPlane className="inline mr-3" /> +8801886022750
           </a>
         </li>
       </ul>

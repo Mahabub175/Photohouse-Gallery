@@ -32,6 +32,7 @@ const Magazines: NextPage = () => {
                 return magazine.isSpecial === true;
               }
             })
+            .reverse()
             .map((magazine) => ({
               ...magazine,
               thumbnail: base_url + "/" + magazine.image,
