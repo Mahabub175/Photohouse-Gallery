@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { base_url } from "../configs";
 import { useContext } from "react";
 import { API_CONTEXT } from "../utils/GlobalContext";
@@ -8,11 +8,14 @@ import { API_CONTEXT } from "../utils/GlobalContext";
 const Magazines: NextPage = () => {
   const [magazineData, setMagazineData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("normal");
+
+  const storedActiveTab =
+    typeof window !== "undefined" ? localStorage.getItem("activeTab") : null;
+  const [activeTab, setActiveTab] = useState(storedActiveTab);
 
   const getData: any = useContext(API_CONTEXT);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchData = async () => {
       try {
         const magazinesData = await getData?.data?.Magazines;
@@ -29,10 +32,9 @@ const Magazines: NextPage = () => {
                 return magazine.isSpecial === true;
               }
             })
-            .reverse()
             .map((magazine) => ({
               ...magazine,
-              thumbnail: base_url + "/" + magazine.thumbnail,
+              thumbnail: base_url + "/" + magazine.image,
             }));
           setMagazineData(filteredMagazines);
         } else {
@@ -51,7 +53,10 @@ const Magazines: NextPage = () => {
   }, [getData, activeTab]);
 
   const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("activeTab", tab);
+      setActiveTab(tab);
+    }
   };
 
   return (
@@ -103,11 +108,13 @@ const Magazines: NextPage = () => {
                   className="relative"
                 >
                   <img
-                    src={x.thumbnail}
+                    src={x?.thumbnail}
                     alt="Magazines image"
                     className="cursor-pointer rounded-md"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 top-0 bg-black flex flex-col justify-center items-center text-white opacity-0 transition-opacity duration-500 hover:opacity-60 p-2"></div>
+                  <div className="absolute bottom-0 left-0 right-0 top-0 bg-black flex flex-col justify-center items-center text-white opacity-0 transition-opacity duration-500 hover:opacity-60 p-2 text-bold">
+                    Buy Now
+                  </div>
                 </a>
                 <p className="text-white text-xs text-center">{x?.name}</p>
               </div>

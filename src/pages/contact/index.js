@@ -40,12 +40,12 @@ const index = () => {
   return (
     <section className="pb-20">
       <div className="relative">
-        <Image src={bgImage} alt="Contact Banner" height={900} />
-        <div className="text-center px-5 md:px-0 mx-auto top-16 md:top-1/2 absolute right-10 md:right-[35%]">
-          <p className="text-3xl md:text-[100px] font-bold md:mb-8 font-sans">
+        <Image src={bgImage} alt="Contact Banner" height={500} />
+        <div className="text-center px-5 md:px-0 mx-auto top-[10%] md:top-[40%] absolute right-10 md:right-[35%]">
+          <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
             Contact Us
           </p>
-          <p className="text-bold text-xs md:text-xl">
+          <p className="md:text-bold text-xs md:text-xl">
             Any question or remarks? Just write us a message!
           </p>
         </div>

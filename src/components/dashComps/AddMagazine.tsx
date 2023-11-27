@@ -17,7 +17,7 @@ const AddMagazine = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const body = {
-      image: thumbnail,
+      thumbnail,
       isSpecial,
       redirect_link: magaData.Redirectlink,
       name: magaData.name,
@@ -31,7 +31,7 @@ const AddMagazine = () => {
       .then((data) => {
         toast.success(data.data?.message);
       })
-      .catch((error) => toast.error("An error has occured! please try again."))
+      .catch((error) => toast.error("An error has occurred! please try again."))
       .finally(() => setLoading(false));
   };
   const handleChange = (e: any) => {

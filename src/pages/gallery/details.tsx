@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-// import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaFacebook, FaGlobe, FaInstagram } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { SlSizeFullscreen } from "react-icons/sl";
 import {
   getGalleryData,
   setGalleryDetails,
 } from "../../store/slices/gallerySlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/reduxHooks";
 import { base_url } from "../../configs";
-// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-// import { API_CONTEXT } from "../../utils/GlobalContext";
 
 const Details = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +27,7 @@ const Details = () => {
     (function () {
       dispatch(getGalleryData());
     })();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (router.isReady) {
@@ -42,7 +40,7 @@ const Details = () => {
         })();
       }
     }
-  }, [router.isReady, galleryData.length]);
+  }, [router.isReady, galleryData.length, g_index, router, dispatch]);
 
   const handlePrevNext = (index: number) => {
     if (index >= 0 && index < galleryData.length) {
@@ -51,34 +49,84 @@ const Details = () => {
       router.push(`/gallery/details?g_index=${index}`);
     }
   };
-  // const handleZoom = (zoom: number) => {
-  //   setZoom((z) => {
-  //     const currentIndex = zoomScale.indexOf(z);
-  //     const nextIndex = zoom ? currentIndex + 1 : currentIndex - 1;
 
-  //     const newIndex = Math.max(0, Math.min(zoomScale.length - 1, nextIndex));
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const toggleFullScreen = () => {
+    const isDocumentDefined = typeof document !== "undefined";
+    const isFullScreenEnabled =
+      isDocumentDefined &&
+      (document.fullscreenEnabled ||
+        document.fullscreenEnabled ||
+        document.fullscreenEnabled ||
+        document.fullscreenEnabled);
 
-  //     return zoomScale[newIndex];
-  //   });
-  // };
+    if (isFullScreenEnabled) {
+      const element = document.documentElement;
+
+      if (!isFullScreen) {
+        // Enter fullscreen mode
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.requestFullscreen) {
+          element.requestFullscreen();
+        }
+      } else {
+        // Exit fullscreen mode
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+
+      setIsFullScreen(!isFullScreen);
+    }
+  };
 
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-2 gap-10">
-      <div className="lg:col-span-7 col-span-10 relative">
-        {/* <img
-          src={`${base_url + "/" + galleryDetails?.image}`}
-          alt=""
-          className="absolute top-0 left-0 w-full h-full"
-        /> */}
-        <div className="min-h-[90vh] relative backdrop-blur-sm flex justify-center  cursor-move">
-          <div className="flex items-center h-[90vh] relative z-10">
+    <div className="flex flex-col lg:grid lg:grid-cols-10 mb-20 mt-2 gap-10 overflow-hidden">
+      <div
+        className={`lg:col-span-7 col-span-10 relative ${
+          isFullScreen ? "w-screen bg-[#0b0b0b]" : ""
+        }`}
+      >
+        <div
+          className={`flex justify-end absolute z-50 right-0 top-5  ${
+            isFullScreen && "absolute z-50 top-4 right-[5%]"
+          }`}
+          onClick={toggleFullScreen}
+        >
+          <SlSizeFullscreen className="hidden md:block text-2xl hover:scale-125 duration-300" />
+        </div>
+        <div
+          className={`min-h-[90vh] relative backdrop-blur-sm flex justify-center cursor-move ${
+            isFullScreen ? "w-screen" : ""
+          }`}
+        >
+          <div
+            className={`flex items-center h-[90vh] relative z-10 ${
+              isFullScreen ? "h-[100vh]" : ""
+            }`}
+          >
             <img
               src={`${base_url + "/" + galleryDetails?.image}`}
               alt=""
-              className="max-h-[90vh]"
+              className={`max-h-[90vh] ${
+                isFullScreen ? "w-auto max-h-[100vh]" : ""
+              }`}
             />
           </div>
-          <div className="flex justify-between absolute top-[48%] w-full px-2 z-20">
+          <div
+            className={`flex justify-between absolute top-[48%] w-full px-2 z-20 ${
+              isFullScreen ? "fullscreen" : ""
+            }`}
+          >
             {imageIndex > 0 ? (
               <FiChevronLeft
                 size={30}
