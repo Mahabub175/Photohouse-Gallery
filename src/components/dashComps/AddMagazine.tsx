@@ -6,7 +6,7 @@ import ImageUploader from "./ImageUploader";
 import toast from "react-hot-toast";
 
 const AddMagazine = () => {
-  const [thumbnail, setThumbnail]: any = useState(null);
+  const [image, setImage]: any = useState(null);
   const [loading, setLoading] = useState(false);
   const [magaData, setMagaData] = useState({
     Redirectlink: "",
@@ -17,7 +17,7 @@ const AddMagazine = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const body = {
-      thumbnail,
+      image,
       isSpecial,
       redirect_link: magaData.Redirectlink,
       name: magaData.name,
@@ -42,8 +42,8 @@ const AddMagazine = () => {
       <div className="grid md:grid-cols-1 gap-10 mb-4">
         <ImageUploader
           title={"Drop magazine image here..."}
-          setImageUrl={setThumbnail}
-          imageUrl={thumbnail}
+          setImageUrl={setImage}
+          imageUrl={image}
         />
       </div>
       <div className="grid md:grid-cols-2 gap-10">
