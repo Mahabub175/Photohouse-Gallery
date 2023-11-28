@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Image from "next/image";
-import bgImage from "../../assets/images/contact-2.jpg";
+import bgImage from "../../assets/images/cont.jpg";
 import { StaticInfo } from "../../components/Contact/StaticInfo";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import { MailingList } from "../../components/Contact/MailingList";
@@ -40,14 +40,15 @@ const index = () => {
   return (
     <section className="pb-20">
       <div className="relative">
-        <Image src={bgImage} alt="Contact Banner" height={700} />
-        <div className="text-center px-5 md:px-0 mx-auto top-[20%] md:top-[40%] absolute right-[15%] md:right-[35%]">
-          <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
-            Contact Us
-          </p>
-          <p className="md:text-bold text-xs md:text-xl">
-            Any question or remarks? Just write us a message!
-          </p>
+        <div className="bg-[url('https://i.ibb.co/25zSZ8w/contact.jpg')] bg-cover bg-center h-[20vh] md:h-[70vh] mx-auto flex justify-center items-center px-5 md:px-0">
+          <div className="text-center px-5 md:px-0">
+            <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
+              Contact Us
+            </p>
+            <p className="md:text-bold text-xs md:text-xl">
+              Any question or remarks? Just write us a message!
+            </p>
+          </div>
         </div>
       </div>
       <div className="-mt-3 md:flex items-center mx-auto bg-white">
