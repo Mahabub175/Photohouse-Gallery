@@ -7,6 +7,7 @@ import { MailingList } from "../../components/Contact/MailingList";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const index = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -37,10 +38,16 @@ const index = () => {
     }
     reset();
   };
+  useEffect(() => {
+    const formSection = document.getElementById("formSection");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   return (
     <section className="pb-20">
       <div className="relative">
-        <div className="bg-[url('https://i.ibb.co/25zSZ8w/contact.jpg')] bg-cover bg-center h-[20vh] md:h-[70vh] mx-auto flex justify-center items-center px-5 md:px-0">
+        <div className="bg-[url('https://i.ibb.co/25zSZ8w/contact.jpg')] bg-cover bg-center h-[20vh] md:h-[90vh] mx-auto flex justify-center items-center px-5 md:px-0">
           <div className="text-center px-5 md:px-0">
             <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
               Contact Us
@@ -49,6 +56,7 @@ const index = () => {
               Any question or remarks? Just write us a message!
             </p>
           </div>
+          <div id="formSection"></div>
         </div>
       </div>
       <div className="-mt-3 md:flex items-center mx-auto bg-white">
