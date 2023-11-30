@@ -47,7 +47,7 @@ const index = () => {
   return (
     <section className="pb-20">
       <div className="relative">
-        <div className="bg-[url('https://i.ibb.co/25zSZ8w/contact.jpg')] bg-cover bg-center h-[20vh] md:h-[90vh] mx-auto flex justify-center items-center px-5 md:px-0">
+        <div className="bg-[url('https://i.ibb.co/25zSZ8w/contact.jpg')] bg-cover bg-center h-[20vh] md:h-screen mx-auto flex justify-center items-center px-5 md:px-0">
           <div className="text-center px-5 md:px-0">
             <p className="text-2xl md:text-[100px] font-bold md:mb-8 font-sans">
               Contact Us
