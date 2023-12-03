@@ -99,6 +99,7 @@ const Magazines: NextPage = () => {
               Special Edition is coming soon!
             </p>
           ) : (
+            magazineData &&
             magazineData?.map((x: any) => (
               <div className="my-3 m-auto animate-fade relative" key={x?._id}>
                 <a
