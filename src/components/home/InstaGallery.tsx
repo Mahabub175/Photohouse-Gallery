@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { API_CONTEXT } from "../../utils/GlobalContext";
 
 interface Post {
   id: string;
@@ -17,12 +18,13 @@ const InstaGallery = () => {
   const postsToLoad = 12;
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // const token: any = useContext(API_CONTEXT);
+  const token: any = useContext(API_CONTEXT);
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
+        // const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
+        const accessToken = token?.data?.links.Insta_access_token;
         const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
         const response = await fetch(url);
         const data = await response.json();
@@ -33,7 +35,7 @@ const InstaGallery = () => {
       }
     };
     getPosts();
-  }, []);
+  }, [token]);
 
   const loadMorePosts = () => {
     const endIndex = displayedPosts?.length + postsToLoad;
