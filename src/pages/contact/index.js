@@ -60,7 +60,7 @@ const index = () => {
         </div>
       </div>
       <div className="-mt-3 md:flex items-center mx-auto bg-white">
-        <div className="bg-[#0b0b0b] text-center px-10 py-[80px]">
+        <div className="bg-[#0b0b0b] text-center px-10 py-[95px]">
           <StaticInfo />
         </div>
 
@@ -102,7 +102,7 @@ const index = () => {
           </div>
         </form>
       </div>
-      <MailingList />
+      {/* <MailingList /> */}
     </section>
   );
 };

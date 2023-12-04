@@ -11,7 +11,7 @@ export const StaticInfo = () => {
   return (
     <>
       <p className="text-5xl font-bold mb-4 font-sans">Contact Information</p>
-      <p className="">Say something to start a live chat!</p>
+      {/* <p className="">Say something to start a live chat!</p> */}
       <div className="flex flex-wrap leading-[25px] justify-center mt-4 gap-4">
         <a
           href="https://www.facebook.com/photohouse.magazine"
