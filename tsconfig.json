@@ -15,6 +15,15 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Layout/index.tsx", "src/pages/contact/index.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/Layout/index.tsx",
+    "src/pages/contact/index.ts",
+    "src/components/home/InstaGallery.jsx",
+    "src/utils/GlobalContext.jsx",
+    "src/pages/signin/index.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,21 +1,49 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Checkbox,
   Input,
   Typography,
 } from "@material-tailwind/react";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { FaFacebook, FaGoogle, FaEye } from "react-icons/fa";
+import { useState } from "react";
+import { API_CONTEXT } from "../../utils/GlobalContext";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const index = () => {
+  const router = useRouter();
+  const { signUpUser } = useContext(API_CONTEXT);
+
+  const [showPass, setShowPass] = useState(false);
+
+  const handleShowPass = () => {
+    setShowPass(!showPass);
+  };
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data: any) => {
+    try {
+      signUpUser(data?.email, data?.password).then((result: any) => {
+        toast.success("Signed up successfully");
+        reset();
+        router.push("/signin");
+        console.log(result);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <section className="flex justify-center items-center">
+    <section className="bg-[url('https://i.ibb.co/PNQkmRf/cont.jpg')] bg-cover bg-center h-screen mx-auto flex justify-center items-center px-5 md:px-0">
       <Card
-        className="w-96"
+        className="md:w-3/12"
         nonce={undefined}
         onResize={undefined}
         onResizeCapture={undefined}
@@ -38,81 +66,103 @@ const index = () => {
             Sign Up
           </Typography>
         </CardHeader>
-        <CardBody
-          className="flex flex-col gap-4"
-          nonce={undefined}
-          onResize={undefined}
-          onResizeCapture={undefined}
-        >
-          <Input
-            label="Full Name"
-            size="lg"
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <CardBody
+            className="flex flex-col gap-4"
             nonce={undefined}
             onResize={undefined}
             onResizeCapture={undefined}
-          />
-          <Input
-            label="Email"
-            size="lg"
-            nonce={undefined}
-            onResize={undefined}
-            onResizeCapture={undefined}
-          />
-          <Input
-            label="Password"
-            size="lg"
-            nonce={undefined}
-            onResize={undefined}
-            onResizeCapture={undefined}
-          />
-          <div className="-ml-2.5">
-            <Checkbox
-              label="Remember Me"
+          >
+            <div className="flex flex-col justify-center items-center gap-4">
+              <div className="flex items-center gap-2 bg-gray-500 px-4 py-3 rounded-xl cursor-pointer hover:scale-105 hover:shadow-xl duration-300">
+                <FaFacebook className="text-blue-700 text-2xl" />
+                <p className="text-white text-bold">Sign Up With Facebook</p>
+              </div>
+
+              <div className="flex items-center gap-2 bg-gray-500 px-7 py-3 rounded-xl cursor-pointer hover:scale-105 hover:shadow-xl duration-300">
+                <FaGoogle className="text-blue-400 text-xl" />
+                <p className="text-white text-bold">Sign Up With Google</p>
+              </div>
+            </div>
+            <p className="text-center">Or</p>
+            <Input
+              label="Full Name"
+              size="lg"
               nonce={undefined}
               onResize={undefined}
               onResizeCapture={undefined}
+              {...register("name", { required: true })}
+              required={true}
+              type="text"
             />
-          </div>
-        </CardBody>
-        <CardFooter
-          className="pt-0"
-          nonce={undefined}
-          onResize={undefined}
-          onResizeCapture={undefined}
-        >
-          <Button
-            variant="gradient"
-            fullWidth
-            nonce={undefined}
-            onResize={undefined}
-            onResizeCapture={undefined}
-          >
-            Sign In
-          </Button>
-          <Typography
-            variant="small"
-            className="mt-6 flex justify-center"
-            nonce={undefined}
-            onResize={undefined}
-            onResizeCapture={undefined}
-          >
-            Already have an account?
-            <Link href={"/signin"}>
-              <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold"
+            <Input
+              label="Email"
+              size="lg"
+              nonce={undefined}
+              onResize={undefined}
+              onResizeCapture={undefined}
+              {...register("email", { required: true })}
+              required={true}
+              type="email"
+            />
+            <div className="relative">
+              <Input
+                label="Password"
+                size="lg"
                 nonce={undefined}
                 onResize={undefined}
                 onResizeCapture={undefined}
-              >
-                Sign In
-              </Typography>
-            </Link>
-          </Typography>
-        </CardFooter>
+                {...register("password", { required: true })}
+                required={true}
+                type={showPass ? "text" : "password"}
+              />
+              <FaEye
+                className="absolute top-1/3 right-4"
+                onClick={handleShowPass}
+              />
+            </div>
+          </CardBody>
+          <CardFooter
+            className="pt-0"
+            nonce={undefined}
+            onResize={undefined}
+            onResizeCapture={undefined}
+          >
+            <Button
+              variant="gradient"
+              fullWidth
+              nonce={undefined}
+              onResize={undefined}
+              onResizeCapture={undefined}
+              type="submit"
+            >
+              Sign Up
+            </Button>
+            <Typography
+              variant="small"
+              className="mt-6 flex justify-center"
+              nonce={undefined}
+              onResize={undefined}
+              onResizeCapture={undefined}
+            >
+              Already have an account?
+              <Link href={"/signin"}>
+                <Typography
+                  as="a"
+                  href="#signup"
+                  variant="small"
+                  color="blue-gray"
+                  className="ml-1 font-bold"
+                  nonce={undefined}
+                  onResize={undefined}
+                  onResizeCapture={undefined}
+                >
+                  Sign In
+                </Typography>
+              </Link>
+            </Typography>
+          </CardFooter>
+        </form>
       </Card>
     </section>
   );

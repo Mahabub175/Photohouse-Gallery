@@ -7,6 +7,7 @@ import { base_url } from "../../configs";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { API_CONTEXT } from "../../utils/GlobalContext";
+
 const Hero: FC = () => {
   const [imageArray, setimageArray] = useState([]);
   const [sildes, setSlides] = useState([]);
