@@ -44,17 +44,17 @@ const Magazines: FC = () => {
       setmagazinesList(getData?.data?.Magazines.reverse());
     }
   }, [getData]);
+  const filteredData = magazinesList?.filter(
+    (maga: any) =>
+      maga?.isSpecial === false || !maga?.hasOwnProperty("isSpecial")
+  );
+
   return (
     <div className="maga-slide my-5">
       <Slider {...settings}>
-        {(magazinesList.length > 5
-          ? magazinesList
-          : [
-              ...magazinesList,
-              ...magazinesList,
-              ...magazinesList,
-              ...magazinesList,
-            ]
+        {(filteredData?.length > 5
+          ? filteredData
+          : [...filteredData, ...filteredData, ...filteredData, ...filteredData]
         ).map((maga: any) => (
           <div key={maga?._id}>
             <Link href="/magazines">
