@@ -30,15 +30,15 @@ const GlobalContext = ({ children }) => {
         setData(response?.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        fetchData();
       } finally {
         setLoading(false);
+        fetchData();
       }
     };
-
-    if (data?.length === 0) {
+    if (data?.length === 0 || data === undefined) {
       fetchData();
     }
-    fetchData();
   }, [data]);
 
   const signUpUser = async (email, password) => {
