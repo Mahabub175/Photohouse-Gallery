@@ -27,7 +27,7 @@ const GlobalContext = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${base_url}/all`);
-        setData(response.data);
+        setData(response?.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -38,6 +38,7 @@ const GlobalContext = ({ children }) => {
     if (data?.length === 0) {
       fetchData();
     }
+    fetchData();
   }, [data]);
 
   const signUpUser = async (email, password) => {

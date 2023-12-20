@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import { NextPage } from "next";
 import { useState, useLayoutEffect, useEffect } from "react";
 import { base_url } from "../configs";
