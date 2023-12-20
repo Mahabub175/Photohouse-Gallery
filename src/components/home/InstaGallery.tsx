@@ -23,17 +23,23 @@ const InstaGallery = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        // const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY_CLIENT;
         const accessToken = token?.data?.links.Insta_access_token;
         const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
         const response = await fetch(url);
         const data = await response.json();
-        setPosts(data?.data);
-        setDisplayedPosts(data?.data?.slice(0, initialPostsToDisplay));
+
+        // Filter out video posts
+        const photoPosts = data?.data.filter(
+          (post: any) => post.media_type !== "VIDEO"
+        );
+
+        setPosts(photoPosts);
+        setDisplayedPosts(photoPosts?.slice(0, initialPostsToDisplay));
       } catch (error) {
-        // console.error("Error fetching Instagram posts:", error);
+        // Handle error, e.g., console.error("Error fetching Instagram posts:", error);
       }
     };
+
     getPosts();
   }, [token]);
 
