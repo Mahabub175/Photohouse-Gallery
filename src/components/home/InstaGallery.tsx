@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect, useState } from "react";
 import { API_CONTEXT } from "../../utils/GlobalContext";
+import axios from "axios";
 
 interface Post {
   id: string;
@@ -19,29 +20,27 @@ const InstaGallery = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const token: any = useContext(API_CONTEXT);
+  const accessToken = token?.data?.links?.Insta_access_token;
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const accessToken = token?.data?.links.Insta_access_token;
         const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
-        const response = await fetch(url);
-        const data = await response.json();
+        const response = await axios.get(url);
+        const data = response?.data;
 
-        // Filter out video posts
-        const photoPosts = data?.data.filter(
-          (post: any) => post.media_type !== "VIDEO"
+        const photoPosts = data?.data?.filter(
+          (post: any) => post?.media_type !== "VIDEO"
         );
 
         setPosts(photoPosts);
         setDisplayedPosts(photoPosts?.slice(0, initialPostsToDisplay));
       } catch (error) {
-        // Handle error, e.g., console.error("Error fetching Instagram posts:", error);
+        // console.error("Error fetching Instagram posts:", error);
       }
     };
-
     getPosts();
-  }, [token]);
+  }, [accessToken]);
 
   const loadMorePosts = () => {
     const endIndex = displayedPosts?.length + postsToLoad;
