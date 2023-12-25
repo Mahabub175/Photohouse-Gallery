@@ -30,7 +30,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <Head>
         <title>Photohouse</title>
         <meta name="description" content="Photohouse Magazine" key="title" />
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
       <main className="min-h-[90vh]">{children}</main>
