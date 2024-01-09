@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
           </span>
           <div className="flex space-x-2 sm:justify-center text-xs">
             <a
-              href="https://mahabub-ahmed.web.app/"
+              href="https://mahabub.web.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
