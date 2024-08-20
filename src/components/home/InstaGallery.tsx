@@ -20,12 +20,14 @@ const InstaGallery = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const token: any = useContext(API_CONTEXT);
-  const accessToken = token?.data?.links?.Insta_access_token;
+  const accessToken =
+    token?.data?.links?.Insta_access_token ||
+    "IGQWRQMkh4M2lDRjQyOUUwOFVXWWdqak1ydk0yb1FxN0NHaUpXdXZADUVhJZAFNKaS1lWGlHZAGZA5dVM4RzFsOGJCUE90aldqZAHc2MkN6Qm5qdW1lUjJjOGxDcnczcnRvZAlFYSzdaSTlBdThwUWRfUTZADNmpKQkpneWcZD";
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=${accessToken}&pretty=1&limit=100`;
+        const url = `https://graph.instagram.com/me/media?fields=id,username,media_url,media_type,permalink,caption&access_token=IGQWRQMkh4M2lDRjQyOUUwOFVXWWdqak1ydk0yb1FxN0NHaUpXdXZADUVhJZAFNKaS1lWGlHZAGZA5dVM4RzFsOGJCUE90aldqZAHc2MkN6Qm5qdW1lUjJjOGxDcnczcnRvZAlFYSzdaSTlBdThwUWRfUTZADNmpKQkpneWcZD&pretty=1&limit=100`;
         const response = await axios.get(url);
         const data = response?.data;
 

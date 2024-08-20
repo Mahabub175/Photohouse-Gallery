@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Farro&display=swap");
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 @layer base {
   body {
     @apply bg-black text-white;
@@ -16,9 +18,7 @@
     font-medium rounded-full text-sm px-5 py-2 text-center mx-1 disabled:text-gray-700;
   }
 }
-@tailwind components;
 
-@tailwind utilities;
 * {
   padding: 0;
   margin: 0;
