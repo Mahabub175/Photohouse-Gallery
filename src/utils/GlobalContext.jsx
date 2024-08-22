@@ -15,13 +15,13 @@ import { app } from "../firebase/firebase.config";
 const API_CONTEXT = createContext();
 
 const GlobalContext = ({ children }) => {
-  const auth = getAuth(app);
+  // const auth = getAuth(app);
 
   const [data, setData] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const googleProvider = new GoogleAuthProvider();
-  const facebookProvider = new FacebookAuthProvider();
+  // const googleProvider = new GoogleAuthProvider();
+  // const facebookProvider = new FacebookAuthProvider();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,51 +41,51 @@ const GlobalContext = ({ children }) => {
     }
   }, [data]);
 
-  const signUpUser = async (email, password) => {
-    setLoading(true);
+  // const signUpUser = async (email, password) => {
+  //   setLoading(true);
 
-    await createUserWithEmailAndPassword(auth, email, password);
-  };
+  //   await createUserWithEmailAndPassword(auth, email, password);
+  // };
 
-  const signInUser = async (email, password) => {
-    setLoading(true);
+  // const signInUser = async (email, password) => {
+  //   setLoading(true);
 
-    await signInWithEmailAndPassword(auth, email, password);
-  };
+  //   await signInWithEmailAndPassword(auth, email, password);
+  // };
 
-  const googleSignIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  };
+  // const googleSignIn = () => {
+  //   setLoading(true);
+  //   return signInWithPopup(auth, googleProvider);
+  // };
 
-  const facebookSignIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, facebookProvider);
-  };
+  // const facebookSignIn = () => {
+  //   setLoading(true);
+  //   return signInWithPopup(auth, facebookProvider);
+  // };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [auth]);
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     if (currentUser) {
+  //       setUser(currentUser);
+  //     } else {
+  //       setUser(null);
+  //     }
+  //     setLoading(false);
+  //   });
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [auth]);
 
   const contextValue = {
     data,
     setData,
-    signUpUser,
-    signInUser,
-    user,
-    loading,
-    googleSignIn,
-    facebookSignIn,
+    // signUpUser,
+    // signInUser,
+    // user,
+    // loading,
+    // googleSignIn,
+    // facebookSignIn,
   };
 
   return (

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import AddMagazine from "../../components/dashComps/AddMagazine";
 import DashboardGallery from "../../components/dashComps/gallery";
 import Sidebar from "../../components/dashComps/sidebar";
+import AddInterview from "../../components/dashComps/AddInterview";
 
 const Index = () => {
   const router = useRouter();
@@ -19,6 +20,7 @@ const Index = () => {
       <div className="container mx-auto p-12">
         {activePage === "G" && <DashboardGallery />}
         {activePage === "M" && <AddMagazine />}
+        {activePage === "I" && <AddInterview />}
       </div>
     </div>
   );
