@@ -19,6 +19,35 @@
   }
 }
 
+.ql-editor img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ql-editor .ql-image-resize {
+  max-width: 100%;
+}
+
+.ql-editor img {
+  display: inline-block;
+  margin: 5px;
+}
+
+.ql-editor .ql-align-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.ql-editor .ql-align-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.ql-editor .ql-align-center {
+  display: block;
+  margin: 0 auto;
+}
+
 * {
   padding: 0;
   margin: 0;

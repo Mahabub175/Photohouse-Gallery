@@ -1,44 +1,53 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import ImageUploader from "./ImageUploader";
-import toast from "react-hot-toast";
+import { useState, ChangeEvent, FormEvent } from "react";
 import CustomInput from "../UI/CustomInput";
+import "react-quill/dist/quill.snow.css";
+import ImageUploader from "./ImageUploader";
+import { formats, modules } from "../../utils/helpers";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+interface InterviewData {
+  title: string;
+  content: string;
+  short_description: string;
+}
 
 const AddInterview = () => {
-  const [image, setImage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [interviewData, setInterviewData] = useState({
+  const [image, setImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [interviewData, setInterviewData] = useState<InterviewData>({
     title: "",
     content: "",
+    short_description: "",
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const body = {
       image,
-      title: interviewData.title,
-      content: interviewData.content,
+      title: interviewData?.title,
+      content: interviewData?.content,
+      short_description: interviewData?.short_description,
     };
-    postDatas(body);
+    setLoading(true);
+    await postDatas(body);
+    setLoading(false);
   };
 
-  const postDatas = async (body: any) => {
+  const postDatas = async (body: InterviewData & { image: string | null }) => {
     console.log(body);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInterviewData({ ...interviewData, [e.target.name]: e.target.value });
   };
 
-  const handleContentChange = (newContent: any) => {
-    setInterviewData({ ...interviewData, content: newContent });
-  };
-
-  const config = {
-    readonly: false,
-    uploader: {
-      insertImageAsBase64URI: true,
-    },
+  const handleContentChange = (newContent: string) => {
+    setInterviewData((prevData) => ({
+      ...prevData,
+      content: newContent,
+    }));
   };
 
   return (
@@ -50,7 +59,16 @@ const AddInterview = () => {
           imageUrl={image}
         />
       </div>
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="mb-4">
+        <label className="block mb-2 text-sm font-medium">Content</label>
+        <ReactQuill
+          value={interviewData.content}
+          onChange={handleContentChange}
+          modules={modules}
+          formats={formats}
+        />
+      </div>
+      <div className="grid md:grid-cols-2 gap-10 mt-10">
         <CustomInput
           type="text"
           placeholder=""
@@ -60,8 +78,16 @@ const AddInterview = () => {
           required
           onChange={handleChange}
         />
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.title}
+          name="short_description"
+          label="Short Description"
+          required
+          onChange={handleChange}
+        />
       </div>
-
       <div className="flex justify-center mt-5">
         <button
           type="submit"
