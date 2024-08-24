@@ -2,41 +2,66 @@ import dynamic from "next/dynamic";
 import { useState, ChangeEvent, FormEvent } from "react";
 import CustomInput from "../UI/CustomInput";
 import "react-quill/dist/quill.snow.css";
-import ImageUploader from "./ImageUploader";
+import CustomImageUploader from "./CustomImageUploader";
 import { formats, modules } from "../../utils/helpers";
+import toast from "react-hot-toast";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface InterviewData {
   title: string;
   content: string;
-  short_description: string;
+  short_descriptions: string;
 }
 
 const AddInterview = () => {
-  const [image, setImage] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [interviewData, setInterviewData] = useState<InterviewData>({
     title: "",
     content: "",
-    short_description: "",
+    short_descriptions: "",
   });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const body = {
-      image,
-      title: interviewData?.title,
-      content: interviewData?.content,
-      short_description: interviewData?.short_description,
-    };
+
+    const body = new FormData();
+    body.append("thumbnail_image", imageFile as Blob);
+    body.append("title", interviewData?.title);
+    body.append("content", interviewData?.content);
+    body.append("short_descriptions", interviewData?.short_descriptions);
+    body.append("category", "4");
+
     setLoading(true);
     await postDatas(body);
     setLoading(false);
   };
 
-  const postDatas = async (body: InterviewData & { image: string | null }) => {
-    console.log(body);
+  const postDatas = async (body: FormData) => {
+    try {
+      const response = await fetch(
+        "https://vitasoftserver.vitasoftsolutions.com/blogs/",
+        {
+          method: "POST",
+          body,
+        }
+      );
+
+      if (!response.ok) {
+        toast.error("Something went wrong! Please try again!");
+        throw new Error("Failed to submit interview data");
+      }
+
+      await response.json();
+      setInterviewData({ title: "", content: "", short_descriptions: "" });
+      setImageFile(null);
+      setImageUrl(null); // Clear the image URL
+      toast.success("Successfully Added Interview!");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,13 +75,18 @@ const AddInterview = () => {
     }));
   };
 
+  const handleImageUrlChange = (url: string | null, file: File | null) => {
+    setImageFile(file);
+    setImageUrl(url);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="grid md:grid-cols-1 gap-10 mb-4">
-        <ImageUploader
-          title={"Drop Interview Thumbnail image here..."}
-          setImageUrl={setImage}
-          imageUrl={image}
+        <CustomImageUploader
+          title="Drop Interview Thumbnail image here..."
+          setImageUrl={handleImageUrlChange}
+          imageUrl={imageUrl}
         />
       </div>
       <div className="mb-4">
@@ -81,9 +111,9 @@ const AddInterview = () => {
         <CustomInput
           type="text"
           placeholder=""
-          value={interviewData.title}
-          name="short_description"
-          label="Short Description"
+          value={interviewData.short_descriptions}
+          name="short_descriptions"
+          label="Short Descriptions"
           required
           onChange={handleChange}
         />
