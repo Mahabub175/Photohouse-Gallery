@@ -59,6 +59,17 @@ const NavBar = () => {
               </a>
             </Link>
             <a className="text-xl"> | </a>
+            <Link href="/interviews">
+              <a
+                className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
+                  router.pathname === "/interviews" ? "font-bold" : ""
+                }`}
+              >
+                {" "}
+                Interviews{" "}
+              </a>
+            </Link>
+            <a className="text-xl"> | </a>
             <a
               className={`hover:text-[#DEDEDE] cursor-pointer mx-1 text-xl ${
                 router.pathname === redirect_links.submission_link
@@ -135,6 +146,7 @@ const NavBar = () => {
               {[
                 "Home",
                 "Magazines",
+                "Interviews",
                 "publish",
                 "Gallery",
                 "About",

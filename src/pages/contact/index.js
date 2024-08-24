@@ -1,9 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Image from "next/image";
-import bgImage from "../../assets/images/cont.jpg";
 import { StaticInfo } from "../../components/Contact/StaticInfo";
 import { Button, Input, Textarea } from "@material-tailwind/react";
-import { MailingList } from "../../components/Contact/MailingList";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
