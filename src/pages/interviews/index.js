@@ -4,6 +4,8 @@ import { FaShare } from "react-icons/fa";
 import ShareModal from "../../components/UI/ShareModal";
 import Link from "next/link";
 import Image from "next/Image";
+import { base_url } from "../../configs.ts";
+import logo_dark from "../../Images/logo.png";
 
 const Index = () => {
   const [interviews, setInterviews] = useState([]);
@@ -15,9 +17,7 @@ const Index = () => {
   useEffect(() => {
     const fetchInterviews = async () => {
       try {
-        const response = await fetch(
-          "https://vitasoftserver.vitasoftsolutions.com/blogs/"
-        );
+        const response = await fetch(`${base_url}/interviews`);
         if (!response.ok) {
           throw new Error("Failed to fetch interviews");
         }
@@ -39,7 +39,20 @@ const Index = () => {
   };
 
   if (loading) {
-    return <div className="text-center text-white">Loading...</div>;
+    return (
+      <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
+        <div className="animate-bounce mx-auto">
+          <Image
+            priority
+            src={logo_dark}
+            width={160}
+            height={54}
+            alt="logo"
+            className={`cursor-pointer rounded-md`}
+          />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -60,9 +73,9 @@ const Index = () => {
           </h2>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center items-stretch mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-stretch mt-10">
           {interviews.map((item) => {
-            const shareUrl = `https://vitasoftsolutions.com/blog/${item?.slug}`;
+            const shareUrl = `https://www.photohousemagazine.com/interviews/${item?.slug}`;
             return (
               <div
                 key={item?.id}
@@ -72,7 +85,7 @@ const Index = () => {
                   <Image
                     src={
                       item?.thumbnail_image
-                        ? `https://vitasoftserver.vitasoftsolutions.com${item?.thumbnail_image}`
+                        ? `${base_url}/${item?.thumbnail_image}`
                         : "https://i.ibb.co/PNQkmRf/cont.jpg"
                     }
                     alt={item?.title}

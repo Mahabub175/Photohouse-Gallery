@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import CustomImageUploader from "./CustomImageUploader";
 import { formats, modules } from "../../utils/helpers";
 import toast from "react-hot-toast";
+import { base_url } from "../../configs";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -41,13 +42,10 @@ const AddInterview = () => {
 
   const postDatas = async (body: FormData) => {
     try {
-      const response = await fetch(
-        "https://vitasoftserver.vitasoftsolutions.com/blogs/",
-        {
-          method: "POST",
-          body,
-        }
-      );
+      const response = await fetch(`${base_url}/interviews`, {
+        method: "POST",
+        body,
+      });
 
       if (!response.ok) {
         toast.error("Something went wrong! Please try again!");
@@ -57,7 +55,7 @@ const AddInterview = () => {
       await response.json();
       setInterviewData({ title: "", content: "", short_descriptions: "" });
       setImageFile(null);
-      setImageUrl(null); // Clear the image URL
+      setImageUrl(null);
       toast.success("Successfully Added Interview!");
     } catch (error) {
       console.error("Error:", error);

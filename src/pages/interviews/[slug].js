@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import ShareModal from "../../components/UI/ShareModal";
+import { base_url } from "../../configs";
+import logo_dark from "../../Images/logo.png";
 
 const InterviewPage = () => {
   const router = useRouter();
@@ -19,9 +21,7 @@ const InterviewPage = () => {
     if (slug) {
       const fetchInterview = async () => {
         try {
-          const response = await fetch(
-            `https://vitasoftserver.vitasoftsolutions.com/blogs/${slug}/`
-          );
+          const response = await fetch(`${base_url}/interviews/${slug}`);
           if (!response.ok) {
             throw new Error("Failed to fetch interview");
           }
@@ -44,7 +44,20 @@ const InterviewPage = () => {
   };
 
   if (loading) {
-    return <div className="text-center text-white">Loading...</div>;
+    return (
+      <div className="fixed inset-0 z-40 backdrop-blur-sm bg-[#06202A]/30 flex items-center min-h-[100vh]">
+        <div className="animate-bounce mx-auto">
+          <Image
+            priority
+            src={logo_dark}
+            width={160}
+            height={54}
+            alt="logo"
+            className={`cursor-pointer rounded-md`}
+          />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -55,7 +68,7 @@ const InterviewPage = () => {
     return <div className="text-center text-white">Interview not found.</div>;
   }
 
-  const shareUrl = `https://vitasoftsolutions.com/blog/${interview?.slug}`;
+  const shareUrl = `https://www.photohousemagazine.com/interviews/${interview?.slug}`;
 
   return (
     <section className="py-4 max-w-[1800px] m-auto pb-20 px-4 lg:px-0">
@@ -74,7 +87,7 @@ const InterviewPage = () => {
         <Image
           src={
             interview?.thumbnail_image
-              ? `https://vitasoftserver.vitasoftsolutions.com${interview?.thumbnail_image}`
+              ? `${base_url}/${interview?.thumbnail_image}`
               : "https://i.ibb.co/PNQkmRf/cont.jpg"
           }
           alt={interview?.title}
@@ -85,7 +98,7 @@ const InterviewPage = () => {
         <img
           src={
             interview?.thumbnail_image
-              ? `https://vitasoftserver.vitasoftsolutions.com${interview?.thumbnail_image}`
+              ? `${base_url}/${interview?.thumbnail_image}`
               : "https://i.ibb.co/PNQkmRf/cont.jpg"
           }
           alt={interview?.title}
