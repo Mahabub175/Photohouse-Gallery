@@ -4,6 +4,7 @@ import AddMagazine from "../../components/dashComps/AddMagazine";
 import DashboardGallery from "../../components/dashComps/gallery";
 import Sidebar from "../../components/dashComps/sidebar";
 import AddInterview from "../../components/dashComps/AddInterview";
+import AllInterviews from "../../components/dashComps/AllInterviews";
 
 const Index = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const Index = () => {
         {activePage === "G" && <DashboardGallery />}
         {activePage === "M" && <AddMagazine />}
         {activePage === "I" && <AddInterview />}
+        {activePage === "AI" && <AllInterviews />}
       </div>
     </div>
   );

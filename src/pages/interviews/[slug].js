@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
@@ -90,21 +91,10 @@ const InterviewPage = () => {
               : "https://i.ibb.co/PNQkmRf/cont.jpg"
           }
           alt={interview?.title}
-          width={2000}
-          height={600}
+          width={1800}
+          height={900}
           className="absolute inset-0 w-full h-full object-cover rounded-xl"
         />
-        {/* <img
-          src={
-            interview?.thumbnail_image
-              ? `${base_url}/${interview?.thumbnail_image}`
-              : "https://i.ibb.co/PNQkmRf/cont.jpg"
-          }
-          alt={interview?.title}
-          height={400}
-          width={400}
-          className="absolute inset-0 w-full h-full object-cover rounded-t-xl"
-        /> */}
       </div>
       <div className="p-5 flex-1">
         <div

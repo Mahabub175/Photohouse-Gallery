@@ -147,6 +147,7 @@ const NavBar = () => {
                 "Home",
                 "Magazines",
                 "Interviews",
+                "Interviews",
                 "publish",
                 "Gallery",
                 "About",
