@@ -90,9 +90,9 @@ const InterviewPage = () => {
               : "https://i.ibb.co/PNQkmRf/cont.jpg"
           }
           alt={interview?.title}
+          width={2000}
           height={600}
-          width={600}
-          className="absolute inset-0 w-full h-full object-cover rounded-t-xl"
+          className="absolute inset-0 w-full h-full object-cover rounded-xl"
         />
         {/* <img
           src={
