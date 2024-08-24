@@ -1,7 +1,7 @@
-import { FaFacebook, FaLinkedin, FaInstagram, FaCopy } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { IoIosLink } from "react-icons/io";
 import { HiX } from "react-icons/hi";
-import { SiX } from "react-icons/si"; // Use this for the "X" icon
+import { SiX } from "react-icons/si";
 import toast from "react-hot-toast";
 
 interface ShareModalProps {
@@ -11,16 +11,30 @@ interface ShareModalProps {
 }
 
 const ShareModal = ({ isOpen, onClose, url }: ShareModalProps) => {
-  if (!isOpen) return null;
-
   const handleCopyLink = () => {
     navigator.clipboard.writeText(url);
     toast.success("Link copied to clipboard!");
   };
 
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="relative bg-white p-4 rounded-lg shadow-lg max-w-sm w-full">
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300 ${
+        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+      onClick={handleOverlayClick}
+    >
+      <div
+        className={`relative bg-white p-4 rounded-lg shadow-lg max-w-sm w-full transform transition-transform duration-300 ${
+          isOpen ? "scale-100" : "scale-95"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 p-2 rounded-full"
