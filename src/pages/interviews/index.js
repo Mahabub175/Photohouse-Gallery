@@ -1,9 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import ShareModal from "../../components/UI/ShareModal";
 import Link from "next/link";
-import Image from "next/Image";
+import Image from "next/image";
 import { base_url } from "../../configs.ts";
 import logo_dark from "../../Images/logo.png";
 
@@ -40,7 +39,7 @@ const Index = () => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-40 backdrop-blur-sm  bg-[#06202A]/30 flex items-center min-h-[100vh]">
+      <div className="fixed inset-0 z-40 backdrop-blur-sm bg-[#06202A]/30 flex items-center min-h-[100vh]">
         <div className="animate-bounce mx-auto">
           <Image
             priority

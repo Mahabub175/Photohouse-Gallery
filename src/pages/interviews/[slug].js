@@ -1,11 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from "next/Image";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import ShareModal from "../../components/UI/ShareModal";
 import { base_url } from "../../configs";
 import logo_dark from "../../Images/logo.png";
+import Image from "next/image";
 
 const InterviewPage = () => {
   const router = useRouter();
@@ -95,7 +94,7 @@ const InterviewPage = () => {
           width={600}
           className="absolute inset-0 w-full h-full object-cover rounded-t-xl"
         />
-        <img
+        {/* <img
           src={
             interview?.thumbnail_image
               ? `${base_url}/${interview?.thumbnail_image}`
@@ -105,7 +104,7 @@ const InterviewPage = () => {
           height={400}
           width={400}
           className="absolute inset-0 w-full h-full object-cover rounded-t-xl"
-        />
+        /> */}
       </div>
       <div className="p-5 flex-1">
         <div
