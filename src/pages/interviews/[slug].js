@@ -71,7 +71,7 @@ const InterviewPage = () => {
   const shareUrl = `https://www.photohousemagazine.com/interviews/${interview?.slug}`;
 
   return (
-    <section className="py-4 max-w-[1800px] m-auto pb-20 px-4 lg:px-0">
+    <section className="py-4 max-w-[800px] m-auto pb-20 px-4 lg:px-0">
       <div className="flex items-center justify-between">
         <h1 className="text-white sm:text-5xl text-3xl tracking-wider my-10">
           {interview.title}
@@ -92,8 +92,8 @@ const InterviewPage = () => {
           }
           alt={interview?.title}
           width={1800}
-          height={900}
-          className="absolute inset-0 w-full h-full object-cover rounded-xl"
+          height={2500}
+          className="absolute inset-0 w-full h-screen object-cover rounded-xl"
         />
       </div>
       <div className="p-5 flex-1">
