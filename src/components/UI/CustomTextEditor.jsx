@@ -9,7 +9,7 @@ const CustomTextEditor = ({ value, onChange }) => {
 
   return (
     <Editor
-      apiKey="dajkwpjb9npr838chiefeizimuu30tecabiqbnlcl0eyrtw3"
+      apiKey="wsmoxt8fne8cotbs9f98y3v488g8wi73umknooj3k1v5b3mp"
       value={value}
       onEditorChange={handleEditorChange}
       init={{
