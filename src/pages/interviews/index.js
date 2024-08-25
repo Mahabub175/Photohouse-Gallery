@@ -78,48 +78,40 @@ const Index = () => {
             return (
               <div
                 key={item?.id}
-                className="relative mx-auto rounded-xl border group flex flex-col"
+                className="relative mx-auto rounded-xl group flex flex-col"
               >
-                <div className="relative flex-1 aspect-w-16 aspect-h-9">
-                  <Image
-                    src={
-                      item?.thumbnail_image
-                        ? `${base_url}/${item?.thumbnail_image}`
-                        : "https://i.ibb.co/PNQkmRf/cont.jpg"
-                    }
-                    alt={item?.title}
-                    height={200}
-                    width={400}
-                    className="absolute inset-0 w-full h-full object-cover rounded-t-xl"
-                  />
-                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button
-                      onClick={() => handleShareClick(shareUrl)}
-                      className="text-white bg-gray-700 p-2 rounded-full hover:scale-105 duration-300"
-                    >
-                      <FaShare />
-                    </button>
-                  </div>
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
+                <Link href={`interviews/${item?.slug}`} passHref>
+                  <a className="relative flex-1 aspect-w-16 aspect-h-9">
+                    <Image
+                      src={
+                        item?.thumbnail_image
+                          ? `${base_url}/${item?.thumbnail_image}`
+                          : "https://i.ibb.co/PNQkmRf/cont.jpg"
+                      }
+                      alt={item?.title}
+                      height={800}
+                      width={600}
+                      className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                    />
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleShareClick(shareUrl);
+                        }}
+                        className="text-white bg-gray-700 p-2 rounded-full hover:scale-105 duration-300"
+                      >
+                        <FaShare />
+                      </button>
+                    </div>
+                  </a>
+                </Link>
+                <div className="p-4 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl lg:text-2xl font-bold">
+                    <h3 className="text-xl lg:text-2xl font-bold group-hover:text-white/70 duration-300">
                       {item?.title}
                     </h3>
-                    <div
-                      className="mt-4 text-xs lg:text-sm"
-                      dangerouslySetInnerHTML={{
-                        __html: item?.short_descriptions,
-                      }}
-                    />
                   </div>
-                  <Link href={`interviews/${item?.slug}`}>
-                    <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-xl group w-full mt-10">
-                      <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-xl group-hover:w-full group-hover:h-full"></span>
-                      <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-                      <span className="relative">View Details</span>
-                    </button>
-                  </Link>
                 </div>
               </div>
             );
