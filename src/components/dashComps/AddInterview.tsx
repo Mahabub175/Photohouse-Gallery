@@ -1,13 +1,9 @@
-import dynamic from "next/dynamic";
 import { useState, ChangeEvent, FormEvent } from "react";
 import CustomInput from "../UI/CustomInput";
-import "react-quill/dist/quill.snow.css";
 import CustomImageUploader from "./CustomImageUploader";
-import { formats, modules } from "../../utils/helpers";
 import toast from "react-hot-toast";
 import { base_url } from "../../configs";
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import CustomTextEditor from "../UI/CustomTextEditor";
 
 interface InterviewData {
   title: string;
@@ -24,16 +20,26 @@ const AddInterview = () => {
     content: "",
     short_descriptions: "",
   });
+  const [contentError, setContentError] = useState<string>("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!interviewData.content.trim()) {
+      setContentError("Content cannot be empty.");
+      toast.error("Please Enter Content!");
+      return;
+    } else {
+      setContentError("");
+    }
+
     const body = new FormData();
-    body.append("thumbnail_image", imageFile as Blob);
-    body.append("title", interviewData?.title);
-    body.append("content", interviewData?.content);
-    body.append("short_descriptions", interviewData?.short_descriptions);
-    body.append("category", "4");
+    if (imageFile) {
+      body.append("thumbnail_image", imageFile as Blob);
+    }
+    body.append("title", interviewData.title);
+    body.append("content", interviewData.content);
+    body.append("short_descriptions", interviewData.short_descriptions);
 
     setLoading(true);
     await postDatas(body);
@@ -66,10 +72,10 @@ const AddInterview = () => {
     setInterviewData({ ...interviewData, [e.target.name]: e.target.value });
   };
 
-  const handleContentChange = (newContent: string) => {
+  const handleContentChange = (content: string) => {
     setInterviewData((prevData) => ({
       ...prevData,
-      content: newContent,
+      content,
     }));
   };
 
@@ -85,15 +91,6 @@ const AddInterview = () => {
           title="Drop Interview Thumbnail image here..."
           setImageUrl={handleImageUrlChange}
           imageUrl={imageUrl}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2 text-sm font-medium">Content</label>
-        <ReactQuill
-          value={interviewData.content}
-          onChange={handleContentChange}
-          modules={modules}
-          formats={formats}
         />
       </div>
       <div className="grid md:grid-cols-2 gap-10 mt-10">
@@ -115,6 +112,14 @@ const AddInterview = () => {
           required
           onChange={handleChange}
         />
+      </div>
+      <div className="mb-4">
+        <label className="block mb-2 text-sm font-medium">Content</label>
+        <CustomTextEditor
+          value={interviewData.content}
+          onChange={handleContentChange}
+        />
+        {contentError && <p className="text-red-500">{contentError}</p>}
       </div>
       <div className="flex justify-center mt-5">
         <button

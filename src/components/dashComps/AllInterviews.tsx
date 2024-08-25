@@ -8,6 +8,7 @@ import DeleteModal from "../UI/DeleteModal";
 interface Interview {
   _id: string;
   title: string;
+  slug: string;
   thumbnail_image: string;
 }
 
@@ -102,16 +103,17 @@ const AllInterviews: React.FC = () => {
           No interviews found. Add to see interviews
         </div>
       ) : (
-        <table className="min-w-full text-center">
+        <table className="w-full text-center overflow-auto">
           <thead>
             <tr className="text-xl">
               <th className="py-2 px-4 border-b">Thumbnail</th>
               <th className="py-2 px-4 border-b">Title</th>
+              <th className="py-2 px-4 border-b">Slug</th>
               <th className="py-2 px-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {interviews.map((interview) => (
+            {interviews?.map((interview) => (
               <tr key={interview._id}>
                 <td className="py-2 px-4 border-b">
                   <Image
@@ -124,6 +126,9 @@ const AllInterviews: React.FC = () => {
                 </td>
                 <td className="py-2 px-4 border-b font-bold">
                   {interview.title}
+                </td>
+                <td className="py-2 px-4 border-b font-bold">
+                  {interview.slug}
                 </td>
                 <td className="py-2 px-4 border-b">
                   <button
