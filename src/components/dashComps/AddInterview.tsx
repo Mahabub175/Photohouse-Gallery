@@ -8,7 +8,13 @@ import CustomTextEditor from "../UI/CustomTextEditor";
 interface InterviewData {
   title: string;
   content: string;
-  short_descriptions: string;
+  interviewee_name: string;
+  interviewee_instagram_link?: string;
+  interviewee_facebook_link?: string;
+  interviewee_other_link?: string;
+  interviewer_name: string;
+  interviewer_instagram_link?: string;
+  interviewer_facebook_link?: string;
 }
 
 const AddInterview = () => {
@@ -18,7 +24,13 @@ const AddInterview = () => {
   const [interviewData, setInterviewData] = useState<InterviewData>({
     title: "",
     content: "",
-    short_descriptions: "",
+    interviewee_name: "",
+    interviewee_instagram_link: "",
+    interviewee_facebook_link: "",
+    interviewee_other_link: "",
+    interviewer_name: "",
+    interviewer_instagram_link: "",
+    interviewer_facebook_link: "",
   });
   const [contentError, setContentError] = useState<string>("");
 
@@ -37,9 +49,9 @@ const AddInterview = () => {
     if (imageFile) {
       body.append("thumbnail_image", imageFile as Blob);
     }
-    body.append("title", interviewData.title);
-    body.append("content", interviewData.content);
-    body.append("short_descriptions", interviewData.short_descriptions);
+    Object.entries(interviewData).forEach(([key, value]) => {
+      body.append(key, value);
+    });
 
     setLoading(true);
     await postDatas(body);
@@ -59,7 +71,17 @@ const AddInterview = () => {
       }
 
       await response.json();
-      setInterviewData({ title: "", content: "", short_descriptions: "" });
+      setInterviewData({
+        title: "",
+        content: "",
+        interviewee_name: "",
+        interviewee_instagram_link: "",
+        interviewee_facebook_link: "",
+        interviewee_other_link: "",
+        interviewer_name: "",
+        interviewer_instagram_link: "",
+        interviewer_facebook_link: "",
+      });
       setImageFile(null);
       setImageUrl(null);
       toast.success("Successfully Added Interview!");
@@ -93,26 +115,89 @@ const AddInterview = () => {
           imageUrl={imageUrl}
         />
       </div>
-      <div className="grid md:grid-cols-2 gap-10 mt-10">
+      <div className="grid md:grid-cols-1 gap-10 mt-10">
         <CustomInput
           type="text"
           placeholder=""
           value={interviewData.title}
           name="title"
           label="Title"
-          required
+          required={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="grid md:grid-cols-1 gap-10 mt-10">
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewee_name}
+          name="interviewee_name"
+          label="Interviewee Name"
+          required={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="grid md:grid-cols-3 gap-10 mt-10">
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewee_instagram_link || ""}
+          name="interviewee_instagram_link"
+          label="Interviewee Instagram Link"
+          required={false}
           onChange={handleChange}
         />
         <CustomInput
           type="text"
           placeholder=""
-          value={interviewData.short_descriptions}
-          name="short_descriptions"
-          label="Short Descriptions"
-          required
+          value={interviewData.interviewee_facebook_link || ""}
+          name="interviewee_facebook_link"
+          label="Interviewee Facebook Link"
+          required={false}
+          onChange={handleChange}
+        />
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewee_other_link || ""}
+          name="interviewee_other_link"
+          label="Interviewee Other Link"
+          required={false}
           onChange={handleChange}
         />
       </div>
+      <div className="grid md:grid-cols-1 gap-10 mt-10">
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewer_name}
+          name="interviewer_name"
+          label="Interviewer Name"
+          required={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewer_instagram_link || ""}
+          name="interviewer_instagram_link"
+          label="Interviewer Instagram Link"
+          required={false}
+          onChange={handleChange}
+        />
+        <CustomInput
+          type="text"
+          placeholder=""
+          value={interviewData.interviewer_facebook_link || ""}
+          name="interviewer_facebook_link"
+          label="Interviewer Facebook Link"
+          required={false}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="mb-4">
         <label className="block mb-2 text-sm font-medium">Content</label>
         <CustomTextEditor

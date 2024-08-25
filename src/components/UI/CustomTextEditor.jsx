@@ -1,6 +1,5 @@
-import React from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import { base_url } from "../../configs";
+import { Editor } from "@tinymce/tinymce-react";
 
 const CustomTextEditor = ({ value, onChange }) => {
   const handleEditorChange = (content, editor) => {

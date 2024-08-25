@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { base_url } from "../../configs.ts";
 import logo_dark from "../../Images/logo.png";
+import { Input } from "@material-tailwind/react";
+import { CiSearch } from "react-icons/ci";
 
 const Index = () => {
   const [interviews, setInterviews] = useState([]);
@@ -12,7 +14,7 @@ const Index = () => {
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
-
+  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     const fetchInterviews = async () => {
       try {
@@ -37,6 +39,10 @@ const Index = () => {
     setModalOpen(true);
   };
 
+  const filteredInterviews = interviews?.filter((interview) =>
+    interview.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) {
     return (
       <div className="fixed inset-0 z-40 backdrop-blur-sm bg-[#06202A]/30 flex items-center min-h-[100vh]">
@@ -59,21 +65,30 @@ const Index = () => {
   }
 
   return (
-    <section className="py-4 max-w-[1800px] m-auto pb-20 px-4 lg:px-0">
+    <section className="py-4 max-w-[1800px] m-auto pb-20 px-4 lg:px-5">
       <div className="flex flex-col justify-center items-center border-b-gray-500 border-b-2 pb-2">
         <h1 className="text-white sm:text-5xl text-3xl tracking-wider">
           Interviews
         </h1>
       </div>
-      {interviews.length === 0 ? (
+      <div className="flex justify-end items-end lg:w-1/6 mt-10 relative">
+        <Input
+          variant="standard"
+          color="white"
+          type="text"
+          label="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <CiSearch className="text-white text-2xl absolute right-2 top-3" />
+      </div>
+      {filteredInterviews?.length === 0 ? (
         <div className="flex items-center justify-center h-[300px]">
-          <h2 className="text-white text-xl">
-            Interviews are coming soon! Stay Connected!
-          </h2>
+          <h2 className="text-white text-xl">No interviews found!</h2>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-stretch mt-10">
-          {interviews.map((item) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-stretch mt-16">
+          {filteredInterviews?.map((item) => {
             const shareUrl = `https://www.photohousemagazine.com/interviews/${item?.slug}`;
             return (
               <div
@@ -106,12 +121,12 @@ const Index = () => {
                     </div>
                   </a>
                 </Link>
-                <div className="p-4 flex-1 flex flex-col justify-between">
-                  <div>
+                <div className="p-2 flex-1 flex flex-col justify-between">
+                  <Link href={`interviews/${item?.slug}`} passHref>
                     <h3 className="text-xl lg:text-2xl font-bold group-hover:text-white/70 duration-300">
                       {item?.title}
                     </h3>
-                  </div>
+                  </Link>
                 </div>
               </div>
             );

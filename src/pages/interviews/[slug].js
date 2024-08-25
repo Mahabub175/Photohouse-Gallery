@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { FaShare } from "react-icons/fa";
+import {
+  FaShare,
+  FaUser,
+  FaInstagram,
+  FaFacebookF,
+  FaGlobe,
+} from "react-icons/fa";
+import { IoIosTime } from "react-icons/io";
 import ShareModal from "../../components/UI/ShareModal";
 import { base_url } from "../../configs";
 import logo_dark from "../../Images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { MailingList } from "../../components/Contact/MailingList";
-
+import moment from "moment/moment";
 const InterviewPage = () => {
   const router = useRouter();
   const { slug } = router.query;
@@ -81,9 +88,40 @@ const InterviewPage = () => {
     <section className="py-4 max-w-[1600px] m-auto pb-20 px-4 lg:px-0">
       <div className="max-w-[800px] mx-auto">
         <div className="flex items-center justify-between">
-          <h1 className="text-white sm:text-5xl text-3xl tracking-wider my-10">
-            {interview.title}
-          </h1>
+          <div className="flex items-start gap-6">
+            <div>
+              {interview?.interviewer_name && (
+                <p className="font-semibold flex items-center gap-2 mb-2">
+                  <FaUser />
+                  {interview?.interviewer_name}
+                </p>
+              )}
+              <div className="flex items-center gap-4 ml-6">
+                {interview?.interviewer_facebook_link && (
+                  <a
+                    href={interview?.interviewer_facebook_link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaFacebookF className="text-xl" />
+                  </a>
+                )}
+                {interview?.interviewer_instagram_link && (
+                  <a
+                    href={interview?.interviewer_instagram_link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaInstagram className="text-xl" />
+                  </a>
+                )}
+              </div>
+            </div>
+            <p className="flex items-center gap-2">
+              <IoIosTime />
+              {moment(interview?.created_at).format("MMM Do, YYYY")}
+            </p>
+          </div>
           <button
             onClick={() => handleShareClick(shareUrl)}
             className="text-white bg-gray-700 p-2 rounded-full hover:scale-105 duration-300 -mt-2"
@@ -91,6 +129,9 @@ const InterviewPage = () => {
             <FaShare />
           </button>
         </div>
+        <h1 className="text-white sm:text-5xl text-3xl tracking-wider my-10">
+          {interview.title}
+        </h1>
         <div className="relative flex-1 aspect-w-16 aspect-h-9">
           <Image
             src={
@@ -111,6 +152,40 @@ const InterviewPage = () => {
               __html: interview.content,
             }}
           />
+          <div className="border-y py-5 mt-20 text-center">
+            <h2 className="text-white text-xl font-semibold mb-4">
+              {interview?.interviewee_name}
+            </h2>
+            <div className="flex items-center gap-6 justify-center">
+              {interview?.interviewee_facebook_link && (
+                <a
+                  href={interview?.interviewee_facebook_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaFacebookF className="text-xl" />
+                </a>
+              )}
+              {interview?.interviewee_instagram_link && (
+                <a
+                  href={interview?.interviewee_instagram_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaInstagram className="text-xl" />
+                </a>
+              )}
+              {interview?.interviewee_other_link && (
+                <a
+                  href={interview?.interviewee_other_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaGlobe className="text-xl" />
+                </a>
+              )}
+            </div>
+          </div>
         </div>
         <ShareModal
           isOpen={modalOpen}
