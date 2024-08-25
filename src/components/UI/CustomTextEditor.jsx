@@ -2,16 +2,8 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { base_url } from "../../configs";
 
-interface TinyMCEEditorProps {
-  value: string;
-  onChange: (content: string) => void;
-}
-
-const CustomTextEditor: React.FC<TinyMCEEditorProps> = ({
-  value,
-  onChange,
-}) => {
-  const handleEditorChange = (content: string, editor: any) => {
+const CustomTextEditor = ({ value, onChange }) => {
+  const handleEditorChange = (content, editor) => {
     onChange(content);
   };
 
@@ -66,31 +58,42 @@ const CustomTextEditor: React.FC<TinyMCEEditorProps> = ({
           };
           input.click();
         },
-        images_upload_handler: async (blobInfo, success, failure) => {
+        images_upload_handler: (blobInfo, success, failure, progress) => {
           const formData = new FormData();
           formData.append("image", blobInfo.blob(), blobInfo.filename());
 
-          try {
-            const response = await fetch(`${base_url}/upload`, {
-              method: "POST",
-              body: formData,
-            });
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", `${base_url}/upload`, true);
 
-            if (!response.ok) {
-              throw new Error("Failed to upload image");
+          xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable) {
+              const percent = Math.round((e.loaded / e.total) * 100);
+              progress(percent);
             }
+          };
 
-            const data = await response.json();
-
-            if (data.url) {
-              const imageUrl = `${base_url}/${data.url}`;
-              success({ src: imageUrl });
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const data = JSON.parse(xhr.responseText);
+              if (data.url) {
+                const imageUrl = `${base_url}/${data.url}`;
+                success(imageUrl);
+              } else {
+                failure("Image upload failed: No URL returned");
+              }
             } else {
-              failure("Image upload failed: No URL returned");
+              failure(
+                "Image upload failed: Server responded with status " +
+                  xhr.status
+              );
             }
-          } catch (error: any) {
-            failure(`Image upload failed: ${error.message}`);
-          }
+          };
+
+          xhr.onerror = function () {
+            failure("Image upload failed: Network error");
+          };
+
+          xhr.send(formData);
         },
       }}
     />

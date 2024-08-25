@@ -23,7 +23,8 @@
     "src/pages/contact/index.ts",
     "src/components/home/InstaGallery.jsx",
     "src/utils/GlobalContext.jsx",
-    "src/pages/signin/index.js"
+    "src/pages/signin/index.js",
+    "src/components/UI/CustomTextEditor.jsx"
   ],
   "exclude": ["node_modules"]
 }
