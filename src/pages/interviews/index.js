@@ -71,32 +71,35 @@ const Index = () => {
           Interviews
         </h1>
       </div>
-      <div className="flex justify-end items-end lg:w-1/6 mt-10 relative">
-        <Input
-          variant="standard"
-          color="white"
-          type="text"
-          label="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <CiSearch className="text-white text-2xl absolute right-2 top-3" />
+      <div className="flex justify-between items-center mt-10 relative">
+        <div></div>
+        <div>
+          <Input
+            variant="standard"
+            color="white"
+            type="text"
+            label="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <CiSearch className="text-white text-2xl absolute right-2 top-3" />
+        </div>
       </div>
       {filteredInterviews?.length === 0 ? (
         <div className="flex items-center justify-center h-[300px]">
           <h2 className="text-white text-xl">No interviews found!</h2>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-stretch mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-stretch mt-16">
           {filteredInterviews?.map((item) => {
             const shareUrl = `https://www.photohousemagazine.com/interviews/${item?.slug}`;
             return (
               <div
                 key={item?.id}
-                className="relative mx-auto rounded-xl group flex flex-col"
+                className="relative mx-auto rounded-xl group flex items-start gap-4"
               >
                 <Link href={`interviews/${item?.slug}`} passHref>
-                  <a className="relative flex-1 aspect-w-16 aspect-h-9">
+                  <div className="relative flex-1 aspect-w-16 aspect-h-9">
                     <Image
                       src={
                         item?.thumbnail_image
@@ -119,13 +122,21 @@ const Index = () => {
                         <FaShare />
                       </button>
                     </div>
-                  </a>
+                  </div>
                 </Link>
                 <div className="p-2 flex-1 flex flex-col justify-between">
                   <Link href={`interviews/${item?.slug}`} passHref>
-                    <h3 className="text-xl lg:text-2xl font-bold group-hover:text-white/70 duration-300">
+                    <h3 className="text-xl font-bold group-hover:text-white/70 duration-300 mb-3">
                       {item?.title}
                     </h3>
+                  </Link>
+                  <p className="font-bold mb-6 text-sm">Profession: Model</p>
+                  <Link href={`interviews/${item?.slug}`} passHref>
+                    <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group w-32">
+                      <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-60 group-hover:h-60"></span>
+                      <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+                      <span className="relative">Read More</span>
+                    </button>
                   </Link>
                 </div>
               </div>

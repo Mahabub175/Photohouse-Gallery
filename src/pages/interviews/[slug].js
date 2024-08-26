@@ -96,26 +96,6 @@ const InterviewPage = () => {
                   {interview?.interviewer_name}
                 </p>
               )}
-              <div className="flex items-center gap-4 ml-6">
-                {interview?.interviewer_facebook_link && (
-                  <a
-                    href={interview?.interviewer_facebook_link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaFacebookF className="text-xl" />
-                  </a>
-                )}
-                {interview?.interviewer_instagram_link && (
-                  <a
-                    href={interview?.interviewer_instagram_link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaInstagram className="text-xl" />
-                  </a>
-                )}
-              </div>
             </div>
             <p className="flex items-center gap-2">
               <IoIosTime />
