@@ -61,7 +61,12 @@ const Index = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
+    return (
+      <div className="text-center text-red-500">
+        Error: {error}
+        {window.location.reload()}
+      </div>
+    );
   }
 
   return (
@@ -87,7 +92,9 @@ const Index = () => {
       </div>
       {filteredInterviews?.length === 0 ? (
         <div className="flex items-center justify-center h-[300px]">
-          <h2 className="text-white text-xl">No interviews found!</h2>
+          <h2 className="text-gray-300 text-xl">
+            Stay Connected To See Upcoming Interviews!
+          </h2>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-stretch mt-16">
@@ -98,7 +105,7 @@ const Index = () => {
                 key={item?.id}
                 className="relative mx-auto rounded-xl group flex items-start gap-4"
               >
-                <Link href={`interviews/${item?.slug}`} passHref>
+                <Link href={`/interviews/${item?.slug}`} passHref>
                   <div className="relative flex-1 aspect-w-16 aspect-h-9">
                     <Image
                       src={
@@ -109,7 +116,7 @@ const Index = () => {
                       alt={item?.title}
                       height={800}
                       width={600}
-                      className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                      className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain bg-white/5"
                     />
                     <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <button
@@ -125,13 +132,15 @@ const Index = () => {
                   </div>
                 </Link>
                 <div className="p-2 flex-1 flex flex-col justify-between">
-                  <Link href={`interviews/${item?.slug}`} passHref>
-                    <h3 className="text-xl font-bold group-hover:text-white/70 duration-300 mb-3">
+                  <Link href={`/interviews/${item?.slug}`} passHref>
+                    <h3 className="text-2xl font-bold group-hover:text-white/70 duration-300 mb-3">
                       {item?.title}
                     </h3>
                   </Link>
-                  <p className="font-bold mb-6 text-sm">Profession: Model</p>
-                  <Link href={`interviews/${item?.slug}`} passHref>
+                  <p className="font-bold mb-6 text-sm">
+                    Profession: {item?.interviewee_profession}
+                  </p>
+                  <Link href={`/interviews/${item?.slug}`} passHref>
                     <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group w-32">
                       <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-60 group-hover:h-60"></span>
                       <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>

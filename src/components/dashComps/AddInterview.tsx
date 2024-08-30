@@ -8,13 +8,8 @@ import CustomTextEditor from "../UI/CustomTextEditor";
 interface InterviewData {
   title: string;
   content: string;
-  interviewee_name: string;
-  interviewee_instagram_link?: string;
-  interviewee_facebook_link?: string;
-  interviewee_other_link?: string;
   interviewer_name: string;
-  interviewer_instagram_link?: string;
-  interviewer_facebook_link?: string;
+  interviewee_profession: string;
 }
 
 const AddInterview = () => {
@@ -24,20 +19,15 @@ const AddInterview = () => {
   const [interviewData, setInterviewData] = useState<InterviewData>({
     title: "",
     content: "",
-    interviewee_name: "",
-    interviewee_instagram_link: "",
-    interviewee_facebook_link: "",
-    interviewee_other_link: "",
     interviewer_name: "",
-    interviewer_instagram_link: "",
-    interviewer_facebook_link: "",
+    interviewee_profession: "",
   });
   const [contentError, setContentError] = useState<string>("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!interviewData.content.trim()) {
+    if (!interviewData.content) {
       setContentError("Content cannot be empty.");
       toast.error("Please Enter Content!");
       return;
@@ -74,13 +64,8 @@ const AddInterview = () => {
       setInterviewData({
         title: "",
         content: "",
-        interviewee_name: "",
-        interviewee_instagram_link: "",
-        interviewee_facebook_link: "",
-        interviewee_other_link: "",
         interviewer_name: "",
-        interviewer_instagram_link: "",
-        interviewer_facebook_link: "",
+        interviewee_profession: "",
       });
       setImageFile(null);
       setImageUrl(null);
@@ -126,47 +111,7 @@ const AddInterview = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="grid md:grid-cols-1 gap-10 mt-10">
-        <CustomInput
-          type="text"
-          placeholder=""
-          value={interviewData.interviewee_name}
-          name="interviewee_name"
-          label="Interviewee Name"
-          required={true}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="grid md:grid-cols-3 gap-10 mt-10">
-        <CustomInput
-          type="text"
-          placeholder=""
-          value={interviewData.interviewee_instagram_link || ""}
-          name="interviewee_instagram_link"
-          label="Interviewee Instagram Link"
-          required={false}
-          onChange={handleChange}
-        />
-        <CustomInput
-          type="text"
-          placeholder=""
-          value={interviewData.interviewee_facebook_link || ""}
-          name="interviewee_facebook_link"
-          label="Interviewee Facebook Link"
-          required={false}
-          onChange={handleChange}
-        />
-        <CustomInput
-          type="text"
-          placeholder=""
-          value={interviewData.interviewee_other_link || ""}
-          name="interviewee_other_link"
-          label="Interviewee Other Link"
-          required={false}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="grid md:grid-cols-1 gap-10 mt-10">
+      <div className="grid md:grid-cols-2 gap-10 mt-10">
         <CustomInput
           type="text"
           placeholder=""
@@ -176,24 +121,13 @@ const AddInterview = () => {
           required={true}
           onChange={handleChange}
         />
-      </div>
-      <div className="grid md:grid-cols-2 gap-10 mt-10">
         <CustomInput
           type="text"
           placeholder=""
-          value={interviewData.interviewer_instagram_link || ""}
-          name="interviewer_instagram_link"
-          label="Interviewer Instagram Link"
-          required={false}
-          onChange={handleChange}
-        />
-        <CustomInput
-          type="text"
-          placeholder=""
-          value={interviewData.interviewer_facebook_link || ""}
-          name="interviewer_facebook_link"
-          label="Interviewer Facebook Link"
-          required={false}
+          value={interviewData.interviewee_profession}
+          name="interviewee_profession"
+          label="Interviewee Profession"
+          required={true}
           onChange={handleChange}
         />
       </div>

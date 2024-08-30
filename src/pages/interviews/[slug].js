@@ -6,7 +6,7 @@ import {
   FaUser,
   FaInstagram,
   FaFacebookF,
-  FaGlobe,
+  FaLinkedin,
 } from "react-icons/fa";
 import { IoIosTime } from "react-icons/io";
 import ShareModal from "../../components/UI/ShareModal";
@@ -16,6 +16,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MailingList } from "../../components/Contact/MailingList";
 import moment from "moment/moment";
+import { FaXTwitter } from "react-icons/fa6";
+
 const InterviewPage = () => {
   const router = useRouter();
   const { slug } = router.query;
@@ -33,7 +35,9 @@ const InterviewPage = () => {
         try {
           const allInterviews = await fetch(`${base_url}/interviews`);
           const interviewData = await allInterviews.json();
-          setAllInterview(interviewData);
+
+          // Filter out the current interview from the list of all interviews
+          setAllInterview(interviewData.filter((item) => item.slug !== slug));
 
           const response = await fetch(`${base_url}/interviews/${slug}`);
           if (!response.ok) {
@@ -122,7 +126,7 @@ const InterviewPage = () => {
             alt={interview?.title}
             width={1800}
             height={2500}
-            className="absolute inset-0 w-full h-screen object-cover rounded-xl"
+            className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain"
           />
         </div>
         <div className="p-5 flex-1">
@@ -132,39 +136,53 @@ const InterviewPage = () => {
               __html: interview.content,
             }}
           />
-          <div className="border-y py-5 mt-20 text-center">
-            <h2 className="text-white text-xl font-semibold mb-4">
-              {interview?.interviewee_name}
-            </h2>
-            <div className="flex items-center gap-6 justify-center">
-              {interview?.interviewee_facebook_link && (
+          <div className="border-y py-4 mt-20 text-center flex items-center justify-between">
+            <div>
+              <div className="flex flex-wrap leading-[25px] md:justify-center items-center gap-4">
                 <a
-                  href={interview?.interviewee_facebook_link}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    shareUrl
+                  )}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <FaFacebookF className="text-xl" />
+                  <FaFacebookF className="inline text-[27px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
                 </a>
-              )}
-              {interview?.interviewee_instagram_link && (
                 <a
-                  href={interview?.interviewee_instagram_link}
+                  href={`https://x.com/intent/tweet?url=${encodeURIComponent(
+                    shareUrl
+                  )}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <FaInstagram className="text-xl" />
+                  <FaXTwitter className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300 mr-1" />
                 </a>
-              )}
-              {interview?.interviewee_other_link && (
                 <a
-                  href={interview?.interviewee_other_link}
+                  href={`https://www.instagram.com/?url=${encodeURIComponent(
+                    shareUrl
+                  )}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <FaGlobe className="text-xl" />
+                  <FaInstagram className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
                 </a>
-              )}
+                <a
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                    shareUrl
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin className="inline text-[32px] hover:bg-white hover:text-black px-2 rounded-full duration-300" />
+                </a>
+              </div>
             </div>
+            <Link href={"/interviews"}>
+              <span className="font-bold hover:text-gray-400 duration-300">
+                {" "}
+                Interviews
+              </span>
+            </Link>
           </div>
         </div>
         <ShareModal
@@ -185,20 +203,20 @@ const InterviewPage = () => {
         {allInterview?.length === 0 ? (
           <div className="flex items-center justify-center h-[300px]">
             <h2 className="text-white text-xl">
-              Interviews are coming soon! Stay Connected!
+              Related Interviews are coming soon! Stay Connected!
             </h2>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center items-stretch">
-            {allInterview?.slice(0, 3).map((item) => {
+            {allInterview?.slice(0, 12).map((item) => {
               const shareUrl = `https://www.photohousemagazine.com/interviews/${item?.slug}`;
               return (
                 <div
                   key={item?.id}
-                  className="relative mx-auto rounded-xl group flex flex-col"
+                  className="relative mx-auto rounded-xl group flex items-start gap-4"
                 >
                   <Link href={`/interviews/${item?.slug}`} passHref>
-                    <a className="relative flex-1 aspect-w-16 aspect-h-9">
+                    <div className="relative flex-1 aspect-w-16 aspect-h-9">
                       <Image
                         src={
                           item?.thumbnail_image
@@ -221,14 +239,24 @@ const InterviewPage = () => {
                           <FaShare />
                         </button>
                       </div>
-                    </a>
+                    </div>
                   </Link>
-                  <div className="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-xl lg:text-2xl font-bold group-hover:text-white/70 duration-300">
+                  <div className="p-2 flex-1 flex flex-col justify-between">
+                    <Link href={`/interviews/${item?.slug}`} passHref>
+                      <h3 className="text-2xl font-bold group-hover:text-white/70 duration-300 mb-3">
                         {item?.title}
                       </h3>
-                    </div>
+                    </Link>
+                    <p className="font-bold mb-6 text-sm">
+                      Profession: {item?.interviewee_profession}
+                    </p>
+                    <Link href={`/interviews/${item?.slug}`} passHref>
+                      <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group w-32">
+                        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-60 group-hover:h-60"></span>
+                        <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+                        <span className="relative">Read More</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               );
