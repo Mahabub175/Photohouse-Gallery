@@ -36,7 +36,6 @@ const InterviewPage = () => {
           const allInterviews = await fetch(`${base_url}/interviews`);
           const interviewData = await allInterviews.json();
 
-          // Filter out the current interview from the list of all interviews
           setAllInterview(interviewData.filter((item) => item.slug !== slug));
 
           const response = await fetch(`${base_url}/interviews/${slug}`);
@@ -79,7 +78,11 @@ const InterviewPage = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
+    return (
+      <div className="text-center text-red-500">
+        Error: {error} {window.location.reload()}
+      </div>
+    );
   }
 
   if (!interview) {
@@ -117,7 +120,7 @@ const InterviewPage = () => {
           {interview.title}
         </h1>
         <div className="relative flex-1 aspect-w-16 aspect-h-9">
-          <Image
+          {/* <Image
             src={
               interview?.thumbnail_image
                 ? `${base_url}/${interview?.thumbnail_image}`
@@ -127,9 +130,18 @@ const InterviewPage = () => {
             width={1800}
             height={2500}
             className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain"
+          /> */}
+          <img
+            src={
+              interview?.thumbnail_image
+                ? `${base_url}/${interview?.thumbnail_image}`
+                : "https://i.ibb.co/PNQkmRf/cont.jpg"
+            }
+            alt={interview?.title}
+            className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain"
           />
         </div>
-        <div className="p-5 flex-1">
+        <div className="p-5 flex-1 mt-10">
           <div
             className="mt-4"
             dangerouslySetInnerHTML={{
