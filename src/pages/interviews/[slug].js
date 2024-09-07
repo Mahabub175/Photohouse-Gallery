@@ -120,36 +120,33 @@ const InterviewPage = () => {
           {interview.title}
         </h1>
         <div className="relative flex-1 aspect-w-16 aspect-h-9">
-          {/* <Image
-            src={
-              interview?.thumbnail_image
-                ? `${base_url}/${interview?.thumbnail_image}`
-                : "https://i.ibb.co/PNQkmRf/cont.jpg"
-            }
-            alt={interview?.title}
-            width={1800}
-            height={2500}
-            className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain"
-          /> */}
           <img
+            src={`${base_url}/${interview?.thumbnail_image}`}
+            alt={interview?.title}
+            className="w-fit !h-full rounded-xl object-cover mx-auto"
+          />
+          <Image
             src={
               interview?.thumbnail_image
                 ? `${base_url}/${interview?.thumbnail_image}`
                 : "https://i.ibb.co/PNQkmRf/cont.jpg"
             }
-            alt={interview?.title}
-            className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain"
+            alt={interview?.title || "Interview Thumbnail"}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-xl mx-auto"
+            priority
           />
         </div>
-        <div className="p-5 flex-1 mt-10">
+        <div className="p-5 flex-1 lg:mt-10">
           <div
-            className="mt-4"
+            className="mt-4 mb-10"
             dangerouslySetInnerHTML={{
-              __html: interview.content,
+              __html: interview?.content,
             }}
           />
-          <div className="border-y py-4 mt-20 text-center flex items-center justify-between">
-            <div>
+          <div className="border-y py-4 lg:mt-20 text-center flex flex-col lg:flex-row items-center justify-between">
+            <div className="mb-4 lg:mb-0">
               <div className="flex flex-wrap leading-[25px] md:justify-center items-center gap-4">
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(

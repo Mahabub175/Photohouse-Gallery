@@ -4,6 +4,7 @@ import CustomImageUploader from "./CustomImageUploader";
 import toast from "react-hot-toast";
 import { base_url } from "../../configs";
 import CustomTextEditor from "../UI/CustomTextEditor";
+import ImageUploaderWithCopy from "../UI/ImageUploaderWithCopy";
 
 interface InterviewData {
   title: string;
@@ -130,6 +131,10 @@ const AddInterview = () => {
           required={true}
           onChange={handleChange}
         />
+      </div>
+
+      <div className="my-10">
+        <ImageUploaderWithCopy />
       </div>
 
       <div className="mb-4">
