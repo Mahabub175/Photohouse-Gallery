@@ -93,7 +93,7 @@ const InterviewPage = () => {
 
   return (
     <section className="py-4 max-w-[1600px] m-auto pb-20 px-4 lg:px-0">
-      <div className="max-w-[800px] mx-auto">
+      <div className="max-w-[1000px] mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-start gap-6">
             <div>
@@ -145,7 +145,7 @@ const InterviewPage = () => {
               __html: interview?.content,
             }}
           />
-          <div className="border-y py-4 lg:mt-20 text-center flex flex-col lg:flex-row items-center justify-between">
+          <div className="border-y py-4 lg:mt-10 text-center flex flex-col lg:flex-row items-center justify-between">
             <div className="mb-4 lg:mb-0">
               <div className="flex flex-wrap leading-[25px] md:justify-center items-center gap-4">
                 <a

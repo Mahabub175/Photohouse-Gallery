@@ -137,7 +137,7 @@ const AddInterview = () => {
         <ImageUploaderWithCopy />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-4 max-w-[1000px] mx-auto">
         <label className="block mb-2 text-sm font-medium">Content</label>
         <CustomTextEditor
           value={interviewData.content}
@@ -145,6 +145,13 @@ const AddInterview = () => {
         />
         {contentError && <p className="text-red-500">{contentError}</p>}
       </div>
+
+      {/* Real-time content display */}
+      <div
+        dangerouslySetInnerHTML={{ __html: interviewData.content }}
+        className="my-20 border border-white max-w-[1000px] mx-auto p-4 rounded"
+      />
+
       <div className="flex justify-center mt-5">
         <button
           type="submit"
