@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import ShareModal from "../../components/UI/ShareModal";
@@ -14,7 +15,10 @@ const Index = () => {
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
+  const [currentTitle, setCurrentTitle] = useState(""); // New state for title
+  const [currentImage, setCurrentImage] = useState(""); // New state for image
   const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const fetchInterviews = async () => {
       try {
@@ -34,8 +38,10 @@ const Index = () => {
     fetchInterviews();
   }, []);
 
-  const handleShareClick = (url) => {
+  const handleShareClick = (url, title, image) => {
     setCurrentUrl(url);
+    setCurrentTitle(title); // Set the current title
+    setCurrentImage(image); // Set the current image
     setModalOpen(true);
   };
 
@@ -97,51 +103,53 @@ const Index = () => {
           </h2>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-stretch mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-stretch mt-16">
           {filteredInterviews?.map((item) => {
             const shareUrl = `https://www.photohousemagazine.com/interviews/${item?.slug}`;
+            const thumbnailImage = item?.thumbnail_image
+              ? `${base_url}/${item?.thumbnail_image}`
+              : "https://i.ibb.co/PNQkmRf/cont.jpg"; // Set the image
+
             return (
               <div
                 key={item?.id}
-                className="relative mx-auto rounded-xl group flex items-start gap-4"
+                className="relative mx-auto rounded-xl group flex items-start gap-6"
               >
                 <Link href={`/interviews/${item?.slug}`} passHref>
-                  <div className="relative flex-1 aspect-w-16 aspect-h-9">
-                    <Image
-                      src={
-                        item?.thumbnail_image
-                          ? `${base_url}/${item?.thumbnail_image}`
-                          : "https://i.ibb.co/PNQkmRf/cont.jpg"
-                      }
+                  <div className="relative">
+                    <img
+                      src={thumbnailImage}
                       alt={item?.title}
-                      height={800}
-                      width={600}
-                      className="w-auto h-auto max-w-full max-h-full rounded-xl object-contain bg-white/5"
+                      className="w-[200px] h-[250px] rounded-xl object-cotnaine"
                     />
-                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <button
                         onClick={(e) => {
                           e.preventDefault();
-                          handleShareClick(shareUrl);
+                          handleShareClick(
+                            shareUrl,
+                            item?.title,
+                            thumbnailImage
+                          );
                         }}
-                        className="text-white bg-gray-700 p-2 rounded-full hover:scale-105 duration-300"
+                        className="text-white bg-gray-700 p-3 rounded-full hover:scale-105 duration-300"
                       >
                         <FaShare />
                       </button>
                     </div>
                   </div>
                 </Link>
-                <div className="p-2 flex-1 flex flex-col justify-between">
+                <div className="p-4 flex-1 flex flex-col justify-between">
                   <Link href={`/interviews/${item?.slug}`} passHref>
-                    <h3 className="text-2xl font-bold group-hover:text-white/70 duration-300 mb-3">
+                    <h3 className="text-2xl font-bold group-hover:text-white/70 duration-300 mb-4">
                       {item?.title}
                     </h3>
                   </Link>
-                  <p className="font-bold mb-6 text-sm">
+                  <p className="font-bold mb-8 text-sm">
                     Profession: {item?.interviewee_profession}
                   </p>
                   <Link href={`/interviews/${item?.slug}`} passHref>
-                    <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group w-32">
+                    <button className="mr-2 mb-2 relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-mono font-medium tracking-tighter text-white bg-[#00000055] border border-gray-400 rounded-2xl group w-40">
                       <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-gray-500 rounded-full group-hover:w-60 group-hover:h-60"></span>
                       <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
                       <span className="relative">Read More</span>
@@ -158,6 +166,8 @@ const Index = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         url={currentUrl}
+        title={currentTitle}
+        image={currentImage}
       />
     </section>
   );

@@ -8,9 +8,17 @@ interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
   url: string;
+  title: string;
+  image: string;
 }
 
-const ShareModal = ({ isOpen, onClose, url }: ShareModalProps) => {
+const ShareModal = ({
+  isOpen,
+  onClose,
+  url,
+  title,
+  image,
+}: ShareModalProps) => {
   const handleCopyLink = () => {
     navigator.clipboard.writeText(url);
     toast.success("Link copied to clipboard!");
@@ -43,6 +51,7 @@ const ShareModal = ({ isOpen, onClose, url }: ShareModalProps) => {
         </button>
         <h2 className="text-lg font-bold mb-4 text-black">Share This Post</h2>
         <div className="flex justify-around mb-4 mt-10">
+          {/* Facebook Share */}
           <a
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
               url
@@ -53,24 +62,34 @@ const ShareModal = ({ isOpen, onClose, url }: ShareModalProps) => {
           >
             <FaFacebook />
           </a>
+
+          {/* Twitter Share */}
           <a
-            href={`https://x.com/intent/tweet?url=${encodeURIComponent(url)}`}
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+              url
+            )}&text=${encodeURIComponent(title)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-black text-3xl"
           >
             <SiX />
           </a>
+
+          {/* LinkedIn Share */}
           <a
             href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
               url
-            )}`}
+            )}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(
+              title
+            )}&source=${encodeURIComponent(url)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-700 text-4xl"
           >
             <FaLinkedin />
           </a>
+
+          {/* Instagram does not support direct URL sharing */}
           <a
             href={`https://www.instagram.com/?url=${encodeURIComponent(url)}`}
             target="_blank"
@@ -79,6 +98,8 @@ const ShareModal = ({ isOpen, onClose, url }: ShareModalProps) => {
           >
             <FaInstagram />
           </a>
+
+          {/* Copy Link */}
           <button
             onClick={handleCopyLink}
             className="flex items-center space-x-2 p-2 bg-gray-800 text-white rounded-lg"

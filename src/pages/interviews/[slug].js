@@ -273,7 +273,6 @@ const InterviewPage = () => {
           </div>
         )}
       </div>
-      <MailingList />
     </section>
   );
 };
