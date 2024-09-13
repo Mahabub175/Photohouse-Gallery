@@ -119,12 +119,7 @@ const InterviewPage = () => {
         <h1 className="text-white sm:text-5xl text-3xl tracking-wider my-10">
           {interview.title}
         </h1>
-        <div className="relative flex-1 aspect-w-16 aspect-h-9">
-          <img
-            src={`${base_url}/${interview?.thumbnail_image}`}
-            alt={interview?.title}
-            className="w-fit !h-full rounded-xl object-cover mx-auto"
-          />
+        <div className="flex justify-center">
           <Image
             src={
               interview?.thumbnail_image
@@ -132,9 +127,9 @@ const InterviewPage = () => {
                 : "https://i.ibb.co/PNQkmRf/cont.jpg"
             }
             alt={interview?.title || "Interview Thumbnail"}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-xl mx-auto"
+            width={750}
+            height={907}
+            className="rounded-xl"
             priority
           />
         </div>
